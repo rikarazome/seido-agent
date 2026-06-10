@@ -48,6 +48,36 @@ def judge(facts_pl: str, program: str, rule_file: str, subject: str,
     return out[-1].strip()
 
 
+def query_value(facts_pl: str, program: str, rule_file: str, goal: str,
+                var: str = "A", timeout: int = 15) -> str:
+    """Run once(Program:Goal) and return writeq of Var (e.g. teate_amount(p1, A))."""
+    rules = (REPO / rule_file).as_posix()
+    with tempfile.TemporaryDirectory() as td:
+        facts = Path(td) / "facts.pl"
+        facts.write_text(facts_pl, encoding="ascii")
+        driver = Path(td) / "driver.pl"
+        driver.write_text(
+            f":- consult('{ENGINE}').\n"
+            f":- consult('{facts.as_posix()}').\n"
+            f":- use_module('{rules}').\n"
+            "main :-\n"
+            f"    ( once({program}:{goal})\n"
+            f"    -> true ; {var} = no_solution ),\n"
+            f"    writeq({var}), nl, halt(0).\n",
+            encoding="ascii",
+        )
+        proc = subprocess.run(
+            ["swipl", "-q", "-g", "main", str(driver)],
+            capture_output=True, text=True, timeout=timeout,
+        )
+    if proc.returncode != 0:
+        raise PrologError(f"swipl failed (rc={proc.returncode}):\n{proc.stderr}")
+    out = [l for l in proc.stdout.strip().splitlines() if l.strip()]
+    if not out:
+        raise PrologError(f"no output from swipl:\n{proc.stderr}")
+    return out[-1].strip()
+
+
 def load_all_modules(rule_files: list[str], timeout: int = 20) -> None:
     """CI invariant: every rule module loads together without clashes."""
     goals = "".join(

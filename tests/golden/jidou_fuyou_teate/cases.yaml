@@ -1,8 +1,8 @@
 # 児童扶養手当 golden cases（rule-schema v1 / facts JSON同形）
-# PLACEHOLDER - VERIFY: 限度額（加算式 base 690000/2080000 + step 380000）と
-# nenshu→所得変換（現状v0パススルー）は未確定。公式数値確定時に本ファイル・
-# rules/national/jidou_fuyou_teate.pl・factgen.py を同一コミットで更新すること。
-# 基本世帯: 子1人（FY末年齢7）
+# 限度額・手当額は VERIFIED（statute_source.md 参照。限度額=施行令2条の4、
+# 手当額=令和8年度値: 全部48,050 / 逓減 48,040-(所得-限度額)*0.0264029 / 加算11,350・0.0040719 / 10円丸め）
+# 注意: nenshu はv0パススルー（入力値を所得として扱う）。収入→所得変換は入力設計の決定待ち。
+# 基本世帯: 子1人（FY末年齢7）。amount は世帯月額（per_household、teate_amount/2）
 
 - name: jft_partner_unknown_blocks
   as_of: "2026-06-11"
@@ -40,7 +40,8 @@
     children: [ { id: c1, birth_date: "2019-06-01" } ]
     askable: { nenshu: 1000000, hitorioya: true, hitorioya_jiyuu: rikon,
                seikei_douitsu_partner: false, fuyou_ninzu: 2 }
-  expect: { subject: c1, status: decided, detail: "zenbu" }
+  expect: { subject: c1, status: decided, detail: "zenbu", amount: 48050 }
+  # R8全部支給 第1子 48,050円
 
 - name: jft_ichibu_shikyu
   as_of: "2026-06-11"
@@ -49,8 +50,9 @@
     children: [ { id: c1, birth_date: "2019-06-01" } ]
     askable: { nenshu: 1500000, hitorioya: true, hitorioya_jiyuu: rikon,
                seikei_douitsu_partner: false, fuyou_ninzu: 2 }
-  expect: { subject: c1, status: decided, detail: "ichibu" }
+  expect: { subject: c1, status: decided, detail: "ichibu", amount: 46720 }
   # zenbu_limit(2)=1450000 <= 1500000 < ichibu_limit(2)=2840000
+  # 48,040 - (1,500,000-1,450,000)*0.0264029 = 46,719.855 → 10円丸め 46,720
 
 - name: jft_fuyou3_formula_limits
   as_of: "2026-06-11"
@@ -91,6 +93,30 @@
                seikei_douitsu_partner: true, fuyou_ninzu: 2 }
   expect: { subject: c1, status: ineligible,
             detail: "'child shares livelihood with parent de-facto spouse (Art.4(2) analog)'" }
+
+- name: jft_amount_zenbu_two_children
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children:
+      - { id: c1, birth_date: "2019-06-01" }   # FY-end 7
+      - { id: c2, birth_date: "2023-08-01" }   # FY-end 3
+    askable: { nenshu: 1000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: decided, detail: "zenbu", amount: 59400 }
+  # 48,050 + 加算11,350 = 59,400
+
+- name: jft_amount_ichibu_two_children
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children:
+      - { id: c1, birth_date: "2019-06-01" }
+      - { id: c2, birth_date: "2023-08-01" }
+    askable: { nenshu: 1500000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: decided, detail: "ichibu", amount: 57860 }
+  # 本体 46,720 + 加算 11,340-(50,000*0.0040719)=11,136.405 → 11,140。計 57,860
 
 - name: jft_not_hitorioya_ineligible
   as_of: "2026-06-11"

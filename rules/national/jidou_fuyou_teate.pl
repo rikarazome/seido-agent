@@ -6,11 +6,12 @@
 %     (regression test for the v0 negation-as-failure bug)
 %   - income range straddling a limit -> blocked([income_exact])
 %   - confirmed exclusion -> ineligible with statutory reason
-% Income limit values are PLACEHOLDERS - VERIFY before use.
+% Limits and amounts VERIFIED 2026-06-11 (sources fixed in
+% tests/golden/jidou_fuyou_teate/statute_source.md).
 % Requires engine.pl (yes/no/unknown/val, v_lt/v_geq/v_indet).
 % ============================================================
 
-:- module(jidou_fuyou_teate, [kettei_status/3, required_fact/3]).
+:- module(jidou_fuyou_teate, [kettei_status/3, required_fact/3, teate_amount/2]).
 
 :- discontiguous kettei_status/3.
 :- discontiguous required_fact/3.
@@ -25,11 +26,21 @@ taisho_jido(C) :-
 jogai_confirmed(C, 'child shares livelihood with parent de-facto spouse (Art.4(2) analog)') :-
     yes(seikei_douitsu_partner(C)).
 
-% income limits by number of dependents (PLACEHOLDER base/step VALUES)
+% income limits by number of dependents -- VERIFIED against Cabinet Order
+% (shikourei Art.2-4, as amended 2024-11): linear, 690,000/2,080,000 base
+% + 380,000 per dependent, confirmed for N = 0..5 in the official table.
 % Formula form so EVERY N >= 0 is defined; a table with gaps made
 % kettei_status silently unsolvable for N >= 3 (review finding A).
 zenbu_limit(N, L)  :- integer(N), N >= 0, L is  690000 + 380000 * N.
 ichibu_limit(N, L) :- integer(N), N >= 0, L is 2080000 + 380000 * N.
+
+% monthly amounts, FY2026 (Reiwa 8, effective 2026-04) -- VERIFIED
+zenbu_base(48050).          % 1st child, full payment
+zenbu_kasan(11350).         % 2nd+ child addition, full payment
+ichibu_base_start(48040).   % partial: start - (income - full_limit) * coef
+ichibu_base_coef(0.0264029).
+ichibu_kasan_start(11340).
+ichibu_kasan_coef(0.0040719).
 
 shikyu_kubun(P, zenbu) :-
     val(income(P), V), val(fuyou_ninzu(P), N),
@@ -38,6 +49,35 @@ shikyu_kubun(P, ichibu) :-
     val(income(P), V), val(fuyou_ninzu(P), N),
     zenbu_limit(N, L1), v_geq(V, L1),
     ichibu_limit(N, L2), v_lt(V, L2).
+
+% household monthly amount (per_household unit; aggregation in
+% docs/specs/architecture.md). Rounding: nearest 10 yen (official rule).
+round10(Raw, Yen) :- Yen is round(Raw / 10) * 10.
+
+% children countable for the amount: per-child eligibility conditions
+kasan_count(P, N) :-
+    findall(C,
+            ( child(C), kango_by(C, P), taisho_jido(C),
+              no(seikei_douitsu_partner(C)) ),
+            Cs),
+    length(Cs, N).
+
+teate_amount(P, Total) :-
+    shikyu_kubun(P, zenbu), !,
+    kasan_count(P, N), N >= 1,
+    zenbu_base(B), zenbu_kasan(K),
+    Total is B + K * (N - 1).
+teate_amount(P, Total) :-
+    shikyu_kubun(P, ichibu), !,
+    val(income(P), I), number(I),   % point income required: for ranges the
+                                    % runner evaluates both endpoints (spec)
+    val(fuyou_ninzu(P), F), zenbu_limit(F, L),
+    ichibu_base_start(BS), ichibu_base_coef(BC),
+    round10(BS - (I - L) * BC, Base),
+    kasan_count(P, N), N >= 1,
+    ichibu_kasan_start(KS), ichibu_kasan_coef(KC),
+    round10(KS - (I - L) * KC, Kasan),
+    Total is Base + Kasan * (N - 1).
 
 % facts required to reach a decision (drives interview agent)
 required_fact(P, hitorioya, 'is the household single-parent') :-

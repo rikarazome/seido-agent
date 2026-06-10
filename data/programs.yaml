@@ -9,9 +9,11 @@
   subject: child
   unit: per_child
   amount_type: monthly
-  potential_amount: 30000        # PLACEHOLDER - VERIFY（第3子以降月額）
+  potential_amount: 30000        # VERIFIED: 第3子以降月額（法6条1項）
   status: supported
-  statute: []                    # statute_source.md 確定時に転記
+  statute:
+    - { ref: "児童手当法3条・4条・6条（2024-10改正後）", url: "https://hourei.net/law/346AC0000000073" }
+    - { ref: "こども家庭庁 制度案内", url: "https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai" }
 
 - id: jidou_fuyou_teate
   name: 児童扶養手当
@@ -20,9 +22,11 @@
   subject: child
   unit: per_household
   amount_type: monthly
-  potential_amount: null         # 全部支給月額+加算。公式数値確定後に設定
+  potential_amount: 48050        # VERIFIED: R8年度 第1子全部支給月額（加算は+11,350円/子）
   status: supported
-  statute: []
+  statute:
+    - { ref: "児童扶養手当法4条", url: "https://laws.e-gov.go.jp/law/336AC0000000238" }
+    - { ref: "施行令2条の4（所得限度額、2024-11改正）", url: "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/71de338f-5ed2-4c95-9848-3fd387d0b4d7/fb86c8d8/20240731_policies_hitori-oya_fuyou-teate_17.pdf" }
 
 - id: kouko_shugaku_shienkin
   name: 高等学校等就学支援金

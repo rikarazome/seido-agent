@@ -12,7 +12,7 @@ import pytest
 import yaml
 
 from seido.factgen import facts_to_prolog
-from seido.prolog import judge
+from seido.prolog import judge, query_value
 
 GOLDEN = Path(__file__).resolve().parent / "golden"
 
@@ -36,10 +36,13 @@ PARAMS = list(_collect())
 def test_golden(program, case):
     facts_pl = facts_to_prolog(case["facts"], date.fromisoformat(case["as_of"]))
     exp = case["expect"]
-    got = judge(
-        facts_pl,
-        program=program,
-        rule_file=f"rules/national/{program}.pl",
-        subject=exp["subject"],
-    )
+    rule_file = f"rules/national/{program}.pl"
+    got = judge(facts_pl, program=program, rule_file=rule_file,
+                subject=exp["subject"])
     assert got == f"{exp['status']}({exp['detail']})"
+    if "amount" in exp:
+        # household monthly amount (per_household programs, teate_amount/2)
+        got_amount = query_value(facts_pl, program=program,
+                                 rule_file=rule_file,
+                                 goal="teate_amount(p1, A)")
+        assert got_amount == str(exp["amount"])

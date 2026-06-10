@@ -13,8 +13,12 @@
 - fact: hitorioya_jiyuu
   text: ひとり親となった理由を教えてください
   type: enum
-  choices: { rikon: 離婚, shibou: 死別, mikon: 未婚 }
-  # 遺棄・拘禁・DV保護命令等の法定事由は条文確定時に追加（PLACEHOLDER - VERIFY）
+  # 法4条1項の法定列挙（VERIFIED 2026-06-11、statute_source.md）。
+  # UIにはprimaryの3択+「その他」を表示し、残りは「その他」→自由文分類で拾う
+  choices: { rikon: 離婚, shibou: 死別, mikon: 未婚,
+             shougai: 父または母の重度障害, seishi_fumei: 生死不明,
+             iki: 1年以上の遺棄, koukin: 1年以上の拘禁, dv_hogo: DV保護命令 }
+  primary: [rikon, shibou, mikon]
   sensitive: true
 
 - fact: seikei_douitsu_partner

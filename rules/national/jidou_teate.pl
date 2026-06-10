@@ -5,7 +5,8 @@
 %         covers children up to end of FY of 18th birthday,
 %         3rd+ child 30,000 JPY, multi-child counting up to
 %         end of FY of 22nd birthday)
-% Amounts/boundaries: TO BE VERIFIED against official text.
+% Amounts/boundaries VERIFIED 2026-06-11 (15000/10000/30000 JPY, Art.6;
+% sources fixed in tests/golden/jidou_teate/statute_source.md).
 % This program uses STRUCTURAL facts only (ages, custody), which
 % the mapping layer always supplies, so bare negation is safe here.
 % Requires engine.pl.
