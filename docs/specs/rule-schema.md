@@ -29,6 +29,8 @@
 ```prolog
 known(income(p1), 1500000).              % 点値
 known(income(p1), range(1000000, 3000000)). % レンジ（フォームの所得帯選択）
+known(income(p1), range(10000000, 999999999)). % 「1,000万円以上」は番兵上限で表現
+                                         %（全制度の限度額 < 番兵 をCIで恒常検証）
 known(hitorioya(p1), true).              % bool: true/false
 known(hitorioya_jiyuu(p1), rikon).       % 列挙値: rikon/shibou/iki/mikon/...
 known(seikei_douitsu_partner(c1), false).
@@ -166,7 +168,10 @@ claimant制度（離職要件+所得、condensed）で `once(kettei_status(p1, s
   subject: child              # child | claimant（判定対象。claimant → self規約で照会）
   unit: per_household         # per_child | per_household（金額の集約単位。subject: claimant は常に per_household）
   layer: national             # national | municipal（rules/national/ または rules/municipal/<muni>/ に配置）
-  municipality: null          # layer: municipal のとき自治体ID（例: shibuya）
+  municipality: null          # layer: municipal のとき自治体ID（例: shibuya）。municipal の id/module名は
+                              # 自治体プレフィックス必須（shibuya_kodomo_iryouhi 等。CI全ロード時の衝突防止）
+  potential_amount: 45500     # 最大支給額の目安（円、公式数値由来）。質問優先度のタイブレークと
+                              # 「あとN問で最大+月◯円」表示に使う。作り話の数字を入れない（出典必須）
   statute:
     - { ref: "児童扶養手当法4条", url: "https://..." }
   status: supported           # supported | unsupported（⬜カードの出所）
