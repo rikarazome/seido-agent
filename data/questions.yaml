@@ -31,6 +31,17 @@
   type: integer
   choices: [0, 1, 2, 3, 4, 5]   # 6人以上は自由文へ
 
+- fact: income
+  askable_key: nenshu            # 回答の書き込み先（既定はfact名と同じ）
+  text: 昨年の年収（額面・源泉徴収票の支払金額）はどのくらいですか
+  type: range_choice             # 値は [lo, hi]。最上段は番兵上限規約
+  choices:
+    - { value: [0, 2000000], label: 200万円未満 }
+    - { value: [2000000, 4000000], label: 200〜400万円 }
+    - { value: [4000000, 6000000], label: 400〜600万円 }
+    - { value: [6000000, 10000000], label: 600万〜1,000万円 }
+    - { value: [10000000, 999999999], label: 1,000万円以上 }
+
 - fact: kenkou_hoken
   text: ご家族は健康保険（国民健康保険・社会保険など）に加入していますか
   type: boolean
@@ -50,6 +61,7 @@
   # 高専・通信制は未対応（「その他」→自由文で案内のみ。statute_source参照）
 
 - fact: income_exact
+  askable_key: shotoku_exact
   # ハイブリッド方式（2026-06-11決定）: 年収レンジの概算変換が限度額を跨いだときだけ出る質問。
   # 回答は facts.askable.shotoku_exact に書く（nenshuに書き戻さない — 回答は控除後所得であり年収ではない。
   # factgenが shotoku_exact 優先で known(income(P), 点値) を生成する）

@@ -103,7 +103,8 @@
 ### POST /api/judge（一次判定、LLM不使用）
 
 ```jsonc
-// Request: { "facts": {…上記…}, "as_of": "..." }
+// Request: { "facts": {…上記…}, "as_of": "...", "municipality": "shibuya" }
+// municipality はフォームの居住自治体。national + 当該自治体（+上位: shibuya→tokyo）の制度を判定
 // Response:
 {
   "headline": {                          // 金額種別ごとに分離集計（混ぜて合算しない）
@@ -117,10 +118,13 @@
       "status": "decided",                       // 制度レベルの集約ステータス（規則は下記）
       "amount": { "type": "monthly", "yen": 40000 },  // decided の子の合計
       "children": [                              // 子ごとの内訳（判定の実体は (P,C) 単位）
-        { "id": "c1", "status": "ineligible", "reason": "18歳年度末超", "statute": [ … ] },
-        { "id": "c2", "status": "decided", "yen": 10000, "proof": { … } },
-        { "id": "c3", "status": "decided", "yen": 30000, "proof": { … } }
+        { "subject": "c1", "status": "ineligible", "reason": "18歳年度末超" },
+        { "subject": "c2", "status": "decided", "yen": 10000 },
+        { "subject": "c3", "status": "decided", "yen": 30000 }
       ],
+      // 証明木は judge レスポンスに含めない（遅延取得）。「なぜ？」タップ時に
+      // POST /api/proof { facts, program, subject, status_term } → prove/3 の2段階再導出で返す。
+      // レスポンス肥大とPrologの二重実行を避け、直接照会×メタ解釈の一致検証とも整合
       "statute": [ { "ref": "児童手当法…", "url": "…" } ] },
     { "program": "jidou_fuyou_teate", "name": "児童扶養手当",
       "status": "blocked", "missing": ["hitorioya_jiyuu"],
@@ -174,7 +178,7 @@
 
 | 設計要素 | 規則 |
 |---|---|
-| 質問の選定 | **決定的**: declined以外の未知factについて、「その事実を要求しているblocked制度数」最大のものを選ぶ。同点は対象制度の `potential_amount`（programs.yaml、公式数値由来の最大支給額目安）合計が大きい順 → 「1問で2制度確定します」が構造から出る |
+| 質問の選定 | **決定的**: declined以外の未知factについて、「その事実を要求しているblocked制度数」最大のものを選ぶ。同点は対象制度の `potential_amount`（programs.yaml）合計が大きい順、さらに同点は **questions.yaml のファイル順**（=自然なインタビュー順を編集で制御できる）。per-childのfactは「未回答の子が残っている」場合のみ候補（全子declinedなら除外=再質問ループ防止） |
 | 選択肢の生成 | **静的**: data/questions.yaml にfactごとの質問文・選択肢を定義。LLM生成しないので誤った選択肢が出ない |
 | タップ回答の処理 | クライアントが選択値をfactsに直接書いて **POST /api/judge**（LLM・/api/chat不使用、0円・誤抽出ゼロ） |
 | 「わからない/答えたくない」 | factに **`"declined"`** を書く（nullのままにしない — ステートレス故にnullだと次の/api/judgeで同じ質問が最優先のまま再提示され**無限再質問**になる）。該当制度はblockedのまま、質問選定からは除外 |

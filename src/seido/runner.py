@@ -1,0 +1,256 @@
+"""/api/judge runner: evaluate all programs, aggregate, pick next question.
+
+Everything here is deterministic (no LLM): facts -> Prolog -> per-subject
+statuses -> program cards -> headline -> next_question, per the rules in
+docs/specs/architecture.md.
+"""
+from __future__ import annotations
+
+import copy
+import re
+from datetime import date
+from functools import lru_cache
+from pathlib import Path
+
+import yaml
+
+from .factgen import CHILD_ASKABLE_PREDS, facts_to_prolog, salary_to_shotoku
+from .prolog import judge, query_value
+
+REPO = Path(__file__).resolve().parents[2]
+
+# ward -> wider layers whose municipal programs also apply
+MUNICIPALITY_PARENTS = {"shibuya": ["tokyo"]}
+
+# question fact name -> askable key it reads/writes (default: same name)
+FACT_TO_ASKABLE = {"income": "nenshu", "income_exact": "shotoku_exact"}
+
+_STATUS_RE = re.compile(r"^(decided|blocked|ineligible|error)\((.*)\)$")
+_DETAIL_RE = re.compile(r"^(\w+)\((\w+)\)$")
+
+
+@lru_cache(maxsize=1)
+def programs() -> list[dict]:
+    return yaml.safe_load(
+        (REPO / "data" / "programs.yaml").read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=1)
+def questions() -> list[dict]:
+    return yaml.safe_load(
+        (REPO / "data" / "questions.yaml").read_text(encoding="utf-8"))
+
+
+def rule_file(meta: dict) -> str:
+    if meta["layer"] == "national":
+        return f"rules/national/{meta['id']}.pl"
+    return f"rules/municipal/{meta['municipality']}/{meta['id']}.pl"
+
+
+def _applicable(meta: dict, municipality: str) -> bool:
+    if meta["layer"] == "national":
+        return True
+    return meta["municipality"] in [municipality, *MUNICIPALITY_PARENTS.get(municipality, [])]
+
+
+def _parse_status(raw: str) -> dict:
+    m = _STATUS_RE.match(raw)
+    if not m:
+        return {"kind": "error", "reason": f"unparseable: {raw}"}
+    kind, inner = m.group(1), m.group(2)
+    if kind == "blocked":
+        body = inner.strip()[1:-1]  # strip [ ]
+        missing = [x.strip() for x in body.split(",")] if body else []
+        return {"kind": kind, "missing": missing}
+    if kind in ("ineligible", "error"):
+        return {"kind": kind, "reason": inner.strip("'")}
+    md = _DETAIL_RE.match(inner)  # decided
+    if md and md.group(2).isdigit():
+        return {"kind": kind, "detail": inner,
+                "func": md.group(1), "yen": int(md.group(2))}
+    return {"kind": kind, "detail": inner, "func": inner, "yen": None}
+
+
+def _household_amount(meta, facts, facts_pl):
+    """per_household amount via teate_amount/2; two-point taper evaluation
+    when income is only known as a range (architecture.md)."""
+    rf = rule_file(meta)
+    got = query_value(facts_pl, meta["id"], rf, "teate_amount(p1, A)")
+    if got.isdigit():
+        return {"type": meta["amount_type"], "yen": int(got)}
+    nenshu = (facts.get("askable") or {}).get("nenshu")
+    if not isinstance(nenshu, list):
+        return None
+    amounts = []
+    for endpoint in (salary_to_shotoku(nenshu[0]), salary_to_shotoku(nenshu[1])):
+        f2 = copy.deepcopy(facts)
+        f2.setdefault("askable", {})["shotoku_exact"] = endpoint
+        a = query_value(facts_to_prolog(f2, _household_amount.as_of),
+                        meta["id"], rf, "teate_amount(p1, A)")
+        if not a.isdigit():
+            return None
+        amounts.append(int(a))
+    return {"type": meta["amount_type"],
+            "yen_min": min(amounts), "yen_max": max(amounts)}
+
+
+def _aggregate(meta, subj_results, facts, facts_pl):
+    card = {"program": meta["id"], "name": meta["name"],
+            "children": subj_results}
+    kinds = [s["kind"] for s in subj_results]
+    decided_yen = sum(s["yen"] or 0 for s in subj_results
+                      if s["kind"] == "decided")
+    if "error" in kinds:
+        card["status"] = "error"
+    elif "blocked" in kinds:
+        card["status"] = "blocked"
+        missing = sorted({f for s in subj_results if s["kind"] == "blocked"
+                          for f in s["missing"]})
+        card["missing"] = missing
+        if decided_yen:
+            card["partial_amount"] = {"type": meta["amount_type"],
+                                      "yen": decided_yen}
+    elif "decided" in kinds:
+        card["status"] = "decided"
+        if meta["unit"] == "per_household":
+            kubuns = {s["detail"] for s in subj_results
+                      if s["kind"] == "decided"}
+            if len(kubuns) > 1:  # genuine rule bug: kubun is claimant-only
+                card["status"] = "error"
+                card["reason"] = "inconsistent_household_kubun"
+            else:
+                card["amount"] = _household_amount(meta, facts, facts_pl)
+        elif meta["amount_type"] != "in_kind":
+            card["amount"] = {"type": meta["amount_type"], "yen": decided_yen}
+        else:
+            card["amount"] = {"type": "in_kind"}
+    else:
+        card["status"] = "ineligible"
+        card["reason"] = next(s["reason"] for s in subj_results
+                              if s["kind"] == "ineligible")
+    return card
+
+
+def _headline(results):
+    h = {"monthly_yen": 0, "oneoff_yen": 0, "yearly_yen": 0, "in_kind_count": 0}
+    for r in results:
+        amount = r.get("amount")
+        if r["status"] != "decided" or not amount:
+            continue
+        if amount["type"] == "in_kind":
+            h["in_kind_count"] += 1
+            continue
+        # lower bound for ranges -- never overstate (trust design)
+        yen = amount.get("yen", amount.get("yen_min", 0))
+        h[f"{amount['type']}_yen"] += yen
+    return h
+
+
+def _pending_children(fact, facts):
+    """Children for which a per-child askable is still unanswered
+    (None = pending; \"declined\" = asked and refused, not pending)."""
+    out = []
+    for i, ch in enumerate(facts.get("children") or [], start=1):
+        cid = ch.get("id") or f"c{i}"
+        if (ch.get("askable") or {}).get(fact) is None:
+            out.append((cid, ch))
+    return out
+
+
+def _question_for(fact, why, facts):
+    qmeta = next((q for q in questions() if q["fact"] == fact), None)
+    if qmeta is None:
+        return None
+    q = {"fact": fact,
+         "askable_key": qmeta.get("askable_key", fact),
+         "text": qmeta["text"], "why": sorted(why),
+         "allow_free_text": True, "choices": []}
+    qtype = qmeta["type"]
+    if qmeta.get("scope") == "per_child":
+        pend = _pending_children(fact, facts)
+        if not pend:
+            return None
+        cid, ch = pend[0]
+        q["child"] = cid
+        year = ch["birth_date"][:4]
+        q["text"] = qmeta["text"].replace("{child}", f"{year}年生まれのお子さん")
+    if qtype == "boolean":
+        q["choices"] = [{"value": True, "label": "はい"},
+                        {"value": False, "label": "いいえ"}]
+    elif qtype == "enum":
+        order = qmeta.get("primary", list(qmeta["choices"]))
+        q["choices"] = [{"value": v, "label": qmeta["choices"][v]}
+                        for v in order]
+        q["choices"].append({"value": "__free_text__", "label": "その他"})
+    elif qtype == "integer":
+        q["choices"] = [{"value": v, "label": str(v)}
+                        for v in qmeta["choices"]]
+    elif qtype == "range_choice":
+        q["choices"] = [dict(c) for c in qmeta["choices"]]
+    elif qtype == "integer_input":
+        q["input"] = "number"
+    q["choices"].append({"value": "declined", "label": "わからない / 答えたくない"})
+    return q
+
+
+def _next_question(results, facts):
+    askable = facts.get("askable") or {}
+    candidates: dict[str, set] = {}
+    for r in results:
+        if r.get("status") != "blocked":
+            continue
+        for fact in r.get("missing", []):
+            key = FACT_TO_ASKABLE.get(fact, fact)
+            if fact in CHILD_ASKABLE_PREDS:
+                if not _pending_children(fact, facts):
+                    continue  # every child answered or declined
+            elif askable.get(key) == "declined":
+                continue
+            candidates.setdefault(fact, set()).add(r["program"])
+    if not candidates:
+        return None
+    potential = {p["id"]: p.get("potential_amount") or 0 for p in programs()}
+    order = {q["fact"]: i for i, q in enumerate(questions())}
+    best = sorted(
+        candidates.items(),
+        key=lambda kv: (-len(kv[1]),
+                        -sum(potential[p] for p in kv[1]),
+                        order.get(kv[0], 999)),
+    )
+    for fact, why in best:
+        q = _question_for(fact, why, facts)
+        if q is not None:
+            return q
+    return None
+
+
+def judge_request(facts: dict, as_of: date,
+                  municipality: str = "shibuya") -> dict:
+    facts_pl = facts_to_prolog(facts, as_of)
+    _household_amount.as_of = as_of  # threading for two-point re-evaluation
+    children = [c.get("id") or f"c{i}"
+                for i, c in enumerate(facts.get("children") or [], start=1)]
+    results = []
+    for meta in programs():
+        if not _applicable(meta, municipality):
+            continue
+        if meta["status"] != "supported":
+            results.append({"program": meta["id"], "name": meta["name"],
+                            "status": "unsupported"})
+            continue
+        subjects = ["self"] if meta["subject"] == "claimant" else children
+        if not subjects:
+            results.append({"program": meta["id"], "name": meta["name"],
+                            "status": "ineligible",
+                            "reason": "no_eligible_subject"})
+            continue
+        subj_results = []
+        for s in subjects:
+            raw = judge(facts_pl, meta["id"], rule_file(meta), s)
+            parsed = _parse_status(raw)
+            parsed["subject"] = s
+            parsed["raw"] = raw
+            subj_results.append(parsed)
+        results.append(_aggregate(meta, subj_results, facts, facts_pl))
+    return {"headline": _headline(results), "results": results,
+            "next_question": _next_question(results, facts)}
