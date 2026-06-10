@@ -25,13 +25,11 @@ taisho_jido(C) :-
 jogai_confirmed(C, 'child shares livelihood with parent de-facto spouse (Art.4(2) analog)') :-
     yes(seikei_douitsu_partner(C)).
 
-% income limits by number of dependents (PLACEHOLDER VALUES)
-zenbu_limit(0, 690000).
-zenbu_limit(1, 1070000).
-zenbu_limit(2, 1450000).
-ichibu_limit(0, 2080000).
-ichibu_limit(1, 2460000).
-ichibu_limit(2, 2840000).
+% income limits by number of dependents (PLACEHOLDER base/step VALUES)
+% Formula form so EVERY N >= 0 is defined; a table with gaps made
+% kettei_status silently unsolvable for N >= 3 (review finding A).
+zenbu_limit(N, L)  :- integer(N), N >= 0, L is  690000 + 380000 * N.
+ichibu_limit(N, L) :- integer(N), N >= 0, L is 2080000 + 380000 * N.
 
 shikyu_kubun(P, zenbu) :-
     val(income(P), V), val(fuyou_ninzu(P), N),
@@ -85,4 +83,7 @@ kettei_status(P, C, decided(Kubun)) :-
 kettei_status(P, C, ineligible('income exceeds partial-payment limit')) :-
     claimant(P), kango_by(C, P), taisho_jido(C),
     val(income(P), V), val(fuyou_ninzu(P), N),
-    ichibu_limit(N, L), v_geq(V, L).
+    ichibu_limit(N, L), v_geq(V, L), !.
+% catch-all: a case no clause covers must surface as an error card,
+% never vanish from results (fail-safe; relies on the once() driver)
+kettei_status(_, _, error(no_rule_matched)).

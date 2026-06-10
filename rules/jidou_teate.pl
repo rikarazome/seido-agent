@@ -74,4 +74,7 @@ kettei_status(P, C, ineligible('child past FY-end age 18')) :-
     claimant(P), kango_by(C, P), child(C),
     \+ shikyu_taisho_jido(C), !.
 kettei_status(P, C, decided(amount(Y))) :-
-    jidou_teate_getsugaku(P, C, Y).
+    jidou_teate_getsugaku(P, C, Y), !.
+% catch-all: a case no clause covers must surface as an error card,
+% never vanish from results (fail-safe; relies on the once() driver)
+kettei_status(_, _, error(no_rule_matched)).

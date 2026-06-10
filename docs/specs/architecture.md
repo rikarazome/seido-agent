@@ -62,6 +62,8 @@
     "children": [ { "id": "c1", "birth_date": "2019-06-01" } ],
     "askable": {
       // 値の型: 数値（点値） | [lo, hi]（レンジ） | true/false | 列挙文字列 | null（未知）
+      // 正規化規則: askable は常に全キーを持ち、未知は null（キー欠落を許さない。
+      // 欠落とnullの扱い分岐によるバグを防ぐ。サーバーはスキーマ検証で欠落を拒否）
       "nenshu": [3000000, 5000000],      // 年収（額面）。フォームはレンジ選択
       "hitorioya": true,
       "hitorioya_jiyuu": null,           // rikon | shibou | ...（未質問）
@@ -95,28 +97,49 @@
   },
   "results": [
     { "program": "jidou_teate", "name": "児童手当",
-      "status": "decided",
-      "amount": { "type": "monthly", "yen": 25000 },
-      "proof": { /* 証明木 */ },
+      "status": "decided",                       // 制度レベルの集約ステータス（規則は下記）
+      "amount": { "type": "monthly", "yen": 40000 },  // decided の子の合計
+      "children": [                              // 子ごとの内訳（判定の実体は (P,C) 単位）
+        { "id": "c1", "status": "ineligible", "reason": "18歳年度末超", "statute": [ … ] },
+        { "id": "c2", "status": "decided", "yen": 10000, "proof": { … } },
+        { "id": "c3", "status": "decided", "yen": 30000, "proof": { … } }
+      ],
       "statute": [ { "ref": "児童手当法…", "url": "…" } ] },
     { "program": "jidou_fuyou_teate", "name": "児童扶養手当",
       "status": "blocked", "missing": ["hitorioya_jiyuu"],
-      "missing_label": "あと1問で確定します" },
+      "missing_label": "あと1問で確定します",
+      "partial_amount": { "type": "monthly", "yen": 0 } },  // 確定済み分があれば部分合計を出す
     { "program": "...", "status": "ineligible", "reason": "...", "statute": [ … ] },
-    { "program": "...", "status": "unsupported" }   // data/programs.yaml の status から生成
+    { "program": "...", "status": "unsupported" },  // data/programs.yaml の status から生成
+    { "program": "...", "status": "error" }         // catch-all / 解なし。「判定不能」カード
   ]
 }
 ```
 
+**子→制度の集約規則**（判定は `(P, C)` 単位、カードは制度単位のため必須）:
+
+| 規則 | 内容 |
+|---|---|
+| ステータス優先順位 | `error` > `blocked` > `decided` > `ineligible`。1子でもerrorなら制度カードはerror、errorなしで1子でもblockedならblocked（missingは全子の和集合）、blockedなしで1子でもdecidedならdecided、全子ineligibleのときのみineligible |
+| 金額 | 制度の `amount.yen` = decidedの子の合計。blocked制度でも確定済みの子があれば `partial_amount` で出す（「現時点で月◯円+あとN問」） |
+| 世帯単位制度（programs.yaml `unit: per_household`） | 子ごとに同じ判定が返るため**代表1件に集約**（kubun不一致が出たらerror扱い=ルールバグ検出） |
+| headline | 制度レベル `amount` を amount_type ごとに合算（monthly/oneoff/yearly別、in_kindは件数） |
+| 解なし | `once()` が失敗した子は `error` 扱い（catch-all節と二重の防御） |
+
 - 見出しは「💰 月25,000円 ＋ 一時金10万円」のように**種別を分けて表示**。月額・一時金・年額・現物を雑に足さない
-- 制度名・条文リンク・amount_type は `data/programs.yaml` から付与（ルールは判定と区分のみ返す）
-- 全制度module（10個）に対して `Prog:kettei_status/3` を全解照会。1リクエストで全制度ぶん返す
+- 制度名・条文リンク・amount_type・unit は `data/programs.yaml` から付与（ルールは判定と区分のみ返す）
+- 全制度module（10個）×全子に対して `Prog:kettei_status(P, C, S)` を**両引数束縛・`once/1`**で照会（呼び出し規約はrule-schema.md）
+- **金額のレンジ評価**: 逓減式等で所得がレンジのまま確定（decided(ichibu)等）した場合、ランナーがLo/Hiの2点で金額式を評価し「月◯〜◯円」とレンジ表示する（rule-schema.md の規約）
 
 ### POST /api/chat（対話1ターン、ステートレスラッパー）
 
 ```jsonc
 // Request
-{ "facts": { /* 現在の全量 */ }, "message": "離婚して子どもと二人暮らしです" }
+{ "facts": { /* 現在の全量 */ },
+  "history": [                            // 直近の対話履歴（クライアント保持・毎回送る）
+    { "role": "agent", "text": "ひとり親となった事由を教えてください" }
+  ],
+  "message": "離婚です" }
 // Response
 { "facts": { /* 更新後の全量。クライアントが次回これを送る */ },
   "proposed_corrections": [              // 確認済み事実の変更はここに分離（自動適用しない）
@@ -132,23 +155,33 @@
 - 既知の値と矛盾する抽出は `proposed_corrections` として返し、クライアントが確認UIを出して**ユーザー承認後に**factsへ反映
 - 抽出結果はPydanticスキーマで検証してからマージ（型・列挙値・レンジの妥当性）
 
+**会話履歴もクライアントが持つ**（factsと同じステートレス原則）:
+- サーバーは毎回新規セッションのため、**直前に自分が何を質問したかを知らない**。履歴なしでは「いえ、ありません」等の省略応答が解釈不能になる
+- クライアントが `history`（直近6往復・3KB上限）を保持して毎回送り、サーバーはプロンプトに前置してから `message` を処理する
+- レスポンスの `reply`/`next_question` をクライアントが `history` に追記する
+
 **ADKセッションの扱い**:
 - `get_fast_api_app(session_service_uri=None)` → **InMemorySessionService を明示**（docsの例にあるsqlite URIは使わない。「DBなし」と矛盾しコンテナ内にファイルが残るため）
-- リクエストごとに `create_session(state=facts)` → 1ターン実行 → **`delete_session`**（ウォームインスタンスのメモリ増加防止）。ADKの `/run` REST は直接公開しない
+- リクエストごとに `create_session(state=facts)` → 履歴注入 → 1ターン実行 → **`delete_session`**（ウォームインスタンスのメモリ増加防止）。ADKの `/run` REST は直接公開しない
 - インスタンスが消えても会話は壊れない（サーバーは何も覚えていない）
 
 ### GET /ops（「まわす」の見せ場）
 
-- ops.json（制度別golden合格率・最終検証日時・ルール更新履歴・直近の条文diff）は **GCS公開バケット**に置き、フロントが直接フェッチ（Cache-Control: 300s）
-- 書き込みは2経路: **mainマージ時のデプロイCI** と **nightlyの条文検証ワークフロー**。これによりデプロイなしでも「最終検証: 昨日」が出せる（デプロイ時焼き込み方式だとnightly結果が反映されない）
-- ランタイム集計なし。コスト≒0円（GCS数KB）
+- opsデータは **GCS公開バケット**に置き、フロントが直接フェッチ（Cache-Control: 300s）。ランタイム集計なし。コスト≒0円（GCS数KB）
+- **書き込みジョブごとにファイルを分割**し、後勝ち上書きで相手のフィールドを消す競合を構造的に排除:
+  - `ops/deploy.json` … デプロイCI（mainマージ）が書く: ルール更新履歴・golden合格率・デプロイ日時
+  - `ops/verify.json` … nightly条文検証が書く: 最終検証日時・条文diff有無
+  - フロントが2ファイルをフェッチして合成表示。これによりデプロイなしでも「最終検証: 昨日」が出せる
+- **バケットにCORS設定が必須**（Cloud RunドメインからのフェッチはクロスオリジンHTTPのため）。
+  `gcloud storage buckets update gs://<bucket> --cors-file=cors.json` をセットアップ手順に含める（origin = デプロイURL、method = GET）
 
 ## 推論エンジン層
 
 - `rules/engine.pl`: 3値ヘルパー（`yes/no/unknown/val/v_lt/v_geq/v_indet`）+ 証明木メタインタプリタ（prolog-reasonerから移植）。非module、`user` にロード
 - `rules/<program>.pl`: 1制度=1module（`:- module(prog_id, [kettei_status/3, required_fact/3]).`）。rule-schema.md v1 準拠
-- 実行: engine.pl → facts.pl（生成）→ rules/*.pl をロードし、制度ごとに `Prog:kettei_status/3` を照会。サブプロセス、タイムアウト5秒
-- **多ファイル+module構成はWeek 2統合テストの最初の項目**。不調時のフォールバック: 制度ごとに別swiplプロセス（起動50ms×10、+0.5秒で許容範囲）
+- 実行: engine.pl → facts.pl（生成）→ rules/*.pl をロードし、制度×子ごとに `once(Prog:kettei_status(P, C, S))` を**両引数束縛で**照会（未束縛照会はカットが他の子の解を刈る。rule-schema.md 呼び出し規約）。サブプロセス、タイムアウト5秒
+- 解なし（once失敗）は `error` 扱い。catch-all節（全制度必須）と合わせた二重の防御で「結果からの無言の欠落」を排除
+- **多ファイル+module構成と、証明木メタインタプリタが module 内静的述語を `clause/2` で展開できるかは、Week 2統合テストの最初の項目**。不調時のフォールバック: 判定はmodule照会のまま、証明木取得時のみ対象制度を単独プロセスでロード（最終手段: 制度ごとに別プロセス、起動50ms×10で+0.5秒）
 - ルールはイメージ焼き込み = ルール更新はデプロイ。二重ループ（法改正→再形式化→golden→再デプロイ）と一致し、`/ops` の更新履歴と連動
 
 ## フロントエンド画面フロー
@@ -186,7 +219,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
 | region | asia-northeast1 |
 | min-instances | 0（**審査期間中のみ1**に上げる。約1,500円/月、クレジット内） |
 | max-instances | 2（コスト上限を物理的に確保） |
-| concurrency / timeout | 20 / 60s |
+| concurrency / timeout | 8 / 60s（judge毎にswiplサブプロセスを起動するため、高concurrencyは1vCPU上でCPU競合する） |
 | 環境変数 | `GOOGLE_GENAI_USE_VERTEXAI=TRUE`, `GOOGLE_CLOUD_PROJECT`, `GOOGLE_CLOUD_LOCATION`, モデルID（`MODEL_CHAT` / `MODEL_FORMALIZE` / `MODEL_EVAL`） |
 | 認証 | `--allow-unauthenticated`（公開デモ） |
 | CORS | **設定しない**（フロントは同一オリジン配信。docsの例の `allow_origins=["*"]` はコピーしない） |
@@ -200,7 +233,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
 | スケール | `max-instances=2` で物理上限 |
 | クォータ | Vertex AI側のプロジェクトクォータを絞る（RPM/日次） |
 | レート制限 | アプリ層トークンバケット: IPあたり毎分N回。IPはCloud Runが付与する `X-Forwarded-For` 末尾のクライアント値を使用。**インメモリ実装のためインスタンスごとに独立**（max=2なので実効上限は2倍。デモ規模では許容と明記） |
-| 入力サイズ | `message` ≤ 500字 / facts JSON ≤ 10KB をサーバー側で検証（413） |
+| 入力サイズ | `message` ≤ 500字 / facts JSON ≤ 10KB / `history` ≤ 6往復・3KB をサーバー側で検証（413）。超過分の履歴は古い側から切り捨て |
 | 対話上限 | フロントは10往復で打ち切り（UX用）。**ステートレス故にサーバーはターン数を強制できない**ため、コスト防御の実効線は上記レート制限+クォータであることを明記 |
 
 ## CI/CD（docs/dev-methodology.md の段階パイプラインを具体化）
@@ -208,8 +241,8 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
 | トリガ | 内容 | LLM |
 |---|---|---|
 | PR | pytest（goldenテスト: swipl決定的実行）+ lint | 不使用 |
-| main merge | adk eval（Flash-Lite）→ Docker build → `gcloud run deploy` → ops.json をGCSへ | 少量 |
-| nightly / 手動 | 条文ソース再取得 → 形式化エージェント再実行 → golden照合 → diffあればPR起票 + **ops.json の検証日時を更新** | 使用 |
+| main merge | adk eval（Flash-Lite）→ Docker build → `gcloud run deploy` → `ops/deploy.json` をGCSへ | 少量 |
+| nightly / 手動 | 条文ソース再取得 → 形式化エージェント再実行 → golden照合 → diffあればPR起票 + **`ops/verify.json` を更新** | 使用 |
 
 ## セキュリティ・プライバシー
 

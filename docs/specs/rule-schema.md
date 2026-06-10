@@ -74,6 +74,7 @@ engine.pl は非moduleで `user` にロードする。SWI-Prologのmoduleは既�
 kettei_status(P, C, decided(Kubun))     % 確定（zenbu/ichibu/amount(Y)等）
 kettei_status(P, C, blocked(Missing))   % 事実不足。Missing = 質問生成の入力
 kettei_status(P, C, ineligible(Reason)) % 非該当。Reason = 違反規定
+kettei_status(P, C, error(Why))         % ルール網羅漏れの検出（fail-safe）
 ```
 
 **節の標準順序**（カットで先勝ち。検証済みパターン）:
@@ -85,8 +86,29 @@ kettei_status(..., ineligible(R))   :- jogai_confirmed(_, R), !.     % 除外の
 kettei_status(..., blocked(Missing)) :- \+ jogai_confirmed(_, _),
     findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing), Missing \= [], !.
 kettei_status(..., decided(K))      :- <全要件yes/val>, <支給区分>, !.
-kettei_status(..., ineligible(...)) :- <所得超過等、値由来の非該当>.
+kettei_status(..., ineligible(...)) :- <所得超過等、値由来の非該当>, !.
+kettei_status(_, _, error(no_rule_matched)).   % catch-all 必須（最終節・無条件）
 ```
+
+**catch-all は全制度で必須**。どの節にもマッチしないケース（網羅漏れ）が結果から**黙って消える**ことを防ぎ、
+「判定不能」カードとして表面化させる（Fail Safe: 沈黙よりエラー）。`once()` ドライバ前提のため、
+中間の全節にカットを置くこと。万一 `once` が解なしで失敗した場合もランナーは error 扱いにする（二重の防御）。
+
+**限度額・パラメータ表は加算式で書く**（網羅漏れの主要因のため）:
+
+```prolog
+% NG: 表形式は定義域に穴が出る（N=3で解なしになった実例 → 検証済み）
+% zenbu_limit(0, 690000).  zenbu_limit(1, 1070000). ...
+% OK: 式形式は全 N >= 0 で定義される
+zenbu_limit(N, L) :- integer(N), N >= 0, L is 690000 + 380000 * N.
+```
+
+法令が実際に表（非線形）の場合は表で書いてよいが、**定義域の上限を超える入力を error ではなく
+明示の節で受ける**こと（例: `kettei_status(..., error(fuyou_out_of_range)) :- val(fuyou_ninzu(P), N), N > 9, !.`）。
+
+**金額のレンジ評価規約**: 逓減式など点値所得を要する金額計算で所得が `range(Lo,Hi)` のままの場合、
+ランナーが **Lo / Hi をそれぞれ点値として2回評価**し、金額を「月◯〜◯円」のレンジで表示する。
+ルール側に区間演算は持ち込まない（kubun判定は `v_lt/v_geq` で済み、金額はランナーの2点評価で済むため）。
 
 - `required_fact(P, FactName, Description)` が blocked の中身を導出。`unknown/1` と `v_indet/2`（レンジが限度額を跨ぐ→ `income_exact` を要求）の両方から発生する
 - 証明木は engine.pl のメタインタプリタ（prolog-reasonerから移植）で取得
@@ -136,6 +158,8 @@ result(Prog, C, S) :- child(C), once(Prog:kettei_status(P, C, S)).
 | 除外確認済み（レンジ判定より優先） | ✅ `ineligible(partner_cohabit_art4_2)` |
 | 所得レンジ全体が一部支給限度超 | ✅ `ineligible(income_over_ichibu_limit)` |
 | 多子加算の順位計算（22歳年度末カウント） | ✅ v0スパイクで検証済み（構造事実のみ、v1でも有効） |
+| 扶養3人（旧・表形式限度額の網羅漏れ） | ✅ 加算式化で `decided(zenbu)`（旧版は解なしで沈黙） |
+| `kango_by` 欠落の子（網羅漏れ） | ✅ `error(no_rule_matched)` で表面化、他の子の判定に影響なし |
 
 ## 所得定義ポリシー
 
@@ -145,6 +169,10 @@ result(Prog, C, S) :- child(C), once(Prog:kettei_status(P, C, S)).
 
 ## 既知の課題
 
-- 所得制限の限度額・変換式はプレースホルダ。公式数値の検証が全制度で必須
-- module + 多ファイルロードは実機（コンテナ内swipl）未検証。Week 2統合テストの最初の項目とする
+- 所得制限の限度額・変換式（加算式の基準額・刻み幅）はプレースホルダ。公式数値の検証が全制度で必須
+- module + 多ファイルロードは実機（コンテナ内swipl）未検証。**証明木メタインタプリタが module 内静的述語を
+  `clause/2` で展開できるかも併せて確認**（SWI実装依存の領域）。Week 2統合テストの最初の項目とする。
+  フォールバック: 判定は module 照会のまま、証明木取得時のみ対象制度を単独プロセスでロード
 - `:- discontiguous` 宣言を生成テンプレートに含めること
+- 児童扶養手当の支給額（全部支給の定額・一部支給の逓減式）は未モデル化。golden case作成時に
+  公式の式を `teate_amount/2` として形式化する（kubunだけでは金額カードを表示できない）
