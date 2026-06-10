@@ -1,52 +1,150 @@
-# ルールスキーマ仕様（v0 ドラフト）
+# ルールスキーマ仕様（v1）
 
-prolog-reasonerによる実現性検証（2026-06-10）で確立した述語設計。全エージェントの契約となる最重要仕様。
+2026-06-11 改訂。設計レビューで発見した2つの重大欠陥（NAFによる未知/偽の混同・述語名前空間の衝突）を修正。
+新方式は prolog-reasoner で再検証済み（下表）。全エージェントの契約となる最重要仕様。
 
-## 設計原則
+## v0からの変更点
 
-1. **ルールと事実の分離** — 制度ルール（`rules/*.pl`）は世帯事実を含まない。世帯事実はヒアリングエージェントが生成
-2. **述語名はローマ字** — SWI-Prologの一時ファイルエンコーディング問題を回避（日本語コメントはUTF-8問題が出るためASCIIで書く。表示名は別レイヤーで日本語化）
-3. **すべての判定は3値プロトコルで返す** — `decided` / `blocked` / `ineligible`
-4. **除外規定は理由付き** — `jogai(C, Reason)` の形で、違反した条文を理由として持つ
+| # | 問題 | 修正 |
+|---|---|---|
+| 1 | `\+ jogai(C,_)` が「除外事由が偽」と「未質問」を区別できず、未質問のまま誤って decided を返す | **3値事実方式**: 可問事実は `known/2` で表現し、`yes/no/unknown` ヘルパー経由でのみ参照 |
+| 2 | 10ルールファイルが `kettei_status/3` 等を重複定義し、同時ロードで節がマージ・補助述語が衝突 | **SWI-Prolog module化**: 1制度=1module。`Prog:kettei_status(P,C,S)` で制度別に照会 |
+| 3 | 所得が点値前提で、フォームの「レンジ入力」を扱えない | `range(Lo,Hi)` 値と区間比較ヘルパー（`v_lt/v_geq/v_indet`）を導入 |
 
-## 世帯モデル（事実述語）
+## 事実の2分類
 
-| 述語 | 意味 |
-|---|---|
-| `claimant(P)` | 申請者 |
-| `child(C)` | 子 |
-| `kango_by(C, P)` | PがCを監護 |
-| `seikei_futan(P, C)` | PがCの生計費を負担 |
-| `age(C, A)` | 基準日時点の年齢 |
-| `age_nendo_matsu(C, A)` | 年度末時点の年齢（18歳年度末等の判定用） |
-| `income(P, I)` | 所得（円） |
-| `fuyou_ninzu(P, N)` | 扶養親族数 |
-| `hitorioya_jiyuu(C, Reason)` | ひとり親事由（rikon/shibou/...） |
+**構造事実**（フォームから常に得られる。素のPrologファクト）
 
-※誕生日→年齢変換は本実装でPython側が行い、事実として注入する。
+| 述語 | 意味 | 出所 |
+|---|---|---|
+| `claimant(P)` | 申請者 | フォーム |
+| `child(C)` | 子 | フォーム（children配列） |
+| `kango_by(C, P)` / `seikei_futan(P, C)` | 監護・生計費負担 | **フォームの既定値として注入**（申請者が監護・負担すると仮定）。対話で訂正可 |
+| `age(C, A)` / `age_nendo_matsu(C, A)` | 基準日年齢 / 年度末年齢 | 誕生日からPython側が**JST基準で**決定的に計算 |
+
+構造事実は常に存在が保証されるため、これらに対するNAF（`\+`）は安全。
+
+**可問事実**（未知がありうる。必ず `known/2` で表現）
+
+```prolog
+known(income(p1), 1500000).              % 点値
+known(income(p1), range(1000000, 3000000)). % レンジ（フォームの所得帯選択）
+known(hitorioya(p1), true).              % bool: true/false
+known(hitorioya_jiyuu(p1), rikon).       % 列挙値: rikon/shibou/iki/mikon/...
+known(seikei_douitsu_partner(c1), false).
+known(fuyou_ninzu(p1), 2).
+```
+
+- **未知 = `known/2` 節が存在しない**こと。`null` をPrologに渡さない（Pythonのマッピング層が省略する）
+- `hitorioya_jiyuu` はv1では**申請者単位**に簡略化（子ごとに事由が異なるケースは後続バージョン）
+
+## エンジンヘルパー（engine.pl、全moduleから利用）
+
+```prolog
+:- dynamic known/2.
+
+yes(F)     :- known(F, true).
+no(F)      :- known(F, false).
+unknown(F) :- \+ known(F, _).
+val(F, V)  :- known(F, V).
+
+% 区間対応比較: レンジ全体が条件を満たすときのみ成功
+v_lt(V, L)  :- number(V), V < L.
+v_lt(range(_, Hi), L)  :- Hi < L.
+v_geq(V, L) :- number(V), V >= L.
+v_geq(range(Lo, _), L) :- Lo >= L.
+% レンジが閾値を跨ぐ → どちらとも言えない → 正確な値の質問を誘発
+v_indet(V, L) :- \+ v_lt(V, L), \+ v_geq(V, L).
+```
+
+engine.pl は非moduleで `user` にロードする。SWI-Prologのmoduleは既定で `user` を継承するため、
+各制度moduleからヘルパーと `known/2` を修飾なしで参照できる（**Week 2の統合テストで多ファイル構成を実機確認。
+不調時のフォールバック: 制度ごとに別swiplプロセス起動**）。
+
+## NAF（失敗による否定）使用規則 — 形式化エージェントの生成制約
+
+1. **可問事実への素の `\+` は禁止**。除外の否定は `no(F)`（false確認済み）でのみ表現
+2. 除外規定は「確認済みのときだけ発火」する派生述語にする: `jogai_confirmed(C, Reason) :- yes(F).`
+   `\+ jogai_confirmed(C, _)` は「確認済み除外なし」の意味になるため使用可（未知なら required_fact が拾う）
+3. 構造事実・構造事実のみから導出される述語（findallランキング等）へのNAFは可
 
 ## 判定プロトコル（全制度共通）
 
 ```prolog
-kettei_status(P, C, decided(Kubun))    % 判定確定（zenbu/ichibu/金額等）
-kettei_status(P, C, blocked(Missing))  % 事実不足。Missing = 不足事実リスト → 質問生成の入力
-kettei_status(P, C, ineligible(Reason)) % 非該当。Reason = 違反した規定
+kettei_status(P, C, decided(Kubun))     % 確定（zenbu/ichibu/amount(Y)等）
+kettei_status(P, C, blocked(Missing))   % 事実不足。Missing = 質問生成の入力
+kettei_status(P, C, ineligible(Reason)) % 非該当。Reason = 違反規定
 ```
 
-- `blocked` は `required_fact(P, FactName, Description)` の探索で導出。**ヒアリングエージェントはこのリストから次の質問を選ぶ**
-- 証明木は `trace=true` で取得し、説明エージェントが条文参照付き自然言語に変換する
+**節の標準順序**（カットで先勝ち。検証済みパターン）:
 
-## 検証済みパターン（spike結果）
+```prolog
+kettei_status(..., ineligible(...)) :- <構造要件の不充足>, !.        % 例: 年齢超過
+kettei_status(..., ineligible(...)) :- <要件のno()確認>, !.          % 例: ひとり親でないと確認
+kettei_status(..., ineligible(R))   :- jogai_confirmed(_, R), !.     % 除外の確認
+kettei_status(..., blocked(Missing)) :- \+ jogai_confirmed(_, _),
+    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing), Missing \= [], !.
+kettei_status(..., decided(K))      :- <全要件yes/val>, <支給区分>, !.
+kettei_status(..., ineligible(...)) :- <所得超過等、値由来の非該当>.
+```
 
-| パターン | 制度例 | 結果 |
-|---|---|---|
-| 多子加算の順位計算（22歳年度末カウント） | 児童手当 | ✅ findall+rankで正しく第3子3万円を導出、証明木出力 |
-| 否定による除外規定 | 児童扶養手当（事実婚同居除外） | ✅ negation_as_failureが証明木に記録される |
-| 事実不足→質問リスト | 児童扶養手当（所得未聴取） | ✅ `blocked([income, fuyou_ninzu])` |
-| 非該当理由の提示 | 児童扶養手当 | ✅ `ineligible('...(Art.4(2))')` |
+- `required_fact(P, FactName, Description)` が blocked の中身を導出。`unknown/1` と `v_indet/2`（レンジが限度額を跨ぐ→ `income_exact` を要求）の両方から発生する
+- 証明木は engine.pl のメタインタプリタ（prolog-reasonerから移植）で取得
+
+**呼び出し規約（重要・検証済み）**: 節内のカットは `kettei_status` 全体の選択点を刈るため、
+**`P`・`C` を未束縛で照会すると最初の1子の解しか返らない**。ランナーは必ず両引数を束縛して照会する:
+
+```prolog
+% ランナー側ドライバ（子の列挙はkettei_statusの外で行う）
+result(Prog, C, S) :- child(C), once(Prog:kettei_status(P, C, S)).
+```
+
+検証: 3児世帯で c1=ineligible(年齢超過), c2=decided(10000), c3=decided(30000) を正しく列挙。
+
+## module構成
+
+```prolog
+:- module(jidou_fuyou_teate, [kettei_status/3, required_fact/3]).
+```
+
+- 1制度 = 1ファイル = 1module。module名 = ファイル名 = 制度ID（ローマ字）
+- ランナーは engine.pl → facts.pl（known/2 + 構造事実、user にロード）→ rules/*.pl の順にロードし、
+  制度ごとに `Prog:kettei_status(P, C, S)` を全解照会
+- 述語名はローマ字・コメントはASCII（SWI一時ファイルのエンコーディング問題回避）。表示名・条文リンク・金額種別は `data/programs.yaml`（静的メタデータ）が持つ
+
+## 制度メタデータ（data/programs.yaml）
+
+ルールが返すのは判定と区分のみ。表示に必要な情報はYAMLに分離する:
+
+```yaml
+- id: jidou_fuyou_teate
+  name: 児童扶養手当
+  amount_type: monthly        # monthly | oneoff | yearly | in_kind
+  statute:
+    - { ref: "児童扶養手当法4条", url: "https://..." }
+  status: supported           # supported | unsupported（⬜カードの出所）
+```
+
+## 検証済みパターン（2026-06-11 再スパイク）
+
+| シナリオ | 結果 |
+|---|---|
+| 除外事由（事実婚）が**未知** + 他は全て確定 | ✅ `blocked([seikei_douitsu_partner])` — v0なら誤decidedだった回帰テスト |
+| 所得レンジが全部支給限度額を**跨ぐ** | ✅ `blocked([income_exact])` |
+| ひとり親=yes だが事由が未知 | ✅ `blocked([hitorioya_jiyuu])` |
+| 全事実確定・レンジが限度内に収まる | ✅ `decided(zenbu)` |
+| 除外確認済み（レンジ判定より優先） | ✅ `ineligible(partner_cohabit_art4_2)` |
+| 所得レンジ全体が一部支給限度超 | ✅ `ineligible(income_over_ichibu_limit)` |
+| 多子加算の順位計算（22歳年度末カウント） | ✅ v0スパイクで検証済み（構造事実のみ、v1でも有効） |
+
+## 所得定義ポリシー
+
+- フォームが集めるのは**年収（額面）**のレンジまたは点値。ユーザーが知っているのはこれだけ
+- Pythonマッピング層が給与所得控除等の**決定的計算**で各制度の所得定義（控除後所得等）に変換し、制度別の known 事実として注入する（例: `known(income(p1), ...)` は児童扶養手当の所得定義）
+- 制度ごとに所得定義が違う場合は述語を分ける（`income_iryouhi(P)` 等）。**変換式と限度額はgolden case作成時に公式出典で固定**（statute_source.md）
 
 ## 既知の課題
 
-- 所得制限の限度額はプレースホルダ。**公式数値の検証が全制度で必須**（golden caseのstatute_source.mdに出典を固定）
-- 所得の定義（収入/所得/控除後）が制度ごとに違う。述語を分ける必要あり（`income_kazei/2` 等）— 形式化エージェントの主要な誤りポイントになる見込み
+- 所得制限の限度額・変換式はプレースホルダ。公式数値の検証が全制度で必須
+- module + 多ファイルロードは実機（コンテナ内swipl）未検証。Week 2統合テストの最初の項目とする
 - `:- discontiguous` 宣言を生成テンプレートに含めること
