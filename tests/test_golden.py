@@ -12,7 +12,7 @@ import pytest
 import yaml
 
 from seido.factgen import facts_to_prolog
-from seido.prolog import judge, query_value
+from seido.prolog import judge, proof_agrees, query_value
 
 GOLDEN = Path(__file__).resolve().parent / "golden"
 REPO = GOLDEN.parents[1]
@@ -54,6 +54,9 @@ def test_golden(program, case):
     got = judge(facts_pl, program=program, rule_file=rule_file,
                 subject=exp["subject"])
     assert got == f"{exp['status']}({exp['detail']})"
+    # CI invariant: direct query and meta-interpreted re-derivation agree
+    assert proof_agrees(facts_pl, program=program, rule_file=rule_file,
+                        subject=exp["subject"], status_term=got)
     if "amount" in exp:
         # household monthly amount (per_household programs, teate_amount/2)
         got_amount = query_value(facts_pl, program=program,

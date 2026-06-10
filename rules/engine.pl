@@ -32,3 +32,36 @@ valid_val(V) :- number(V).
 valid_val(range(Lo, Hi)) :- number(Lo), number(Hi), Lo =< Hi.
 % range straddles the threshold -> neither holds -> ask exact value
 v_indet(V, L) :- valid_val(V), \+ v_lt(V, L), \+ v_geq(V, L).
+
+% ----- proof-tree meta-interpreter (stage 2 of two-stage re-derivation) ---
+% Usage: fix the GROUND status with a plain once() query first, then call
+% prove(Module, kettei_status(P, C, Status), Proof) on that ground term.
+% Cut is treated as true, which is sound ONLY for ground re-derivation
+% (other clauses' heads cannot unify with a different ground status --
+% verified, see docs/specs/rule-schema.md). Direct-vs-meta agreement is
+% asserted on every golden case in CI.
+% Supported body constructs: conjunction, disjunction, negation, cut,
+% built-ins (leaf), user clauses. If a rule ever uses if-then-else the
+% agreement test will catch the gap.
+prove(_, true, true) :- !.
+prove(M, (A, B), and(PA, PB)) :- !,
+    prove(M, A, PA), prove(M, B, PB).
+prove(M, (A ; B), or(P)) :- !,
+    ( prove(M, A, P) ; prove(M, B, P) ).
+prove(_, !, cut) :- !.
+% negation-as-failure appears in the proof as an explicit leaf: this is
+% how "no exclusion applies" becomes visible in the explanation
+prove(M, \+ A, naf(A)) :- !,
+    \+ prove(M, A, _).
+prove(M, Goal, builtin(Goal)) :-
+    catch(predicate_property(M:Goal, built_in), _, fail), !,
+    call(M:Goal).
+prove(M, Goal, node(Goal, Sub)) :-
+    prove_clause(M, Goal, Body),
+    prove(M, Body, Sub).
+
+% clause lookup: module first (covers module-local and, via SWI's default
+% module chain, user-inherited predicates); explicit user fallback for
+% interpreters where M:G does not resolve inherited definitions
+prove_clause(M, G, B) :- catch(clause(M:G, B), _, fail).
+prove_clause(M, G, B) :- M \== user, catch(clause(user:G, B), _, fail).

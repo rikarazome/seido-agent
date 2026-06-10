@@ -94,6 +94,23 @@ def query_value(facts_pl: str, program: str, rule_file: str, goal: str,
     return _query_driver(facts_pl, rule_file, body, timeout)
 
 
+def proof_agrees(facts_pl: str, program: str, rule_file: str, subject: str,
+                 status_term: str, claimant: str = "p1",
+                 timeout: int = 15) -> bool:
+    """Stage-2 re-derivation check: the GROUND status from the plain query
+    must be re-derivable by the proof-tree meta-interpreter (and a different
+    status must not be). Run on every golden case as a CI invariant."""
+    body = (
+        "main :-\n"
+        f"    ( once(prove({program},\n"
+        f"                 kettei_status({claimant}, {subject}, {status_term}),\n"
+        "                 _))\n"
+        "    -> writeq(agree) ; writeq(disagree) ),\n"
+        "    nl, halt(0).\n"
+    )
+    return _query_driver(facts_pl, rule_file, body, timeout) == "agree"
+
+
 def load_all_modules(rule_files: list[str], timeout: int = 20) -> None:
     """CI invariant: every rule module loads together without clashes."""
     goals = "".join(
