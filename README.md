@@ -21,7 +21,7 @@ LLM単体の回答はハルシネーションを排除できず、お金と法�
 |---|---|---|
 | 条文の取得 | Gemini + Google Search grounding | 最新の制度情報・条文を取得 |
 | 形式化 | Gemini (Structured Output) | 自然言語の要件 → Prologルール |
-| 推論 | SWI-Prolog (prolog-reasoner) | 全解探索・証明木生成・未束縛変数の特定 |
+| 推論 | SWI-Prolog（アプリと同一コンテナ。証明木メタインタプリタは自作OSS prolog-reasonerから移植） | 全解探索・証明木生成・不足事実の特定 |
 | 対話 | ADK マルチエージェント | 未束縛変数から「必要な質問だけ」を生成 |
 
 ### Prologを噛ませる理由（LLM直との差分）
@@ -51,7 +51,7 @@ LLM単体の回答はハルシネーションを排除できず、お金と法�
 [Gemini + Google Search grounding]
 ```
 
-実行基盤: **Cloud Run**（ADKエージェント + SWI-Prologコンテナ）
+実行基盤: **Cloud Run 1サービス**（ADK + SWI-Prolog同梱の単一コンテナ、ステートレス・DBなし。詳細: docs/specs/architecture.md）
 
 ## スコープ（MVP）
 
@@ -66,10 +66,10 @@ LLM単体の回答はハルシネーションを排除できず、お金と法�
 - **審査基準**:
   - AIエージェントが価値の中心 → ヒアリング・形式化・検証の自律ループ
   - 課題へのアプローチ力 → 申請主義による取りこぼしという実在の社会課題
-  - 実装力 → LLM×記号推論のハイブリッド（独自MCP: prolog-reasoner）
+  - 実装力 → LLM×記号推論のハイブリッド（推論基盤は自作OSS prolog-reasonerより移植）
 
 ## リスク
 
-- 類似サービス（Civichat等）の徹底調査が未了 — **着手前に必須**
+- ~~類似サービスの徹底調査~~ → **完了・Go判断**（docs/competitive-research.md。OpenFisca-Japan/フクシアとの差別化を整理済み）
 - 条文→Prolog形式化の精度（先行研究で70-88%）→ 検証エージェント+人間レビューで担保
 - スコープクリープ — MVPの範囲を死守する

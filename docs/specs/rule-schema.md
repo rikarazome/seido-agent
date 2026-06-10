@@ -50,11 +50,15 @@ val(F, V)  :- known(F, V).
 
 % 区間対応比較: レンジ全体が条件を満たすときのみ成功
 v_lt(V, L)  :- number(V), V < L.
-v_lt(range(_, Hi), L)  :- Hi < L.
+v_lt(range(_, Hi), L)  :- number(Hi), Hi < L.
 v_geq(V, L) :- number(V), V >= L.
-v_geq(range(Lo, _), L) :- Lo >= L.
+v_geq(range(Lo, _), L) :- number(Lo), Lo >= L.
+% 型ガード: これが無いとゴミ値（アトム・逆転レンジ）が両比較に失敗して
+% v_indet が偽成功し、型バグが「追加質問」に化けて隠れる
+valid_val(V) :- number(V).
+valid_val(range(Lo, Hi)) :- number(Lo), number(Hi), Lo =< Hi.
 % レンジが閾値を跨ぐ → どちらとも言えない → 正確な値の質問を誘発
-v_indet(V, L) :- \+ v_lt(V, L), \+ v_geq(V, L).
+v_indet(V, L) :- valid_val(V), \+ v_lt(V, L), \+ v_geq(V, L).
 ```
 
 engine.pl は非moduleで `user` にロードする。SWI-Prologのmoduleは既定で `user` を継承するため、
@@ -111,7 +115,17 @@ zenbu_limit(N, L) :- integer(N), N >= 0, L is 690000 + 380000 * N.
 ルール側に区間演算は持ち込まない（kubun判定は `v_lt/v_geq` で済み、金額はランナーの2点評価で済むため）。
 
 - `required_fact(P, FactName, Description)` が blocked の中身を導出。`unknown/1` と `v_indet/2`（レンジが限度額を跨ぐ→ `income_exact` を要求）の両方から発生する
-- 証明木は engine.pl のメタインタプリタ（prolog-reasonerから移植）で取得
+
+**証明木の取得は2段階再導出方式（検証済み）**。標準節順序はカット前提だが、素朴な証明木
+メタインタプリタは `!` を正しく扱えない（true扱いすると節選択が変わり、静かに誤った結果を返しうる）:
+
+1. **ステータス確定**: 通常照会 `once(Prog:kettei_status(P, C, S))` — カットは本来の意味で動く
+2. **証明木再導出**: 確定した **ground項**（例: `kettei_status(p1, c1, decided(zenbu))`）をメタインタプリタで
+   再導出する。状態項が接地していれば他の節の頭部とは単一化しないため、**cut=true扱いでも導出は健全**
+
+検証: ground項 `decided(zenbu)` は再導出に成功し、誤った `decided(ichibu)`・`blocked([income])` は
+cut無視のメタインタプリタでも導出**不能**であることを確認。さらに **直接照会とメタ解釈の結果一致を
+goldenテストの恒常チェック項目**とする（メタインタプリタ改修時の回帰検知）。
 
 **呼び出し規約（重要・検証済み）**: 節内のカットは `kettei_status` 全体の選択点を刈るため、
 **`P`・`C` を未束縛で照会すると最初の1子の解しか返らない**。ランナーは必ず両引数を束縛して照会する:
@@ -171,6 +185,8 @@ claimant制度（離職要件+所得、condensed）で `once(kettei_status(p1, s
 | `kango_by` 欠落の子（網羅漏れ） | ✅ `error(no_rule_matched)` で表面化、他の子の判定に影響なし |
 | 申請者単位制度の `self` 規約 | ✅ `once(kettei_status(p1, self, S))` → `blocked([income])` |
 | 世帯単位制度で子の判定が混在 | ✅ c1=ineligible(年齢超過) と c2=decided(zenbu) が正しく共存（「全子同一判定」前提は誤りと実証） |
+| 証明木の2段階再導出（cut=true扱い） | ✅ 真のground状態項のみ再導出可、誤kubun・誤ステータスは棄却 |
+| `v_indet` 型ガード | ✅ アトム・逆転レンジは偽成功せず、正規の跨ぎ検出は維持 |
 
 ## 所得定義ポリシー
 

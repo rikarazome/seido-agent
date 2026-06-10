@@ -69,7 +69,22 @@ tests/golden/
 └── ...
 ```
 
-- 制度1つにつき該当3例・非該当3例・境界2例を目安（計~80ケース/10制度）
+- **cases.yaml の形式は v1 facts JSON と同形に固定**（書式が割れると~80ケースの手戻りになるため、ケース作成前に確定。docs/specs/architecture.md のfactsスキーマ参照）:
+
+```yaml
+- name: tashi_3rd_child_30000
+  as_of: "2026-06-11"            # 必須固定（JST基準日。省略不可）
+  facts: { claimant: {...}, children: [...], askable: {...} }  # /api/judge入力と同形
+  expect:
+    subject: c3                  # 子ID または self（claimant制度）
+    status: decided              # decided | blocked | ineligible | error
+    detail: amount(30000)        # kubun / 金額 / missingリスト / 理由
+    proof_includes: [child_rank] # 証明木に含まれるべき述語（任意）
+```
+
+- 制度1つにつき該当3例・非該当3例・境界2例を目安（計~80ケース/10制度）。**境界には
+  レンジ跨ぎ（v_indet → income_exact）と網羅漏れ検出（expect: error）を含める**こと
+- 全goldenケースで**直接照会とメタ解釈再導出の結果一致**も検証（証明木2段階方式の回帰検知。rule-schema.md）
 - **OpenFisca-Japanの実装を期待値の参照に使う**（児童手当等の既実装制度。ライセンス確認のこと）
 - 形式化エージェントの回帰テスト: 同じ条文を再形式化→golden cases全パスを確認
 
@@ -92,7 +107,7 @@ PR時（数分・無料/激安）:
 
 mainマージ時:
   - adk eval（評価セット、Gemini Flash-Liteで実行）
-  - adk deploy cloud_run（Cloud Build不要、adk deployで十分）
+  - gcloud run deploy --source .（カスタムDockerfile必須 — adk deploy cloud_runの自動生成イメージにはswi-prologが入らないため使えない。docs/specs/architecture.md参照）
   - デプロイ後スモークテスト
 
 夜間（または手動）:
@@ -114,7 +129,7 @@ PRに評価結果を自動コメント（スコアのbefore/after）→ コミ�
 |---|---|
 | ADK AgentEvaluator + pytest | 公式・無料・Gemini統合 |
 | GitHub Actions | 無料枠で足りる |
-| `adk deploy cloud_run` | Cloud Build/Terraformは過剰 |
+| `gcloud run deploy`（カスタムDockerfile） | swipl同梱が必要なためadk deployは不可。Terraformは過剰 |
 | Cloud Trace (`--otel_to_cloud`) | ADK統合済み・無料枠内 |
 
 | 不採用 | 理由 |
@@ -124,7 +139,7 @@ PRに評価結果を自動コメント（スコアのbefore/after）→ コミ�
 | Braintrust / promptfoo | 最終週に余裕があれば検討。必須でない |
 | 評価データ100例超 | 20評価セット+80 goldenで十分 |
 
-想定コスト: Gemini API $20-50 + Cloud Run $5-15 ≒ **月$25-65**
+想定コスト: Gemini API $20-50（形式化・eval含む）+ Cloud Run $0-10（scale-to-zero、審査期間中のみmin=1）≒ **月$20-60**、クレジット$300内（詳細試算は docs/specs/architecture.md）
 
 ## 7. 審査へのアピール（とどける）
 

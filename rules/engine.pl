@@ -22,8 +22,13 @@ val(F, V)  :- known(F, V).
 % Values are numbers or range(Lo, Hi) from form range inputs.
 % Comparisons succeed only when the WHOLE range satisfies them.
 v_lt(V, L)  :- number(V), V < L.
-v_lt(range(_, Hi), L)  :- Hi < L.
+v_lt(range(_, Hi), L)  :- number(Hi), Hi < L.
 v_geq(V, L) :- number(V), V >= L.
-v_geq(range(Lo, _), L) :- Lo >= L.
+v_geq(range(Lo, _), L) :- number(Lo), Lo >= L.
+% type guard: without it a garbage value (atom, inverted range) fails
+% both comparisons and fake-succeeds as "indeterminate", turning a type
+% bug into a silent extra question instead of an error
+valid_val(V) :- number(V).
+valid_val(range(Lo, Hi)) :- number(Lo), number(Hi), Lo =< Hi.
 % range straddles the threshold -> neither holds -> ask exact value
-v_indet(V, L) :- \+ v_lt(V, L), \+ v_geq(V, L).
+v_indet(V, L) :- valid_val(V), \+ v_lt(V, L), \+ v_geq(V, L).

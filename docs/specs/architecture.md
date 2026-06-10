@@ -64,6 +64,10 @@
       // 値の型: 数値（点値） | [lo, hi]（レンジ） | true/false | 列挙文字列 | null（未知）
       // 正規化規則: askable は常に全キーを持ち、未知は null（キー欠落を許さない。
       // 欠落とnullの扱い分岐によるバグを防ぐ。サーバーはスキーマ検証で欠落を拒否）
+      // 名前空間規則: askable は世帯レベルのフラット集合。Prolog側で子ごとの述語になるもの
+      // （seikei_douitsu_partner 等）は全子に同値で注入する（v1の決定。事実婚パートナーは
+      // 世帯の状態なので実用上正しい）。子ごとに値が異なる制度が必要になったら
+      // children[].askable を導入する（現10制度では不要）
       "nenshu": [3000000, 5000000],      // 年収（額面）。フォームはレンジ選択
       "hitorioya": true,
       "hitorioya_jiyuu": null,           // rikon | shibou | ...（未質問）
@@ -179,7 +183,8 @@
 
 ## 推論エンジン層
 
-- `rules/engine.pl`: 3値ヘルパー（`yes/no/unknown/val/v_lt/v_geq/v_indet`）+ 証明木メタインタプリタ（prolog-reasonerから移植）。非module、`user` にロード
+- `rules/engine.pl`: 3値ヘルパー（`yes/no/unknown/val/v_lt/v_geq/v_indet` + 型ガード）+ 証明木メタインタプリタ（prolog-reasonerから移植）。非module、`user` にロード
+- **証明木は2段階再導出**: 通常照会でステータス確定 → ground状態項をメタインタプリタで再導出（cut=true扱いで健全、rule-schema.md で検証済み）。直接照会との一致をgoldenテストで恒常検証
 - `rules/<program>.pl`: 1制度=1module（`:- module(prog_id, [kettei_status/3, required_fact/3]).`）。rule-schema.md v1 準拠
 - 実行: engine.pl → facts.pl（生成）→ rules/*.pl をロードし、制度×子ごとに `once(Prog:kettei_status(P, C, S))` を**両引数束縛で**照会（未束縛照会はカットが他の子の解を刈る。rule-schema.md 呼び出し規約）。サブプロセス、タイムアウト5秒
 - 解なし（once失敗）は `error` 扱い。catch-all節（全制度必須）と合わせた二重の防御で「結果からの無言の欠落」を排除
@@ -195,6 +200,7 @@
      ├─ ✅ 該当カード: 金額（種別表示）+ 「なぜ？」→ 証明木を条文リンク付きで展開
      ├─ ❓ あとN問カード: タップで対話パネルへ（POST /api/chat ループ）
      ├─ ❌ 非該当カード: 理由 + 根拠条文
+     ├─ ⚠️ 判定不能カード: error状態（ルール網羅漏れ等）。「窓口でご確認ください」+公式リンク
      └─ ⬜ 未対応カード: programs.yaml の unsupported 制度を正直に表示
 [3] 常時表示: 「法的助言ではありません」「入力情報は保存されません」公式窓口リンク
 ```

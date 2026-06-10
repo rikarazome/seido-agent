@@ -14,7 +14,7 @@
 ## Week 2（〜6/23）: コアループ
 - [ ] 形式化エージェント: 条文テキスト → Prologルール（Gemini Structured Output）
 - [ ] 検証エージェント: 生成ルール vs 原文の一致チェック
-- [ ] 推論エンジン統合: prolog-reasoner を Cloud Run コンテナ化
+- [ ] 推論エンジン統合: engine.pl + module多ファイル構成をコンテナ内swiplで実機検証（直接照会×メタ解釈の一致テスト含む。docs/specs/architecture.md）
 - [ ] 全解探索 + 証明木生成の動作確認
 
 ## Week 3（〜6/30）: 対話と体験
