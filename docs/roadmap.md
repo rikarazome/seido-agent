@@ -5,6 +5,7 @@
 ## Week 1（〜6/16）: 検証と土台
 - [x] **類似サービスの徹底調査** — Go判断済み（docs/competitive-research.md）
 - [x] 開発手法の確立 — 二重ループ設計（docs/dev-methodology.md）
+- [x] プロダクト形態の決定 + アーキテクチャ設計（docs/specs/architecture.md）— Webアプリ / Cloud Run 1コンテナ / ステートレス / DBなし
 - [ ] 対象自治体・制度10件の選定（公開情報が充実している自治体）
 - [ ] 制度要件 → Prologルールの手動形式化を2〜3件試作（実現性の確証）
 - [ ] **ゴールデンケース設計**（試作した制度ぶん）+ pytest/CI骨格 + CLAUDE.md — grader/harness先行
