@@ -111,6 +111,24 @@ def proof_agrees(facts_pl: str, program: str, rule_file: str, subject: str,
     return _query_driver(facts_pl, rule_file, body, timeout) == "agree"
 
 
+def query_proof(facts_pl: str, program: str, rule_file: str, subject: str,
+                status_term: str, claimant: str = "p1",
+                timeout: int = 15) -> str:
+    """Stage-2 re-derivation returning the proof tree term (writeq).
+
+    status_term must come from a server-side judge() call, never from the
+    client (no user input may reach Prolog source -- security rule)."""
+    body = (
+        "main :-\n"
+        f"    ( once(prove({program},\n"
+        f"                 kettei_status({claimant}, {subject}, {status_term}),\n"
+        "                 Proof))\n"
+        "    -> writeq(Proof) ; writeq(disagree) ),\n"
+        "    nl, halt(0).\n"
+    )
+    return _query_driver(facts_pl, rule_file, body, timeout)
+
+
 def load_all_modules(rule_files: list[str], timeout: int = 20) -> None:
     """CI invariant: every rule module loads together without clashes."""
     goals = "".join(
