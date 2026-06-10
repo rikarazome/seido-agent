@@ -1,7 +1,9 @@
 """CI invariants (docs/dev-methodology.md): structural safety conditions."""
 from pathlib import Path
 
-from seido.prolog import load_all_modules
+import pytest
+
+from seido.prolog import judge, load_all_modules
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -21,6 +23,24 @@ def test_all_modules_load_together():
     isolation). CI loads ALL municipalities together even though runtime
     loads only one -- this is what catches missing municipal prefixes."""
     load_all_modules(_all_rule_files())
+
+
+@pytest.mark.parametrize("program", ["jidou_teate", "jidou_fuyou_teate"])
+def test_structural_guard_missing_ages(program):
+    """Structural facts missing (mapping-layer bug) must surface as an
+    error card, never as a wrong ineligible: bare NAF over structural
+    facts in the ineligible clauses succeeds when the facts are ABSENT,
+    which without a guard turns 'ages unknown' into 'child past FY-end
+    age 18'. Hand-written facts bypass factgen's birth_date requirement
+    to simulate exactly that bug."""
+    facts = (
+        ":- dynamic claimant/1, child/1, kango_by/2, seikei_futan/2, "
+        "age/2, age_nendo_matsu/2.\n"
+        "claimant(p1).\nchild(c1).\nkango_by(c1, p1).\nseikei_futan(p1, c1).\n"
+    )
+    got = judge(facts, program=program,
+                rule_file=f"rules/national/{program}.pl", subject="c1")
+    assert got == "error(structural_facts_missing)"
 
 
 def test_no_limit_reaches_sentinel():

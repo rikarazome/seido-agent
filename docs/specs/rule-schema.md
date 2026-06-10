@@ -86,6 +86,8 @@ kettei_status(P, C, error(Why))         % ルール網羅漏れの検出（fail-
 **節の標準順序**（カットで先勝ち。検証済みパターン）:
 
 ```prolog
+kettei_status(P, C, error(structural_facts_missing)) :-              % 構造ガード必須（先頭）
+    claimant(P), child(C), \+ age_nendo_matsu(C, _), !.
 kettei_status(..., ineligible(...)) :- <構造要件の不充足>, !.        % 例: 年齢超過
 kettei_status(..., ineligible(...)) :- <要件のno()確認>, !.          % 例: ひとり親でないと確認
 kettei_status(..., ineligible(R))   :- jogai_confirmed(_, R), !.     % 除外の確認
@@ -95,6 +97,12 @@ kettei_status(..., decided(K))      :- <全要件yes/val>, <支給区分>, !.
 kettei_status(..., ineligible(...)) :- <所得超過等、値由来の非該当>, !.
 kettei_status(_, _, error(no_rule_matched)).   % catch-all 必須（最終節・無条件）
 ```
+
+**構造ガードは構造ineligibleより前に必須**（v1.1、実証済み）。構造要件のineligible節は構造事実への
+NAFを使うため、事実が**欠落**していても成功してしまい、「年齢未知」（マッピング層のバグ）が
+「年齢超過で非該当」という**誤判定**に化ける。マッピング層は birth_date 必須で欠落を防ぐが（一次防御）、
+ガード節を先頭に置いて error として表面化させる（二次防御）。blockedではなくerrorなのは、
+構造事実はフォーム由来でありユーザーに質問するものではないため。
 
 **catch-all は全制度で必須**。どの節にもマッチしないケース（網羅漏れ）が結果から**黙って消える**ことを防ぎ、
 「判定不能」カードとして表面化させる（Fail Safe: 沈黙よりエラー）。`once()` ドライバ前提のため、
@@ -149,10 +157,15 @@ claimant制度（離職要件+所得、condensed）で `once(kettei_status(p1, s
 ## module構成
 
 ```prolog
-:- module(jidou_fuyou_teate, [kettei_status/3, required_fact/3]).
+:- module(jidou_fuyou_teate, [kettei_status/3, required_fact/3, teate_amount/2]).
 ```
 
 - 1制度 = 1ファイル = 1module。module名 = ファイル名 = 制度ID（ローマ字）
+- 必須エクスポート: `kettei_status/3`・`required_fact/3`（askableが無い制度は `required_fact(_,_,_) :- fail.`
+  の明示空定義）。`unit: per_household` の制度は `teate_amount/2`（世帯月額）を追加エクスポート
+- **ロードは空インポートで行う**: `use_module(File, [])`。照会は全てmodule修飾で行うため
+  インポート不要であり、`use_module/1` だと複数制度の同名エクスポートが user へのインポートで
+  衝突する（実機で確認: 「No permission to import ... already imported from ...」）
 - ランナーは engine.pl → facts.pl（known/2 + 構造事実、user にロード）→ rules/*.pl の順にロードし、
   制度ごとに `Prog:kettei_status(P, C, S)` を全解照会
 - 述語名はローマ字・コメントはASCII（SWI一時ファイルのエンコーディング問題回避）。表示名・条文リンク・金額種別は `data/programs.yaml`（静的メタデータ）が持つ
@@ -194,6 +207,9 @@ claimant制度（離職要件+所得、condensed）で `once(kettei_status(p1, s
 | 世帯単位制度で子の判定が混在 | ✅ c1=ineligible(年齢超過) と c2=decided(zenbu) が正しく共存（「全子同一判定」前提は誤りと実証） |
 | 証明木の2段階再導出（cut=true扱い） | ✅ 真のground状態項のみ再導出可、誤kubun・誤ステータスは棄却 |
 | `v_indet` 型ガード | ✅ アトム・逆転レンジは偽成功せず、正規の跨ぎ検出は維持 |
+| 構造ガード（年齢欠落） | ✅ ガード無しだと誤ineligible（年齢超過）になることを実証 → `error(structural_facts_missing)` |
+| `use_module/2` 空インポート | ✅ `use_module/1` は同名エクスポートのインポート衝突（on_error=halt導入で検出） |
+| R8年度の金額・逓減式 | ✅ golden 5件（全部/一部×1〜2子、点値/上書き）で `teate_amount/2` を照合 |
 
 ## 所得定義ポリシー
 

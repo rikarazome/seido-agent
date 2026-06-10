@@ -15,6 +15,20 @@ from seido.factgen import facts_to_prolog
 from seido.prolog import judge, query_value
 
 GOLDEN = Path(__file__).resolve().parent / "golden"
+REPO = GOLDEN.parents[1]
+PROGRAMS = {
+    p["id"]: p
+    for p in yaml.safe_load(
+        (REPO / "data" / "programs.yaml").read_text(encoding="utf-8")
+    )
+}
+
+
+def _rule_file(program_id: str) -> str:
+    meta = PROGRAMS[program_id]
+    if meta["layer"] == "national":
+        return f"rules/national/{program_id}.pl"
+    return f"rules/municipal/{meta['municipality']}/{program_id}.pl"
 
 
 def _collect():
@@ -36,7 +50,7 @@ PARAMS = list(_collect())
 def test_golden(program, case):
     facts_pl = facts_to_prolog(case["facts"], date.fromisoformat(case["as_of"]))
     exp = case["expect"]
-    rule_file = f"rules/national/{program}.pl"
+    rule_file = _rule_file(program)
     got = judge(facts_pl, program=program, rule_file=rule_file,
                 subject=exp["subject"])
     assert got == f"{exp['status']}({exp['detail']})"

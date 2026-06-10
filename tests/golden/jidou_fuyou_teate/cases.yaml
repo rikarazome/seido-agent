@@ -94,6 +94,18 @@
   expect: { subject: c1, status: ineligible,
             detail: "'child shares livelihood with parent de-facto spouse (Art.4(2) analog)'" }
 
+- name: jft_shotoku_exact_overrides_range
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: [1000000, 3000000], shotoku_exact: 1500000,
+               hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: decided, detail: "ichibu", amount: 46720 }
+  # ハイブリッド方式: income_exact質問の回答（控除後所得の点値）は shotoku_exact に入り、
+  # nenshu由来のレンジ（跨ぎ→blockedになるはず）を上書きして判定が確定する
+
 - name: jft_amount_zenbu_two_children
   as_of: "2026-06-11"
   facts:

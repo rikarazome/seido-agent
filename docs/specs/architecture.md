@@ -74,6 +74,8 @@
       // 世帯の状態なので実用上正しい）。子ごとに値が異なる制度が必要になったら
       // children[].askable を導入する（現10制度では不要）
       "nenshu": [3000000, 5000000],      // 年収（額面）。フォームはレンジ選択
+      "shotoku_exact": null,             // income_exact質問の回答（控除後所得の点値）。
+                                         // 存在すれば nenshu 由来の income を上書き（ハイブリッド方式）
       "hitorioya": true,
       "hitorioya_jiyuu": null,           // rikon | shibou | ...（未質問）
       "seikei_douitsu_partner": null,
@@ -90,7 +92,8 @@
 - `nenshu` → **ハイブリッド方式（2026-06-11決定）**: 一次判定はフォームの年収レンジを給与所得控除のみで
   **概算変換**（養育費・諸控除は無視 → レンジが広がる方向の安全側誤差として扱い、限度額を跨げば自然に
   blocked(income_exact) になる）。**跨いだ場合のみ**一問一答で「源泉徴収票の給与所得控除後の金額 + 養育費」を
-  聞き、`known(income(P), 点値)` に置換（既存の income_exact 機構をそのまま使う）。レンジは**端点のみ変換**
+  聞き、回答を `shotoku_exact` に書く（**nenshuには書き戻さない** — 回答は控除後所得であり年収ではない。
+  factgenは shotoku_exact 存在時に nenshu を無視する優先規則）。レンジは**端点のみ変換**
   （給与所得控除は単調非減少。**単調でない控除を導入する場合は要再設計**）。区間評価はProlog側
 - `null` / `"declined"` は **known事実を生成しない**（= Prolog側ではどちらも unknown、判定はblockedのまま）。
   両者の違いは**質問選定エンジンだけ**が見る（declined は選定対象から除外）
@@ -193,7 +196,11 @@
 ```
 
 **questions.yaml の設計規則**: (1) 列挙の choices は法定列挙のみ（「その他」「わからない」はエンジンが自動付与）、
-(2) 式に入る数値fact（扶養人数等）は整数選択肢のみ・レンジ禁止、(3) 金額系レンジの最上段は番兵上限規約（facts JSON参照）。
+(2) 式に入る数値fact（扶養人数等）は整数選択肢のみ・レンジ禁止、(3) 金額系レンジの最上段は番兵上限規約（facts JSON参照）、
+(4) 型は `boolean | enum | integer`（チップ）と `integer_input`（数値入力欄+「わからない」。income_exact等の点値質問用）。
+
+**正規化の責務分担**: 「askableは常に全キー存在・未知はnull」はAPI層（Pydantic）が強制する。
+factgen（マッピング層）は欠落キーをnullと同一に扱う（この層に分岐は存在しない）。
 
 ### POST /api/chat（自由文入力専用、ステートレスラッパー）
 

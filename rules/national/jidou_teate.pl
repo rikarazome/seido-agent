@@ -60,17 +60,18 @@ jidou_teate_total(P, Total) :-
     Ys \= [],
     sum_list(Ys, Total).
 
-% guard: ages are structural and guaranteed by the mapping layer,
-% but keep the check so a mapping bug surfaces as blocked, not silence
-required_fact(P, child_ages, 'ages of all children') :-
-    claimant(P), \+ age_nendo_matsu(_, _).
+% no askable facts in this program (income test abolished 2024-10):
+% explicit empty definition keeps the module contract uniform
+required_fact(_, _, _) :- fail.
 
-% unified decision protocol
-kettei_status(P, C, blocked(Missing)) :-
+% unified decision protocol, standard clause order (rule-schema v1.1):
+% the structural guard precedes structural-NAF ineligible clauses --
+% missing ages are a mapping bug and must surface as an error card,
+% not as a wrong "over age" or a question to the user (ages derive
+% from birth dates the form always collects)
+kettei_status(P, C, error(structural_facts_missing)) :-
     claimant(P), child(C),
-    findall(F, required_fact(P, F, _), Ms),
-    sort(Ms, Missing),
-    Missing \= [], !.
+    \+ age_nendo_matsu(C, _), !.
 kettei_status(P, C, ineligible('child past FY-end age 18')) :-
     claimant(P), kango_by(C, P), child(C),
     \+ shikyu_taisho_jido(C), !.

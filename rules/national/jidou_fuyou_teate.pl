@@ -97,12 +97,19 @@ required_fact(P, income_exact, 'exact income (given range straddles a limit)') :
     ; ichibu_limit(N, L), v_indet(V, L)
     ).
 
-% unified decision protocol, standard clause order (rule-schema v1):
-% structural ineligible -> confirmed-no ineligible -> confirmed exclusion
-% -> blocked -> decided -> value-based ineligible
+% unified decision protocol, standard clause order (rule-schema v1.1):
+% structural guard -> structural ineligible -> confirmed-no ineligible
+% -> confirmed exclusion -> blocked -> decided -> value-based ineligible
+% The guard MUST precede the structural ineligible clauses: their bare NAF
+% succeeds when structural facts are ABSENT, which would turn "ages
+% missing" (a mapping bug) into a wrong "child past FY-end age 18".
+kettei_status(P, C, error(structural_facts_missing)) :-
+    claimant(P), child(C),
+    \+ age_nendo_matsu(C, _), !.
 kettei_status(P, C, ineligible('child past FY-end age 18')) :-
     claimant(P), kango_by(C, P), child(C),
-    \+ taisho_jido(C), !.                       % NAF over structural facts: safe
+    \+ taisho_jido(C), !.                       % NAF over structural facts:
+                                                % safe BELOW the guard only
 kettei_status(P, C, ineligible('no single-parent cause (Art.4(1))')) :-
     claimant(P), kango_by(C, P), taisho_jido(C),
     no(hitorioya(P)), !.

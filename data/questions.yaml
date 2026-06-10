@@ -33,7 +33,8 @@
 
 - fact: income_exact
   # ハイブリッド方式（2026-06-11決定）: 年収レンジの概算変換が限度額を跨いだときだけ出る質問。
-  # 回答は known(income(P), 点値) を置換する（所得定義: 給与所得控除後 + 養育費0.8 - 80,000 - 諸控除）
+  # 回答は facts.askable.shotoku_exact に書く（nenshuに書き戻さない — 回答は控除後所得であり年収ではない。
+  # factgenが shotoku_exact 優先で known(income(P), 点値) を生成する）
   text: 源泉徴収票の「給与所得控除後の金額」を教えてください（受け取っている養育費があれば年額も）
   type: integer_input             # チップではなく数値入力欄（+「わからない」）
   sensitive: true

@@ -17,8 +17,10 @@ CLAIMANT = "p1"
 # per-child predicates get the same value injected for every child.
 ASKABLE_MAP = {
     "nenshu": ("income", "claimant"),  # PLACEHOLDER - VERIFY: v0 passes nenshu
-    # through as shotoku. Replace with per-program deduction formulas when
-    # official figures are fixed (update golden cases in the same commit).
+    # through as shotoku. Week 2 replaces this with the rough salary-deduction
+    # conversion (hybrid design, architecture.md; update goldens in same commit).
+    "shotoku_exact": ("income", "claimant"),  # exact post-deduction income from
+    # the income_exact interview answer; takes precedence over nenshu
     "hitorioya": ("hitorioya", "claimant"),
     "hitorioya_jiyuu": ("hitorioya_jiyuu", "claimant"),
     "fuyou_ninzu": ("fuyou_ninzu", "claimant"),
@@ -73,8 +75,15 @@ def facts_to_prolog(facts: dict, as_of: date) -> str:
             f"age({cid}, {age_on(birth, as_of)}).",
             f"age_nendo_matsu({cid}, {age_on(birth, fy)}).",
         ]
-    for key, value in (facts.get("askable") or {}).items():
-        if value is None or value == "declined":
+    askable = facts.get("askable") or {}
+    # Absent keys are treated exactly as null (unknown) here; rejecting
+    # absence is the API layer's job (schema normalization, architecture.md)
+    skip = set()
+    shotoku = askable.get("shotoku_exact")
+    if shotoku is not None and shotoku != "declined":
+        skip.add("nenshu")  # exact post-deduction income wins (hybrid design)
+    for key, value in askable.items():
+        if key in skip or value is None or value == "declined":
             continue
         if key not in ASKABLE_MAP:
             raise ValueError(f"unknown askable key: {key}")
