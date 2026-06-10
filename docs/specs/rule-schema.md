@@ -117,11 +117,18 @@ zenbu_limit(N, L) :- integer(N), N >= 0, L is 690000 + 380000 * N.
 **`P`・`C` を未束縛で照会すると最初の1子の解しか返らない**。ランナーは必ず両引数を束縛して照会する:
 
 ```prolog
-% ランナー側ドライバ（子の列挙はkettei_statusの外で行う）
+% subject: child の制度 — 子ごとに照会（子の列挙はkettei_statusの外で行う）
 result(Prog, C, S) :- child(C), once(Prog:kettei_status(P, C, S)).
+% subject: claimant の制度 — 第2引数はアトム self 固定
+result(Prog, self, S) :- claimant(P), once(Prog:kettei_status(P, self, S)).
 ```
 
+**判定対象（subject）の規約**: 制度には子単位の判定（児童手当等）と申請者単位の判定（住居確保給付金等）が
+ある。programs.yaml の `subject: child | claimant` で宣言し、`claimant` の制度はルールの全 `kettei_status`
+節の第2引数を**アトム `self`** にする（子IDと衝突しない明示マーカー。`C = P` の自己参照は採らない）。
+
 検証: 3児世帯で c1=ineligible(年齢超過), c2=decided(10000), c3=decided(30000) を正しく列挙。
+claimant制度（離職要件+所得、condensed）で `once(kettei_status(p1, self, S))` → `blocked([income])`。
 
 ## module構成
 
@@ -142,6 +149,8 @@ result(Prog, C, S) :- child(C), once(Prog:kettei_status(P, C, S)).
 - id: jidou_fuyou_teate
   name: 児童扶養手当
   amount_type: monthly        # monthly | oneoff | yearly | in_kind
+  subject: child              # child | claimant（判定対象。claimant → self規約で照会）
+  unit: per_household         # per_child | per_household（金額の集約単位。subject: claimant は常に per_household）
   statute:
     - { ref: "児童扶養手当法4条", url: "https://..." }
   status: supported           # supported | unsupported（⬜カードの出所）
@@ -160,6 +169,8 @@ result(Prog, C, S) :- child(C), once(Prog:kettei_status(P, C, S)).
 | 多子加算の順位計算（22歳年度末カウント） | ✅ v0スパイクで検証済み（構造事実のみ、v1でも有効） |
 | 扶養3人（旧・表形式限度額の網羅漏れ） | ✅ 加算式化で `decided(zenbu)`（旧版は解なしで沈黙） |
 | `kango_by` 欠落の子（網羅漏れ） | ✅ `error(no_rule_matched)` で表面化、他の子の判定に影響なし |
+| 申請者単位制度の `self` 規約 | ✅ `once(kettei_status(p1, self, S))` → `blocked([income])` |
+| 世帯単位制度で子の判定が混在 | ✅ c1=ineligible(年齢超過) と c2=decided(zenbu) が正しく共存（「全子同一判定」前提は誤りと実証） |
 
 ## 所得定義ポリシー
 

@@ -78,7 +78,7 @@
 マッピング層（Python、決定的・LLM不使用）の責務:
 - `birth_date` → `age/2`・`age_nendo_matsu/2`（**JST基準**、基準日は `as_of`）
 - `children` → `child/1` + `kango_by/2`・`seikei_futan/2` を既定値として注入（対話で訂正可）
-- `nenshu` →給与所得控除等の決定的計算で**各制度の所得定義**に変換し `known(income(P), ...)` 等を生成。レンジは `range(Lo,Hi)` のまま伝播（区間評価はProlog側）
+- `nenshu` →給与所得控除等の決定的計算で**各制度の所得定義**に変換し `known(income(P), ...)` 等を生成。レンジは**端点のみ変換**して `range(Lo', Hi')` として伝播（給与所得控除は単調非減少なので端点変換で正しい。**単調でない控除を導入する場合はこの前提が崩れるため要再設計**）。区間評価はProlog側
 - `null` / 欠落キーは **known事実を生成しない**（= Prolog側で unknown）
 
 ## API設計
@@ -116,19 +116,21 @@
 }
 ```
 
-**子→制度の集約規則**（判定は `(P, C)` 単位、カードは制度単位のため必須）:
+**判定対象→制度カードの集約規則**（判定は (P, 子) または (P, self) 単位、カードは制度単位のため必須）:
 
 | 規則 | 内容 |
 |---|---|
-| ステータス優先順位 | `error` > `blocked` > `decided` > `ineligible`。1子でもerrorなら制度カードはerror、errorなしで1子でもblockedならblocked（missingは全子の和集合）、blockedなしで1子でもdecidedならdecided、全子ineligibleのときのみineligible |
-| 金額 | 制度の `amount.yen` = decidedの子の合計。blocked制度でも確定済みの子があれば `partial_amount` で出す（「現時点で月◯円+あとN問」） |
-| 世帯単位制度（programs.yaml `unit: per_household`） | 子ごとに同じ判定が返るため**代表1件に集約**（kubun不一致が出たらerror扱い=ルールバグ検出） |
-| headline | 制度レベル `amount` を amount_type ごとに合算（monthly/oneoff/yearly別、in_kindは件数） |
-| 解なし | `once()` が失敗した子は `error` 扱い（catch-all節と二重の防御） |
+| 照会対象 | programs.yaml の `subject` に従う。`child` → 子ごとに照会、`claimant` → `self` 1件のみ照会（rule-schema.md の規約） |
+| ステータス優先順位 | `error` > `blocked` > `decided` > `ineligible`。1件でもerrorなら制度カードはerror、errorなしで1件でもblockedならblocked（missingは全対象の和集合）、blockedなしで1件でもdecidedならdecided、全件ineligibleのときのみineligible。**判定の混在は正常**（年齢超過の子と受給対象の子は普通に共存する。検証済み） |
+| 金額（`unit: per_child`） | 制度の `amount.yen` = decidedの子の合計。blocked制度でも確定済みの子があれば `partial_amount` で出す（「現時点で月◯円+あとN問」） |
+| 金額（`unit: per_household`） | **子の合計ではなく世帯単位で1回導出**（本体額+第2子・第3子加算の式。`teate_amount/2` で形式化、rule-schema.md既知課題）。decidedの子の間でkubunが食い違う場合のみ error（kubunは申請者の所得のみに依存するため、不一致は真正のルールバグ） |
+| 対象者ゼロ | subject: child の制度で子が0人 → 照会せず**ランナーが** `ineligible(no_eligible_subject)` を生成（「対象となるお子さんがいません」カード）。空集合の集約を未定義にしない |
+| headline | 制度レベル `amount` を amount_type ごとに合算（monthly/oneoff/yearly別、in_kindは件数）。**金額がレンジの制度は下限で合算**し、レンジを1件でも含む種別は「月◯円以上」と表示（上限合算は誇大表示になり信頼設計と矛盾） |
+| 解なし | `once()` が失敗した対象は `error` 扱い（catch-all節と二重の防御） |
 
 - 見出しは「💰 月25,000円 ＋ 一時金10万円」のように**種別を分けて表示**。月額・一時金・年額・現物を雑に足さない
-- 制度名・条文リンク・amount_type・unit は `data/programs.yaml` から付与（ルールは判定と区分のみ返す）
-- 全制度module（10個）×全子に対して `Prog:kettei_status(P, C, S)` を**両引数束縛・`once/1`**で照会（呼び出し規約はrule-schema.md）
+- 制度名・条文リンク・amount_type・subject・unit は `data/programs.yaml` から付与（ルールは判定と区分のみ返す）
+- 全制度module（10個）×全対象（子 または self）に対して `Prog:kettei_status(P, C, S)` を**両引数束縛・`once/1`**で照会（呼び出し規約はrule-schema.md）
 - **金額のレンジ評価**: 逓減式等で所得がレンジのまま確定（decided(ichibu)等）した場合、ランナーがLo/Hiの2点で金額式を評価し「月◯〜◯円」とレンジ表示する（rule-schema.md の規約）
 
 ### POST /api/chat（対話1ターン、ステートレスラッパー）
