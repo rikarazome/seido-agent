@@ -1,0 +1,56 @@
+# 高等学校等就学支援金 golden cases（2026-04所得制限撤廃後。statute_source.md）
+# 在学・学校区分は per-child askable（children[].askable）。高校生年代 = FY末年齢16〜18
+
+- name: kss_kouritsu_decided
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2009-09-01",   # FY-end 17
+          askable: { koukou_zaigaku: true, gakkou_kubun: kouritsu } }
+  expect: { subject: c1, status: decided, detail: "amount_yearly(118800)" }
+
+- name: kss_shiritsu_decided
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2009-09-01",
+          askable: { koukou_zaigaku: true, gakkou_kubun: shiritsu } }
+  expect: { subject: c1, status: decided, detail: "amount_yearly_max(457200)" }
+
+- name: kss_zaigaku_unknown_blocks
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2009-09-01",
+          askable: { koukou_zaigaku: null, gakkou_kubun: null } }
+  expect: { subject: c1, status: blocked, detail: "[koukou_zaigaku]" }
+
+- name: kss_kubun_unknown_blocks
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2009-09-01",
+          askable: { koukou_zaigaku: true, gakkou_kubun: null } }
+  expect: { subject: c1, status: blocked, detail: "[gakkou_kubun]" }
+
+- name: kss_not_enrolled_ineligible
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2009-09-01",
+          askable: { koukou_zaigaku: false } }
+  expect: { subject: c1, status: ineligible,
+            detail: "'not enrolled in an eligible high school'" }
+
+- name: kss_age_out_of_window
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]   # FY-end 7
+  expect: { subject: c1, status: ineligible,
+            detail: "'not high-school age (FY-end 16-18)'" }

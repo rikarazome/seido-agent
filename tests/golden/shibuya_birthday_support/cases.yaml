@@ -1,0 +1,32 @@
+# バースデーサポート（渋谷区） golden cases（statute_source.md）
+# 出生年度（birth_nendo 構造事実）で金額分岐。R7年度生まれ=100,000円はR8年度限りの特例
+
+- name: sbs_fy2025_born_100000
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2025-06-01" } ]   # FY2025生まれ・1歳
+  expect: { subject: c1, status: decided, detail: "oneoff(100000)" }
+
+- name: sbs_fy2024_born_60000
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2024-10-01" } ]   # FY2024生まれ・1歳
+  expect: { subject: c1, status: decided, detail: "oneoff(60000)" }
+
+- name: sbs_window_passed
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2023-05-01" } ]   # 3歳: 受給時機経過
+  expect: { subject: c1, status: ineligible,
+            detail: "'past the 1st-birthday support window'" }
+
+- name: sbs_fy2026_born_undecided
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2026-05-01" } ]   # FY2026生まれ: R9年度支給は未定
+  expect: { subject: c1, status: ineligible,
+            detail: "'grant for children born FY2026+ not yet announced (as of 2026-06)'" }

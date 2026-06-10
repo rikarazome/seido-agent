@@ -35,9 +35,11 @@
   subject: child
   unit: per_child
   amount_type: yearly
-  potential_amount: null
-  status: unsupported
-  statute: []
+  potential_amount: 457200       # VERIFIED: 私立上限年額（公立は118,800円）。2026-04所得制限撤廃
+  status: supported
+  statute:
+    - { ref: "高等学校等就学支援金の支給に関する法律（2026-04改正）", url: "https://laws.e-gov.go.jp/law/422AC0000000018" }
+    - { ref: "文科省 R8年度案内", url: "https://www.mext.go.jp/content/202604024-mxt_shuukyo03-100002595_1.pdf" }
 
 - id: jukyo_kakuho_kyufukin
   name: 住居確保給付金
@@ -57,9 +59,10 @@
   subject: child
   unit: per_child
   amount_type: monthly
-  potential_amount: null
-  status: unsupported
-  statute: []
+  potential_amount: 5000         # VERIFIED: 月額・所得制限なし
+  status: supported
+  statute:
+    - { ref: "東京都018サポート", url: "https://018support.metro.tokyo.lg.jp/" }
 
 - id: tokyo_jidou_ikusei_teate
   name: 児童育成手当
@@ -68,9 +71,11 @@
   subject: child
   unit: per_child
   amount_type: monthly
-  potential_amount: null
-  status: unsupported
-  statute: []
+  potential_amount: 13500        # VERIFIED: 月額/児童。限度額3,604,000+380,000×N（本人所得のみ）
+  status: supported
+  statute:
+    - { ref: "東京都児童育成手当に関する条例施行規則", url: "https://www.reiki.metro.tokyo.lg.jp/reiki/reiki_honbun/g101RG00000745.html" }
+    - { ref: "渋谷区 ひとり親家庭の手当", url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_teate.html" }
 
 - id: shibuya_kodomo_iryouhi
   name: 子ども医療費助成
@@ -79,20 +84,22 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null
-  status: unsupported
-  statute: []
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "渋谷区 子ども医療費助成", url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/iryo-josei/kodomo_ij.html" }
 
 - id: shibuya_birthday_support
-  name: 渋谷区1歳バースデーサポート
+  name: バースデーサポート事業
   layer: municipal
   municipality: shibuya
   subject: child
   unit: per_child
   amount_type: oneoff
-  potential_amount: null
-  status: unsupported
-  statute: []
+  potential_amount: 100000       # VERIFIED: R7年度生まれ（R8年度限り特例）。R5/R6年度生まれは60,000円
+  status: supported
+  statute:
+    - { ref: "渋谷区 バースデーサポート事業", url: "https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/birthday_support.html" }
 
 - id: shibuya_shugaku_enjo
   name: 就学援助

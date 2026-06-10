@@ -1,0 +1,51 @@
+# 児童育成手当（東京都・渋谷区実施） golden cases（statute_source.md）
+# 限度額 = 3,604,000 + 380,000×扶養人数（本人所得のみ）。月13,500円/児童・逓減なし
+# 注: 老人扶養・特定扶養の加算特例は v1 未モデル化（該当しない世帯のみ使用）
+
+- name: tji_decided_13500
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 3000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 1 }
+  expect: { subject: c1, status: decided, detail: "monthly(13500)" }
+  # limit(1) = 3,984,000 > 3,000,000
+
+- name: tji_income_over_ineligible
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 5000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 1 }
+  expect: { subject: c1, status: ineligible, detail: "'income exceeds limit'" }
+
+- name: tji_range_straddle_blocks
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: [3000000, 5000000], hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 1 }
+  expect: { subject: c1, status: blocked, detail: "[income_exact]" }
+  # レンジが limit(1)=3,984,000 を跨ぐ
+
+- name: tji_partner_unknown_blocks
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 3000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: null, fuyou_ninzu: 1 }
+  expect: { subject: c1, status: blocked, detail: "[seikei_douitsu_partner]" }
+
+- name: tji_not_hitorioya_ineligible
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 3000000, hitorioya: false, hitorioya_jiyuu: null,
+               seikei_douitsu_partner: null, fuyou_ninzu: 1 }
+  expect: { subject: c1, status: ineligible,
+            detail: "'no single-parent cause'" }

@@ -31,6 +31,24 @@
   type: integer
   choices: [0, 1, 2, 3, 4, 5]   # 6人以上は自由文へ
 
+- fact: kenkou_hoken
+  text: ご家族は健康保険（国民健康保険・社会保険など）に加入していますか
+  type: boolean
+
+# --- per-child askables（children[].askable。質問文の {child} は「2009年生まれのお子さん」等に展開） ---
+
+- fact: koukou_zaigaku
+  scope: per_child
+  text: "{child}は高校等（高等学校・高専・専修学校等）に在学していますか"
+  type: boolean
+
+- fact: gakkou_kubun
+  scope: per_child
+  text: "{child}の学校の区分を教えてください"
+  type: enum
+  choices: { kouritsu: 公立（全日制）, shiritsu: 私立（全日制） }
+  # 高専・通信制は未対応（「その他」→自由文で案内のみ。statute_source参照）
+
 - fact: income_exact
   # ハイブリッド方式（2026-06-11決定）: 年収レンジの概算変換が限度額を跨いだときだけ出る質問。
   # 回答は facts.askable.shotoku_exact に書く（nenshuに書き戻さない — 回答は控除後所得であり年収ではない。

@@ -1,0 +1,23 @@
+# 018サポート golden cases（所得制限なし・0〜18歳年度末。statute_source.md）
+# 都内在住はフォームの居住自治体選択から暗黙充足（東京都制度のロード条件）
+
+- name: t018_child_decided
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]   # FY-end 7
+  expect: { subject: c1, status: decided, detail: "monthly(5000)" }
+
+- name: t018_age18_fy_end_still_eligible
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children: [ { id: c1, birth_date: "2008-09-01" } ]   # FY-end 18（境界）
+  expect: { subject: c1, status: decided, detail: "monthly(5000)" }
+
+- name: t018_overage_ineligible
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children: [ { id: c1, birth_date: "2006-09-01" } ]   # FY-end 20
+  expect: { subject: c1, status: ineligible, detail: "'past FY-end age 18'" }

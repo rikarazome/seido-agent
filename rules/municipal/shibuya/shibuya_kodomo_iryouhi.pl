@@ -1,0 +1,32 @@
+% ============================================================
+% shibuya_kodomo_iryouhi.pl - Shibuya child medical cost subsidy
+% VERIFIED 2026-06-11: in-kind benefit (insured co-payment covered),
+% age 0 to FY-end of 18, requires public health insurance enrolment.
+% No income condition appears on the official page (Tokyo abolished
+% income limits 2025-10); formalized accordingly -- see
+% tests/golden/shibuya_kodomo_iryouhi/statute_source.md.
+% Ward residence is implied by the form's municipality selection.
+% Requires engine.pl.
+% ============================================================
+
+:- module(shibuya_kodomo_iryouhi, [kettei_status/3, required_fact/3]).
+
+required_fact(P, kenkou_hoken, 'is the household covered by public health insurance') :-
+    claimant(P), unknown(kenkou_hoken(P)).
+
+kettei_status(P, C, error(structural_facts_missing)) :-
+    claimant(P), child(C),
+    \+ age_nendo_matsu(C, _), !.
+kettei_status(P, C, ineligible('past FY-end age 18')) :-
+    claimant(P), kango_by(C, P), child(C),
+    age_nendo_matsu(C, A), A > 18, !.
+kettei_status(P, C, ineligible('not covered by public health insurance')) :-
+    claimant(P), kango_by(C, P),
+    no(kenkou_hoken(P)), !.
+kettei_status(P, C, blocked([kenkou_hoken])) :-
+    claimant(P), kango_by(C, P),
+    unknown(kenkou_hoken(P)), !.
+kettei_status(P, C, decided(in_kind(jiko_futan_josei))) :-
+    claimant(P), kango_by(C, P),
+    yes(kenkou_hoken(P)), !.
+kettei_status(_, _, error(no_rule_matched)).
