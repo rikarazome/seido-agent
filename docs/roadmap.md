@@ -19,7 +19,8 @@
 - [ ] 形式化エージェント: 条文テキスト → Prologルール（Gemini Structured Output）
 - [ ] 検証エージェント: 生成ルール vs 原文の一致チェック
 - [ ] 推論エンジン統合: engine.pl + module多ファイル構成をコンテナ内swiplで実機検証（直接照会×メタ解釈の一致テスト含む。docs/specs/architecture.md）
-- [ ] 全解探索 + 証明木生成の動作確認
+- [x] 証明木メタインタプリタ実装（engine.pl prove/3、cut=true方式）+ **全goldenケースで直接照会×メタ解釈の一致をCI恒常検証**
+- [x] factgen 給与所得控除テーブル実装（ハイブリッド方式の概算変換。単体テスト11件）
 
 ## Week 3（〜6/30）: 対話と体験
 - [ ] 一問一答エンジン: blocked集計→質問選定（決定的）+ data/questions.yaml（質問文・選択肢チップ）

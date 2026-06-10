@@ -16,9 +16,8 @@ CLAIMANT = "p1"
 # askable key -> (predicate, scope). Household-level flat namespace:
 # per-child predicates get the same value injected for every child.
 ASKABLE_MAP = {
-    "nenshu": ("income", "claimant"),  # PLACEHOLDER - VERIFY: v0 passes nenshu
-    # through as shotoku. Week 2 replaces this with the rough salary-deduction
-    # conversion (hybrid design, architecture.md; update goldens in same commit).
+    "nenshu": ("income", "claimant"),  # converted via salary_to_shotoku
+    # (rough first-pass estimate, hybrid design in architecture.md)
     "shotoku_exact": ("income", "claimant"),  # exact post-deduction income from
     # the income_exact interview answer; takes precedence over nenshu
     "hitorioya": ("hitorioya", "claimant"),
@@ -48,6 +47,29 @@ def fy_end(as_of: date) -> date:
 def birth_fy(birth: date) -> int:
     """Japanese fiscal year a date falls in (Apr-Mar)."""
     return birth.year if birth.month >= 4 else birth.year - 1
+
+
+def salary_to_shotoku(nenshu: int) -> int:
+    """Salary income deduction, 2020-onward brackets (kyuuyo shotoku koujo).
+
+    Rough FIRST-PASS estimate for the hybrid income design: ignores the
+    statutory rounding table, child-support add-in and other deductions.
+    Monotonic non-decreasing, so range endpoints convert independently.
+    If the converted value straddles a limit, the interview asks for the
+    exact post-deduction income (shotoku_exact), which bypasses this."""
+    if nenshu <= 1_625_000:
+        d = 550_000
+    elif nenshu <= 1_800_000:
+        d = int(nenshu * 0.4) - 100_000
+    elif nenshu <= 3_600_000:
+        d = int(nenshu * 0.3) + 80_000
+    elif nenshu <= 6_600_000:
+        d = int(nenshu * 0.2) + 440_000
+    elif nenshu <= 8_500_000:
+        d = int(nenshu * 0.1) + 1_100_000
+    else:
+        d = 1_950_000
+    return max(0, nenshu - d)
 
 
 def _value_term(value) -> str:
@@ -104,6 +126,11 @@ def facts_to_prolog(facts: dict, as_of: date) -> str:
             continue
         if key not in ASKABLE_MAP:
             raise ValueError(f"unknown askable key: {key}")
+        if key == "nenshu":
+            if isinstance(value, list) and len(value) == 2:
+                value = [salary_to_shotoku(value[0]), salary_to_shotoku(value[1])]
+            elif isinstance(value, int) and not isinstance(value, bool):
+                value = salary_to_shotoku(value)
         pred, scope = ASKABLE_MAP[key]
         term = _value_term(value)
         if scope == "claimant":
