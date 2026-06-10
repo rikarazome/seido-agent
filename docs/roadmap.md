@@ -8,7 +8,8 @@
 - [x] プロダクト形態の決定 + アーキテクチャ設計（docs/specs/architecture.md）— Webアプリ / Cloud Run 1コンテナ / ステートレス / DBなし
 - [ ] 対象自治体・制度10件の選定（公開情報が充実している自治体）
 - [ ] 制度要件 → Prologルールの手動形式化を2〜3件試作（実現性の確証）
-- [ ] **ゴールデンケース設計**（試作した制度ぶん）+ pytest/CI骨格 + CLAUDE.md — grader/harness先行
+- [x] **ゴールデンケース設計**（spike2制度×14ケース、検証済みシナリオを移植）+ pytest/CI骨格（不変条件2種込み）+ CLAUDE.md — grader/harness先行。**16/16合格・module多ファイル実機検証も完了（Week 2項目を前倒し消化）**
+- [ ] 公式数値の確定: statute_source.md のVERIFY項目（児童手当の金額・児童扶養手当の限度額/逓減式/所得定義）→ cases/rules/factgen を同一コミット更新
 - [ ] 証明木の出力形式を設計（ユーザーに見せられる形）
 
 ## Week 2（〜6/23）: コアループ

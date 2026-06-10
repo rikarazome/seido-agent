@@ -1,0 +1,103 @@
+# 児童扶養手当 golden cases（rule-schema v1 / facts JSON同形）
+# PLACEHOLDER - VERIFY: 限度額（加算式 base 690000/2080000 + step 380000）と
+# nenshu→所得変換（現状v0パススルー）は未確定。公式数値確定時に本ファイル・
+# rules/national/jidou_fuyou_teate.pl・factgen.py を同一コミットで更新すること。
+# 基本世帯: 子1人（FY末年齢7）
+
+- name: jft_partner_unknown_blocks
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 1000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: null, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: blocked, detail: "[seikei_douitsu_partner]" }
+  # NAFバグ回帰: 除外事由が未知のとき誤decidedを返さない（v0設計の致命傷）
+
+- name: jft_declined_still_blocked
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 1000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: declined, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: blocked, detail: "[seikei_douitsu_partner]" }
+  # declined は Prolog 上は未知と同一（質問選定だけが区別する）
+
+- name: jft_jiyuu_unknown_blocks
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 1000000, hitorioya: true, hitorioya_jiyuu: null,
+               seikei_douitsu_partner: false, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: blocked, detail: "[hitorioya_jiyuu]" }
+
+- name: jft_zenbu_shikyu
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 1000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: decided, detail: "zenbu" }
+
+- name: jft_ichibu_shikyu
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 1500000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: decided, detail: "ichibu" }
+  # zenbu_limit(2)=1450000 <= 1500000 < ichibu_limit(2)=2840000
+
+- name: jft_fuyou3_formula_limits
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 1000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 3 }
+  expect: { subject: c1, status: decided, detail: "zenbu" }
+  # 網羅漏れ回帰: 旧・表形式限度額は N=3 で解なしになった（加算式で全N定義）
+
+- name: jft_range_straddle_blocks
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: [1000000, 3000000], hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: blocked, detail: "[income_exact]" }
+  # レンジが限度額を跨ぐ → 正確な額の質問を誘発（v_indet）
+
+- name: jft_income_over_ineligible
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 5000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: false, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: ineligible,
+            detail: "'income exceeds partial-payment limit'" }
+
+- name: jft_partner_cohabit_ineligible
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 1000000, hitorioya: true, hitorioya_jiyuu: rikon,
+               seikei_douitsu_partner: true, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: ineligible,
+            detail: "'child shares livelihood with parent de-facto spouse (Art.4(2) analog)'" }
+
+- name: jft_not_hitorioya_ineligible
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1988-04-01" }
+    children: [ { id: c1, birth_date: "2019-06-01" } ]
+    askable: { nenshu: 1000000, hitorioya: false, hitorioya_jiyuu: null,
+               seikei_douitsu_partner: null, fuyou_ninzu: 2 }
+  expect: { subject: c1, status: ineligible,
+            detail: "'no single-parent cause (Art.4(1))'" }

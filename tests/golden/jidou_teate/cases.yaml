@@ -1,0 +1,36 @@
+# 児童手当 golden cases（rule-schema v1 / facts JSON同形）
+# 金額・境界は2024-10改正後の公知値ベース。PLACEHOLDER - VERIFY: 公式条文で確定後、
+# statute_source.md に出典を固定すること（確定時は本ファイルとルールを同一コミットで更新）。
+# 3児世帯: FY末年齢 20 / 7 / 2（as_of 2026-06-11 → 年度末 2027-03-31）
+
+- name: jt_3rd_child_30000
+  as_of: "2026-06-11"
+  facts: &three_children
+    claimant: { birth_date: "1985-01-01" }
+    children:
+      - { id: c1, birth_date: "2006-09-01" }   # FY-end 20: 受給外だが多子算定に入る
+      - { id: c2, birth_date: "2019-06-01" }   # FY-end 7
+      - { id: c3, birth_date: "2024-06-15" }   # FY-end 2 → 第3子
+    askable: { nenshu: null, hitorioya: null, hitorioya_jiyuu: null,
+               seikei_douitsu_partner: null, fuyou_ninzu: null }
+  expect: { subject: c3, status: decided, detail: "amount(30000)" }
+
+- name: jt_2nd_child_base_10000
+  as_of: "2026-06-11"
+  facts: *three_children
+  expect: { subject: c2, status: decided, detail: "amount(10000)" }
+
+- name: jt_overage_ineligible_but_counted
+  as_of: "2026-06-11"
+  facts: *three_children
+  expect: { subject: c1, status: ineligible, detail: "'child past FY-end age 18'" }
+
+- name: jt_under3_single_child_15000
+  as_of: "2026-06-11"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children:
+      - { id: c1, birth_date: "2024-06-15" }   # 1歳・第1子 → 3歳未満 15,000円
+    askable: { nenshu: null, hitorioya: null, hitorioya_jiyuu: null,
+               seikei_douitsu_partner: null, fuyou_ninzu: null }
+  expect: { subject: c1, status: decided, detail: "amount(15000)" }

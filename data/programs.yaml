@@ -1,0 +1,113 @@
+# 制度メタデータ（docs/specs/rule-schema.md 準拠）
+# status: supported は golden検証済みのみ（品質ゲート。盛らない）
+# potential_amount: 公式数値由来の最大支給額目安。PLACEHOLDER - VERIFY の値は出典確定まで表示に使わない
+
+- id: jidou_teate
+  name: 児童手当
+  layer: national
+  municipality: null
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 30000        # PLACEHOLDER - VERIFY（第3子以降月額）
+  status: supported
+  statute: []                    # statute_source.md 確定時に転記
+
+- id: jidou_fuyou_teate
+  name: 児童扶養手当
+  layer: national
+  municipality: null
+  subject: child
+  unit: per_household
+  amount_type: monthly
+  potential_amount: null         # 全部支給月額+加算。公式数値確定後に設定
+  status: supported
+  statute: []
+
+- id: kouko_shugaku_shienkin
+  name: 高等学校等就学支援金
+  layer: national
+  municipality: null
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: null
+  status: unsupported
+  statute: []
+
+- id: jukyo_kakuho_kyufukin
+  name: 住居確保給付金
+  layer: national
+  municipality: null
+  subject: claimant              # self規約で照会
+  unit: per_household
+  amount_type: monthly
+  potential_amount: null
+  status: unsupported
+  statute: []
+
+- id: tokyo_018_support
+  name: 018サポート
+  layer: municipal
+  municipality: tokyo
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: null
+  status: unsupported
+  statute: []
+
+- id: tokyo_jidou_ikusei_teate
+  name: 児童育成手当
+  layer: municipal
+  municipality: tokyo
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: null
+  status: unsupported
+  statute: []
+
+- id: shibuya_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: shibuya
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null
+  status: unsupported
+  statute: []
+
+- id: shibuya_birthday_support
+  name: 渋谷区1歳バースデーサポート
+  layer: municipal
+  municipality: shibuya
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: null
+  status: unsupported
+  statute: []
+
+- id: shibuya_shugaku_enjo
+  name: 就学援助
+  layer: municipal
+  municipality: shibuya
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: null
+  status: unsupported
+  statute: []
+
+- id: shibuya_housing_tbd
+  name: 住宅系制度（渋谷区代替を選定中 — docs/target-programs.md #7）
+  layer: municipal
+  municipality: shibuya
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: null
+  status: unsupported
+  statute: []

@@ -1,0 +1,28 @@
+# 一問一答の静的メタデータ（docs/specs/architecture.md 一問一答エンジン）
+# 設計規則:
+#  (1) enum の choices は法定列挙のみ。「その他」(__free_text__) と「わからない/答えたくない」
+#      (declined) はエンジンが全質問に自動付与する
+#  (2) 式に入る数値fact（扶養人数等）は整数選択肢のみ・段階レンジ禁止
+#  (3) 金額系レンジの最上段は番兵上限 [lo, 999999999]
+
+- fact: hitorioya
+  text: ひとり親世帯ですか
+  type: boolean
+  sensitive: true
+
+- fact: hitorioya_jiyuu
+  text: ひとり親となった理由を教えてください
+  type: enum
+  choices: { rikon: 離婚, shibou: 死別, mikon: 未婚 }
+  # 遺棄・拘禁・DV保護命令等の法定事由は条文確定時に追加（PLACEHOLDER - VERIFY）
+  sensitive: true
+
+- fact: seikei_douitsu_partner
+  text: 事実上の配偶者（同居のパートナー等）と生計を共にしていますか
+  type: boolean
+  sensitive: true
+
+- fact: fuyou_ninzu
+  text: 税法上の扶養親族は何人ですか
+  type: integer
+  choices: [0, 1, 2, 3, 4, 5]   # 6人以上は自由文へ
