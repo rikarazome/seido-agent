@@ -165,6 +165,8 @@ claimant制度（離職要件+所得、condensed）で `once(kettei_status(p1, s
   amount_type: monthly        # monthly | oneoff | yearly | in_kind
   subject: child              # child | claimant（判定対象。claimant → self規約で照会）
   unit: per_household         # per_child | per_household（金額の集約単位。subject: claimant は常に per_household）
+  layer: national             # national | municipal（rules/national/ または rules/municipal/<muni>/ に配置）
+  municipality: null          # layer: municipal のとき自治体ID（例: shibuya）
   statute:
     - { ref: "児童扶養手当法4条", url: "https://..." }
   status: supported           # supported | unsupported（⬜カードの出所）
