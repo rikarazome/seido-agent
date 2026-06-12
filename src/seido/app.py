@@ -16,7 +16,7 @@ from pydantic import BaseModel
 
 from .factgen import facts_to_prolog
 from .prolog import judge, query_proof
-from .runner import judge_request, programs, rule_file
+from .runner import judge_request, municipalities, programs, rule_file
 
 JST = timezone(timedelta(hours=9))
 MAX_FACTS_BYTES = 10_000
@@ -57,9 +57,17 @@ def healthz():
     return {"ok": True}
 
 
+@app.get("/api/municipalities")
+def api_municipalities():
+    return {"municipalities": [{"id": m["id"], "name": m["name"]}
+                               for m in municipalities().values()]}
+
+
 @app.post("/api/judge")
 def api_judge(req: JudgeRequest):
     _guard_size(req)
+    if req.municipality not in municipalities():
+        raise HTTPException(400, "unknown municipality")
     try:
         return judge_request(req.facts, _parse_as_of(req.as_of),
                              municipality=req.municipality)

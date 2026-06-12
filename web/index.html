@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>もらい忘れチェッカー（仮称） — 渋谷区</title>
+<title>もらい忘れチェッカー（仮称） — 東京23区</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230017C1'/%3E%3Ctext x='16' y='23' font-size='18' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'%3E%C2%A5%3C/text%3E%3C/svg%3E">
 <style>
 /* ============================================================
@@ -151,7 +151,7 @@ a{color:var(--blue-700)}
   <div class="appbar-inner">
     <div class="logo">¥</div>
     <div>
-      <h1>もらい忘れチェッカー<span class="muni-badge">渋谷区版・デモ</span></h1>
+      <h1>もらい忘れチェッカー<span class="muni-badge">東京23区対応・デモ</span></h1>
       <div class="tagline">あなたが貰い損ねているお金を、根拠付きで見つける</div>
     </div>
   </div>
@@ -165,6 +165,7 @@ a{color:var(--blue-700)}
     <p class="hint">この3項目だけで一次判定できます。細かい条件はあとから一問一答で確認します。</p>
     <label>お住まいの自治体</label>
     <select id="municipality"><option value="shibuya">東京都渋谷区</option></select>
+    <div class="hint" id="muni-note">区独自制度のカバー範囲は区により異なります（全区で国・都の制度に対応）</div>
     <label>お子さんの生年月日</label>
     <div id="children"></div>
     <button class="btn-sub" onclick="addChild()">＋ 子どもを追加</button>
@@ -187,7 +188,7 @@ a{color:var(--blue-700)}
   </div>
 
   <footer>
-    <div class="notice">⚠️ 本サービスの判定は<strong>法的助言ではありません</strong>。制度の最終的な該当判断・申請は必ず公式窓口（<a href="https://www.city.shibuya.tokyo.jp/kodomo" target="_blank" rel="noopener">渋谷区</a>等）でご確認ください。入力された情報はサーバーに保存されません。</div>
+    <div class="notice">⚠️ 本サービスの判定は<strong>法的助言ではありません</strong>。制度の最終的な該当判断・申請は必ずお住まいの自治体の公式窓口でご確認ください。入力された情報はサーバーに保存されません。</div>
   </footer>
 </div>
 
@@ -223,6 +224,18 @@ const FACT_JA = { hitorioya:"ひとり親かどうか", hitorioya_jiyuu:"ひと�
   gakkou_kubun:"学校区分" };
 const BADGE_JA = { decided:"受給見込み", blocked:"あと少し", ineligible:"対象外",
   error:"要窓口確認", unsupported:"判定準備中" };
+
+async function loadMunicipalities(){
+  try{
+    const r = await fetch("/api/municipalities");
+    if(!r.ok) return;  // keep the static shibuya fallback
+    const munis = (await r.json()).municipalities;
+    const sel = document.getElementById("municipality");
+    sel.innerHTML = munis.map(m =>
+      `<option value="${m.id}"${m.id==="shibuya" ? " selected" : ""}>${m.name}</option>`).join("");
+  }catch(e){ /* offline fallback: static option remains */ }
+}
+loadMunicipalities();
 
 function addChild(){
   const n = document.querySelectorAll("#children .child-row").length + 1;

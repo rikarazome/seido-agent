@@ -19,9 +19,6 @@ from .prolog import judge, query_value
 
 REPO = Path(__file__).resolve().parents[2]
 
-# ward -> wider layers whose municipal programs also apply
-MUNICIPALITY_PARENTS = {"shibuya": ["tokyo"]}
-
 # question fact name -> askable key it reads/writes (default: same name)
 FACT_TO_ASKABLE = {"income": "nenshu", "income_exact": "shotoku_exact"}
 
@@ -41,6 +38,13 @@ def questions() -> list[dict]:
         (REPO / "data" / "questions.yaml").read_text(encoding="utf-8"))
 
 
+@lru_cache(maxsize=1)
+def municipalities() -> dict[str, dict]:
+    rows = yaml.safe_load(
+        (REPO / "data" / "municipalities.yaml").read_text(encoding="utf-8"))
+    return {m["id"]: m for m in rows}
+
+
 def rule_file(meta: dict) -> str:
     if meta["layer"] == "national":
         return f"rules/national/{meta['id']}.pl"
@@ -50,7 +54,8 @@ def rule_file(meta: dict) -> str:
 def _applicable(meta: dict, municipality: str) -> bool:
     if meta["layer"] == "national":
         return True
-    return meta["municipality"] in [municipality, *MUNICIPALITY_PARENTS.get(municipality, [])]
+    parents = municipalities()[municipality].get("parents") or []
+    return meta["municipality"] in [municipality, *parents]
 
 
 def _parse_status(raw: str) -> dict:
@@ -226,6 +231,8 @@ def _next_question(results, facts):
 
 def judge_request(facts: dict, as_of: date,
                   municipality: str = "shibuya") -> dict:
+    if municipality not in municipalities():
+        raise ValueError(f"unknown municipality: {municipality}")
     facts_pl = facts_to_prolog(facts, as_of)
     _household_amount.as_of = as_of  # threading for two-point re-evaluation
     children = [c.get("id") or f"c{i}"

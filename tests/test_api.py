@@ -47,6 +47,30 @@ def test_proof_rejects_unknown_program():
     assert r.status_code == 404
 
 
+def test_municipalities_endpoint():
+    r = client.get("/api/municipalities")
+    assert r.status_code == 200
+    munis = r.json()["municipalities"]
+    assert len(munis) == 23
+    assert {"id": "shibuya", "name": "東京都渋谷区"} in munis
+
+
+def test_judge_rejects_unknown_municipality():
+    r = client.post("/api/judge", json={
+        "facts": FACTS, "as_of": "2026-06-11", "municipality": "osaka"})
+    assert r.status_code == 400
+
+
+def test_judge_works_for_every_registered_ward():
+    munis = client.get("/api/municipalities").json()["municipalities"]
+    for m in munis:
+        r = client.post("/api/judge", json={
+            "facts": FACTS, "as_of": "2026-06-11", "municipality": m["id"]})
+        assert r.status_code == 200, m["id"]
+        ids = {x["program"] for x in r.json()["results"]}
+        assert "jidou_teate" in ids and "tokyo_018_support" in ids, m["id"]
+
+
 def test_static_frontend_served():
     r = client.get("/")
     assert r.status_code == 200

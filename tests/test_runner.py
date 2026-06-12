@@ -89,6 +89,23 @@ def test_childless_household_no_eligible_subject():
     assert resp["next_question"] is None
 
 
+def test_other_ward_gets_national_and_tokyo_programs_only():
+    """Any of the 23 wards immediately gets national + tokyo-layer
+    programs; other wards' municipal programs must not leak in."""
+    resp = judge_request(base_household(), AS_OF, municipality="setagaya")
+    ids = set(by_id(resp))
+    assert "jidou_teate" in ids
+    assert "tokyo_018_support" in ids
+    assert "tokyo_jidou_ikusei_teate" in ids
+    assert not any(p.startswith("shibuya_") for p in ids)
+
+
+def test_unknown_municipality_rejected():
+    import pytest
+    with pytest.raises(ValueError):
+        judge_request(base_household(), AS_OF, municipality="osaka")
+
+
 def test_per_household_amount_not_summed_over_children():
     facts = {
         "children": [

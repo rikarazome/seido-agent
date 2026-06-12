@@ -1,0 +1,28 @@
+# 選択可能な自治体レジストリ
+# parents: 当該自治体に municipal 制度が適用される上位レイヤ（rules/municipal/<id>/ に対応）
+# 23区はすべて tokyo レイヤ（018サポート・児童育成手当）を継承する。
+# 区独自制度のカバレッジは programs.yaml の status が真実（盛らない）。
+
+- { id: chiyoda,   name: 東京都千代田区, parents: [tokyo] }
+- { id: chuo,      name: 東京都中央区,   parents: [tokyo] }
+- { id: minato,    name: 東京都港区,     parents: [tokyo] }
+- { id: shinjuku,  name: 東京都新宿区,   parents: [tokyo] }
+- { id: bunkyo,    name: 東京都文京区,   parents: [tokyo] }
+- { id: taito,     name: 東京都台東区,   parents: [tokyo] }
+- { id: sumida,    name: 東京都墨田区,   parents: [tokyo] }
+- { id: koto,      name: 東京都江東区,   parents: [tokyo] }
+- { id: shinagawa, name: 東京都品川区,   parents: [tokyo] }
+- { id: meguro,    name: 東京都目黒区,   parents: [tokyo] }
+- { id: ota,       name: 東京都大田区,   parents: [tokyo] }
+- { id: setagaya,  name: 東京都世田谷区, parents: [tokyo] }
+- { id: shibuya,   name: 東京都渋谷区,   parents: [tokyo] }
+- { id: nakano,    name: 東京都中野区,   parents: [tokyo] }
+- { id: suginami,  name: 東京都杉並区,   parents: [tokyo] }
+- { id: toshima,   name: 東京都豊島区,   parents: [tokyo] }
+- { id: kita,      name: 東京都北区,     parents: [tokyo] }
+- { id: arakawa,   name: 東京都荒川区,   parents: [tokyo] }
+- { id: itabashi,  name: 東京都板橋区,   parents: [tokyo] }
+- { id: nerima,    name: 東京都練馬区,   parents: [tokyo] }
+- { id: adachi,    name: 東京都足立区,   parents: [tokyo] }
+- { id: katsushika, name: 東京都葛飾区,  parents: [tokyo] }
+- { id: edogawa,   name: 東京都江戸川区, parents: [tokyo] }
