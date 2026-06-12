@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>もらい忘れチェッカー（仮称） — 渋谷区</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1a1a2e;--sub:#666;--ok:#0a7d33;--warn:#b45309;--ng:#9ca3af;--err:#b91c1c;--accent:#2563eb;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:1.25rem;padding:8px 0}
+.sub{color:var(--sub);font-size:.85rem}
+.card{background:var(--card);border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+label{display:block;font-size:.9rem;margin:10px 0 4px;font-weight:600}
+input,select{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:1rem}
+button{cursor:pointer;border:none;border-radius:8px;font-size:1rem}
+.btn-main{width:100%;background:var(--accent);color:#fff;padding:14px;font-weight:700;margin-top:16px}
+.btn-sub{background:#eef2ff;color:var(--accent);padding:6px 12px;font-size:.85rem;margin-top:8px}
+.child-row{display:flex;gap:8px;align-items:center;margin:6px 0}
+.child-row button{background:#fee2e2;color:var(--err);padding:8px 12px}
+.headline{font-size:1.05rem;font-weight:700}
+.headline .yen{font-size:1.6rem;color:var(--ok)}
+.pcard{border-left:5px solid var(--ng);padding:12px;margin:10px 0;background:var(--card);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.pcard.decided{border-color:var(--ok)} .pcard.blocked{border-color:var(--warn)}
+.pcard.error{border-color:var(--err)}
+.pname{font-weight:700} .pstat{font-size:.85rem;color:var(--sub)}
+.pamount{font-weight:700;color:var(--ok)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{background:#eef2ff;color:var(--accent);padding:10px 14px;border-radius:20px;font-weight:600}
+.chip.dim{background:#f3f4f6;color:var(--sub)}
+.qwhy{font-size:.8rem;color:var(--sub);margin-top:4px}
+.proof{font-size:.85rem;background:#f8fafc;border-radius:8px;padding:10px;margin-top:8px;overflow-x:auto}
+.proof ul{margin-left:18px;list-style:none}
+.proof li::before{content:"└ ";color:#94a3b8}
+.naf{color:var(--err)}
+footer{font-size:.78rem;color:var(--sub);padding:16px 0;border-top:1px solid #e5e7eb;margin-top:24px}
+.hidden{display:none}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>💰 もらい忘れチェッカー <span class="sub">渋谷区版（デモ）</span></h1>
+  <p class="sub">家族構成と年収だけで、受け取れる可能性のある給付金を<strong>根拠条文つき</strong>で全部チェックします。入力情報は保存されません。</p>
+
+  <div class="card" id="form-card">
+    <label>お住まいの自治体</label>
+    <select id="municipality"><option value="shibuya">東京都渋谷区</option></select>
+    <label>お子さんの生年月日</label>
+    <div id="children"></div>
+    <button class="btn-sub" onclick="addChild()">＋ 子どもを追加</button>
+    <label>昨年の世帯主の年収（額面・だいたいで OK）</label>
+    <select id="nenshu">
+      <option value="">わからない（あとで質問されます）</option>
+      <option value="0,2000000">200万円未満</option>
+      <option value="2000000,4000000">200〜400万円</option>
+      <option value="4000000,6000000">400〜600万円</option>
+      <option value="6000000,10000000">600万〜1,000万円</option>
+      <option value="10000000,999999999">1,000万円以上</option>
+    </select>
+    <button class="btn-main" onclick="firstJudge()">いくら貰えるかチェック</button>
+  </div>
+
+  <div id="result" class="hidden">
+    <div class="card headline" id="headline"></div>
+    <div class="card" id="question-panel"></div>
+    <div id="cards"></div>
+  </div>
+
+  <footer>
+    ⚠️ 本サービスの判定は<strong>法的助言ではありません</strong>。制度の最終的な該当判断・申請は必ず公式窓口（<a href="https://www.city.shibuya.tokyo.jp/kodomo" target="_blank" rel="noopener">渋谷区</a>等）でご確認ください。入力された情報はサーバーに保存されません。
+  </footer>
+</div>
+
+<script>
+"use strict";
+// ---- client-held state (stateless server: facts travel every request) ----
+let facts = { children: [], askable: {
+  nenshu: null, shotoku_exact: null, hitorioya: null, hitorioya_jiyuu: null,
+  seikei_douitsu_partner: null, fuyou_ninzu: null, kenkou_hoken: null } };
+let lastResp = null;
+
+const REASON_JA = {
+  "child past FY-end age 18": "お子さんが18歳の年度末を過ぎています",
+  "past FY-end age 18": "お子さんが18歳の年度末を過ぎています",
+  "no single-parent cause (Art.4(1))": "ひとり親要件（法4条1項）に該当しません",
+  "no single-parent cause": "ひとり親要件に該当しません",
+  "child shares livelihood with parent de-facto spouse (Art.4(2) analog)": "事実上の配偶者と生計同一のため対象外（法4条2項）",
+  "de-facto marriage (ordinance exclusion)": "事実婚のため対象外（条例の除外規定）",
+  "income exceeds partial-payment limit": "所得が一部支給の限度額を超えています",
+  "income exceeds limit": "所得が限度額を超えています",
+  "not high-school age (FY-end 16-18)": "高校生年代（年度末16〜18歳）ではありません",
+  "not enrolled in an eligible high school": "対象となる高校等に在学していません",
+  "not covered by public health insurance": "健康保険に未加入のため対象外です",
+  "past the 1st-birthday support window": "1歳バースデーサポートの対象期間を過ぎています",
+  "grant for children born FY2026+ not yet announced (as of 2026-06)": "2026年度生まれの支給額は未発表です（2026年6月時点）",
+  "born before FY2023 (program start)": "事業開始（2023年度）前の生まれのため対象外です",
+  "no_eligible_subject": "対象となるお子さんがいません",
+};
+const ja = r => REASON_JA[r] || r;
+const FACT_JA = { hitorioya:"ひとり親かどうか", hitorioya_jiyuu:"ひとり親の事由",
+  seikei_douitsu_partner:"事実婚の有無", fuyou_ninzu:"扶養人数", income:"年収",
+  income_exact:"正確な所得", kenkou_hoken:"健康保険", koukou_zaigaku:"高校在学",
+  gakkou_kubun:"学校区分" };
+
+function addChild(){
+  const i = document.querySelectorAll("#children .child-row").length + 1;
+  const row = document.createElement("div");
+  row.className = "child-row";
+  row.innerHTML = `<input type="date" max="2026-12-31"><button onclick="this.parentNode.remove()">削除</button>`;
+  document.getElementById("children").appendChild(row);
+}
+addChild();
+
+function collectForm(){
+  facts.children = [];
+  document.querySelectorAll("#children input").forEach((el,i)=>{
+    if(el.value) facts.children.push({ id:"c"+(i+1), birth_date:el.value, askable:{} });
+  });
+  const n = document.getElementById("nenshu").value;
+  facts.askable.nenshu = n ? n.split(",").map(Number) : null;
+}
+
+async function judge(){
+  const r = await fetch("/api/judge", { method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ facts, municipality: document.getElementById("municipality").value })});
+  if(!r.ok){ alert("判定エラー: " + r.status); return; }
+  lastResp = await r.json();
+  render();
+}
+function firstJudge(){ collectForm();
+  if(!facts.children.length){ alert("お子さんの生年月日を入力してください"); return; }
+  judge(); }
+
+function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
+function amountText(a){
+  if(!a) return "";
+  if(a.type === "in_kind") return "医療費の自己負担分を助成";
+  const unit = {monthly:"月", oneoff:"一時金 ", yearly:"年"}[a.type] || "";
+  if(a.yen_min != null) return `${unit}${yen(a.yen_min)}〜${yen(a.yen_max)}`;
+  return `${unit}${yen(a.yen)}`;
+}
+
+function render(){
+  document.getElementById("result").classList.remove("hidden");
+  const h = lastResp.headline;
+  let parts = [];
+  if(h.monthly_yen) parts.push(`月 <span class="yen">${yen(h.monthly_yen)}</span>`);
+  if(h.oneoff_yen) parts.push(`一時金 <span class="yen">${yen(h.oneoff_yen)}</span>`);
+  if(h.yearly_yen) parts.push(`年 <span class="yen">${yen(h.yearly_yen)}</span>`);
+  if(h.in_kind_count) parts.push(`現物給付 ${h.in_kind_count}件`);
+  document.getElementById("headline").innerHTML =
+    parts.length ? "💰 受け取れる見込み: " + parts.join(" ＋ ") : "現時点で確定した給付はありません（質問に答えると増える可能性があります）";
+  renderQuestion();
+  renderCards();
+}
+
+function renderQuestion(){
+  const panel = document.getElementById("question-panel");
+  const q = lastResp.next_question;
+  if(!q){ panel.innerHTML = "✅ これ以上の質問はありません。"; return; }
+  const why = q.why.length ? `<div class="qwhy">この質問で ${q.why.length} 制度の判定が進みます</div>` : "";
+  let chips = q.choices.map(c=>{
+    const v = JSON.stringify(c.value);
+    const cls = c.value === "declined" ? "chip dim" : "chip";
+    return `<button class="${cls}" onclick='answer(${JSON.stringify(q.askable_key)}, ${v}, ${JSON.stringify(q.child||null)})'>${c.label}</button>`;
+  }).join("");
+  const num = q.input === "number"
+    ? `<div class="chips"><input type="number" id="num-in" placeholder="金額（円）" style="max-width:200px">
+       <button class="chip" onclick='answerNum(${JSON.stringify(q.askable_key)})'>送信</button></div>` : "";
+  panel.innerHTML = `<strong>Q. ${q.text}</strong>${why}<div class="chips">${chips}</div>${num}
+    <div class="qwhy">自由文での回答は近日対応（現在は選択肢からお選びください）</div>`;
+}
+
+function answer(key, value, childId){
+  if(childId){
+    const ch = facts.children.find(c=>c.id===childId);
+    if(ch) ch.askable[key] = value;
+  } else { facts.askable[key] = value; }
+  judge();
+}
+function answerNum(key){
+  const v = parseInt(document.getElementById("num-in").value, 10);
+  if(!isNaN(v)) answer(key, v, null);
+}
+
+function renderCards(){
+  const icons = {decided:"✅", blocked:"❓", ineligible:"❌", unsupported:"⬜", error:"⚠️"};
+  const el = document.getElementById("cards");
+  el.innerHTML = lastResp.results.map((r,idx)=>{
+    let body = "";
+    if(r.status === "decided"){
+      body = `<div class="pamount">${amountText(r.amount)}</div>
+        <button class="btn-sub" onclick="showProof(${idx})">なぜ？（根拠を見る）</button>
+        <div class="proof hidden" id="proof-${idx}"></div>`;
+    } else if(r.status === "blocked"){
+      const m = (r.missing||[]).map(f=>FACT_JA[f]||f).join("・");
+      body = `<div class="pstat">あと確認が必要: ${m}</div>` +
+        (r.partial_amount ? `<div class="pamount">確定済み ${amountText(r.partial_amount)}</div>` : "");
+    } else if(r.status === "ineligible"){
+      body = `<div class="pstat">${ja(r.reason)}</div>`;
+    } else if(r.status === "error"){
+      body = `<div class="pstat">この条件では自動判定できません。お手数ですが窓口でご確認ください。</div>`;
+    } else {
+      body = `<div class="pstat">この制度はまだ自動判定に対応していません</div>`;
+    }
+    return `<div class="pcard ${r.status}"><span class="pname">${icons[r.status]} ${r.name}</span>${body}</div>`;
+  }).join("");
+}
+
+// ---- proof tree: fetch lazily, parse the Prolog term, render nested ----
+async function showProof(idx){
+  const r = lastResp.results[idx];
+  const box = document.getElementById("proof-"+idx);
+  box.classList.toggle("hidden");
+  if(box.innerHTML) return;
+  const subj = (r.children||[]).find(s=>s.kind==="decided");
+  const res = await fetch("/api/proof", { method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ facts, program: r.program, subject: subj ? subj.subject : "self" })});
+  if(!res.ok){ box.textContent = "取得できませんでした"; return; }
+  const body = await res.json();
+  try { box.innerHTML = renderProof(parseTerm(body.proof)); }
+  catch(e){ box.textContent = body.proof; }
+}
+function parseTerm(s){
+  let i = 0;
+  function ws(){ while(i<s.length && s[i]===" ") i++; }
+  function term(){
+    ws();
+    if(s[i]==="'"){ let buf=""; i++; while(s[i]!=="'"){ buf+=s[i++]; } i++; return {f:buf, args:[]}; }
+    if(s[i]==="["){ i++; const items=[]; ws();
+      if(s[i]==="]"){ i++; return {list:items}; }
+      for(;;){ items.push(term()); ws(); if(s[i]===","){i++;continue;} if(s[i]==="]"){i++;break;} }
+      return {list:items}; }
+    let j=i; while(i<s.length && /[A-Za-z0-9_.\-]/.test(s[i])) i++;
+    const name = s.slice(j,i);
+    if(s[i]==="("){ i++; const args=[];
+      for(;;){ args.push(term()); ws(); if(s[i]===","){i++;continue;} if(s[i]===")"){i++;break;} }
+      return {f:name, args}; }
+    return {f:name, args:[]};
+  }
+  return term();
+}
+function fmtGoal(t){
+  if(t.list) return "[" + t.list.map(fmtGoal).join(", ") + "]";
+  if(!t.args.length) return t.f;
+  return t.f + "(" + t.args.map(fmtGoal).join(", ") + ")";
+}
+function renderProof(t){
+  if(!t || !t.f) return "";
+  if(t.f === "true" || t.f === "cut") return "";
+  if(t.f === "and") return t.args.map(renderProof).join("");
+  if(t.f === "or") return renderProof(t.args[0]);
+  if(t.f === "naf") return `<li class="naf">「${fmtGoal(t.args[0])}」に該当しない（確認済み）</li>`;
+  if(t.f === "builtin") return `<li>${fmtGoal(t.args[0])}</li>`;
+  if(t.f === "node"){
+    const sub = renderProof(t.args[1]);
+    return `<li><strong>${fmtGoal(t.args[0])}</strong>${sub ? `<ul>${sub}</ul>` : ""}</li>`;
+  }
+  return `<li>${fmtGoal(t)}</li>`;
+}
+</script>
+</body>
+</html>

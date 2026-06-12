@@ -8,7 +8,10 @@ from __future__ import annotations
 from datetime import date, datetime, timedelta, timezone
 from typing import Optional
 
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from .factgen import facts_to_prolog
@@ -83,3 +86,9 @@ def api_proof(req: ProofRequest):
     proof = query_proof(facts_pl, req.program, rf, req.subject, status)
     return {"program": req.program, "subject": req.subject,
             "status": status, "proof": proof}
+
+
+# static frontend, same origin (no CORS needed) -- mounted last so the
+# /api and /healthz routes above take precedence
+_WEB = Path(__file__).resolve().parents[2] / "web"
+app.mount("/", StaticFiles(directory=str(_WEB), html=True), name="static")
