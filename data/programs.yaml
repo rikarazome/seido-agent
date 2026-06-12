@@ -122,3 +122,267 @@
   potential_amount: null
   status: unsupported
   statute: []
+
+- id: minato_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: minato
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "港区 子ども医療費助成", url: "https://www.city.minato.tokyo.jp/kosodatesien/kodomo/kate/kodomoiryo.html" }
+
+- id: bunkyo_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: bunkyo
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "文京区 こども医療費助成", url: "https://www.city.bunkyo.lg.jp/b022/p001459/index.html" }
+
+- id: taito_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: taito
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "台東区 子ども医療費助成", url: "https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/iryohijosei/annai.html" }
+
+- id: toshima_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: toshima
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "豊島区 子どもの医療費助成", url: "https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/015729.html" }
+
+- id: chiyoda_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: chiyoda
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "千代田区 こども・高校生等医療費助成制度", url: "https://www.city.chiyoda.lg.jp/koho/kosodate/teate/kodomoiryo.html" }
+
+- id: chuo_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: chuo
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "中央区 子ども医療費助成", url: "https://www.city.chuo.lg.jp/a0020/kosodate/kosodate/teatejosei/iryouhijosei/akimoto.html" }
+
+- id: shinjuku_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: shinjuku
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "新宿区 子ども医療費助成", url: "https://www.city.shinjuku.lg.jp/kodomo/file03_04_00003.html" }
+
+- id: sumida_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: sumida
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "墨田区 子どもの医療費の助成", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/teate_zyosei/jyosei/nyuuyouji_iryouhi.html" }
+
+- id: koto_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: koto
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "江東区 子ども医療費助成", url: "https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/5844.html" }
+
+- id: shinagawa_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: shinagawa
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "品川区 子どもすこやか医療費助成", url: "http://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-iryohizyosei/hpg000017744.html" }
+
+- id: meguro_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: meguro
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "目黒区 子ども医療費助成制度", url: "https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/toha.html" }
+
+- id: ota_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: ota
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "大田区 児童医療費助成制度", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/kodomonyuui.html" }
+
+- id: setagaya_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: setagaya
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "世田谷区 子ども等医療費助成制度", url: "https://www.city.setagaya.lg.jp/02413/1305.html" }
+
+- id: nakano_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: nakano
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "中野区 子ども医療費助成制度", url: "https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/teate/iryohijyosei/kodomoiryojyosei.html" }
+
+- id: suginami_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: suginami
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "杉並区 子ども医療費助成", url: "https://www.city.suginami.tokyo.jp/s053/1043.html" }
+
+- id: kita_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: kita
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "北区 子ども医療費助成", url: "https://www.city.kita.tokyo.jp/k-mirai/kosodate/teate/kodomo/gaiyo.html" }
+
+- id: arakawa_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: arakawa
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "荒川区 乳幼児・子ども・高校生等医療費助成", url: "https://www.city.arakawa.tokyo.jp/a035/kosodate/teate/iryohijyosei.html" }
+
+- id: itabashi_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: itabashi
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "板橋区 子ども医療費助成", url: "https://www.city.itabashi.tokyo.jp/kosodate/teate/iryohi/1004624.html" }
+
+- id: nerima_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: nerima
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "練馬区 子ども医療費の助成", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/josei.html" }
+
+- id: adachi_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: adachi
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "足立区 子ども医療費助成制度", url: "https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/teate-iryohijose.html" }
+
+- id: katsushika_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: katsushika
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "葛飾区 子どもの医療費助成", url: "https://www.city.katsushika.lg.jp/kosodate/1000056/1002336/1002421.html" }
+
+- id: edogawa_kodomo_iryouhi
+  name: 子ども医療費助成
+  layer: municipal
+  municipality: edogawa
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  status: supported
+  statute:
+    - { ref: "江戸川区 子ども医療費助成制度", url: "https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/iryoujosei.html" }

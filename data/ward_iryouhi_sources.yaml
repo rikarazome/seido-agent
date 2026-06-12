@@ -1,0 +1,151 @@
+# 東京23区 子ども医療費助成 — 検証済みソース表（scripts/gen_ward_iryouhi.py の入力）
+# 並列リサーチエージェント4体による公式一次情報調査（2026-06-12）。
+# ここに載るのは「対象年齢18歳年度末・所得制限なし・自己負担なし・健保加入要件」の
+# 4点が区公式サイトで確認できた区のみ（品質ゲート: 盛らない）。
+# shibuya は手動形式化済み（tests/golden/shibuya_kodomo_iryouhi/）のため対象外。
+# 所得制限の「消極的確認」= 公式ページ・条例に所得要件の記載が一切ないことをもって
+# 「なし」と形式化（渋谷区と同じ確認水準。note に明記）。
+
+- id: minato
+  name_ja: 港区
+  ref: 港区 子ども医療費助成
+  url: https://www.city.minato.tokyo.jp/kosodatesien/kodomo/kate/kodomoiryo.html
+  verified: "2026-06-12"
+  note: 所得制限は消極的確認（公式ページに所得要件の記載なし、条例 https://www.city.minato.tokyo.jp/reiki/reiki_honbun/g104RG00000448.html にも所得要件条項なし。2023年撤廃の報道とも整合）。
+
+- id: bunkyo
+  name_ja: 文京区
+  ref: 文京区 こども医療費助成
+  url: https://www.city.bunkyo.lg.jp/b022/p001459/index.html
+  verified: "2026-06-12"
+  note: 所得制限は消極的確認（公式ページに所得要件の記載なし。2023年度マル青開始時に23区として所得制限・自己負担を撤廃 https://www.city.bunkyo.lg.jp/b022/p001462.html）。
+
+- id: taito
+  name_ja: 台東区
+  ref: 台東区 子ども医療費助成
+  url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/iryohijosei/annai.html
+  verified: "2026-06-12"
+  note: >-
+    重要な相違: 台東区は償還払い方式（医療機関で一旦全額支払い、後日区に申請して
+    口座振込で助成。公式に明記）。助成範囲（保険診療自己負担分）は他区と同一のため
+    decided 詳細は共通の in_kind(jiko_futan_josei) とし、支払い方式の相違は本ノートで
+    固定。所得制限は消極的確認（対象要件に所得条項なし）。
+
+- id: toshima
+  name_ja: 豊島区
+  ref: 豊島区 子どもの医療費助成
+  url: https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/015729.html
+  verified: "2026-06-12"
+  note: 「保護者の所得制限はありません」と公式ページに明示。
+
+- id: chiyoda
+  name_ja: 千代田区
+  ref: 千代田区 こども・高校生等医療費助成制度
+  url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/kodomoiryo.html
+  verified: "2026-06-12"
+
+- id: chuo
+  name_ja: 中央区
+  ref: 中央区 子ども医療費助成
+  url: https://www.city.chuo.lg.jp/a0020/kosodate/kosodate/teatejosei/iryouhijosei/akimoto.html
+  verified: "2026-06-12"
+
+- id: shinjuku
+  name_ja: 新宿区
+  ref: 新宿区 子ども医療費助成
+  url: https://www.city.shinjuku.lg.jp/kodomo/file03_04_00003.html
+  verified: "2026-06-12"
+
+- id: sumida
+  name_ja: 墨田区
+  ref: 墨田区 子どもの医療費の助成
+  url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/teate_zyosei/jyosei/nyuuyouji_iryouhi.html
+  verified: "2026-06-12"
+
+- id: koto
+  name_ja: 江東区
+  ref: 江東区 子ども医療費助成
+  url: https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/5844.html
+  verified: "2026-06-12"
+
+- id: shinagawa
+  name_ja: 品川区
+  ref: 品川区 子どもすこやか医療費助成
+  url: http://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-iryohizyosei/hpg000017744.html
+  verified: "2026-06-12"
+  note: 高校生等医療費助成ページに「所得制限はありません」と明示（https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-iryohizyosei/20190605164306.html）。こども家庭庁R4-R5全国調査でも所得制限「無」。
+
+- id: meguro
+  name_ja: 目黒区
+  ref: 目黒区 子ども医療費助成制度
+  url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/toha.html
+  verified: "2026-06-12"
+  note: 令和6年10月に所得制限廃止と公式明記。
+
+- id: ota
+  name_ja: 大田区
+  ref: 大田区 児童医療費助成制度
+  url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/kodomonyuui.html
+  verified: "2026-06-12"
+
+- id: setagaya
+  name_ja: 世田谷区
+  ref: 世田谷区 子ども等医療費助成制度
+  url: https://www.city.setagaya.lg.jp/02413/1305.html
+  verified: "2026-06-12"
+  note: 所得制限は消極的確認（公式ページ・案内PDF・対象外者リストのいずれにも所得要件の記載なし。渋谷区と同じ確認水準）。条例本文の明示条文は未確認。
+
+- id: nakano
+  name_ja: 中野区
+  ref: 中野区 子ども医療費助成制度
+  url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/teate/iryohijyosei/kodomoiryojyosei.html
+  verified: "2026-06-12"
+
+- id: suginami
+  name_ja: 杉並区
+  ref: 杉並区 子ども医療費助成
+  url: https://www.city.suginami.tokyo.jp/s053/1043.html
+  verified: "2026-06-12"
+
+- id: kita
+  name_ja: 北区
+  ref: 北区 子ども医療費助成
+  url: https://www.city.kita.tokyo.jp/k-mirai/kosodate/teate/kodomo/gaiyo.html
+  verified: "2026-06-12"
+
+- id: arakawa
+  name_ja: 荒川区
+  ref: 荒川区 乳幼児・子ども・高校生等医療費助成
+  url: https://www.city.arakawa.tokyo.jp/a035/kosodate/teate/iryohijyosei.html
+  verified: "2026-06-12"
+
+- id: itabashi
+  name_ja: 板橋区
+  ref: 板橋区 子ども医療費助成
+  url: https://www.city.itabashi.tokyo.jp/kosodate/teate/iryohi/1004624.html
+  verified: "2026-06-12"
+
+- id: nerima
+  name_ja: 練馬区
+  ref: 練馬区 子ども医療費の助成
+  url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/josei.html
+  verified: "2026-06-12"
+
+- id: adachi
+  name_ja: 足立区
+  ref: 足立区 子ども医療費助成制度
+  url: https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/teate-iryohijose.html
+  verified: "2026-06-12"
+  note: 令和5年度から所得制限なし・自己負担なしに拡大と公式明記。
+
+- id: katsushika
+  name_ja: 葛飾区
+  ref: 葛飾区 子どもの医療費助成
+  url: https://www.city.katsushika.lg.jp/kosodate/1000056/1002336/1002421.html
+  verified: "2026-06-12"
+
+- id: edogawa
+  name_ja: 江戸川区
+  ref: 江戸川区 子ども医療費助成制度
+  url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/iryoujosei.html
+  verified: "2026-06-12"
