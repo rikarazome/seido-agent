@@ -4,53 +4,171 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>もらい忘れチェッカー（仮称） — 渋谷区</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230017C1'/%3E%3Ctext x='16' y='23' font-size='18' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'%3E%C2%A5%3C/text%3E%3C/svg%3E">
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#1a1a2e;--sub:#666;--ok:#0a7d33;--warn:#b45309;--ng:#9ca3af;--err:#b91c1c;--accent:#2563eb;}
+/* ============================================================
+   Design tokens — based on the Digital Agency Design System
+   (デジタル庁デザインシステム) color/typography conventions.
+   ============================================================ */
+:root{
+  /* color */
+  --blue-900:#000082; --blue-700:#0017C1; --blue-100:#C5D7FB; --blue-50:#E8F1FE;
+  --ink:#1A1A1C; --ink-sub:#626264; --ink-faint:#949497;
+  --border:#D8D8DB; --bg:#F1F1F4; --surface:#FFFFFF;
+  --green-700:#197A4B; --green-50:#E6F5EC;
+  --amber-800:#927200; --amber-50:#FBF5E0;
+  --red-700:#EC0000; --red-50:#FDEEEE;
+  --focus:#FFD43D;
+  /* shape */
+  --r-s:8px; --r-m:12px; --r-pill:999px;
+  --shadow:0 1px 3px rgba(26,26,28,.10), 0 1px 2px rgba(26,26,28,.06);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-.wrap{max-width:640px;margin:0 auto;padding:16px}
-h1{font-size:1.25rem;padding:8px 0}
-.sub{color:var(--sub);font-size:.85rem}
-.card{background:var(--card);border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-label{display:block;font-size:.9rem;margin:10px 0 4px;font-weight:600}
-input,select{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:1rem}
-button{cursor:pointer;border:none;border-radius:8px;font-size:1rem}
-.btn-main{width:100%;background:var(--accent);color:#fff;padding:14px;font-weight:700;margin-top:16px}
-.btn-sub{background:#eef2ff;color:var(--accent);padding:6px 12px;font-size:.85rem;margin-top:8px}
-.child-row{display:flex;gap:8px;align-items:center;margin:6px 0}
-.child-row button{background:#fee2e2;color:var(--err);padding:8px 12px}
-.headline{font-size:1.05rem;font-weight:700}
-.headline .yen{font-size:1.6rem;color:var(--ok)}
-.pcard{border-left:5px solid var(--ng);padding:12px;margin:10px 0;background:var(--card);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.pcard.decided{border-color:var(--ok)} .pcard.blocked{border-color:var(--warn)}
-.pcard.error{border-color:var(--err)}
-.pname{font-weight:700} .pstat{font-size:.85rem;color:var(--sub)}
-.pamount{font-weight:700;color:var(--ok)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.chip{background:#eef2ff;color:var(--accent);padding:10px 14px;border-radius:20px;font-weight:600}
-.chip.dim{background:#f3f4f6;color:var(--sub)}
-.qwhy{font-size:.8rem;color:var(--sub);margin-top:4px}
-.proof{font-size:.85rem;background:#f8fafc;border-radius:8px;padding:10px;margin-top:8px;overflow-x:auto}
-.proof ul{margin-left:18px;list-style:none}
-.proof li::before{content:"└ ";color:#94a3b8}
-.naf{color:var(--err)}
-footer{font-size:.78rem;color:var(--sub);padding:16px 0;border-top:1px solid #e5e7eb;margin-top:24px}
+html{font-size:16px}
+body{
+  font-family:"Noto Sans JP","Hiragino Sans",-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.7;
+  font-feature-settings:"palt";
+}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+
+/* ---- app header ---- */
+.appbar{background:var(--surface);border-bottom:2px solid var(--blue-700)}
+.appbar-inner{max-width:680px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.logo{flex:none;width:40px;height:40px;border-radius:10px;background:var(--blue-700);
+  color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.2rem}
+.appbar h1{font-size:1.1rem;line-height:1.3;font-weight:700}
+.appbar .muni-badge{display:inline-block;font-size:.72rem;font-weight:600;color:var(--blue-700);
+  background:var(--blue-50);border:1px solid var(--blue-100);border-radius:var(--r-pill);
+  padding:1px 10px;margin-left:6px;vertical-align:2px}
+.appbar .tagline{font-size:.78rem;color:var(--ink-sub)}
+
+.wrap{max-width:680px;margin:0 auto;padding:16px 16px 32px}
+.lead{font-size:.9rem;color:var(--ink-sub);margin:12px 2px 4px}
+.lead strong{color:var(--ink)}
+
+/* ---- cards ---- */
+.card{background:var(--surface);border-radius:var(--r-m);padding:20px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid var(--border)}
+.card h2{font-size:1rem;margin-bottom:4px}
+.card .hint{font-size:.8rem;color:var(--ink-sub)}
+
+/* ---- form ---- */
+label{display:block;font-size:.88rem;margin:16px 0 6px;font-weight:700}
+label .opt{font-weight:400;color:var(--ink-sub);font-size:.78rem}
+input,select{width:100%;padding:11px 12px;border:1px solid var(--ink-faint);
+  border-radius:var(--r-s);font-size:1rem;font-family:inherit;background:var(--surface);color:var(--ink)}
+input:hover,select:hover{border-color:var(--ink-sub)}
+button{cursor:pointer;border:none;border-radius:var(--r-s);font-size:1rem;font-family:inherit;font-weight:700}
+.btn-main{width:100%;background:var(--blue-700);color:#fff;padding:15px;margin-top:20px;
+  border-radius:var(--r-s);transition:background .15s}
+.btn-main:hover{background:var(--blue-900)}
+.btn-sub{background:var(--surface);color:var(--blue-700);border:1px solid var(--blue-700);
+  padding:7px 14px;font-size:.85rem;margin-top:10px;border-radius:var(--r-s)}
+.btn-sub:hover{background:var(--blue-50)}
+.btn-ghost{background:none;color:var(--blue-700);font-size:.82rem;font-weight:600;
+  padding:4px 8px;text-decoration:underline;text-underline-offset:3px}
+.child-row{display:flex;gap:8px;align-items:center;margin:8px 0}
+.child-row .who{flex:none;font-size:.8rem;font-weight:700;color:var(--ink-sub);width:4.2em}
+.child-row button{flex:none;background:var(--surface);color:var(--red-700);
+  border:1px solid var(--red-700);padding:9px 12px;font-size:.82rem}
+.child-row button:hover{background:var(--red-50)}
+
+/* ---- headline hero ---- */
+.hero{background:linear-gradient(135deg,var(--blue-700),#1438D8 60%,#2E50E0);
+  color:#fff;border:none;border-radius:var(--r-m);padding:22px 20px;margin:14px 0;box-shadow:var(--shadow)}
+.hero .cap{font-size:.8rem;font-weight:600;opacity:.9;letter-spacing:.04em}
+.hero .amounts{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline;margin-top:4px}
+.hero .unit{font-size:.85rem;font-weight:600;opacity:.92}
+.hero .yen{font-size:1.9rem;font-weight:700;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.hero .none{font-size:.95rem;font-weight:600;margin-top:4px}
+.hero .floor-note{font-size:.72rem;opacity:.8;margin-top:8px}
+.progress{display:flex;align-items:center;gap:10px;margin-top:14px}
+.progress .bar{flex:1;height:8px;background:rgba(255,255,255,.25);border-radius:var(--r-pill);overflow:hidden}
+.progress .bar i{display:block;height:100%;background:#fff;border-radius:var(--r-pill);transition:width .4s}
+.progress .num{font-size:.78rem;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ---- question panel ---- */
+.qcard{border-left:6px solid var(--blue-700)}
+.qcard .qbadge{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;
+  background:var(--blue-700);color:#fff;font-size:.85rem;font-weight:700;margin-right:8px;vertical-align:-5px}
+.qcard .qtext{font-size:1rem;font-weight:700}
+.qwhy{font-size:.78rem;color:var(--ink-sub);margin-top:6px}
+.qwhy b{color:var(--blue-700)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:var(--surface);color:var(--blue-700);border:1.5px solid var(--blue-700);
+  padding:10px 18px;border-radius:var(--r-pill);font-weight:700;font-size:.92rem;transition:background .12s}
+.chip:hover{background:var(--blue-50)}
+.chip:active{background:var(--blue-100)}
+.chip.dim{color:var(--ink-sub);border-color:var(--border);font-weight:600}
+.chip.dim:hover{background:var(--bg)}
+.chips input[type=number]{max-width:200px;border-radius:var(--r-pill);padding:10px 16px}
+.done-note{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--green-700)}
+
+/* ---- program cards ---- */
+.pcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-m);
+  padding:16px 18px;margin:10px 0;box-shadow:var(--shadow)}
+.phead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pname{font-weight:700;font-size:.95rem;flex:1;min-width:0}
+.badge{flex:none;font-size:.72rem;font-weight:700;border-radius:var(--r-pill);padding:2px 12px;letter-spacing:.03em}
+.badge.decided{background:var(--green-50);color:var(--green-700)}
+.badge.blocked{background:var(--amber-50);color:var(--amber-800)}
+.badge.ineligible{background:var(--bg);color:var(--ink-sub)}
+.badge.error{background:var(--red-50);color:var(--red-700)}
+.badge.unsupported{background:var(--bg);color:var(--ink-faint)}
+.pcard.ineligible .pname,.pcard.unsupported .pname{color:var(--ink-sub);font-weight:600}
+.pamount{font-weight:700;color:var(--green-700);font-size:1.05rem;margin-top:6px;font-variant-numeric:tabular-nums}
+.pstat{font-size:.84rem;color:var(--ink-sub);margin-top:6px}
+.layer-tag{flex:none;font-size:.68rem;color:var(--ink-faint);border:1px solid var(--border);
+  border-radius:4px;padding:0 6px}
+
+/* ---- proof tree ---- */
+.proof{font-size:.83rem;background:#F7F9FC;border:1px solid var(--blue-100);
+  border-radius:var(--r-s);padding:12px 14px;margin-top:10px;overflow-x:auto}
+.proof .proof-title{font-size:.75rem;font-weight:700;color:var(--blue-700);
+  letter-spacing:.05em;margin-bottom:6px}
+.proof ul{margin-left:16px;list-style:none;border-left:2px solid var(--blue-100);padding-left:10px}
+.proof>ul{margin-left:0;border-left:none;padding-left:0}
+.proof li{margin:2px 0}
+.proof code{font-family:"Consolas","SF Mono",monospace;font-size:.86em;background:rgba(0,23,193,.06);
+  border-radius:4px;padding:0 4px}
+.naf{color:var(--red-700)}
+.naf::before{content:"✓ ";font-weight:700}
+
+footer{font-size:.78rem;color:var(--ink-sub);margin-top:28px}
+.notice{background:var(--amber-50);border:1px solid #E8D58A;border-radius:var(--r-s);padding:12px 14px}
+a{color:var(--blue-700)}
 .hidden{display:none}
-a{color:var(--accent)}
+@media (max-width:480px){
+  .wrap{padding:12px 12px 28px}
+  .card{padding:16px}
+  .hero .yen{font-size:1.6rem}
+}
 </style>
 </head>
 <body>
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">¥</div>
+    <div>
+      <h1>もらい忘れチェッカー<span class="muni-badge">渋谷区版・デモ</span></h1>
+      <div class="tagline">あなたが貰い損ねているお金を、根拠付きで見つける</div>
+    </div>
+  </div>
+</header>
+
 <div class="wrap">
-  <h1>💰 もらい忘れチェッカー <span class="sub">渋谷区版（デモ）</span></h1>
-  <p class="sub">家族構成と年収だけで、受け取れる可能性のある給付金を<strong>根拠条文つき</strong>で全部チェックします。入力情報は保存されません。</p>
+  <p class="lead">家族構成と年収だけで、受け取れる可能性のある給付金を<strong>根拠条文つき</strong>で全部チェックします。入力情報はサーバーに保存されません。</p>
 
   <div class="card" id="form-card">
+    <h2>基本情報</h2>
+    <p class="hint">この3項目だけで一次判定できます。細かい条件はあとから一問一答で確認します。</p>
     <label>お住まいの自治体</label>
     <select id="municipality"><option value="shibuya">東京都渋谷区</option></select>
     <label>お子さんの生年月日</label>
     <div id="children"></div>
     <button class="btn-sub" onclick="addChild()">＋ 子どもを追加</button>
-    <label>昨年の世帯主の年収（額面・だいたいで OK）</label>
+    <label>昨年の世帯主の年収 <span class="opt">額面・だいたいでOK</span></label>
     <select id="nenshu">
       <option value="">わからない（あとで質問されます）</option>
       <option value="0,2000000">200万円未満</option>
@@ -63,13 +181,13 @@ a{color:var(--accent)}
   </div>
 
   <div id="result" class="hidden">
-    <div class="card headline" id="headline"></div>
-    <div class="card" id="question-panel"></div>
+    <div class="hero" id="headline"></div>
+    <div class="card qcard" id="question-panel"></div>
     <div id="cards"></div>
   </div>
 
   <footer>
-    ⚠️ 本サービスの判定は<strong>法的助言ではありません</strong>。制度の最終的な該当判断・申請は必ず公式窓口（<a href="https://www.city.shibuya.tokyo.jp/kodomo" target="_blank" rel="noopener">渋谷区</a>等）でご確認ください。入力された情報はサーバーに保存されません。
+    <div class="notice">⚠️ 本サービスの判定は<strong>法的助言ではありません</strong>。制度の最終的な該当判断・申請は必ず公式窓口（<a href="https://www.city.shibuya.tokyo.jp/kodomo" target="_blank" rel="noopener">渋谷区</a>等）でご確認ください。入力された情報はサーバーに保存されません。</div>
   </footer>
 </div>
 
@@ -103,12 +221,14 @@ const FACT_JA = { hitorioya:"ひとり親かどうか", hitorioya_jiyuu:"ひと�
   seikei_douitsu_partner:"事実婚の有無", fuyou_ninzu:"扶養人数", income:"年収",
   income_exact:"正確な所得", kenkou_hoken:"健康保険", koukou_zaigaku:"高校在学",
   gakkou_kubun:"学校区分" };
+const BADGE_JA = { decided:"受給見込み", blocked:"あと少し", ineligible:"対象外",
+  error:"要窓口確認", unsupported:"判定準備中" };
 
 function addChild(){
-  const i = document.querySelectorAll("#children .child-row").length + 1;
+  const n = document.querySelectorAll("#children .child-row").length + 1;
   const row = document.createElement("div");
   row.className = "child-row";
-  row.innerHTML = `<input type="date" max="2026-12-31"><button onclick="this.parentNode.remove()">削除</button>`;
+  row.innerHTML = `<span class="who">${n}人目</span><input type="date" max="2026-12-31" aria-label="お子さん${n}人目の生年月日"><button onclick="this.parentNode.remove()">削除</button>`;
   document.getElementById("children").appendChild(row);
 }
 addChild();
@@ -147,12 +267,18 @@ function render(){
   document.getElementById("result").classList.remove("hidden");
   const h = lastResp.headline;
   let parts = [];
-  if(h.monthly_yen) parts.push(`月 <span class="yen">${yen(h.monthly_yen)}</span>`);
-  if(h.oneoff_yen) parts.push(`一時金 <span class="yen">${yen(h.oneoff_yen)}</span>`);
-  if(h.yearly_yen) parts.push(`年 <span class="yen">${yen(h.yearly_yen)}</span>`);
-  if(h.in_kind_count) parts.push(`現物給付 ${h.in_kind_count}件`);
-  document.getElementById("headline").innerHTML =
-    parts.length ? "💰 受け取れる見込み: " + parts.join(" ＋ ") : "現時点で確定した給付はありません（質問に答えると増える可能性があります）";
+  if(h.monthly_yen) parts.push(`<span><span class="unit">月</span> <span class="yen">${yen(h.monthly_yen)}</span></span>`);
+  if(h.oneoff_yen) parts.push(`<span><span class="unit">一時金</span> <span class="yen">${yen(h.oneoff_yen)}</span></span>`);
+  if(h.yearly_yen) parts.push(`<span><span class="unit">年</span> <span class="yen">${yen(h.yearly_yen)}</span></span>`);
+  if(h.in_kind_count) parts.push(`<span><span class="unit">現物給付</span> <span class="yen">${h.in_kind_count}件</span></span>`);
+  const total = lastResp.results.length;
+  const settled = lastResp.results.filter(r=>["decided","ineligible","error","unsupported"].includes(r.status)).length;
+  const body = parts.length
+    ? `<div class="cap">受け取れる見込み（確定分のみ・下限）</div><div class="amounts">${parts.join("")}</div>`
+    : `<div class="cap">受け取れる見込み</div><div class="none">現時点で確定した給付はありません。下の質問に答えると増える可能性があります。</div>`;
+  document.getElementById("headline").innerHTML = body +
+    `<div class="progress"><div class="bar"><i style="width:${Math.round(settled/total*100)}%"></i></div>
+     <span class="num">${settled} / ${total} 制度 判定済み</span></div>`;
   renderQuestion();
   renderCards();
 }
@@ -160,17 +286,17 @@ function render(){
 function renderQuestion(){
   const panel = document.getElementById("question-panel");
   const q = lastResp.next_question;
-  if(!q){ panel.innerHTML = "✅ これ以上の質問はありません。"; return; }
-  const why = q.why.length ? `<div class="qwhy">この質問で ${q.why.length} 制度の判定が進みます</div>` : "";
+  if(!q){ panel.innerHTML = `<div class="done-note">✅ すべての質問が完了しました。判定結果は以下のとおりです。</div>`; return; }
+  const why = q.why.length ? `<div class="qwhy">この質問に答えると <b>${q.why.length} 制度</b> の判定が進みます</div>` : "";
   let chips = q.choices.map(c=>{
     const v = JSON.stringify(c.value);
     const cls = c.value === "declined" ? "chip dim" : "chip";
     return `<button class="${cls}" onclick='answer(${JSON.stringify(q.askable_key)}, ${v}, ${JSON.stringify(q.child||null)})'>${c.label}</button>`;
   }).join("");
   const num = q.input === "number"
-    ? `<div class="chips"><input type="number" id="num-in" placeholder="金額（円）" style="max-width:200px">
+    ? `<div class="chips"><input type="number" id="num-in" placeholder="金額（円）" aria-label="金額を入力">
        <button class="chip" onclick='answerNum(${JSON.stringify(q.askable_key)})'>送信</button></div>` : "";
-  panel.innerHTML = `<strong>Q. ${q.text}</strong>${why}<div class="chips">${chips}</div>${num}
+  panel.innerHTML = `<span class="qbadge">Q</span><span class="qtext">${q.text}</span>${why}<div class="chips">${chips}</div>${num}
     <div class="qwhy">自由文での回答は近日対応（現在は選択肢からお選びください）</div>`;
 }
 
@@ -187,13 +313,12 @@ function answerNum(key){
 }
 
 function renderCards(){
-  const icons = {decided:"✅", blocked:"❓", ineligible:"❌", unsupported:"⬜", error:"⚠️"};
   const el = document.getElementById("cards");
   el.innerHTML = lastResp.results.map((r,idx)=>{
     let body = "";
     if(r.status === "decided"){
       body = `<div class="pamount">${amountText(r.amount)}</div>
-        <button class="btn-sub" onclick="showProof(${idx})">なぜ？（根拠を見る）</button>
+        <button class="btn-sub" onclick="showProof(${idx})">なぜ？（判定の根拠を見る）</button>
         <div class="proof hidden" id="proof-${idx}"></div>`;
     } else if(r.status === "blocked"){
       const m = (r.missing||[]).map(f=>FACT_JA[f]||f).join("・");
@@ -206,7 +331,10 @@ function renderCards(){
     } else {
       body = `<div class="pstat">この制度はまだ自動判定に対応していません</div>`;
     }
-    return `<div class="pcard ${r.status}"><span class="pname">${icons[r.status]} ${r.name}</span>${body}</div>`;
+    return `<div class="pcard ${r.status}"><div class="phead">
+      <span class="pname">${r.name}</span>
+      <span class="badge ${r.status}">${BADGE_JA[r.status]||r.status}</span>
+    </div>${body}</div>`;
   }).join("");
 }
 
@@ -222,7 +350,7 @@ async function showProof(idx){
     body: JSON.stringify({ facts, program: r.program, subject: subj ? subj.subject : "self" })});
   if(!res.ok){ box.textContent = "取得できませんでした"; return; }
   const body = await res.json();
-  try { box.innerHTML = renderProof(parseTerm(body.proof)); }
+  try { box.innerHTML = `<div class="proof-title">判定の証明（推論エンジンの導出過程）</div><ul>` + renderProof(parseTerm(body.proof)) + `</ul>`; }
   catch(e){ box.textContent = body.proof; }
 }
 function parseTerm(s){
@@ -254,13 +382,13 @@ function renderProof(t){
   if(t.f === "true" || t.f === "cut") return "";
   if(t.f === "and") return t.args.map(renderProof).join("");
   if(t.f === "or") return renderProof(t.args[0]);
-  if(t.f === "naf") return `<li class="naf">「${fmtGoal(t.args[0])}」に該当しない（確認済み）</li>`;
-  if(t.f === "builtin") return `<li>${fmtGoal(t.args[0])}</li>`;
+  if(t.f === "naf") return `<li class="naf">「<code>${fmtGoal(t.args[0])}</code>」に該当しない（確認済み）</li>`;
+  if(t.f === "builtin") return `<li><code>${fmtGoal(t.args[0])}</code></li>`;
   if(t.f === "node"){
     const sub = renderProof(t.args[1]);
-    return `<li><strong>${fmtGoal(t.args[0])}</strong>${sub ? `<ul>${sub}</ul>` : ""}</li>`;
+    return `<li><strong><code>${fmtGoal(t.args[0])}</code></strong>${sub ? `<ul>${sub}</ul>` : ""}</li>`;
   }
-  return `<li>${fmtGoal(t)}</li>`;
+  return `<li><code>${fmtGoal(t)}</code></li>`;
 }
 </script>
 </body>

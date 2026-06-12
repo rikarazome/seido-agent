@@ -113,7 +113,7 @@
   statute: []
 
 - id: shibuya_housing_tbd
-  name: 住宅系制度（渋谷区代替を選定中 — docs/target-programs.md #7）
+  name: 住み替え家賃補助（住宅系・対応制度を選定中）
   layer: municipal
   municipality: shibuya
   subject: claimant
