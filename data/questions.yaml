@@ -46,6 +46,11 @@
   text: ご家族は健康保険（国民健康保険・社会保険など）に加入していますか
   type: boolean
 
+- fact: ninshin
+  text: 現在妊娠中ですか
+  type: boolean
+  sensitive: true
+
 # --- per-child askables（children[].askable。質問文の {child} は「2009年生まれのお子さん」等に展開） ---
 
 - fact: koukou_zaigaku
