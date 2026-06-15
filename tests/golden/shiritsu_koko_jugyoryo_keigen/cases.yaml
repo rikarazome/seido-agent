@@ -1,0 +1,70 @@
+# 私立高校授業料軽減助成金 golden cases（statute_source.md）
+# subject: child, amount: yearly max 484,000
+# conditions: koukou_zaigaku + gakkou_kubun == shiritsu
+
+- name: shiritsu_decided_private_hs
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2010-06-01", askable: { koukou_zaigaku: true, gakkou_kubun: "shiritsu" } }
+  expect: { subject: c1, status: decided, detail: "yearly(484000)" }
+
+- name: shiritsu_ineligible_public_school
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2010-06-01", askable: { koukou_zaigaku: true, gakkou_kubun: "kouritsu" } }
+  expect: { subject: c1, status: ineligible, detail: "not_private_school" }
+
+- name: shiritsu_ineligible_not_in_hs
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2010-06-01", askable: { koukou_zaigaku: false } }
+  expect: { subject: c1, status: ineligible, detail: "not_in_high_school" }
+
+- name: shiritsu_blocked_zaigaku_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2010-06-01", askable: {} }
+  expect: { subject: c1, status: blocked, detail: "[koukou_zaigaku]" }
+
+- name: shiritsu_blocked_kubun_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2010-06-01", askable: { koukou_zaigaku: true } }
+  expect: { subject: c1, status: blocked, detail: "[gakkou_kubun]" }
+
+- name: shiritsu_ineligible_age_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2006-01-01", askable: { koukou_zaigaku: true, gakkou_kubun: "shiritsu" } }
+  expect: { subject: c1, status: ineligible, detail: "age_over" }
+  # FY-end age 20 -> too old for high school subsidy
+
+- name: shiritsu_young_child_not_in_hs
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children:
+      - { id: c1, birth_date: "2020-01-01", askable: {} }
+  expect: { subject: c1, status: blocked, detail: "[koukou_zaigaku]" }
+  # young child: still blocked on zaigaku question (engine doesn't assume)
+
+- name: shiritsu_mixed_children
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2010-06-01", askable: { koukou_zaigaku: true, gakkou_kubun: "shiritsu" } }
+      - { id: c2, birth_date: "2020-01-01", askable: { koukou_zaigaku: false } }
+  expect: { subject: c1, status: decided, detail: "yearly(484000)" }

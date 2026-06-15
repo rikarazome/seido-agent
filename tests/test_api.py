@@ -135,17 +135,24 @@ def test_interview_flow_end_to_end():
     assert resp["next_question"]["fact"] == "hitorioya"
 
     # answer chips in the order the engine asks
-    answers = {"hitorioya": True, "hitorioya_jiyuu": "rikon",
-               "seikei_douitsu_partner": False, "fuyou_ninzu": 2,
-               "kenkou_hoken": True, "shotoku_exact": 1_400_000,
-               "ninshin": False}
-    for _ in range(10):                                # frontend turn cap
+    household_answers = {"hitorioya": True, "hitorioya_jiyuu": "rikon",
+                         "seikei_douitsu_partner": False, "fuyou_ninzu": 2,
+                         "kenkou_hoken": True, "shotoku_exact": 1_400_000,
+                         "ninshin": False}
+    per_child_answers = {"koukou_zaigaku": False, "gakkou_kubun": None}
+    for _ in range(15):                                # frontend turn cap
         q = resp["next_question"]
         if q is None:
             break
         key = q["askable_key"]
-        assert key in answers, f"unexpected question: {key}"
-        facts["askable"][key] = answers[key]
+        child = q.get("child")
+        if child:
+            assert key in per_child_answers, f"unexpected per-child question: {key}"
+            ch = next(c for c in facts["children"] if c["id"] == child)
+            ch["askable"][key] = per_child_answers[key]
+        else:
+            assert key in household_answers, f"unexpected question: {key}"
+            facts["askable"][key] = household_answers[key]
         resp = judge()
     assert resp["next_question"] is None
 

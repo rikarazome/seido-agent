@@ -114,6 +114,18 @@
   statute:
     - { ref: "東京都ひとり親家庭等医療費助成制度（マル親）", url: "https://www.fukushi.metro.tokyo.lg.jp/smph/iryo/josei/maruoya.html" }
 
+- id: shiritsu_koko_jugyoryo_keigen
+  name: 私立高校授業料軽減助成金
+  layer: municipal
+  municipality: tokyo
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 484000
+  status: supported
+  statute:
+    - { ref: "東京都私学財団 授業料軽減助成金", url: "https://www.shigaku-tokyo.or.jp/parents/tuition.html" }
+
 - id: tokyo_akachan_first
   name: 赤ちゃんファースト
   layer: municipal
