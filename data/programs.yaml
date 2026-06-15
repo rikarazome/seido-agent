@@ -1151,3 +1151,147 @@
   status: supported
   statute:
     - { ref: "Edogawa shugaku enjo", url: "https://www.city.edogawa.tokyo.jp/e048/kosodate/gakko/enjo.html" }
+
+- id: minato_shussan_hiyou_josei
+  name: 港区出産費用助成
+  layer: municipal
+  municipality: minato
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 730000
+  status: supported
+  statute:
+    - { ref: "Minato birth cost subsidy", url: "https://www.city.minato.tokyo.jp/kenko/kodomo/shussan/josei.html" }
+
+- id: shibuya_hajimete_kosodate_ouen
+  name: 渋谷区はじめて子育て応援金
+  layer: municipal
+  municipality: shibuya
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 100000
+  status: supported
+  statute:
+    - { ref: "Shibuya first childcare support", url: "https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/hajimete.html" }
+
+- id: chuo_shussan_shien
+  name: 中央区出産支援祝品
+  layer: municipal
+  municipality: chuo
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 30000
+  status: supported
+  statute:
+    - { ref: "Chuo birth celebration gift", url: "https://www.city.chuo.lg.jp/a0033/kosodate/shussan/shukuhin.html" }
+
+- id: bunkyo_koukousei_ikusei_shienkin
+  name: 文京区高校生世代育成支援金
+  layer: municipal
+  municipality: bunkyo
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 50000
+  status: supported
+  statute:
+    - { ref: "Bunkyo high school support fund", url: "https://www.city.bunkyo.lg.jp/tetsuzuki/kosodate/teate/koukousei.html" }
+
+- id: koto_shussan_oiwaikin
+  name: 江東区出産祝い金
+  layer: municipal
+  municipality: koto
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 50000
+  status: supported
+  statute:
+    - { ref: "Koto birth celebration", url: "https://www.city.koto.lg.jp/260401/kosodate/shussan/oiwai.html" }
+
+- id: shinagawa_kosodate_ouen
+  name: 品川区子育て応援券
+  layer: municipal
+  municipality: shinagawa
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 10000
+  status: supported
+  statute:
+    - { ref: "Shinagawa childcare support voucher", url: "https://www.city.shinagawa.tokyo.jp/PC/kodomo/kosodate-ouen.html" }
+
+- id: toshima_shussan_oiwaikin
+  name: 豊島区出産祝い金
+  layer: municipal
+  municipality: toshima
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "Toshima birth celebration", url: "https://www.city.toshima.lg.jp/353/kosodate/shussan/oiwai.html" }
+
+- id: adachi_kosodate_ouen
+  name: 足立区子育て応援金
+  layer: municipal
+  municipality: adachi
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 30000
+  status: supported
+  statute:
+    - { ref: "Adachi childcare support", url: "https://www.city.adachi.tokyo.jp/kosodate/ouen.html" }
+
+- id: edogawa_nyuyoji_teate
+  name: 江戸川区乳児養育手当
+  layer: municipal
+  municipality: edogawa
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 13000
+  status: supported
+  statute:
+    - { ref: "Edogawa infant nurturing allowance", url: "https://www.city.edogawa.tokyo.jp/e048/kosodate/teate/nyuyoji.html" }
+
+- id: kita_nyuyoji_teate
+  name: 北区乳幼児養育手当
+  layer: municipal
+  municipality: kita
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 5000
+  status: supported
+  statute:
+    - { ref: "Kita infant allowance", url: "https://www.city.kita.tokyo.jp/r-kodomoseisaku/teate/nyuyoji.html" }
+
+- id: setagaya_shussan_oiwaikin
+  name: 世田谷区出生祝い金
+  layer: municipal
+  municipality: setagaya
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "Setagaya birth celebration", url: "https://www.city.setagaya.lg.jp/mokuji/kodomo/009/d00210270.html" }
+
+- id: nerima_dai3shi_ouen
+  name: 練馬区第3子誕生祝い金
+  layer: municipal
+  municipality: nerima
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 200000
+  status: supported
+  statute:
+    - { ref: "Nerima 3rd child celebration", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/ouen/dai3shi.html" }
