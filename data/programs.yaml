@@ -102,6 +102,18 @@
     - { ref: "東京都児童育成手当に関する条例施行規則", url: "https://www.reiki.metro.tokyo.lg.jp/reiki/reiki_honbun/g101RG00000745.html" }
     - { ref: "渋谷区 ひとり親家庭の手当", url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_teate.html" }
 
+- id: tokyo_akachan_first
+  name: 赤ちゃんファースト
+  layer: municipal
+  municipality: tokyo
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 100000
+  status: supported
+  statute:
+    - { ref: "東京都赤ちゃんファースト事業", url: "https://akachan-first.metro.tokyo.lg.jp/" }
+
 - id: shibuya_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal

@@ -1,0 +1,47 @@
+# 赤ちゃんファースト golden cases（statute_source.md）
+# subject: child, amount: oneoff 100,000 (points)
+# eligibility: FY-end age <= 1 (born within ~past 2 years)
+
+- name: akachan_infant_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2026-01-15" } ]   # age 0, FY-end 0
+  expect: { subject: c1, status: decided, detail: "oneoff(100000)" }
+
+- name: akachan_fy_end_age1_still_eligible
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2025-04-01" } ]   # FY-end age 1
+  expect: { subject: c1, status: decided, detail: "oneoff(100000)" }
+
+- name: akachan_fy_end_age2_ineligible
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2024-01-01" } ]   # FY-end age 2
+  expect: { subject: c1, status: ineligible, detail: "age_over" }
+
+- name: akachan_fy_end_age10_ineligible
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2015-06-01" } ]   # FY-end age 11
+  expect: { subject: c1, status: ineligible, detail: "age_over" }
+
+- name: akachan_structural_missing
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2026-03-01" } ]   # newborn
+  expect: { subject: c1, status: decided, detail: "oneoff(100000)" }
+
+- name: akachan_multiple_children_mixed
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children:
+      - { id: c1, birth_date: "2019-06-01" }   # FY-end age 7 -> ineligible
+      - { id: c2, birth_date: "2025-10-01" }   # FY-end age 0 -> decided
+  expect: { subject: c2, status: decided, detail: "oneoff(100000)" }

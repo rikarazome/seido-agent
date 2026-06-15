@@ -58,9 +58,9 @@ def test_first_pass_shibuya_two_children():
     # unsupported programs surface honestly
     assert r["shibuya_shugaku_enjo"]["status"] == "unsupported"
 
-    # headline: 25,000 + 10,000 monthly, 100,000 oneoff
+    # headline: 25,000 + 10,000 monthly, 100,000 (birthday) + 100,000 (akachan) oneoff
     assert resp["headline"]["monthly_yen"] == 35000
-    assert resp["headline"]["oneoff_yen"] == 100000
+    assert resp["headline"]["oneoff_yen"] == 200000
 
     # shussan_ikuji_ichijikin: blocked on ninshin + kenkou_hoken
     assert r["shussan_ikuji_ichijikin"]["status"] == "blocked"

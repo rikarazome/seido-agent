@@ -1,0 +1,21 @@
+% ============================================================
+% tokyo_akachan_first.pl - Tokyo Baby First (infant benefit)
+% VERIFIED 2026-06-15: 100,000 JPY equivalent points per child
+% born in Tokyo. Eligible while FY-end age <= 1. No income limit.
+% Sources: tests/golden/tokyo_akachan_first/statute_source.md
+% Requires engine.pl.
+% ============================================================
+
+:- module(tokyo_akachan_first, [kettei_status/3, required_fact/3]).
+
+required_fact(_, _, _) :- fail.
+
+kettei_status(P, C, error(structural_facts_missing)) :-
+    claimant(P), child(C),
+    \+ age_nendo_matsu(C, _), !.
+kettei_status(P, C, ineligible(age_over)) :-
+    claimant(P), kango_by(C, P), child(C),
+    age_nendo_matsu(C, A), A > 1, !.
+kettei_status(P, C, decided(oneoff(100000))) :-
+    claimant(P), kango_by(C, P), child(C), !.
+kettei_status(_, _, error(no_rule_matched)).
