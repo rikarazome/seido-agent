@@ -127,7 +127,8 @@ def _aggregate(meta, subj_results, facts, facts_pl, as_of):
         card["status"] = "decided"
         if meta["amount_type"] == "in_kind":
             card["amount"] = {"type": "in_kind"}
-        elif meta["unit"] == "per_household":
+        elif meta["unit"] == "per_household" and any(
+                s["yen"] is None for s in subj_results if s["kind"] == "decided"):
             kubuns = {s["detail"] for s in subj_results
                       if s["kind"] == "decided"}
             if len(kubuns) > 1:
