@@ -42,9 +42,12 @@ def _parse_as_of(raw: "Optional[str]") -> date:
     if raw is None:
         return datetime.now(JST).date()
     try:
-        return date.fromisoformat(raw)
+        d = date.fromisoformat(raw)
     except ValueError:
         raise HTTPException(422, "as_of must be YYYY-MM-DD")
+    if not (date(2020, 1, 1) <= d <= date(2100, 12, 31)):
+        raise HTTPException(422, "as_of out of supported range")
+    return d
 
 
 def _guard_size(req: BaseModel) -> None:
@@ -71,8 +74,8 @@ def api_judge(req: JudgeRequest):
     try:
         return judge_request(req.facts, _parse_as_of(req.as_of),
                              municipality=req.municipality)
-    except ValueError as e:  # schema violations from factgen
-        raise HTTPException(422, str(e))
+    except ValueError:
+        raise HTTPException(422, "invalid facts schema")
 
 
 @app.post("/api/proof")
@@ -83,12 +86,14 @@ def api_proof(req: ProofRequest):
     meta = next((p for p in programs() if p["id"] == req.program), None)
     if meta is None or meta.get("status") != "supported":
         raise HTTPException(404, "unknown or unsupported program")
-    if req.subject != "self" and not req.subject.startswith("c"):
-        raise HTTPException(422, "bad subject")
+    if req.subject != "self" and not (
+        req.subject.startswith("c") and req.subject[1:].isdigit()
+    ):
+        raise HTTPException(422, "subject must be 'self' or 'c<N>'")
     try:
         facts_pl = facts_to_prolog(req.facts, _parse_as_of(req.as_of))
-    except (ValueError, KeyError) as e:
-        raise HTTPException(422, str(e))
+    except (ValueError, KeyError):
+        raise HTTPException(422, "invalid facts schema")
     rf = rule_file(meta)
     status = judge(facts_pl, req.program, rf, req.subject)
     proof = query_proof(facts_pl, req.program, rf, req.subject, status)

@@ -71,6 +71,40 @@ def test_judge_works_for_every_registered_ward():
         assert "jidou_teate" in ids and "tokyo_018_support" in ids, m["id"]
 
 
+def test_proof_rejects_bad_subject():
+    for bad in ["c1_inject)", "SELF", "1c", "c", "c1 c2"]:
+        r = client.post("/api/proof", json={
+            "facts": FACTS, "as_of": "2026-06-11",
+            "program": "jidou_teate", "subject": bad})
+        assert r.status_code == 422, f"should reject subject={bad!r}"
+
+
+def test_as_of_range_validation():
+    r = client.post("/api/judge", json={
+        "facts": FACTS, "as_of": "9999-12-31", "municipality": "shibuya"})
+    assert r.status_code == 422
+
+
+def test_too_many_children_rejected():
+    big_facts = {
+        "children": [{"birth_date": "2020-01-01"} for _ in range(25)],
+        "askable": {},
+    }
+    r = client.post("/api/judge", json={
+        "facts": big_facts, "as_of": "2026-06-11", "municipality": "shibuya"})
+    assert r.status_code == 422
+
+
+def test_child_id_injection_blocked_via_api():
+    evil_facts = {
+        "children": [{"id": "c1). halt(1). x(", "birth_date": "2020-01-01"}],
+        "askable": {},
+    }
+    r = client.post("/api/judge", json={
+        "facts": evil_facts, "as_of": "2026-06-11", "municipality": "shibuya"})
+    assert r.status_code == 422
+
+
 def test_static_frontend_served():
     r = client.get("/")
     assert r.status_code == 200

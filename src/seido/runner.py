@@ -14,13 +14,10 @@ from pathlib import Path
 
 import yaml
 
-from .factgen import CHILD_ASKABLE_PREDS, facts_to_prolog, salary_to_shotoku
+from .factgen import CHILD_ASKABLE_PREDS, CLAIMANT, facts_to_prolog, salary_to_shotoku
 from .prolog import judge, query_value
 
 REPO = Path(__file__).resolve().parents[2]
-
-# question fact name -> askable key it reads/writes (default: same name)
-FACT_TO_ASKABLE = {"income": "nenshu", "income_exact": "shotoku_exact"}
 
 _STATUS_RE = re.compile(r"^(decided|blocked|ineligible|error)\((.*)\)$")
 _DETAIL_RE = re.compile(r"^(\w+)\((\w+)\)$")
@@ -43,6 +40,16 @@ def municipalities() -> dict[str, dict]:
     rows = yaml.safe_load(
         (REPO / "data" / "municipalities.yaml").read_text(encoding="utf-8"))
     return {m["id"]: m for m in rows}
+
+
+@lru_cache(maxsize=1)
+def _fact_to_askable() -> dict[str, str]:
+    """Derive fact->askable_key mapping from questions.yaml (non-identity only).
+
+    questions.yaml is the single source of truth for askable_key overrides;
+    this avoids a second hardcoded copy that can silently drift."""
+    return {q["fact"]: q["askable_key"]
+            for q in questions() if "askable_key" in q}
 
 
 def rule_file(meta: dict) -> str:
@@ -76,11 +83,12 @@ def _parse_status(raw: str) -> dict:
     return {"kind": kind, "detail": inner, "func": inner, "yen": None}
 
 
-def _household_amount(meta, facts, facts_pl):
+def _household_amount(meta, facts, facts_pl, as_of):
     """per_household amount via teate_amount/2; two-point taper evaluation
     when income is only known as a range (architecture.md)."""
     rf = rule_file(meta)
-    got = query_value(facts_pl, meta["id"], rf, "teate_amount(p1, A)")
+    goal = f"teate_amount({CLAIMANT}, A)"
+    got = query_value(facts_pl, meta["id"], rf, goal)
     if got.isdigit():
         return {"type": meta["amount_type"], "yen": int(got)}
     nenshu = (facts.get("askable") or {}).get("nenshu")
@@ -90,8 +98,8 @@ def _household_amount(meta, facts, facts_pl):
     for endpoint in (salary_to_shotoku(nenshu[0]), salary_to_shotoku(nenshu[1])):
         f2 = copy.deepcopy(facts)
         f2.setdefault("askable", {})["shotoku_exact"] = endpoint
-        a = query_value(facts_to_prolog(f2, _household_amount.as_of),
-                        meta["id"], rf, "teate_amount(p1, A)")
+        a = query_value(facts_to_prolog(f2, as_of),
+                        meta["id"], rf, goal)
         if not a.isdigit():
             return None
         amounts.append(int(a))
@@ -99,7 +107,7 @@ def _household_amount(meta, facts, facts_pl):
             "yen_min": min(amounts), "yen_max": max(amounts)}
 
 
-def _aggregate(meta, subj_results, facts, facts_pl):
+def _aggregate(meta, subj_results, facts, facts_pl, as_of):
     card = {"program": meta["id"], "name": meta["name"],
             "children": subj_results}
     kinds = [s["kind"] for s in subj_results]
@@ -124,7 +132,8 @@ def _aggregate(meta, subj_results, facts, facts_pl):
                 card["status"] = "error"
                 card["reason"] = "inconsistent_household_kubun"
             else:
-                card["amount"] = _household_amount(meta, facts, facts_pl)
+                card["amount"] = _household_amount(meta, facts, facts_pl,
+                                                   as_of)
         elif meta["amount_type"] != "in_kind":
             card["amount"] = {"type": meta["amount_type"], "yen": decided_yen}
         else:
@@ -205,7 +214,7 @@ def _next_question(results, facts):
         if r.get("status") != "blocked":
             continue
         for fact in r.get("missing", []):
-            key = FACT_TO_ASKABLE.get(fact, fact)
+            key = _fact_to_askable().get(fact, fact)
             if fact in CHILD_ASKABLE_PREDS:
                 if not _pending_children(fact, facts):
                     continue  # every child answered or declined
@@ -234,7 +243,6 @@ def judge_request(facts: dict, as_of: date,
     if municipality not in municipalities():
         raise ValueError(f"unknown municipality: {municipality}")
     facts_pl = facts_to_prolog(facts, as_of)
-    _household_amount.as_of = as_of  # threading for two-point re-evaluation
     children = [c.get("id") or f"c{i}"
                 for i, c in enumerate(facts.get("children") or [], start=1)]
     results = []
@@ -258,6 +266,6 @@ def judge_request(facts: dict, as_of: date,
             parsed["subject"] = s
             parsed["raw"] = raw
             subj_results.append(parsed)
-        results.append(_aggregate(meta, subj_results, facts, facts_pl))
+        results.append(_aggregate(meta, subj_results, facts, facts_pl, as_of))
     return {"headline": _headline(results), "results": results,
             "next_question": _next_question(results, facts)}

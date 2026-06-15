@@ -3,7 +3,9 @@ from datetime import date
 
 import pytest
 
-from seido.factgen import facts_to_prolog, salary_to_shotoku
+from seido.factgen import (
+    CHILD_ASKABLE_PREDS, facts_to_prolog, salary_to_shotoku,
+)
 
 # 2020-onward salary deduction brackets (kyuuyo shotoku koujo)
 CASES = [
@@ -42,3 +44,44 @@ def test_shotoku_exact_bypasses_conversion():
     out = facts_to_prolog(facts, date(2026, 6, 11))
     assert "known(income(p1), 1500000)" in out
     assert "range" not in out
+
+
+# -- injection defence --
+
+@pytest.mark.parametrize("bad_id", [
+    "c1). :- halt(1). child(c2",
+    "../etc/passwd",
+    "C1",          # uppercase
+    "1abc",        # digit start
+    "c1 c2",       # space
+    "a(b)",        # parens
+])
+def test_malicious_child_id_rejected(bad_id):
+    facts = {"children": [{"id": bad_id, "birth_date": "2020-01-01"}],
+             "askable": {}}
+    with pytest.raises(ValueError, match="invalid identifier"):
+        facts_to_prolog(facts, date(2026, 6, 11))
+
+
+def test_valid_child_ids_accepted():
+    for cid in ["c1", "child_a", "abc123"]:
+        facts = {"children": [{"id": cid, "birth_date": "2020-01-01"}],
+                 "askable": {}}
+        out = facts_to_prolog(facts, date(2026, 6, 11))
+        assert f"child({cid})." in out
+
+
+def test_empty_child_id_gets_auto_generated():
+    facts = {"children": [{"id": "", "birth_date": "2020-01-01"}],
+             "askable": {}}
+    out = facts_to_prolog(facts, date(2026, 6, 11))
+    assert "child(c1)." in out
+
+
+# -- data sync guard --
+
+def test_child_askable_preds_matches_questions_yaml():
+    """CHILD_ASKABLE_PREDS must stay in sync with questions.yaml scope:per_child."""
+    from seido.runner import questions
+    per_child = {q["fact"] for q in questions() if q.get("scope") == "per_child"}
+    assert CHILD_ASKABLE_PREDS == per_child

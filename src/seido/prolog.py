@@ -5,6 +5,8 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from .factgen import CLAIMANT as _DEFAULT_CLAIMANT, _validate_atom
+
 REPO = Path(__file__).resolve().parents[2]
 ENGINE = (REPO / "rules" / "engine.pl").as_posix()
 
@@ -66,13 +68,16 @@ def _query_driver(facts_pl: str, rule_file: str, body: str, timeout: int) -> str
 
 
 def judge(facts_pl: str, program: str, rule_file: str, subject: str,
-          claimant: str = "p1", timeout: int = 15) -> str:
+          claimant: str = _DEFAULT_CLAIMANT, timeout: int = 15) -> str:
     """Run once(Program:kettei_status(Claimant, Subject, S)); return writeq(S).
 
     Per the calling convention (rule-schema.md) both arguments are bound.
     A no-solution outcome is reported as error(no_solution) -- the runner
     half of the fail-safe double guard.
     """
+    _validate_atom(program)
+    _validate_atom(subject)
+    _validate_atom(claimant)
     body = (
         "main :-\n"
         f"    ( once({program}:kettei_status({claimant}, {subject}, S))\n"
@@ -95,11 +100,14 @@ def query_value(facts_pl: str, program: str, rule_file: str, goal: str,
 
 
 def proof_agrees(facts_pl: str, program: str, rule_file: str, subject: str,
-                 status_term: str, claimant: str = "p1",
+                 status_term: str, claimant: str = _DEFAULT_CLAIMANT,
                  timeout: int = 15) -> bool:
     """Stage-2 re-derivation check: the GROUND status from the plain query
     must be re-derivable by the proof-tree meta-interpreter (and a different
     status must not be). Run on every golden case as a CI invariant."""
+    _validate_atom(program)
+    _validate_atom(subject)
+    _validate_atom(claimant)
     body = (
         "main :-\n"
         f"    ( once(prove({program},\n"
@@ -112,12 +120,15 @@ def proof_agrees(facts_pl: str, program: str, rule_file: str, subject: str,
 
 
 def query_proof(facts_pl: str, program: str, rule_file: str, subject: str,
-                status_term: str, claimant: str = "p1",
+                status_term: str, claimant: str = _DEFAULT_CLAIMANT,
                 timeout: int = 15) -> str:
     """Stage-2 re-derivation returning the proof tree term (writeq).
 
     status_term must come from a server-side judge() call, never from the
     client (no user input may reach Prolog source -- security rule)."""
+    _validate_atom(program)
+    _validate_atom(subject)
+    _validate_atom(claimant)
     body = (
         "main :-\n"
         f"    ( once(prove({program},\n"
