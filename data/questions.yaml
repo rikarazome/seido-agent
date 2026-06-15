@@ -1,4 +1,4 @@
-# 一問一答の静的メタデータ（docs/specs/architecture.md 一問一答エンジン）
+# 質問選定アルゴリズムの静的メタデータ（docs/specs/architecture.md 質問選定アルゴリズム）
 # 設計規則:
 #  (1) enum の choices は法定列挙のみ。「その他」(__free_text__) と「わからない/答えたくない」
 #      (declined) はエンジンが全質問に自動付与する
