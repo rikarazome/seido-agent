@@ -51,6 +51,32 @@
   type: boolean
   sensitive: true
 
+- fact: seikatsu_hogo
+  text: 生活保護を受給中ですか
+  type: boolean
+  sensitive: true
+
+- fact: hikazei
+  text: 住民税非課税世帯ですか
+  type: boolean
+
+- fact: shogai_techo
+  text: 障害者手帳をお持ちですか（種類を教えてください）
+  type: enum
+  choices: { shintai_1: 身体1級, shintai_2: 身体2級, shintai_3: 身体3級,
+             ryoiku: 愛の手帳（療育）, seishin_1: 精神1級, seishin_2: 精神2級 }
+  primary: [shintai_1, ryoiku, seishin_1]
+  sensitive: true
+
+- fact: koyou_hoken
+  text: 雇用保険に加入していますか（または過去に加入していましたか）
+  type: boolean
+
+- fact: rishoku
+  text: 現在離職中ですか（または収入が大幅に減少しましたか）
+  type: boolean
+  sensitive: true
+
 # --- per-child askables（children[].askable。質問文の {child} は「2009年生まれのお子さん」等に展開） ---
 
 - fact: koukou_zaigaku
