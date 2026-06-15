@@ -1,0 +1,61 @@
+# 受験生チャレンジ支援貸付 golden cases（statute_source.md）
+# subject: child, amount: oneoff 200,000
+# age: FY-end 14-15 (chu3) or 17-18 (ko3)
+# income limit: 2,322,000 + 490,000 * N (approximate)
+
+- name: juken_decided_chu3
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2012-02-01" }   # FY-end age 15 (chu3)
+    askable: { fuyou_ninzu: 1, shotoku_exact: 2500000 }
+  expect: { subject: c1, status: decided, detail: "oneoff(200000)" }
+  # limit(1) = 2,812,000. shotoku 2,500,000 < limit
+
+- name: juken_decided_ko3
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2009-02-01" }   # FY-end age 18 (ko3)
+    askable: { fuyou_ninzu: 1, shotoku_exact: 2500000 }
+  expect: { subject: c1, status: decided, detail: "oneoff(200000)" }
+
+- name: juken_ineligible_age_not_target
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-06-01" }   # FY-end age 11 (sho5)
+    askable: { fuyou_ninzu: 1, shotoku_exact: 2500000 }
+  expect: { subject: c1, status: ineligible, detail: "not_target_grade" }
+
+- name: juken_ineligible_chu2
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2013-02-01" }   # FY-end age 14 (chu2)
+    askable: { fuyou_ninzu: 1, shotoku_exact: 2500000 }
+  expect: { subject: c1, status: decided, detail: "oneoff(200000)" }
+  # FY-end 14 = chu3 entry year -- eligible
+
+- name: juken_ineligible_income_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2012-02-01" }   # chu3
+    askable: { fuyou_ninzu: 0, shotoku_exact: 2500000 }
+  expect: { subject: c1, status: ineligible, detail: "income_over" }
+  # limit(0) = 2,322,000. shotoku 2,500,000 >= limit
+
+- name: juken_blocked_income_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2012-02-01" }
+    askable: {}
+  expect: { subject: c1, status: blocked, detail: "[fuyou_ninzu,income]" }

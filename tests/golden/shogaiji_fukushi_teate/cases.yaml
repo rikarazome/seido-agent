@@ -1,0 +1,58 @@
+# 障害児福祉手当 golden cases（statute_source.md）
+# subject: child, amount: monthly 15,690
+# income limit: 4,596,000 + 380,000 * N
+# v1: shintai_1 as proxy for severe disability
+
+- name: shofuku_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_1" } }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: decided, detail: "monthly(15690)" }
+
+- name: shofuku_ineligible_shintai2
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_2" } }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: ineligible, detail: "grade_not_covered" }
+
+- name: shofuku_ineligible_age_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2005-01-01", askable: { shogai_techo_child: "shintai_1" } }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: ineligible, detail: "age_20_or_over" }
+
+- name: shofuku_ineligible_income_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_1" } }
+    askable: { fuyou_ninzu: 0, shotoku_exact: 5000000 }
+  expect: { subject: c1, status: ineligible, detail: "income_over" }
+
+- name: shofuku_blocked_techo_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: {} }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: blocked, detail: "[shogai_techo_child]" }
+
+- name: shofuku_blocked_income_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_1" } }
+    askable: {}
+  expect: { subject: c1, status: blocked, detail: "[fuyou_ninzu,income]" }

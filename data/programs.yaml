@@ -54,6 +54,19 @@
     - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
     - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
 
+- id: shogaiji_fukushi_teate
+  name: 障害児福祉手当
+  layer: national
+  municipality: null
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 15690
+  status: supported
+  statute:
+    - { ref: "特別児童扶養手当等の支給に関する法律17条", url: "https://laws.e-gov.go.jp/law/339AC0000000134" }
+    - { ref: "厚労省 障害児福祉手当", url: "https://www.mhlw.go.jp/bunya/shougaihoken/jidou/tokubetsu.html" }
+
 - id: jiritsu_shien_iryo_ikusei
   name: 自立支援医療（育成医療）
   layer: national
@@ -203,6 +216,18 @@
   status: supported
   statute:
     - { ref: "東京都ひとり親家庭等医療費助成制度（マル親）", url: "https://www.fukushi.metro.tokyo.lg.jp/smph/iryo/josei/maruoya.html" }
+
+- id: jukensei_challenge
+  name: 受験生チャレンジ支援貸付
+  layer: municipal
+  municipality: tokyo
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 200000
+  status: supported
+  statute:
+    - { ref: "東京都社会福祉協議会 受験生チャレンジ", url: "https://www.tcsw.tvac.or.jp/activity/jukensei.html" }
 
 - id: tokyo_judo_shinshin_teate
   name: 東京都重度心身障害者手当
