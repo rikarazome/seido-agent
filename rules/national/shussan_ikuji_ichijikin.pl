@@ -11,14 +11,14 @@
 
 :- module(shussan_ikuji_ichijikin, [kettei_status/3, required_fact/3]).
 
-kettei_status(P, self, blocked(Missing)) :-
-    claimant(P),
-    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
-    Missing \= [], !.
 kettei_status(P, self, ineligible(not_pregnant)) :-
     claimant(P), no(ninshin(P)), !.
 kettei_status(P, self, ineligible(no_health_insurance)) :-
     claimant(P), yes(ninshin(P)), no(kenkou_hoken(P)), !.
+kettei_status(P, self, blocked(Missing)) :-
+    claimant(P),
+    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
+    Missing \= [], !.
 kettei_status(P, self, decided(amount(500000))) :-
     claimant(P), yes(ninshin(P)), yes(kenkou_hoken(P)), !.
 kettei_status(_, _, error(no_rule_matched)).

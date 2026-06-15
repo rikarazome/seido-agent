@@ -57,6 +57,15 @@
     askable: { ninshin: false, kenkou_hoken: false }
   expect: { subject: self, status: ineligible, detail: "not_pregnant" }
 
+- name: shuiku_not_pregnant_hoken_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-05-01" }
+    children: []
+    askable: { ninshin: false }
+  expect: { subject: self, status: ineligible, detail: "not_pregnant" }
+  # regression: must NOT be blocked([kenkou_hoken]) -- ninshin=false is decisive
+
 - name: shuiku_with_children_still_claimant
   as_of: "2026-06-15"
   facts:
