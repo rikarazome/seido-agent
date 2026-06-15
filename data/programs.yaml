@@ -54,6 +54,18 @@
     - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
     - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
 
+- id: shussan_kosodate_ouen
+  name: 出産・子育て応援交付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 100000
+  status: supported
+  statute:
+    - { ref: "児童福祉法一部改正（令和4年法律104号）", url: "https://www.cfa.go.jp/policies/shussan-kosodate/" }
+
 - id: jukyo_kakuho_kyufukin
   name: 住居確保給付金
   layer: national
