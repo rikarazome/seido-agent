@@ -1,0 +1,184 @@
+# 23区心身障害者福祉手当 — 区別金額データ
+# 各区の条例に基づく。金額は身体1-2級/愛の手帳(ryoiku)のA等級と身体3級のB等級の2段階。
+# seishin(精神)の取扱いは区により異なる（多くの区は対象外）。
+# v1では精神障害は対象外として統一（保守的判定）。
+# 65歳以上の新規は対象外（多くの区で共通）。
+# VERIFIED 2026-06-15（公式サイトベース）
+
+# 渋谷区は手動実装済み（shibuya_shinshin_shogaisha_teate）のため除外
+
+- id: chiyoda
+  name_ja: 千代田区
+  yen_a: 16000     # 身体1-2級/愛の手帳
+  yen_b: 8000      # 身体3級
+  ref: "千代田区心身障害者福祉手当"
+  url: "https://www.city.chiyoda.lg.jp/koho/kenko/shogai/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: chuo
+  name_ja: 中央区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "中央区心身障害者福祉手当"
+  url: "https://www.city.chuo.lg.jp/a0033/kenkouiryou/shougai/teate/shinshinshougaisha.html"
+  verified: "2026-06-15"
+
+- id: minato
+  name_ja: 港区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "港区心身障害者福祉手当"
+  url: "https://www.city.minato.tokyo.jp/shougaifukushi/teate.html"
+  verified: "2026-06-15"
+
+- id: shinjuku
+  name_ja: 新宿区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "新宿区心身障害者福祉手当"
+  url: "https://www.city.shinjuku.lg.jp/fukushi/fukushi01_002072.html"
+  verified: "2026-06-15"
+
+- id: bunkyo
+  name_ja: 文京区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "文京区心身障害者福祉手当"
+  url: "https://www.city.bunkyo.lg.jp/tetsuzuki/shogai/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: taito
+  name_ja: 台東区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "台東区心身障害者福祉手当"
+  url: "https://www.city.taito.lg.jp/kenko/shogaisha/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: sumida
+  name_ja: 墨田区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "墨田区心身障害者福祉手当"
+  url: "https://www.city.sumida.lg.jp/kenko_fukushi/syougai/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: koto
+  name_ja: 江東区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "江東区心身障害者福祉手当"
+  url: "https://www.city.koto.lg.jp/260402/fukushi/shogaisha/teate/index.html"
+  verified: "2026-06-15"
+
+- id: shinagawa
+  name_ja: 品川区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "品川区心身障害者福祉手当"
+  url: "https://www.city.shinagawa.tokyo.jp/PC/fukushi/shogaisha/teate/index.html"
+  verified: "2026-06-15"
+
+- id: meguro
+  name_ja: 目黒区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "目黒区心身障害者福祉手当"
+  url: "https://www.city.meguro.tokyo.jp/kurashi/fukushi/shogaisha/teate_josei/shinshin.html"
+  verified: "2026-06-15"
+
+- id: ota
+  name_ja: 大田区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "大田区心身障害者福祉手当"
+  url: "https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: setagaya
+  name_ja: 世田谷区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "世田谷区心身障害者福祉手当"
+  url: "https://www.city.setagaya.lg.jp/mokuji/fukushi/001/003/d00129291.html"
+  verified: "2026-06-15"
+
+- id: nakano
+  name_ja: 中野区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "中野区心身障害者福祉手当"
+  url: "https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/shogai/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: suginami
+  name_ja: 杉並区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "杉並区心身障害者福祉手当"
+  url: "https://www.city.suginami.tokyo.jp/guide/fukushi/shogai/1004885.html"
+  verified: "2026-06-15"
+
+- id: toshima
+  name_ja: 豊島区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "豊島区心身障害者福祉手当"
+  url: "https://www.city.toshima.lg.jp/212/kenko/shogai/teate/004215.html"
+  verified: "2026-06-15"
+
+- id: kita
+  name_ja: 北区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "北区心身障害者福祉手当"
+  url: "https://www.city.kita.tokyo.jp/r-shogaifukushi/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: arakawa
+  name_ja: 荒川区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "荒川区心身障害者福祉手当"
+  url: "https://www.city.arakawa.tokyo.jp/a024/fukushi/shogai/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: itabashi
+  name_ja: 板橋区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "板橋区心身障害者福祉手当"
+  url: "https://www.city.itabashi.tokyo.jp/kenko/shougaisha/teate/1001789.html"
+  verified: "2026-06-15"
+
+- id: nerima
+  name_ja: 練馬区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "練馬区心身障害者福祉手当"
+  url: "https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/teate/shinshin.html"
+  verified: "2026-06-15"
+
+- id: adachi
+  name_ja: 足立区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "足立区心身障害者福祉手当"
+  url: "https://www.city.adachi.tokyo.jp/shogai/fukushi/shogai/teate-shinshin.html"
+  verified: "2026-06-15"
+
+- id: katsushika
+  name_ja: 葛飾区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "葛飾区心身障害者福祉手当"
+  url: "https://www.city.katsushika.lg.jp/kurashi/1000059/1002386/1002394.html"
+  verified: "2026-06-15"
+
+- id: edogawa
+  name_ja: 江戸川区
+  yen_a: 15500
+  yen_b: 7750
+  ref: "江戸川区心身障害者福祉手当"
+  url: "https://www.city.edogawa.tokyo.jp/e048/kenko/shogaisha/teate/shinshin.html"
+  verified: "2026-06-15"

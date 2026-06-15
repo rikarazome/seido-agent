@@ -611,3 +611,267 @@
   status: supported
   statute:
     - { ref: "江戸川区 子ども医療費助成制度", url: "https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/iryoujosei.html" }
+
+- id: chiyoda_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（千代田区）
+  layer: municipal
+  municipality: chiyoda
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 16000
+  status: supported
+  statute:
+    - { ref: "千代田区心身障害者福祉手当", url: "https://www.city.chiyoda.lg.jp/koho/kenko/shogai/teate/shinshin.html" }
+
+- id: chuo_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（中央区）
+  layer: municipal
+  municipality: chuo
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "中央区心身障害者福祉手当", url: "https://www.city.chuo.lg.jp/a0033/kenkouiryou/shougai/teate/shinshinshougaisha.html" }
+
+- id: minato_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（港区）
+  layer: municipal
+  municipality: minato
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "港区心身障害者福祉手当", url: "https://www.city.minato.tokyo.jp/shougaifukushi/teate.html" }
+
+- id: shinjuku_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（新宿区）
+  layer: municipal
+  municipality: shinjuku
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "新宿区心身障害者福祉手当", url: "https://www.city.shinjuku.lg.jp/fukushi/fukushi01_002072.html" }
+
+- id: bunkyo_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（文京区）
+  layer: municipal
+  municipality: bunkyo
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "文京区心身障害者福祉手当", url: "https://www.city.bunkyo.lg.jp/tetsuzuki/shogai/teate/shinshin.html" }
+
+- id: taito_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（台東区）
+  layer: municipal
+  municipality: taito
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "台東区心身障害者福祉手当", url: "https://www.city.taito.lg.jp/kenko/shogaisha/teate/shinshin.html" }
+
+- id: sumida_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（墨田区）
+  layer: municipal
+  municipality: sumida
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "墨田区心身障害者福祉手当", url: "https://www.city.sumida.lg.jp/kenko_fukushi/syougai/teate/shinshin.html" }
+
+- id: koto_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（江東区）
+  layer: municipal
+  municipality: koto
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "江東区心身障害者福祉手当", url: "https://www.city.koto.lg.jp/260402/fukushi/shogaisha/teate/index.html" }
+
+- id: shinagawa_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（品川区）
+  layer: municipal
+  municipality: shinagawa
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "品川区心身障害者福祉手当", url: "https://www.city.shinagawa.tokyo.jp/PC/fukushi/shogaisha/teate/index.html" }
+
+- id: meguro_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（目黒区）
+  layer: municipal
+  municipality: meguro
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "目黒区心身障害者福祉手当", url: "https://www.city.meguro.tokyo.jp/kurashi/fukushi/shogaisha/teate_josei/shinshin.html" }
+
+- id: ota_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（大田区）
+  layer: municipal
+  municipality: ota
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "大田区心身障害者福祉手当", url: "https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/teate/shinshin.html" }
+
+- id: setagaya_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（世田谷区）
+  layer: municipal
+  municipality: setagaya
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "世田谷区心身障害者福祉手当", url: "https://www.city.setagaya.lg.jp/mokuji/fukushi/001/003/d00129291.html" }
+
+- id: nakano_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（中野区）
+  layer: municipal
+  municipality: nakano
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "中野区心身障害者福祉手当", url: "https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/shogai/teate/shinshin.html" }
+
+- id: suginami_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（杉並区）
+  layer: municipal
+  municipality: suginami
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "杉並区心身障害者福祉手当", url: "https://www.city.suginami.tokyo.jp/guide/fukushi/shogai/1004885.html" }
+
+- id: toshima_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（豊島区）
+  layer: municipal
+  municipality: toshima
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "豊島区心身障害者福祉手当", url: "https://www.city.toshima.lg.jp/212/kenko/shogai/teate/004215.html" }
+
+- id: kita_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（北区）
+  layer: municipal
+  municipality: kita
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "北区心身障害者福祉手当", url: "https://www.city.kita.tokyo.jp/r-shogaifukushi/teate/shinshin.html" }
+
+- id: arakawa_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（荒川区）
+  layer: municipal
+  municipality: arakawa
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "荒川区心身障害者福祉手当", url: "https://www.city.arakawa.tokyo.jp/a024/fukushi/shogai/teate/shinshin.html" }
+
+- id: itabashi_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（板橋区）
+  layer: municipal
+  municipality: itabashi
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "板橋区心身障害者福祉手当", url: "https://www.city.itabashi.tokyo.jp/kenko/shougaisha/teate/1001789.html" }
+
+- id: nerima_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（練馬区）
+  layer: municipal
+  municipality: nerima
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "練馬区心身障害者福祉手当", url: "https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/teate/shinshin.html" }
+
+- id: adachi_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（足立区）
+  layer: municipal
+  municipality: adachi
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "足立区心身障害者福祉手当", url: "https://www.city.adachi.tokyo.jp/shogai/fukushi/shogai/teate-shinshin.html" }
+
+- id: katsushika_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（葛飾区）
+  layer: municipal
+  municipality: katsushika
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "葛飾区心身障害者福祉手当", url: "https://www.city.katsushika.lg.jp/kurashi/1000059/1002386/1002394.html" }
+
+- id: edogawa_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（江戸川区）
+  layer: municipal
+  municipality: edogawa
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "江戸川区心身障害者福祉手当", url: "https://www.city.edogawa.tokyo.jp/e048/kenko/shogaisha/teate/shinshin.html" }
