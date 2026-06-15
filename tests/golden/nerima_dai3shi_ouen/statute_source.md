@@ -3,7 +3,7 @@
 **VERIFIED (2026-06-15)**
 
 Amount: 200000 JPY (oneoff)
-Note: 第3子以降20万円。v1では子全員に適用（第N子判定は複雑なため）
+Note: 3rd+ child 200K. v1: applies to all children
 
 Source: Nerima 3rd child celebration https://www.city.nerima.tokyo.jp/kosodatekyoiku/ouen/dai3shi.html
 

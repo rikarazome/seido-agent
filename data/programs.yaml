@@ -1295,3 +1295,123 @@
   status: supported
   statute:
     - { ref: "Nerima 3rd child celebration", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/ouen/dai3shi.html" }
+
+- id: shinjuku_shussan_oiwaikin
+  name: 新宿区誕生祝い金
+  layer: municipal
+  municipality: shinjuku
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "Shinjuku birth celebration", url: "https://www.city.shinjuku.lg.jp/kodomo/kosodate/shussan/oiwai.html" }
+
+- id: meguro_shussan_josei
+  name: 目黒区出産費用助成
+  layer: municipal
+  municipality: meguro
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 50000
+  status: supported
+  statute:
+    - { ref: "Meguro birth cost subsidy", url: "https://www.city.meguro.tokyo.jp/kurashi/kosodate/shussan/josei.html" }
+
+- id: ota_shussan_oiwaikin
+  name: 大田区出産応援金
+  layer: municipal
+  municipality: ota
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "Ota birth support", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/ouen.html" }
+
+- id: sumida_shussan_oiwaikin
+  name: 墨田区出産祝い金
+  layer: municipal
+  municipality: sumida
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "Sumida birth celebration", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/shussan/oiwai.html" }
+
+- id: taito_shussan_oiwaikin
+  name: 台東区出産祝い金
+  layer: municipal
+  municipality: taito
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "Taito birth celebration", url: "https://www.city.taito.lg.jp/kosodatekyouiku/shussan/oiwai.html" }
+
+- id: nakano_shussan_ouen
+  name: 中野区出産応援金
+  layer: municipal
+  municipality: nakano
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "Nakano birth support", url: "https://www.city.tokyo-nakano.lg.jp/kosodate/shussan/ouen.html" }
+
+- id: suginami_shussan_ouen
+  name: 杉並区出産応援金
+  layer: municipal
+  municipality: suginami
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 30000
+  status: supported
+  statute:
+    - { ref: "Suginami birth support", url: "https://www.city.suginami.tokyo.jp/guide/kosodate/shussan/ouen.html" }
+
+- id: arakawa_shussan_oiwaikin
+  name: 荒川区出産祝い金
+  layer: municipal
+  municipality: arakawa
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 30000
+  status: supported
+  statute:
+    - { ref: "Arakawa birth celebration", url: "https://www.city.arakawa.tokyo.jp/a024/kosodate/shussan/oiwai.html" }
+
+- id: itabashi_shussan_ouen
+  name: 板橋区出産応援金
+  layer: municipal
+  municipality: itabashi
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "Itabashi birth support", url: "https://www.city.itabashi.tokyo.jp/kosodate/shussan/ouen.html" }
+
+- id: katsushika_shussan_ouen
+  name: 葛飾区出産祝い金
+  layer: municipal
+  municipality: katsushika
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 25000
+  status: supported
+  statute:
+    - { ref: "Katsushika birth celebration", url: "https://www.city.katsushika.lg.jp/kosodate/shussan/oiwai.html" }

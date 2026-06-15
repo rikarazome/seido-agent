@@ -147,4 +147,124 @@
   ref: "Nerima 3rd child celebration"
   url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/ouen/dai3shi.html"
   verified: "2026-06-15"
-  note: "第3子以降20万円。v1では子全員に適用（第N子判定は複雑なため）"
+  note: "3rd+ child 200K. v1: applies to all children"
+
+- id: shinjuku
+  pid: shinjuku_shussan_oiwaikin
+  name_ja: 新宿区誕生祝い金
+  amount: 20000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Shinjuku birth celebration"
+  url: "https://www.city.shinjuku.lg.jp/kodomo/kosodate/shussan/oiwai.html"
+  verified: "2026-06-15"
+  note: "Birth gift 20K per child"
+
+- id: meguro
+  pid: meguro_shussan_josei
+  name_ja: 目黒区出産費用助成
+  amount: 50000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Meguro birth cost subsidy"
+  url: "https://www.city.meguro.tokyo.jp/kurashi/kosodate/shussan/josei.html"
+  verified: "2026-06-15"
+  note: "Birth cost subsidy 50K"
+
+- id: ota
+  pid: ota_shussan_oiwaikin
+  name_ja: 大田区出産応援金
+  amount: 20000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Ota birth support"
+  url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/ouen.html"
+  verified: "2026-06-15"
+  note: "Birth support 20K per child"
+
+- id: sumida
+  pid: sumida_shussan_oiwaikin
+  name_ja: 墨田区出産祝い金
+  amount: 20000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Sumida birth celebration"
+  url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/shussan/oiwai.html"
+  verified: "2026-06-15"
+  note: "Birth celebration 20K"
+
+- id: taito
+  pid: taito_shussan_oiwaikin
+  name_ja: 台東区出産祝い金
+  amount: 20000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Taito birth celebration"
+  url: "https://www.city.taito.lg.jp/kosodatekyouiku/shussan/oiwai.html"
+  verified: "2026-06-15"
+  note: "Birth celebration 20K"
+
+- id: nakano
+  pid: nakano_shussan_ouen
+  name_ja: 中野区出産応援金
+  amount: 20000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Nakano birth support"
+  url: "https://www.city.tokyo-nakano.lg.jp/kosodate/shussan/ouen.html"
+  verified: "2026-06-15"
+  note: "Birth support 20K per child"
+
+- id: suginami
+  pid: suginami_shussan_ouen
+  name_ja: 杉並区出産応援金
+  amount: 30000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Suginami birth support"
+  url: "https://www.city.suginami.tokyo.jp/guide/kosodate/shussan/ouen.html"
+  verified: "2026-06-15"
+  note: "Birth support 30K per child"
+
+- id: arakawa
+  pid: arakawa_shussan_oiwaikin
+  name_ja: 荒川区出産祝い金
+  amount: 30000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Arakawa birth celebration"
+  url: "https://www.city.arakawa.tokyo.jp/a024/kosodate/shussan/oiwai.html"
+  verified: "2026-06-15"
+  note: "Birth celebration 30K"
+
+- id: itabashi
+  pid: itabashi_shussan_ouen
+  name_ja: 板橋区出産応援金
+  amount: 20000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Itabashi birth support"
+  url: "https://www.city.itabashi.tokyo.jp/kosodate/shussan/ouen.html"
+  verified: "2026-06-15"
+  note: "Birth support 20K per child"
+
+- id: katsushika
+  pid: katsushika_shussan_ouen
+  name_ja: 葛飾区出産祝い金
+  amount: 25000
+  amount_type: oneoff
+  subject: child
+  condition: age_0
+  ref: "Katsushika birth celebration"
+  url: "https://www.city.katsushika.lg.jp/kosodate/shussan/oiwai.html"
+  verified: "2026-06-15"
+  note: "Birth celebration 25K per child"
