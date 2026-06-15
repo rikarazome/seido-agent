@@ -54,6 +54,32 @@
     - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
     - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
 
+- id: koto_shokugyo_kunren
+  name: 高等職業訓練促進給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 100000
+  status: supported
+  statute:
+    - { ref: "母子及び父子並びに寡婦福祉法31条", url: "https://laws.e-gov.go.jp/law/339AC0100000129" }
+    - { ref: "こども家庭庁 高等職業訓練", url: "https://www.cfa.go.jp/policies/hitori-oya/koto-shokugyo-kunren" }
+
+- id: nanbyo_iryo_josei
+  name: 難病医療費助成
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: null
+  status: supported
+  statute:
+    - { ref: "難病法5条", url: "https://laws.e-gov.go.jp/law/426AC0100000050" }
+    - { ref: "厚労省 難病対策", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/nanbyou/" }
+
 - id: tokubetsu_shogaisha_teate
   name: 特別障害者手当
   layer: national

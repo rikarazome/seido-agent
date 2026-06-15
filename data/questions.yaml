@@ -77,6 +77,11 @@
   type: boolean
   sensitive: true
 
+- fact: nanbyo_nintei
+  text: 指定難病の認定を受けていますか（医療受給者証をお持ちですか）
+  type: boolean
+  sensitive: true
+
 # --- per-child askables（children[].askable。質問文の {child} は「2009年生まれのお子さん」等に展開） ---
 
 - fact: koukou_zaigaku

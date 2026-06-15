@@ -139,7 +139,9 @@ def test_interview_flow_end_to_end():
                          "seikei_douitsu_partner": False, "fuyou_ninzu": 2,
                          "kenkou_hoken": True, "shotoku_exact": 1_400_000,
                          "ninshin": False, "shogai_techo": "declined",
-                         "seikatsu_hogo": False}
+                         "seikatsu_hogo": False, "nanbyo_nintei": False,
+                         "hikazei": False, "koyou_hoken": "declined",
+                         "rishoku": "declined"}
     per_child_answers = {"koukou_zaigaku": False, "gakkou_kubun": None}
     for _ in range(15):                                # frontend turn cap
         q = resp["next_question"]
@@ -163,8 +165,8 @@ def test_interview_flow_end_to_end():
     assert jft["amount"]["yen"] == 59400              # zenbu + 1 addition
     assert by["tokyo_jidou_ikusei_teate"]["status"] == "decided"
     assert by["shibuya_kodomo_iryouhi"]["status"] == "decided"
-    # headline now includes 13,500 x2 (ikusei) + 59,400 + 35,000
-    assert resp["headline"]["monthly_yen"] == 35000 + 27000 + 59400
+    # headline: jidou_teate(25k) + 018(10k) + ikusei(13.5k x2) + fuyou(59.4k) + kunren(70.5k)
+    assert resp["headline"]["monthly_yen"] == 35000 + 27000 + 59400 + 70500
 
     # proof retrievable for a decided program (what the なぜ? button does)
     r = client.post("/api/proof", json={
