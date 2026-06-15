@@ -51,7 +51,7 @@ ASKABLE_MAP = {
 
 # Per-child askables (children[].askable): facts that genuinely differ per
 # child (e.g. school enrollment); household-level injection would be wrong.
-CHILD_ASKABLE_PREDS = {"koukou_zaigaku", "gakkou_kubun"}
+CHILD_ASKABLE_PREDS = {"koukou_zaigaku", "gakkou_kubun", "shogai_techo_child"}
 
 
 def age_on(birth: date, ref: date) -> int:

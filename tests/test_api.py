@@ -142,7 +142,8 @@ def test_interview_flow_end_to_end():
                          "seikatsu_hogo": False, "nanbyo_nintei": False,
                          "hikazei": False, "koyou_hoken": "declined",
                          "rishoku": "declined"}
-    per_child_answers = {"koukou_zaigaku": False, "gakkou_kubun": None}
+    per_child_answers = {"koukou_zaigaku": False, "gakkou_kubun": None,
+                         "shogai_techo_child": "declined"}
     for _ in range(15):                                # frontend turn cap
         q = resp["next_question"]
         if q is None:

@@ -1,0 +1,78 @@
+# 特別児童扶養手当 golden cases（statute_source.md）
+# subject: child, amount: monthly per_child
+# 1級(shintai_1, ryoiku): 55,350, 2級(shintai_2): 36,860
+# income limit: 4,596,000 + 380,000 * N
+
+- name: tokujif_decided_1kyu
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_1" } }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: decided, detail: "monthly(55350)" }
+
+- name: tokujif_decided_2kyu
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_2" } }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: decided, detail: "monthly(36860)" }
+
+- name: tokujif_decided_ryoiku
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "ryoiku" } }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: decided, detail: "monthly(55350)" }
+
+- name: tokujif_ineligible_no_disability
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_3" } }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: ineligible, detail: "grade_not_covered" }
+
+- name: tokujif_ineligible_age_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2005-01-01", askable: { shogai_techo_child: "shintai_1" } }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: ineligible, detail: "age_20_or_over" }
+  # FY-end age 21
+
+- name: tokujif_ineligible_income_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_1" } }
+    askable: { fuyou_ninzu: 0, shotoku_exact: 5000000 }
+  expect: { subject: c1, status: ineligible, detail: "income_over" }
+  # limit(0) = 4,596,000. shotoku 5,000,000 >= limit
+
+- name: tokujif_blocked_techo_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: {} }
+    askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
+  expect: { subject: c1, status: blocked, detail: "[shogai_techo_child]" }
+
+- name: tokujif_blocked_income_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_1" } }
+    askable: {}
+  expect: { subject: c1, status: blocked, detail: "[fuyou_ninzu,income]" }

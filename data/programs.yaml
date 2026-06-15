@@ -54,6 +54,19 @@
     - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
     - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
 
+- id: tokubetsu_jidou_fuyou_teate
+  name: 特別児童扶養手当
+  layer: national
+  municipality: null
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 55350
+  status: supported
+  statute:
+    - { ref: "特別児童扶養手当等の支給に関する法律3条", url: "https://laws.e-gov.go.jp/law/339AC0000000134" }
+    - { ref: "厚労省 特別児童扶養手当", url: "https://www.mhlw.go.jp/bunya/shougaihoken/jidou/huyou.html" }
+
 - id: jiritsu_shien_iryo_seishin
   name: 自立支援医療（精神通院）
   layer: national

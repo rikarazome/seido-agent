@@ -96,6 +96,15 @@
   choices: { kouritsu: 公立（全日制）, shiritsu: 私立（全日制） }
   # 高専・通信制は未対応（「その他」→自由文で案内のみ。statute_source参照）
 
+- fact: shogai_techo_child
+  scope: per_child
+  text: "{child}は障害者手帳をお持ちですか（種類を教えてください）"
+  type: enum
+  choices: { shintai_1: 身体1級, shintai_2: 身体2級, shintai_3: 身体3級,
+             ryoiku: 愛の手帳（療育）, seishin_1: 精神1級, seishin_2: 精神2級 }
+  primary: [shintai_1, shintai_2, ryoiku]
+  sensitive: true
+
 - fact: income_exact
   askable_key: shotoku_exact
   # ハイブリッド方式（2026-06-11決定）: 年収レンジの概算変換が限度額を跨いだときだけ出る質問。
