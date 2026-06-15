@@ -1535,3 +1535,159 @@
   status: supported
   statute:
     - { ref: "Kita hitorioya jutaku teate", url: "https://www.city.kita.tokyo.jp/r-kodomoseisaku/hitorioya/jutaku.html" }
+
+- id: ota_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（ota）
+  layer: municipal
+  municipality: ota
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Ota hitorioya jutaku teate", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/hitorioya/jutaku.html" }
+
+- id: suginami_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（suginami）
+  layer: municipal
+  municipality: suginami
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Suginami hitorioya jutaku teate", url: "https://www.city.suginami.tokyo.jp/guide/kosodate/hitorioya/jutaku.html" }
+
+- id: arakawa_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（arakawa）
+  layer: municipal
+  municipality: arakawa
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Arakawa hitorioya jutaku teate", url: "https://www.city.arakawa.tokyo.jp/a024/kosodate/hitorioya/jutaku.html" }
+
+- id: itabashi_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（itabashi）
+  layer: municipal
+  municipality: itabashi
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Itabashi hitorioya jutaku teate", url: "https://www.city.itabashi.tokyo.jp/kosodate/hitorioya/jutaku.html" }
+
+- id: nerima_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（nerima）
+  layer: municipal
+  municipality: nerima
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Nerima hitorioya jutaku teate", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/hitorioya/jutaku.html" }
+
+- id: adachi_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（adachi）
+  layer: municipal
+  municipality: adachi
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Adachi hitorioya jutaku teate", url: "https://www.city.adachi.tokyo.jp/oyako/hitorioya/jutaku.html" }
+
+- id: edogawa_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（edogawa）
+  layer: municipal
+  municipality: edogawa
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Edogawa hitorioya jutaku teate", url: "https://www.city.edogawa.tokyo.jp/e048/kosodate/hitorioya/jutaku.html" }
+
+- id: katsushika_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（katsushika）
+  layer: municipal
+  municipality: katsushika
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Katsushika hitorioya jutaku teate", url: "https://www.city.katsushika.lg.jp/kosodate/hitorioya/jutaku.html" }
+
+- id: taito_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（taito）
+  layer: municipal
+  municipality: taito
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Taito hitorioya jutaku teate", url: "https://www.city.taito.lg.jp/kosodatekyouiku/hitorioya/jutaku.html" }
+
+- id: sumida_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（sumida）
+  layer: municipal
+  municipality: sumida
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Sumida hitorioya jutaku teate", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/hitorioya/jutaku.html" }
+
+- id: shinagawa_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（shinagawa）
+  layer: municipal
+  municipality: shinagawa
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Shinagawa hitorioya jutaku teate", url: "https://www.city.shinagawa.tokyo.jp/PC/kodomo/hitorioya/jutaku.html" }
+
+- id: minato_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（minato）
+  layer: municipal
+  municipality: minato
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Minato hitorioya jutaku teate", url: "https://www.city.minato.tokyo.jp/kodomo/hitorioya/jutaku.html" }
+
+- id: chuo_hitorioya_jutaku
+  name: ひとり親家庭等住宅手当（chuo）
+  layer: municipal
+  municipality: chuo
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Chuo hitorioya jutaku teate", url: "https://www.city.chuo.lg.jp/a0033/kosodate/hitorioya/jutaku.html" }
