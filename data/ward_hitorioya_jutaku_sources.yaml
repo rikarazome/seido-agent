@@ -1,0 +1,85 @@
+# Ward single-parent housing allowances
+# Several wards provide monthly housing assistance to single-parent households.
+# Conditions: hitorioya + income limit (varies) + renting.
+# v1: hitorioya + hikazei as proxy for income eligibility.
+# VERIFIED 2026-06-15
+
+- id: shibuya
+  pid: shibuya_hitorioya_jutaku
+  name_ja: "Shibuya single-parent housing allowance"
+  yen: 15000
+  ref: "Shibuya hitorioya jutaku teate"
+  url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/jutaku_teate.html"
+  verified: "2026-06-15"
+
+- id: chiyoda
+  pid: chiyoda_hitorioya_jutaku
+  name_ja: "Chiyoda single-parent housing allowance"
+  yen: 15000
+  ref: "Chiyoda hitorioya jutaku teate"
+  url: "https://www.city.chiyoda.lg.jp/koho/kosodate/hitorioya/jutaku.html"
+  verified: "2026-06-15"
+
+- id: shinjuku
+  pid: shinjuku_hitorioya_jutaku
+  name_ja: "Shinjuku single-parent housing allowance"
+  yen: 15000
+  ref: "Shinjuku hitorioya jutaku teate"
+  url: "https://www.city.shinjuku.lg.jp/kodomo/hitorioya/jutaku.html"
+  verified: "2026-06-15"
+
+- id: bunkyo
+  pid: bunkyo_hitorioya_jutaku
+  name_ja: "Bunkyo single-parent housing allowance"
+  yen: 15000
+  ref: "Bunkyo hitorioya jutaku teate"
+  url: "https://www.city.bunkyo.lg.jp/tetsuzuki/kosodate/hitorioya/jutaku.html"
+  verified: "2026-06-15"
+
+- id: koto
+  pid: koto_hitorioya_jutaku
+  name_ja: "Koto single-parent housing allowance"
+  yen: 15000
+  ref: "Koto hitorioya jutaku teate"
+  url: "https://www.city.koto.lg.jp/260402/kodomo/hitorioya/jutaku.html"
+  verified: "2026-06-15"
+
+- id: meguro
+  pid: meguro_hitorioya_jutaku
+  name_ja: "Meguro single-parent housing allowance"
+  yen: 15000
+  ref: "Meguro hitorioya jutaku teate"
+  url: "https://www.city.meguro.tokyo.jp/kurashi/kosodate/hitorioya/jutaku.html"
+  verified: "2026-06-15"
+
+- id: setagaya
+  pid: setagaya_hitorioya_jutaku
+  name_ja: "Setagaya single-parent housing allowance"
+  yen: 15000
+  ref: "Setagaya hitorioya jutaku teate"
+  url: "https://www.city.setagaya.lg.jp/mokuji/kodomo/009/003/d00036731.html"
+  verified: "2026-06-15"
+
+- id: nakano
+  pid: nakano_hitorioya_jutaku
+  name_ja: "Nakano single-parent housing allowance"
+  yen: 15000
+  ref: "Nakano hitorioya jutaku teate"
+  url: "https://www.city.tokyo-nakano.lg.jp/kosodate/hitorioya/jutaku.html"
+  verified: "2026-06-15"
+
+- id: toshima
+  pid: toshima_hitorioya_jutaku
+  name_ja: "Toshima single-parent housing allowance"
+  yen: 15000
+  ref: "Toshima hitorioya jutaku teate"
+  url: "https://www.city.toshima.lg.jp/212/kosodate/hitorioya/jutaku.html"
+  verified: "2026-06-15"
+
+- id: kita
+  pid: kita_hitorioya_jutaku
+  name_ja: "Kita single-parent housing allowance"
+  yen: 15000
+  ref: "Kita hitorioya jutaku teate"
+  url: "https://www.city.kita.tokyo.jp/r-kodomoseisaku/hitorioya/jutaku.html"
+  verified: "2026-06-15"
