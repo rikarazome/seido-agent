@@ -1,0 +1,38 @@
+% ============================================================
+% shibuya_shugaku_enjo.pl - Shibuya School Attendance Assistance
+% VERIFIED 2026-06-15: yearly assistance for school supplies etc.
+% v1: approx 15,000 JPY/year (elementary school supplies base).
+% Eligibility: non-taxable household + school-age child (FY-end 6-15).
+% Subject: child.
+% Sources: tests/golden/shibuya_shugaku_enjo/statute_source.md
+% Requires engine.pl.
+% ============================================================
+
+:- module(shibuya_shugaku_enjo, [kettei_status/3, required_fact/3]).
+
+:- discontiguous kettei_status/3.
+:- discontiguous required_fact/3.
+
+school_age(C) :-
+    child(C), age_nendo_matsu(C, A), A >= 6, A =< 15.
+
+required_fact(P, hikazei, "non-taxable household") :-
+    claimant(P), unknown(hikazei(P)).
+
+kettei_status(P, C, error(structural_facts_missing)) :-
+    claimant(P), child(C),
+    \+ age_nendo_matsu(C, _), !.
+kettei_status(P, C, ineligible(not_school_age)) :-
+    claimant(P), kango_by(C, P), child(C),
+    \+ school_age(C), !.
+kettei_status(P, C, ineligible(not_low_income)) :-
+    claimant(P), kango_by(C, P), child(C),
+    no(hikazei(P)), !.
+kettei_status(P, C, blocked(Missing)) :-
+    claimant(P), kango_by(C, P), child(C),
+    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
+    Missing \= [], !.
+kettei_status(P, C, decided(yearly(15000))) :-
+    claimant(P), kango_by(C, P), child(C),
+    yes(hikazei(P)), !.
+kettei_status(_, _, error(no_rule_matched)).

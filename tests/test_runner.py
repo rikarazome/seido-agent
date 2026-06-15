@@ -55,8 +55,8 @@ def test_first_pass_shibuya_two_children():
     # shugaku shienkin: no high-school-age child
     assert r["kouko_shugaku_shienkin"]["status"] == "ineligible"
 
-    # unsupported programs surface honestly
-    assert r["shibuya_shugaku_enjo"]["status"] == "unsupported"
+    # shugaku_enjo now supported (hikazei-based), blocked on hikazei
+    assert r["shibuya_shugaku_enjo"]["status"] == "blocked"
 
     # headline: 25,000 + 10,000 monthly, 100,000 (birthday) + 100,000 (akachan) oneoff
     assert resp["headline"]["monthly_yen"] == 35000

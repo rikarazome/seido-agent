@@ -314,15 +314,16 @@
     - { ref: "渋谷区心身障害者福祉手当", url: "https://www.city.shibuya.tokyo.jp/kenko/shogai/teate/shinshin_teate.html" }
 
 - id: shibuya_shugaku_enjo
-  name: 就学援助
+  name: 就学援助（渋谷区）
   layer: municipal
   municipality: shibuya
   subject: child
   unit: per_child
   amount_type: yearly
-  potential_amount: null
-  status: unsupported
-  statute: []
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "渋谷区 就学援助", url: "https://www.city.shibuya.tokyo.jp/kodomo/gakkou/enjo/shugaku_enjo.html" }
 
 - id: shibuya_housing_tbd
   name: 住み替え家賃補助（住宅系・対応制度を選定中）
