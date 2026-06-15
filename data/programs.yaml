@@ -54,6 +54,19 @@
     - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
     - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
 
+- id: tokubetsu_shogaisha_teate
+  name: 特別障害者手当
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 28840
+  status: supported
+  statute:
+    - { ref: "特別児童扶養手当等の支給に関する法律26条の5", url: "https://laws.e-gov.go.jp/law/339AC0000000134" }
+    - { ref: "厚労省 特別障害者手当", url: "https://www.mhlw.go.jp/bunya/shougaihoken/jidou/tokubetsu.html" }
+
 - id: shussan_kosodate_ouen
   name: 出産・子育て応援交付金
   layer: national
