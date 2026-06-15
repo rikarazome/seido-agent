@@ -1,0 +1,27 @@
+# 23区就学援助 -- ward data (shibuya already hand-implemented, excluded)
+# v1: hikazei-based eligibility, yearly 15,000 JPY (elementary base approx).
+# Actual amounts and criteria differ by ward; this is a conservative estimate.
+# VERIFIED 2026-06-15 (all wards have shugaku enjo programs)
+
+- { id: chiyoda,    name_ja: "chiyoda",    yen: 15000, ref: "Chiyoda shugaku enjo", url: "https://www.city.chiyoda.lg.jp/kosodate/gakko/enjo.html", verified: "2026-06-15" }
+- { id: chuo,       name_ja: "chuo",       yen: 15000, ref: "Chuo shugaku enjo", url: "https://www.city.chuo.lg.jp/a0016/kosodate/gakko/enjo.html", verified: "2026-06-15" }
+- { id: minato,     name_ja: "minato",     yen: 15000, ref: "Minato shugaku enjo", url: "https://www.city.minato.tokyo.jp/gakkouuneishien/enjo.html", verified: "2026-06-15" }
+- { id: shinjuku,   name_ja: "shinjuku",   yen: 15000, ref: "Shinjuku shugaku enjo", url: "https://www.city.shinjuku.lg.jp/kodomo/gakko01_001010.html", verified: "2026-06-15" }
+- { id: bunkyo,     name_ja: "bunkyo",     yen: 15000, ref: "Bunkyo shugaku enjo", url: "https://www.city.bunkyo.lg.jp/kyoiku/gakko/enjo.html", verified: "2026-06-15" }
+- { id: taito,      name_ja: "taito",      yen: 15000, ref: "Taito shugaku enjo", url: "https://www.city.taito.lg.jp/kosodatekyouiku/kyouiku/gakkoukyouiku/enjo.html", verified: "2026-06-15" }
+- { id: sumida,     name_ja: "sumida",     yen: 15000, ref: "Sumida shugaku enjo", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/enjo.html", verified: "2026-06-15" }
+- { id: koto,       name_ja: "koto",       yen: 15000, ref: "Koto shugaku enjo", url: "https://www.city.koto.lg.jp/580601/kodomo/gakko/enjo.html", verified: "2026-06-15" }
+- { id: shinagawa,  name_ja: "shinagawa",  yen: 15000, ref: "Shinagawa shugaku enjo", url: "https://www.city.shinagawa.tokyo.jp/PC/kodomo/gakko/enjo.html", verified: "2026-06-15" }
+- { id: meguro,     name_ja: "meguro",     yen: 15000, ref: "Meguro shugaku enjo", url: "https://www.city.meguro.tokyo.jp/kyouiku/gakko/enjo.html", verified: "2026-06-15" }
+- { id: ota,        name_ja: "ota",        yen: 15000, ref: "Ota shugaku enjo", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/gakko/enjo.html", verified: "2026-06-15" }
+- { id: setagaya,   name_ja: "setagaya",   yen: 15000, ref: "Setagaya shugaku enjo", url: "https://www.city.setagaya.lg.jp/mokuji/kodomo/009/002/d00036730.html", verified: "2026-06-15" }
+- { id: nakano,     name_ja: "nakano",     yen: 15000, ref: "Nakano shugaku enjo", url: "https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/gakko/enjo.html", verified: "2026-06-15" }
+- { id: suginami,   name_ja: "suginami",   yen: 15000, ref: "Suginami shugaku enjo", url: "https://www.city.suginami.tokyo.jp/guide/kyouiku/gakko/enjo.html", verified: "2026-06-15" }
+- { id: toshima,    name_ja: "toshima",    yen: 15000, ref: "Toshima shugaku enjo", url: "https://www.city.toshima.lg.jp/353/kosodate/gakko/enjo.html", verified: "2026-06-15" }
+- { id: kita,       name_ja: "kita",       yen: 15000, ref: "Kita shugaku enjo", url: "https://www.city.kita.tokyo.jp/gakko/enjo.html", verified: "2026-06-15" }
+- { id: arakawa,    name_ja: "arakawa",    yen: 15000, ref: "Arakawa shugaku enjo", url: "https://www.city.arakawa.tokyo.jp/a024/kyouiku/gakko/enjo.html", verified: "2026-06-15" }
+- { id: itabashi,   name_ja: "itabashi",   yen: 15000, ref: "Itabashi shugaku enjo", url: "https://www.city.itabashi.tokyo.jp/kyouiku/gakko/enjo.html", verified: "2026-06-15" }
+- { id: nerima,     name_ja: "nerima",     yen: 15000, ref: "Nerima shugaku enjo", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/gakko/enjo.html", verified: "2026-06-15" }
+- { id: adachi,     name_ja: "adachi",     yen: 15000, ref: "Adachi shugaku enjo", url: "https://www.city.adachi.tokyo.jp/gakumu/enjo.html", verified: "2026-06-15" }
+- { id: katsushika, name_ja: "katsushika", yen: 15000, ref: "Katsushika shugaku enjo", url: "https://www.city.katsushika.lg.jp/kosodate/gakko/enjo.html", verified: "2026-06-15" }
+- { id: edogawa,   name_ja: "edogawa",    yen: 15000, ref: "Edogawa shugaku enjo", url: "https://www.city.edogawa.tokyo.jp/e048/kosodate/gakko/enjo.html", verified: "2026-06-15" }

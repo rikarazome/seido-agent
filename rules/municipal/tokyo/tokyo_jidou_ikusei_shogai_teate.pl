@@ -1,0 +1,55 @@
+% ============================================================
+% tokyo_jidou_ikusei_shogai_teate.pl - Tokyo Child Development
+% Allowance (Disability variant). 15,500 JPY/month per disabled child.
+% VERIFIED 2026-06-15. FY-end age < 20. Income limit same as
+% ikusei (single-parent): 3,604,000 + 380,000 * N.
+% v1: shintai_1, shintai_2, ryoiku as eligible grades.
+% Subject: child. Uses per-child shogai_techo_child.
+% Requires engine.pl.
+% ============================================================
+
+:- module(tokyo_jidou_ikusei_shogai_teate, [kettei_status/3, required_fact/3]).
+
+:- discontiguous kettei_status/3.
+:- discontiguous required_fact/3.
+
+taisho_grade(shintai_1).
+taisho_grade(shintai_2).
+taisho_grade(ryoiku).
+
+ikusei_shogai_limit(N, L) :- integer(N), N >= 0, L is 3604000 + 380000 * N.
+
+required_fact(P, shogai_techo_child, "child disability certificate") :-
+    claimant(P), kango_by(C, P), child(C),
+    age_nendo_matsu(C, A), A < 20,
+    unknown(shogai_techo_child(C)).
+required_fact(P, income, "income") :-
+    claimant(P), unknown(income(P)).
+required_fact(P, fuyou_ninzu, "dependents") :-
+    claimant(P), unknown(fuyou_ninzu(P)).
+required_fact(P, income_exact, "exact income") :-
+    claimant(P), val(income(P), V), val(fuyou_ninzu(P), N),
+    ikusei_shogai_limit(N, L), v_indet(V, L).
+
+kettei_status(P, C, error(structural_facts_missing)) :-
+    claimant(P), child(C), \+ age_nendo_matsu(C, _), !.
+kettei_status(P, C, ineligible(age_over)) :-
+    claimant(P), kango_by(C, P), child(C),
+    age_nendo_matsu(C, A), A >= 20, !.
+kettei_status(P, C, ineligible(grade_not_covered)) :-
+    claimant(P), kango_by(C, P), child(C),
+    val(shogai_techo_child(C), G), \+ taisho_grade(G), !.
+kettei_status(P, C, blocked(Missing)) :-
+    claimant(P), kango_by(C, P), child(C),
+    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
+    Missing \= [], !.
+kettei_status(P, C, ineligible(income_over)) :-
+    claimant(P), kango_by(C, P), child(C),
+    val(income(P), V), val(fuyou_ninzu(P), N),
+    ikusei_shogai_limit(N, L), v_geq(V, L), !.
+kettei_status(P, C, decided(monthly(15500))) :-
+    claimant(P), kango_by(C, P), child(C),
+    val(shogai_techo_child(C), G), taisho_grade(G),
+    val(income(P), V), val(fuyou_ninzu(P), N),
+    ikusei_shogai_limit(N, L), v_lt(V, L), !.
+kettei_status(_, _, error(no_rule_matched)).

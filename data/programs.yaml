@@ -205,6 +205,18 @@
     - { ref: "東京都児童育成手当に関する条例施行規則", url: "https://www.reiki.metro.tokyo.lg.jp/reiki/reiki_honbun/g101RG00000745.html" }
     - { ref: "渋谷区 ひとり親家庭の手当", url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_teate.html" }
 
+- id: tokyo_jidou_ikusei_shogai_teate
+  name: 児童育成手当（障害手当）
+  layer: municipal
+  municipality: tokyo
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "Tokyo Child Development Allowance (Disability)", url: "https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/zidouikuseiteate.html" }
+
 - id: hitorioya_iryo_josei
   name: ひとり親家庭等医療費助成
   layer: municipal
@@ -875,3 +887,267 @@
   status: supported
   statute:
     - { ref: "江戸川区心身障害者福祉手当", url: "https://www.city.edogawa.tokyo.jp/e048/kenko/shogaisha/teate/shinshin.html" }
+
+- id: chiyoda_shugaku_enjo
+  name: 就学援助（chiyoda）
+  layer: municipal
+  municipality: chiyoda
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Chiyoda shugaku enjo", url: "https://www.city.chiyoda.lg.jp/kosodate/gakko/enjo.html" }
+
+- id: chuo_shugaku_enjo
+  name: 就学援助（chuo）
+  layer: municipal
+  municipality: chuo
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Chuo shugaku enjo", url: "https://www.city.chuo.lg.jp/a0016/kosodate/gakko/enjo.html" }
+
+- id: minato_shugaku_enjo
+  name: 就学援助（minato）
+  layer: municipal
+  municipality: minato
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Minato shugaku enjo", url: "https://www.city.minato.tokyo.jp/gakkouuneishien/enjo.html" }
+
+- id: shinjuku_shugaku_enjo
+  name: 就学援助（shinjuku）
+  layer: municipal
+  municipality: shinjuku
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Shinjuku shugaku enjo", url: "https://www.city.shinjuku.lg.jp/kodomo/gakko01_001010.html" }
+
+- id: bunkyo_shugaku_enjo
+  name: 就学援助（bunkyo）
+  layer: municipal
+  municipality: bunkyo
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Bunkyo shugaku enjo", url: "https://www.city.bunkyo.lg.jp/kyoiku/gakko/enjo.html" }
+
+- id: taito_shugaku_enjo
+  name: 就学援助（taito）
+  layer: municipal
+  municipality: taito
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Taito shugaku enjo", url: "https://www.city.taito.lg.jp/kosodatekyouiku/kyouiku/gakkoukyouiku/enjo.html" }
+
+- id: sumida_shugaku_enjo
+  name: 就学援助（sumida）
+  layer: municipal
+  municipality: sumida
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Sumida shugaku enjo", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/enjo.html" }
+
+- id: koto_shugaku_enjo
+  name: 就学援助（koto）
+  layer: municipal
+  municipality: koto
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Koto shugaku enjo", url: "https://www.city.koto.lg.jp/580601/kodomo/gakko/enjo.html" }
+
+- id: shinagawa_shugaku_enjo
+  name: 就学援助（shinagawa）
+  layer: municipal
+  municipality: shinagawa
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Shinagawa shugaku enjo", url: "https://www.city.shinagawa.tokyo.jp/PC/kodomo/gakko/enjo.html" }
+
+- id: meguro_shugaku_enjo
+  name: 就学援助（meguro）
+  layer: municipal
+  municipality: meguro
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Meguro shugaku enjo", url: "https://www.city.meguro.tokyo.jp/kyouiku/gakko/enjo.html" }
+
+- id: ota_shugaku_enjo
+  name: 就学援助（ota）
+  layer: municipal
+  municipality: ota
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Ota shugaku enjo", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/gakko/enjo.html" }
+
+- id: setagaya_shugaku_enjo
+  name: 就学援助（setagaya）
+  layer: municipal
+  municipality: setagaya
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Setagaya shugaku enjo", url: "https://www.city.setagaya.lg.jp/mokuji/kodomo/009/002/d00036730.html" }
+
+- id: nakano_shugaku_enjo
+  name: 就学援助（nakano）
+  layer: municipal
+  municipality: nakano
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Nakano shugaku enjo", url: "https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/gakko/enjo.html" }
+
+- id: suginami_shugaku_enjo
+  name: 就学援助（suginami）
+  layer: municipal
+  municipality: suginami
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Suginami shugaku enjo", url: "https://www.city.suginami.tokyo.jp/guide/kyouiku/gakko/enjo.html" }
+
+- id: toshima_shugaku_enjo
+  name: 就学援助（toshima）
+  layer: municipal
+  municipality: toshima
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Toshima shugaku enjo", url: "https://www.city.toshima.lg.jp/353/kosodate/gakko/enjo.html" }
+
+- id: kita_shugaku_enjo
+  name: 就学援助（kita）
+  layer: municipal
+  municipality: kita
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Kita shugaku enjo", url: "https://www.city.kita.tokyo.jp/gakko/enjo.html" }
+
+- id: arakawa_shugaku_enjo
+  name: 就学援助（arakawa）
+  layer: municipal
+  municipality: arakawa
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Arakawa shugaku enjo", url: "https://www.city.arakawa.tokyo.jp/a024/kyouiku/gakko/enjo.html" }
+
+- id: itabashi_shugaku_enjo
+  name: 就学援助（itabashi）
+  layer: municipal
+  municipality: itabashi
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Itabashi shugaku enjo", url: "https://www.city.itabashi.tokyo.jp/kyouiku/gakko/enjo.html" }
+
+- id: nerima_shugaku_enjo
+  name: 就学援助（nerima）
+  layer: municipal
+  municipality: nerima
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Nerima shugaku enjo", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/gakko/enjo.html" }
+
+- id: adachi_shugaku_enjo
+  name: 就学援助（adachi）
+  layer: municipal
+  municipality: adachi
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Adachi shugaku enjo", url: "https://www.city.adachi.tokyo.jp/gakumu/enjo.html" }
+
+- id: katsushika_shugaku_enjo
+  name: 就学援助（katsushika）
+  layer: municipal
+  municipality: katsushika
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Katsushika shugaku enjo", url: "https://www.city.katsushika.lg.jp/kosodate/gakko/enjo.html" }
+
+- id: edogawa_shugaku_enjo
+  name: 就学援助（edogawa）
+  layer: municipal
+  municipality: edogawa
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 15000
+  status: supported
+  statute:
+    - { ref: "Edogawa shugaku enjo", url: "https://www.city.edogawa.tokyo.jp/e048/kosodate/gakko/enjo.html" }
