@@ -54,6 +54,19 @@
     - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
     - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
 
+- id: jiritsu_shien_iryo_seishin
+  name: 自立支援医療（精神通院）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: null
+  status: supported
+  statute:
+    - { ref: "障害者総合支援法52条", url: "https://laws.e-gov.go.jp/law/417AC0000000123" }
+    - { ref: "厚労省 自立支援医療", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/" }
+
 - id: jiritsu_shien_kyoiku_kunren
   name: 自立支援教育訓練給付金
   layer: national
