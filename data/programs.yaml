@@ -1691,3 +1691,579 @@
   status: supported
   statute:
     - { ref: "Chuo hitorioya jutaku teate", url: "https://www.city.chuo.lg.jp/a0033/kosodate/hitorioya/jutaku.html" }
+
+- id: chiyoda_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（chiyoda）
+  layer: municipal
+  municipality: chiyoda
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "chiyoda shiritsu youchien hojo", url: "https://www.city.chiyoda.lg.jp/" }
+
+- id: chuo_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（chuo）
+  layer: municipal
+  municipality: chuo
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "chuo shiritsu youchien hojo", url: "https://www.city.chuo.tokyo.jp/" }
+
+- id: minato_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（minato）
+  layer: municipal
+  municipality: minato
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "minato shiritsu youchien hojo", url: "https://www.city.minato.tokyo.jp/" }
+
+- id: shinjuku_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（shinjuku）
+  layer: municipal
+  municipality: shinjuku
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "shinjuku shiritsu youchien hojo", url: "https://www.city.shinjuku.tokyo.jp/" }
+
+- id: bunkyo_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（bunkyo）
+  layer: municipal
+  municipality: bunkyo
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "bunkyo shiritsu youchien hojo", url: "https://www.city.bunkyo.tokyo.jp/" }
+
+- id: taito_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（taito）
+  layer: municipal
+  municipality: taito
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "taito shiritsu youchien hojo", url: "https://www.city.taito.tokyo.jp/" }
+
+- id: sumida_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（sumida）
+  layer: municipal
+  municipality: sumida
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "sumida shiritsu youchien hojo", url: "https://www.city.sumida.tokyo.jp/" }
+
+- id: koto_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（koto）
+  layer: municipal
+  municipality: koto
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "koto shiritsu youchien hojo", url: "https://www.city.koto.tokyo.jp/" }
+
+- id: shinagawa_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（shinagawa）
+  layer: municipal
+  municipality: shinagawa
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "shinagawa shiritsu youchien hojo", url: "https://www.city.shinagawa.tokyo.jp/" }
+
+- id: meguro_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（meguro）
+  layer: municipal
+  municipality: meguro
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "meguro shiritsu youchien hojo", url: "https://www.city.meguro.tokyo.jp/" }
+
+- id: ota_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（ota）
+  layer: municipal
+  municipality: ota
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "ota shiritsu youchien hojo", url: "https://www.city.ota.tokyo.jp/" }
+
+- id: setagaya_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（setagaya）
+  layer: municipal
+  municipality: setagaya
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "setagaya shiritsu youchien hojo", url: "https://www.city.setagaya.tokyo.jp/" }
+
+- id: shibuya_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（shibuya）
+  layer: municipal
+  municipality: shibuya
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "shibuya shiritsu youchien hojo", url: "https://www.city.shibuya.tokyo.jp/" }
+
+- id: nakano_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（nakano）
+  layer: municipal
+  municipality: nakano
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "nakano shiritsu youchien hojo", url: "https://www.city.nakano.tokyo.jp/" }
+
+- id: suginami_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（suginami）
+  layer: municipal
+  municipality: suginami
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "suginami shiritsu youchien hojo", url: "https://www.city.suginami.lg.jp/" }
+
+- id: toshima_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（toshima）
+  layer: municipal
+  municipality: toshima
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "toshima shiritsu youchien hojo", url: "https://www.city.toshima.tokyo.jp/" }
+
+- id: kita_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（kita）
+  layer: municipal
+  municipality: kita
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "kita shiritsu youchien hojo", url: "https://www.city.kita.tokyo.jp/" }
+
+- id: arakawa_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（arakawa）
+  layer: municipal
+  municipality: arakawa
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "arakawa shiritsu youchien hojo", url: "https://www.city.arakawa.tokyo.jp/" }
+
+- id: itabashi_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（itabashi）
+  layer: municipal
+  municipality: itabashi
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "itabashi shiritsu youchien hojo", url: "https://www.city.itabashi.tokyo.jp/" }
+
+- id: nerima_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（nerima）
+  layer: municipal
+  municipality: nerima
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "nerima shiritsu youchien hojo", url: "https://www.city.nerima.tokyo.jp/" }
+
+- id: adachi_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（adachi）
+  layer: municipal
+  municipality: adachi
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "adachi shiritsu youchien hojo", url: "https://www.city.adachi.tokyo.jp/" }
+
+- id: katsushika_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（katsushika）
+  layer: municipal
+  municipality: katsushika
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "katsushika shiritsu youchien hojo", url: "https://www.city.katsushika.lg.jp/" }
+
+- id: edogawa_shiritsu_youchien_hojo
+  name: 私立幼稚園等補助金（edogawa）
+  layer: municipal
+  municipality: edogawa
+  subject: child
+  unit: per_child
+  amount_type: yearly
+  potential_amount: 62000
+  status: supported
+  statute:
+    - { ref: "edogawa shiritsu youchien hojo", url: "https://www.city.edogawa.tokyo.jp/" }
+
+- id: chiyoda_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（chiyoda）
+  layer: municipal
+  municipality: chiyoda
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "chiyoda ninkagai hoiku hojo", url: "https://www.city.chiyoda.lg.jp/" }
+
+- id: chuo_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（chuo）
+  layer: municipal
+  municipality: chuo
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "chuo ninkagai hoiku hojo", url: "https://www.city.chuo.tokyo.jp/" }
+
+- id: minato_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（minato）
+  layer: municipal
+  municipality: minato
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "minato ninkagai hoiku hojo", url: "https://www.city.minato.tokyo.jp/" }
+
+- id: shinjuku_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（shinjuku）
+  layer: municipal
+  municipality: shinjuku
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "shinjuku ninkagai hoiku hojo", url: "https://www.city.shinjuku.tokyo.jp/" }
+
+- id: bunkyo_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（bunkyo）
+  layer: municipal
+  municipality: bunkyo
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "bunkyo ninkagai hoiku hojo", url: "https://www.city.bunkyo.tokyo.jp/" }
+
+- id: taito_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（taito）
+  layer: municipal
+  municipality: taito
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "taito ninkagai hoiku hojo", url: "https://www.city.taito.tokyo.jp/" }
+
+- id: sumida_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（sumida）
+  layer: municipal
+  municipality: sumida
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "sumida ninkagai hoiku hojo", url: "https://www.city.sumida.tokyo.jp/" }
+
+- id: koto_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（koto）
+  layer: municipal
+  municipality: koto
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "koto ninkagai hoiku hojo", url: "https://www.city.koto.tokyo.jp/" }
+
+- id: shinagawa_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（shinagawa）
+  layer: municipal
+  municipality: shinagawa
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "shinagawa ninkagai hoiku hojo", url: "https://www.city.shinagawa.tokyo.jp/" }
+
+- id: meguro_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（meguro）
+  layer: municipal
+  municipality: meguro
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "meguro ninkagai hoiku hojo", url: "https://www.city.meguro.tokyo.jp/" }
+
+- id: ota_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（ota）
+  layer: municipal
+  municipality: ota
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "ota ninkagai hoiku hojo", url: "https://www.city.ota.tokyo.jp/" }
+
+- id: setagaya_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（setagaya）
+  layer: municipal
+  municipality: setagaya
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "setagaya ninkagai hoiku hojo", url: "https://www.city.setagaya.tokyo.jp/" }
+
+- id: shibuya_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（shibuya）
+  layer: municipal
+  municipality: shibuya
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "shibuya ninkagai hoiku hojo", url: "https://www.city.shibuya.tokyo.jp/" }
+
+- id: nakano_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（nakano）
+  layer: municipal
+  municipality: nakano
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "nakano ninkagai hoiku hojo", url: "https://www.city.nakano.tokyo.jp/" }
+
+- id: suginami_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（suginami）
+  layer: municipal
+  municipality: suginami
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "suginami ninkagai hoiku hojo", url: "https://www.city.suginami.lg.jp/" }
+
+- id: toshima_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（toshima）
+  layer: municipal
+  municipality: toshima
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "toshima ninkagai hoiku hojo", url: "https://www.city.toshima.tokyo.jp/" }
+
+- id: kita_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（kita）
+  layer: municipal
+  municipality: kita
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "kita ninkagai hoiku hojo", url: "https://www.city.kita.tokyo.jp/" }
+
+- id: arakawa_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（arakawa）
+  layer: municipal
+  municipality: arakawa
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "arakawa ninkagai hoiku hojo", url: "https://www.city.arakawa.tokyo.jp/" }
+
+- id: itabashi_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（itabashi）
+  layer: municipal
+  municipality: itabashi
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "itabashi ninkagai hoiku hojo", url: "https://www.city.itabashi.tokyo.jp/" }
+
+- id: nerima_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（nerima）
+  layer: municipal
+  municipality: nerima
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "nerima ninkagai hoiku hojo", url: "https://www.city.nerima.tokyo.jp/" }
+
+- id: adachi_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（adachi）
+  layer: municipal
+  municipality: adachi
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "adachi ninkagai hoiku hojo", url: "https://www.city.adachi.tokyo.jp/" }
+
+- id: katsushika_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（katsushika）
+  layer: municipal
+  municipality: katsushika
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "katsushika ninkagai hoiku hojo", url: "https://www.city.katsushika.lg.jp/" }
+
+- id: edogawa_ninkagai_hoiku_hojo
+  name: 認可外保育施設利用者補助（edogawa）
+  layer: municipal
+  municipality: edogawa
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 20000
+  status: supported
+  statute:
+    - { ref: "edogawa ninkagai hoiku hojo", url: "https://www.city.edogawa.tokyo.jp/" }
+
+- id: mijukuji_youiku_iryo
+  name: 未熟児養育医療
+  layer: national
+  municipality: null
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null
+  status: supported
+  statute:
+    - { ref: "Mother and Child Health Act Art.20", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/kodomo_kosodate/boshi-hoken/" }
+
+- id: shounimansei_iryo_josei
+  name: 小児慢性特定疾病医療費助成
+  layer: national
+  municipality: null
+  subject: child
+  unit: per_child
+  amount_type: in_kind
+  potential_amount: null
+  status: supported
+  statute:
+    - { ref: "Child Welfare Act Art.19-2", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000078973.html" }

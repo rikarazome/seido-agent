@@ -1,0 +1,15 @@
+# Child chronic disease medical subsidy golden cases
+
+- name: shounimansei_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children: [ { id: c1, birth_date: "2015-01-01" } ]
+  expect: { subject: c1, status: decided, detail: "in_kind" }
+
+- name: shounimansei_ineligible
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children: [ { id: c1, birth_date: "2006-01-01" } ]
+  expect: { subject: c1, status: ineligible, detail: "age_over" }

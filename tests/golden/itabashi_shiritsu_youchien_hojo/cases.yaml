@@ -1,0 +1,15 @@
+# itabashi private kindergarten subsidy golden cases
+
+- name: itabashi_youchien_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2022-06-01" } ]
+  expect: { subject: c1, status: decided, detail: "yearly(62000)" }
+
+- name: itabashi_youchien_ineligible
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2018-06-01" } ]
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }

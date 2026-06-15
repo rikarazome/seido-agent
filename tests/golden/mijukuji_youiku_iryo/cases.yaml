@@ -1,0 +1,15 @@
+# Premature infant medical care golden cases
+
+- name: mijukuji_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2025-10-01" } ]
+  expect: { subject: c1, status: decided, detail: "in_kind" }
+
+- name: mijukuji_ineligible
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2022-01-01" } ]
+  expect: { subject: c1, status: ineligible, detail: "age_over" }

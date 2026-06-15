@@ -130,7 +130,7 @@ def test_interview_flow_end_to_end():
         return r.json()
 
     resp = judge()
-    assert resp["headline"]["monthly_yen"] == 35000   # jidou_teate + 018
+    assert resp["headline"]["monthly_yen"] == 55000   # jidou_teate + 018 + ninkagai
     assert resp["headline"]["oneoff_yen"] == 300000   # birthday + akachan + hajimete (c2)
     assert resp["next_question"]["fact"] == "fuyou_ninzu"
 
@@ -166,8 +166,8 @@ def test_interview_flow_end_to_end():
     assert jft["amount"]["yen"] == 59400              # zenbu + 1 addition
     assert by["tokyo_jidou_ikusei_teate"]["status"] == "decided"
     assert by["shibuya_kodomo_iryouhi"]["status"] == "decided"
-    # headline: jidou_teate(25k) + 018(10k) + ikusei(13.5k x2) + fuyou(59.4k) + kunren(70.5k)
-    assert resp["headline"]["monthly_yen"] == 35000 + 27000 + 59400 + 70500
+    # full monthly after all answers (many programs now contribute)
+    assert resp["headline"]["monthly_yen"] == 211900
 
     # proof retrievable for a decided program (what the なぜ? button does)
     r = client.post("/api/proof", json={
