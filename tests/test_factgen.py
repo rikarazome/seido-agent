@@ -4,7 +4,7 @@ from datetime import date
 import pytest
 
 from seido.factgen import (
-    CHILD_ASKABLE_PREDS, facts_to_prolog, salary_to_shotoku,
+    ASKABLE_MAP, CHILD_ASKABLE_PREDS, facts_to_prolog, salary_to_shotoku,
 )
 
 # 2020-onward salary deduction brackets (kyuuyo shotoku koujo)
@@ -76,6 +76,95 @@ def test_empty_child_id_gets_auto_generated():
              "askable": {}}
     out = facts_to_prolog(facts, date(2026, 6, 11))
     assert "child(c1)." in out
+
+
+# -- claimant age generation (v2) --
+
+def test_claimant_birth_date_generates_age():
+    facts = {
+        "claimant": {"birth_date": "1988-04-01"},
+        "children": [],
+        "askable": {},
+    }
+    out = facts_to_prolog(facts, date(2026, 6, 15))
+    assert "age(p1, 38)." in out
+    assert "age_nendo_matsu(p1, 38)." in out
+
+
+def test_claimant_birth_date_age_boundary():
+    """Birthday hasn't occurred yet in the reference date."""
+    facts = {
+        "claimant": {"birth_date": "1988-07-01"},
+        "children": [],
+        "askable": {},
+    }
+    out = facts_to_prolog(facts, date(2026, 6, 15))
+    assert "age(p1, 37)." in out
+
+
+def test_claimant_no_birth_date_no_age():
+    """Without claimant.birth_date, no age(p1, _) should be emitted."""
+    facts = {"children": [], "askable": {}}
+    out = facts_to_prolog(facts, date(2026, 6, 15))
+    assert "age(p1," not in out
+
+
+def test_claimant_empty_object_no_age():
+    facts = {"claimant": {}, "children": [], "askable": {}}
+    out = facts_to_prolog(facts, date(2026, 6, 15))
+    assert "age(p1," not in out
+
+
+# -- v2 askable keys --
+
+V2_KEYS = [
+    "shogai_techo", "shogai_teido", "kaigo_nintei", "ninshin",
+    "shussan_yoteibi", "juutaku_type", "hikazei", "koyou_hoken",
+    "rishoku", "rishoku_jiyuu", "seikatsu_hogo", "nanbyo_nintei",
+    "jido_yougo_shisetsu",
+]
+
+
+@pytest.mark.parametrize("key", V2_KEYS)
+def test_v2_askable_key_in_map(key):
+    """All v2 keys from architecture.md must exist in ASKABLE_MAP."""
+    assert key in ASKABLE_MAP
+
+
+def test_v2_boolean_askable_generates_known():
+    facts = {"children": [], "askable": {"ninshin": True}}
+    out = facts_to_prolog(facts, date(2026, 6, 15))
+    assert "known(ninshin(p1), true)" in out
+
+
+def test_v2_enum_askable_generates_known():
+    facts = {"children": [], "askable": {"shogai_techo": "shintai_1"}}
+    out = facts_to_prolog(facts, date(2026, 6, 15))
+    assert "known(shogai_techo(p1), shintai_1)" in out
+
+
+def test_v2_per_child_askable():
+    """jido_yougo_shisetsu is per_child: injected for every child."""
+    facts = {
+        "children": [
+            {"id": "c1", "birth_date": "2020-01-01"},
+            {"id": "c2", "birth_date": "2022-01-01"},
+        ],
+        "askable": {"jido_yougo_shisetsu": True},
+    }
+    out = facts_to_prolog(facts, date(2026, 6, 15))
+    assert "known(jido_yougo_shisetsu(c1), true)" in out
+    assert "known(jido_yougo_shisetsu(c2), true)" in out
+
+
+def test_v2_null_and_declined_emit_nothing():
+    facts = {"children": [], "askable": {
+        "seikatsu_hogo": None,
+        "hikazei": "declined",
+    }}
+    out = facts_to_prolog(facts, date(2026, 6, 15))
+    assert "seikatsu_hogo" not in out
+    assert "hikazei" not in out
 
 
 # -- data sync guard --

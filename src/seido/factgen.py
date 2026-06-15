@@ -25,15 +25,28 @@ def _validate_atom(s: str) -> str:
 # askable key -> (predicate, scope). Household-level flat namespace:
 # per-child predicates get the same value injected for every child.
 ASKABLE_MAP = {
-    "nenshu": ("income", "claimant"),  # converted via salary_to_shotoku
-    # (rough first-pass estimate, hybrid design in architecture.md)
-    "shotoku_exact": ("income", "claimant"),  # exact post-deduction income from
-    # the income_exact interview answer; takes precedence over nenshu
+    # v1 (implemented)
+    "nenshu": ("income", "claimant"),
+    "shotoku_exact": ("income", "claimant"),
     "hitorioya": ("hitorioya", "claimant"),
     "hitorioya_jiyuu": ("hitorioya_jiyuu", "claimant"),
     "fuyou_ninzu": ("fuyou_ninzu", "claimant"),
     "seikei_douitsu_partner": ("seikei_douitsu_partner", "per_child"),
-    "kenkou_hoken": ("kenkou_hoken", "claimant"),  # household health insurance
+    "kenkou_hoken": ("kenkou_hoken", "claimant"),
+    # v2 (architecture.md § facts JSON)
+    "shogai_techo": ("shogai_techo", "claimant"),
+    "shogai_teido": ("shogai_teido", "claimant"),
+    "kaigo_nintei": ("kaigo_nintei", "claimant"),
+    "ninshin": ("ninshin", "claimant"),
+    "shussan_yoteibi": ("shussan_yoteibi", "claimant"),
+    "juutaku_type": ("juutaku_type", "claimant"),
+    "hikazei": ("hikazei", "claimant"),
+    "koyou_hoken": ("koyou_hoken", "claimant"),
+    "rishoku": ("rishoku", "claimant"),
+    "rishoku_jiyuu": ("rishoku_jiyuu", "claimant"),
+    "seikatsu_hogo": ("seikatsu_hogo", "claimant"),
+    "nanbyo_nintei": ("nanbyo_nintei", "claimant"),
+    "jido_yougo_shisetsu": ("jido_yougo_shisetsu", "per_child"),
 }
 
 # Per-child askables (children[].askable): facts that genuinely differ per
@@ -110,6 +123,13 @@ def facts_to_prolog(facts: dict, as_of: date) -> str:
         f"claimant({CLAIMANT}).",
     ]
     fy = fy_end(as_of)
+    claimant_bd = (facts.get("claimant") or {}).get("birth_date")
+    if claimant_bd:
+        cb = date.fromisoformat(claimant_bd)
+        lines += [
+            f"age({CLAIMANT}, {age_on(cb, as_of)}).",
+            f"age_nendo_matsu({CLAIMANT}, {age_on(cb, fy)}).",
+        ]
     child_ids = []
     for i, ch in enumerate(children, start=1):
         raw_id = ch.get("id")
