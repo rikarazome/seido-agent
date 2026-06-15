@@ -114,6 +114,18 @@
   statute:
     - { ref: "東京都ひとり親家庭等医療費助成制度（マル親）", url: "https://www.fukushi.metro.tokyo.lg.jp/smph/iryo/josei/maruoya.html" }
 
+- id: shinshin_shogaisha_iryo_josei
+  name: 心身障害者医療費助成
+  layer: municipal
+  municipality: tokyo
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: null
+  status: supported
+  statute:
+    - { ref: "東京都心身障害者医療費助成制度（マル障）", url: "https://www.fukushi.metro.tokyo.lg.jp/iryo/josei/marusyou.html" }
+
 - id: shiritsu_koko_jugyoryo_keigen
   name: 私立高校授業料軽減助成金
   layer: municipal

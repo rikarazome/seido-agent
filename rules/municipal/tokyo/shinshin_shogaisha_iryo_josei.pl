@@ -1,0 +1,52 @@
+% ============================================================
+% shinshin_shogaisha_iryo_josei.pl - Disability Medical Subsidy (Tokyo)
+% VERIFIED 2026-06-15: in-kind medical cost subsidy for persons with
+% disability certificates. Eligible: shintai 1-2, ryoiku, seishin 1.
+% Income limit: 3,604,000 + 380,000 * dependents.
+% Excluded: seikatsu_hogo recipients.
+% Subject: claimant (self).
+% Sources: tests/golden/shinshin_shogaisha_iryo_josei/statute_source.md
+% Requires engine.pl.
+% ============================================================
+
+:- module(shinshin_shogaisha_iryo_josei, [kettei_status/3, required_fact/3]).
+
+:- discontiguous kettei_status/3.
+:- discontiguous required_fact/3.
+
+taisho_techo(shintai_1).
+taisho_techo(shintai_2).
+taisho_techo(ryoiku).
+taisho_techo(seishin_1).
+
+marusho_limit(N, L) :- integer(N), N >= 0, L is 3604000 + 380000 * N.
+
+required_fact(P, shogai_techo, "disability certificate type") :-
+    claimant(P), unknown(shogai_techo(P)).
+required_fact(P, seikatsu_hogo, "public assistance status") :-
+    claimant(P), unknown(seikatsu_hogo(P)).
+required_fact(P, income, "claimant income") :-
+    claimant(P), unknown(income(P)).
+required_fact(P, fuyou_ninzu, "number of dependents") :-
+    claimant(P), unknown(fuyou_ninzu(P)).
+required_fact(P, income_exact, "exact income (range straddles limit)") :-
+    claimant(P), val(income(P), V), val(fuyou_ninzu(P), N),
+    marusho_limit(N, L), v_indet(V, L).
+
+kettei_status(P, self, ineligible(seikatsu_hogo_jukyuu)) :-
+    claimant(P), yes(seikatsu_hogo(P)), !.
+kettei_status(P, self, ineligible(grade_not_covered)) :-
+    claimant(P), val(shogai_techo(P), G), \+ taisho_techo(G), !.
+kettei_status(P, self, blocked(Missing)) :-
+    claimant(P),
+    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
+    Missing \= [], !.
+kettei_status(P, self, ineligible(income_over)) :-
+    claimant(P), val(shogai_techo(P), G), taisho_techo(G),
+    val(income(P), V), val(fuyou_ninzu(P), N),
+    marusho_limit(N, L), v_geq(V, L), !.
+kettei_status(P, self, decided(in_kind)) :-
+    claimant(P), val(shogai_techo(P), G), taisho_techo(G),
+    val(income(P), V), val(fuyou_ninzu(P), N),
+    marusho_limit(N, L), v_lt(V, L), !.
+kettei_status(_, _, error(no_rule_matched)).
