@@ -1,0 +1,50 @@
+# 自立支援医療（育成医療） golden cases（statute_source.md）
+# subject: child, amount_type: in_kind. Eligible: shintai_* + age < 18
+
+- name: ikusei_decided_shintai1
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_1" } }
+  expect: { subject: c1, status: decided, detail: "in_kind" }
+
+- name: ikusei_decided_shintai3
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_3" } }
+  expect: { subject: c1, status: decided, detail: "in_kind" }
+
+- name: ikusei_ineligible_not_physical
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "seishin_1" } }
+  expect: { subject: c1, status: ineligible, detail: "not_physical_disability" }
+
+- name: ikusei_ineligible_ryoiku
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "ryoiku" } }
+  expect: { subject: c1, status: ineligible, detail: "not_physical_disability" }
+
+- name: ikusei_ineligible_age_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2006-01-01", askable: { shogai_techo_child: "shintai_1" } }
+  expect: { subject: c1, status: ineligible, detail: "age_18_or_over" }
+
+- name: ikusei_blocked
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-01-01", askable: {} }
+  expect: { subject: c1, status: blocked, detail: "[shogai_techo_child]" }
