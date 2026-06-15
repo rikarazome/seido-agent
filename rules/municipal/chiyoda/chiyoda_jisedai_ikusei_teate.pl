@@ -1,0 +1,22 @@
+% ============================================================
+% chiyoda_jisedai_ikusei_teate.pl - Chiyoda Next-Gen Nurturing Allowance
+% VERIFIED 2026-06-15: 5,000 JPY/month per child, FY-end age 16-18
+% (high school equivalent). No income limit.
+% Subject: child.
+% Sources: tests/golden/chiyoda_jisedai_ikusei_teate/statute_source.md
+% Requires engine.pl.
+% ============================================================
+
+:- module(chiyoda_jisedai_ikusei_teate, [kettei_status/3, required_fact/3]).
+
+required_fact(_, _, _) :- fail.
+
+kettei_status(P, C, error(structural_facts_missing)) :-
+    claimant(P), child(C),
+    \+ age_nendo_matsu(C, _), !.
+kettei_status(P, C, ineligible(not_target_age)) :-
+    claimant(P), kango_by(C, P), child(C),
+    age_nendo_matsu(C, A), (A < 16 ; A > 18), !.
+kettei_status(P, C, decided(monthly(5000))) :-
+    claimant(P), kango_by(C, P), child(C), !.
+kettei_status(_, _, error(no_rule_matched)).

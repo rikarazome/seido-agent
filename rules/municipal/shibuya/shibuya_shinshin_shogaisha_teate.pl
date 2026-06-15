@@ -1,0 +1,36 @@
+% ============================================================
+% shibuya_shinshin_shogaisha_teate.pl - Shibuya Disability Welfare Allowance
+% VERIFIED 2026-06-15: shintai 1-2 / ryoiku -> 15,500 JPY/month,
+% shintai 3 -> 7,750 JPY/month. No income limit. Age < 65 (new).
+% Seishin certificates not covered by this ward allowance.
+% Subject: claimant (self).
+% Sources: tests/golden/shibuya_shinshin_shogaisha_teate/statute_source.md
+% Requires engine.pl.
+% ============================================================
+
+:- module(shibuya_shinshin_shogaisha_teate, [kettei_status/3, required_fact/3]).
+
+grade_a(shintai_1).
+grade_a(shintai_2).
+grade_a(ryoiku).
+grade_b(shintai_3).
+
+required_fact(P, shogai_techo, "disability certificate") :-
+    claimant(P), unknown(shogai_techo(P)).
+
+kettei_status(P, self, error(structural_facts_missing)) :-
+    claimant(P), \+ age(P, _), !.
+kettei_status(P, self, ineligible(age_65_or_over)) :-
+    claimant(P), age(P, A), A >= 65, !.
+kettei_status(P, self, ineligible(grade_not_covered)) :-
+    claimant(P), val(shogai_techo(P), G),
+    \+ grade_a(G), \+ grade_b(G), !.
+kettei_status(P, self, blocked(Missing)) :-
+    claimant(P),
+    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
+    Missing \= [], !.
+kettei_status(P, self, decided(monthly(15500))) :-
+    claimant(P), val(shogai_techo(P), G), grade_a(G), !.
+kettei_status(P, self, decided(monthly(7750))) :-
+    claimant(P), val(shogai_techo(P), G), grade_b(G), !.
+kettei_status(_, _, error(no_rule_matched)).

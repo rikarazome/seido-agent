@@ -1,0 +1,42 @@
+# 千代田区次世代育成手当 golden cases（statute_source.md）
+# subject: child, amount: monthly 5,000. FY-end age 16-18, no income limit
+
+- name: chiyoda_jisedai_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2009-06-01" }   # FY-end age 17
+  expect: { subject: c1, status: decided, detail: "monthly(5000)" }
+
+- name: chiyoda_jisedai_age16_boundary
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2011-02-01" }   # FY-end age 16
+  expect: { subject: c1, status: decided, detail: "monthly(5000)" }
+
+- name: chiyoda_jisedai_age18_boundary
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2008-06-01" }   # FY-end age 18
+  expect: { subject: c1, status: decided, detail: "monthly(5000)" }
+
+- name: chiyoda_jisedai_ineligible_young
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2015-06-01" }   # FY-end age 11
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }
+
+- name: chiyoda_jisedai_ineligible_old
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2006-06-01" }   # FY-end age 20
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }

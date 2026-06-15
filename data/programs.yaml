@@ -301,6 +301,18 @@
   statute:
     - { ref: "渋谷区 バースデーサポート事業", url: "https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/birthday_support.html" }
 
+- id: shibuya_shinshin_shogaisha_teate
+  name: 心身障害者福祉手当（渋谷区）
+  layer: municipal
+  municipality: shibuya
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 15500
+  status: supported
+  statute:
+    - { ref: "渋谷区心身障害者福祉手当", url: "https://www.city.shibuya.tokyo.jp/kenko/shogai/teate/shinshin_teate.html" }
+
 - id: shibuya_shugaku_enjo
   name: 就学援助
   layer: municipal
@@ -370,6 +382,18 @@
   status: supported
   statute:
     - { ref: "豊島区 子どもの医療費助成", url: "https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/015729.html" }
+
+- id: chiyoda_jisedai_ikusei_teate
+  name: 次世代育成手当（千代田区）
+  layer: municipal
+  municipality: chiyoda
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 5000
+  status: supported
+  statute:
+    - { ref: "千代田区次世代育成手当", url: "https://www.city.chiyoda.lg.jp/kosodate/kosodate/teate/jisedai.html" }
 
 - id: chiyoda_kodomo_iryouhi
   name: 子ども医療費助成
