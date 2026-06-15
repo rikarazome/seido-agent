@@ -125,19 +125,19 @@ def _aggregate(meta, subj_results, facts, facts_pl, as_of):
                                       "yen": decided_yen}
     elif "decided" in kinds:
         card["status"] = "decided"
-        if meta["unit"] == "per_household":
+        if meta["amount_type"] == "in_kind":
+            card["amount"] = {"type": "in_kind"}
+        elif meta["unit"] == "per_household":
             kubuns = {s["detail"] for s in subj_results
                       if s["kind"] == "decided"}
-            if len(kubuns) > 1:  # genuine rule bug: kubun is claimant-only
+            if len(kubuns) > 1:
                 card["status"] = "error"
                 card["reason"] = "inconsistent_household_kubun"
             else:
                 card["amount"] = _household_amount(meta, facts, facts_pl,
                                                    as_of)
-        elif meta["amount_type"] != "in_kind":
-            card["amount"] = {"type": meta["amount_type"], "yen": decided_yen}
         else:
-            card["amount"] = {"type": "in_kind"}
+            card["amount"] = {"type": meta["amount_type"], "yen": decided_yen}
     else:
         card["status"] = "ineligible"
         card["reason"] = next(s["reason"] for s in subj_results

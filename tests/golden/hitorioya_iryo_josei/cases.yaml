@@ -1,0 +1,71 @@
+# ひとり親家庭等医療費助成 golden cases（statute_source.md）
+# subject: claimant (self), amount_type: in_kind
+# income limit: 1,920,000 + 380,000 * fuyou_ninzu
+
+- name: maruoya_decided_low_income
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2020-01-01" } ]
+    askable: { hitorioya: true, seikei_douitsu_partner: false, fuyou_ninzu: 1, shotoku_exact: 1500000 }
+  expect: { subject: self, status: decided, detail: "in_kind" }
+  # limit(1) = 2,300,000. shotoku 1,500,000 < limit -> decided
+
+- name: maruoya_ineligible_not_single_parent
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2020-01-01" } ]
+    askable: { hitorioya: false, fuyou_ninzu: 1, nenshu: [2000000, 4000000] }
+  expect: { subject: self, status: ineligible, detail: "not_single_parent" }
+
+- name: maruoya_ineligible_has_partner
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2020-01-01" } ]
+    askable: { hitorioya: true, seikei_douitsu_partner: true, fuyou_ninzu: 1, nenshu: [2000000, 4000000] }
+  expect: { subject: self, status: ineligible, detail: "has_partner" }
+
+- name: maruoya_ineligible_income_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2020-01-01" } ]
+    askable: { hitorioya: true, seikei_douitsu_partner: false, fuyou_ninzu: 0, shotoku_exact: 2000000 }
+  expect: { subject: self, status: ineligible, detail: "income_over" }
+  # limit(0) = 1,920,000. shotoku 2,000,000 >= limit -> ineligible
+
+- name: maruoya_decided_exact_at_limit
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2020-01-01" } ]
+    askable: { hitorioya: true, seikei_douitsu_partner: false, fuyou_ninzu: 0, shotoku_exact: 1919999 }
+  expect: { subject: self, status: decided, detail: "in_kind" }
+  # limit(0) = 1,920,000. shotoku 1,919,999 < limit -> decided
+
+- name: maruoya_blocked_hitorioya_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2020-01-01" } ]
+    askable: { seikei_douitsu_partner: false, fuyou_ninzu: 1, shotoku_exact: 1500000 }
+  expect: { subject: self, status: blocked, detail: "[hitorioya]" }
+
+- name: maruoya_blocked_income_unknown
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2020-01-01" } ]
+    askable: { hitorioya: true, seikei_douitsu_partner: false, fuyou_ninzu: 1 }
+  expect: { subject: self, status: blocked, detail: "[income]" }
+
+- name: maruoya_no_children
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: []
+    askable: { hitorioya: true, seikei_douitsu_partner: false, fuyou_ninzu: 0, shotoku_exact: 1000000 }
+  expect: { subject: self, status: ineligible, detail: "no_child" }
+  # must have at least one child under 18 FY-end

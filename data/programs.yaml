@@ -102,6 +102,18 @@
     - { ref: "東京都児童育成手当に関する条例施行規則", url: "https://www.reiki.metro.tokyo.lg.jp/reiki/reiki_honbun/g101RG00000745.html" }
     - { ref: "渋谷区 ひとり親家庭の手当", url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_teate.html" }
 
+- id: hitorioya_iryo_josei
+  name: ひとり親家庭等医療費助成
+  layer: municipal
+  municipality: tokyo
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: null
+  status: supported
+  statute:
+    - { ref: "東京都ひとり親家庭等医療費助成制度（マル親）", url: "https://www.fukushi.metro.tokyo.lg.jp/smph/iryo/josei/maruoya.html" }
+
 - id: tokyo_akachan_first
   name: 赤ちゃんファースト
   layer: municipal

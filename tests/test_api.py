@@ -132,7 +132,7 @@ def test_interview_flow_end_to_end():
     resp = judge()
     assert resp["headline"]["monthly_yen"] == 35000   # jidou_teate + 018
     assert resp["headline"]["oneoff_yen"] == 200000   # birthday + akachan (c2 FY2025)
-    assert resp["next_question"]["fact"] == "kenkou_hoken"
+    assert resp["next_question"]["fact"] == "hitorioya"
 
     # answer chips in the order the engine asks
     answers = {"hitorioya": True, "hitorioya_jiyuu": "rikon",

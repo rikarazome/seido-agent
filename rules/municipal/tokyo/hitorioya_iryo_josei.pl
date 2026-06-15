@@ -1,0 +1,56 @@
+% ============================================================
+% hitorioya_iryo_josei.pl - Single-Parent Family Medical Subsidy (Tokyo)
+% VERIFIED 2026-06-15: in-kind medical cost subsidy for single-parent
+% households. Income limit: 1,920,000 + 380,000 * dependents.
+% Excluded if de-facto spouse exists. Subject: claimant (self).
+% Must have at least one child under 18 FY-end.
+% Sources: tests/golden/hitorioya_iryo_josei/statute_source.md
+% Requires engine.pl.
+% ============================================================
+
+:- module(hitorioya_iryo_josei, [kettei_status/3, required_fact/3]).
+
+:- discontiguous kettei_status/3.
+:- discontiguous required_fact/3.
+
+has_eligible_child(P) :-
+    claimant(P), kango_by(C, P), child(C),
+    age_nendo_matsu(C, A), A =< 18, !.
+
+maruoya_limit(N, L) :- integer(N), N >= 0, L is 1920000 + 380000 * N.
+
+required_fact(P, hitorioya, "single parent status") :-
+    claimant(P), unknown(hitorioya(P)).
+required_fact(P, seikei_douitsu_partner, "de-facto spouse") :-
+    claimant(P), has_eligible_child(P),
+    kango_by(C, P), child(C),
+    unknown(seikei_douitsu_partner(C)).
+required_fact(P, income, "claimant income") :-
+    claimant(P), unknown(income(P)).
+required_fact(P, fuyou_ninzu, "number of dependents") :-
+    claimant(P), unknown(fuyou_ninzu(P)).
+required_fact(P, income_exact, "exact income (range straddles limit)") :-
+    claimant(P), val(income(P), V), val(fuyou_ninzu(P), N),
+    maruoya_limit(N, L), v_indet(V, L).
+
+kettei_status(P, self, ineligible(no_child)) :-
+    claimant(P), \+ has_eligible_child(P), !.
+kettei_status(P, self, ineligible(not_single_parent)) :-
+    claimant(P), no(hitorioya(P)), !.
+kettei_status(P, self, ineligible(has_partner)) :-
+    claimant(P), has_eligible_child(P),
+    kango_by(C, P), child(C),
+    yes(seikei_douitsu_partner(C)), !.
+kettei_status(P, self, blocked(Missing)) :-
+    claimant(P),
+    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
+    Missing \= [], !.
+kettei_status(P, self, ineligible(income_over)) :-
+    claimant(P), yes(hitorioya(P)),
+    val(income(P), V), val(fuyou_ninzu(P), N),
+    maruoya_limit(N, L), v_geq(V, L), !.
+kettei_status(P, self, decided(in_kind)) :-
+    claimant(P), yes(hitorioya(P)),
+    val(income(P), V), val(fuyou_ninzu(P), N),
+    maruoya_limit(N, L), v_lt(V, L), !.
+kettei_status(_, _, error(no_rule_matched)).

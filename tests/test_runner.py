@@ -65,11 +65,14 @@ def test_first_pass_shibuya_two_children():
     # shussan_ikuji_ichijikin: blocked on ninshin + kenkou_hoken
     assert r["shussan_ikuji_ichijikin"]["status"] == "blocked"
 
-    # next question: kenkou_hoken unlocks 2 programs (iryouhi + shussan,
-    # potential_amount 500000) > hitorioya (fuyou + ikusei, potential 61550)
+    # hitorioya_iryo_josei: blocked (hitorioya unknown)
+    assert r["hitorioya_iryo_josei"]["status"] == "blocked"
+
+    # next question: hitorioya unlocks 3 programs (fuyou + ikusei + iryo_josei)
+    # > kenkou_hoken (2 programs: iryouhi + shussan)
     q = resp["next_question"]
-    assert q["fact"] == "kenkou_hoken"
-    assert set(q["why"]) == {"shibuya_kodomo_iryouhi", "shussan_ikuji_ichijikin"}
+    assert q["fact"] == "hitorioya"
+    assert set(q["why"]) == {"jidou_fuyou_teate", "tokyo_jidou_ikusei_teate", "hitorioya_iryo_josei"}
     labels = [c["label"] for c in q["choices"]]
     assert labels[-1].startswith("わからない")          # auto-appended, last
 
