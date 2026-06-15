@@ -62,10 +62,14 @@ def test_first_pass_shibuya_two_children():
     assert resp["headline"]["monthly_yen"] == 35000
     assert resp["headline"]["oneoff_yen"] == 100000
 
-    # next question: hitorioya unlocks 2 programs, beats kenkou_hoken (1)
+    # shussan_ikuji_ichijikin: blocked on ninshin + kenkou_hoken
+    assert r["shussan_ikuji_ichijikin"]["status"] == "blocked"
+
+    # next question: kenkou_hoken unlocks 2 programs (iryouhi + shussan,
+    # potential_amount 500000) > hitorioya (fuyou + ikusei, potential 61550)
     q = resp["next_question"]
-    assert q["fact"] == "hitorioya"
-    assert set(q["why"]) == {"jidou_fuyou_teate", "tokyo_jidou_ikusei_teate"}
+    assert q["fact"] == "kenkou_hoken"
+    assert set(q["why"]) == {"shibuya_kodomo_iryouhi", "shussan_ikuji_ichijikin"}
     labels = [c["label"] for c in q["choices"]]
     assert labels[-1].startswith("わからない")          # auto-appended, last
 
@@ -86,7 +90,9 @@ def test_childless_household_no_eligible_subject():
     assert r["jidou_teate"]["status"] == "ineligible"
     assert r["jidou_teate"]["reason"] == "no_eligible_subject"
     assert resp["headline"]["monthly_yen"] == 0
-    assert resp["next_question"] is None
+    # shussan_ikuji_ichijikin is claimant-level, still blocked even without children
+    assert r["shussan_ikuji_ichijikin"]["status"] == "blocked"
+    assert resp["next_question"] is not None
 
 
 def test_other_ward_gets_national_and_tokyo_programs_only():

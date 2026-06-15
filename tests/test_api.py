@@ -132,12 +132,13 @@ def test_interview_flow_end_to_end():
     resp = judge()
     assert resp["headline"]["monthly_yen"] == 35000   # jidou_teate + 018
     assert resp["headline"]["oneoff_yen"] == 100000   # birthday (c2 FY2025)
-    assert resp["next_question"]["fact"] == "hitorioya"
+    assert resp["next_question"]["fact"] == "kenkou_hoken"
 
     # answer chips in the order the engine asks
     answers = {"hitorioya": True, "hitorioya_jiyuu": "rikon",
                "seikei_douitsu_partner": False, "fuyou_ninzu": 2,
-               "kenkou_hoken": True, "shotoku_exact": 1_400_000}
+               "kenkou_hoken": True, "shotoku_exact": 1_400_000,
+               "ninshin": False}
     for _ in range(10):                                # frontend turn cap
         q = resp["next_question"]
         if q is None:

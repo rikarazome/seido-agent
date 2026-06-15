@@ -41,6 +41,19 @@
     - { ref: "高等学校等就学支援金の支給に関する法律（2026-04改正）", url: "https://laws.e-gov.go.jp/law/422AC0000000018" }
     - { ref: "文科省 R8年度案内", url: "https://www.mext.go.jp/content/202604024-mxt_shuukyo03-100002595_1.pdf" }
 
+- id: shussan_ikuji_ichijikin
+  name: 出産育児一時金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 500000
+  status: supported
+  statute:
+    - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
+    - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
+
 - id: jukyo_kakuho_kyufukin
   name: 住居確保給付金
   layer: national
