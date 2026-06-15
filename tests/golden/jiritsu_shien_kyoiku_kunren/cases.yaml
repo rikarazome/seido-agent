@@ -1,0 +1,43 @@
+# 自立支援教育訓練給付金 golden cases（statute_source.md）
+# subject: claimant (self), amount: oneoff 200,000
+# income limit: 1,490,000 + 380,000 * N
+
+- name: kyoiku_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1985-01-01" }
+    children: [ { id: c1, birth_date: "2015-01-01" } ]
+    askable: { hitorioya: true, fuyou_ninzu: 1, shotoku_exact: 1000000 }
+  expect: { subject: self, status: decided, detail: "amount(200000)" }
+
+- name: kyoiku_not_single_parent
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1985-01-01" }
+    children: [ { id: c1, birth_date: "2015-01-01" } ]
+    askable: { hitorioya: false }
+  expect: { subject: self, status: ineligible, detail: "not_single_parent" }
+
+- name: kyoiku_income_over
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1985-01-01" }
+    children: [ { id: c1, birth_date: "2015-01-01" } ]
+    askable: { hitorioya: true, fuyou_ninzu: 1, shotoku_exact: 2000000 }
+  expect: { subject: self, status: ineligible, detail: "income_over" }
+
+- name: kyoiku_blocked
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1985-01-01" }
+    children: [ { id: c1, birth_date: "2015-01-01" } ]
+    askable: {}
+  expect: { subject: self, status: blocked, detail: "[fuyou_ninzu,hitorioya,income]" }
+
+- name: kyoiku_no_child
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1985-01-01" }
+    children: []
+    askable: { hitorioya: true, fuyou_ninzu: 0, shotoku_exact: 1000000 }
+  expect: { subject: self, status: ineligible, detail: "no_child" }

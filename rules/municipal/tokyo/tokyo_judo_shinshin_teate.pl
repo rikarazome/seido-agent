@@ -1,0 +1,46 @@
+% ============================================================
+% tokyo_judo_shinshin_teate.pl - Tokyo Severe Disability Allowance
+% VERIFIED 2026-06-15: 60,000 JPY/month. v1: shintai_1 as proxy
+% for severe disability. Age < 65 (new applications).
+% Income limit: 3,604,000 + 380,000 * N.
+% Subject: claimant (self).
+% Sources: tests/golden/tokyo_judo_shinshin_teate/statute_source.md
+% Requires engine.pl.
+% ============================================================
+
+:- module(tokyo_judo_shinshin_teate, [kettei_status/3, required_fact/3]).
+
+:- discontiguous kettei_status/3.
+:- discontiguous required_fact/3.
+
+judo_limit(N, L) :- integer(N), N >= 0, L is 3604000 + 380000 * N.
+
+required_fact(P, shogai_techo, "disability certificate") :-
+    claimant(P), unknown(shogai_techo(P)).
+required_fact(P, income, "income") :-
+    claimant(P), unknown(income(P)).
+required_fact(P, fuyou_ninzu, "dependents") :-
+    claimant(P), unknown(fuyou_ninzu(P)).
+required_fact(P, income_exact, "exact income") :-
+    claimant(P), val(income(P), V), val(fuyou_ninzu(P), N),
+    judo_limit(N, L), v_indet(V, L).
+
+kettei_status(P, self, error(structural_facts_missing)) :-
+    claimant(P), \+ age(P, _), !.
+kettei_status(P, self, ineligible(age_65_or_over)) :-
+    claimant(P), age(P, A), A >= 65, !.
+kettei_status(P, self, ineligible(grade_not_covered)) :-
+    claimant(P), val(shogai_techo(P), G), G \= shintai_1, !.
+kettei_status(P, self, blocked(Missing)) :-
+    claimant(P),
+    findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
+    Missing \= [], !.
+kettei_status(P, self, ineligible(income_over)) :-
+    claimant(P), val(shogai_techo(P), shintai_1),
+    val(income(P), V), val(fuyou_ninzu(P), N),
+    judo_limit(N, L), v_geq(V, L), !.
+kettei_status(P, self, decided(monthly(60000))) :-
+    claimant(P), val(shogai_techo(P), shintai_1),
+    val(income(P), V), val(fuyou_ninzu(P), N),
+    judo_limit(N, L), v_lt(V, L), !.
+kettei_status(_, _, error(no_rule_matched)).

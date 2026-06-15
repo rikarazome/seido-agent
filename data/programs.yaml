@@ -54,6 +54,19 @@
     - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
     - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
 
+- id: jiritsu_shien_kyoiku_kunren
+  name: 自立支援教育訓練給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 200000
+  status: supported
+  statute:
+    - { ref: "母子及び父子並びに寡婦福祉法31条", url: "https://laws.e-gov.go.jp/law/339AC0100000129" }
+    - { ref: "こども家庭庁 自立支援教育訓練", url: "https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyouiku" }
+
 - id: koto_shokugyo_kunren
   name: 高等職業訓練促進給付金
   layer: national
@@ -152,6 +165,18 @@
   status: supported
   statute:
     - { ref: "東京都ひとり親家庭等医療費助成制度（マル親）", url: "https://www.fukushi.metro.tokyo.lg.jp/smph/iryo/josei/maruoya.html" }
+
+- id: tokyo_judo_shinshin_teate
+  name: 東京都重度心身障害者手当
+  layer: municipal
+  municipality: tokyo
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 60000
+  status: supported
+  statute:
+    - { ref: "東京都重度心身障害者手当", url: "https://www.fukushi.metro.tokyo.lg.jp/shinsho/teate/juudo.html" }
 
 - id: shinshin_shogaisha_iryo_josei
   name: 心身障害者医療費助成
