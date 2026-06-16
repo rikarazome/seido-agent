@@ -93,8 +93,17 @@ button{cursor:pointer;border:none;font-family:inherit;font-weight:700}
 .badge.error{background:var(--red-50);color:var(--red-700)}
 .prow .pamount{flex:none;font-weight:700;color:var(--green-700);font-size:.84rem;font-variant-numeric:tabular-nums}
 .prow.ineligible .pname{color:var(--ink-faint)}
+.prow-detail{border-bottom:1px solid var(--bg);padding-bottom:4px}
+.prow-detail:last-child{border-bottom:none}
 .proof-btn{background:none;color:var(--blue-700);font-size:.78rem;text-decoration:underline;
   text-underline-offset:3px;padding:2px 4px;font-weight:600}
+.reason-box{background:#F7F9FC;border:1px solid var(--blue-100);border-radius:var(--r-s);
+  padding:12px 14px;margin:6px 0}
+.reason-ja{font-size:.84rem;line-height:1.7;margin-bottom:8px}
+.reason-ja ul{margin:4px 0 4px 18px;list-style:disc}
+.reason-ja li{margin:2px 0}
+.reason-statute{font-size:.78rem;color:var(--ink-sub);margin-top:6px}
+.reason-statute a{color:var(--blue-700);text-decoration:underline;text-underline-offset:2px}
 .proof{font-size:.8rem;background:#F7F9FC;border:1px solid var(--blue-100);
   border-radius:var(--r-s);padding:10px 12px;margin:6px 0;overflow-x:auto}
 .proof .proof-title{font-size:.72rem;font-weight:700;color:var(--blue-700);letter-spacing:.05em;margin-bottom:4px}
@@ -383,7 +392,10 @@ function renderResult(){
   if(h.monthly_yen)parts.push(`<span><span class="unit">月</span> <span class="yen">${yen(h.monthly_yen)}</span></span>`);
   if(h.oneoff_yen)parts.push(`<span><span class="unit">一時金</span> <span class="yen">${yen(h.oneoff_yen)}</span></span>`);
   if(h.yearly_yen)parts.push(`<span><span class="unit">年</span> <span class="yen">${yen(h.yearly_yen)}</span></span>`);
-  if(h.in_kind_count)parts.push(`<span><span class="unit">現物給付</span> <span class="yen">${h.in_kind_count}件</span></span>`);
+  if(h.in_kind_count){
+    const ikNames=lastResp.results.filter(r=>r.status==="decided"&&r.amount&&r.amount.type==="in_kind").map(r=>r.name);
+    parts.push(`<span><span class="unit">現物給付</span> <span class="yen">${h.in_kind_count}件</span><span style="font-size:.72rem;opacity:.85;display:block">${ikNames.join("、")}</span></span>`);
+  }
   const total=lastResp.results.length;
   const settled=lastResp.results.filter(r=>["decided","ineligible","error","unsupported"].includes(r.status)).length;
   const heroBody=parts.length
@@ -397,7 +409,19 @@ function renderResult(){
   let rows="";
   if(decided.length){
     rows+=`<details class="prog-section" open><summary>受給見込み（${decided.length}件）</summary>`;
-    rows+=decided.map((r,i)=>`<div class="prow"><span class="pname">${esc(r.name)}</span><span class="pamount">${amountText(r.amount)}</span><span class="badge decided">受給見込み</span><button class="proof-btn" onclick="showProofChat('${esc(r.program)}',${i})">根拠</button></div><div class="proof hidden" id="proof-${i}"></div>`).join("");
+    rows+=decided.map((r,i)=>{
+      const statLinks=(r.statute||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.ref)}</a>`).join("<br>");
+      const reasonJa=buildReasonJa(r);
+      return`<div class="prow-detail">
+        <div class="prow"><span class="pname">${esc(r.name)}</span><span class="pamount">${amountText(r.amount)}</span><span class="badge decided">受給見込み</span><button class="proof-btn" onclick="toggleReason(${i})">根拠を見る</button></div>
+        <div class="reason-box hidden" id="reason-${i}">
+          <div class="reason-ja">${reasonJa}</div>
+          ${statLinks?`<div class="reason-statute"><span style="font-weight:700;font-size:.78rem">条文・出典:</span><br>${statLinks}</div>`:""}
+          <button class="proof-btn" style="margin-top:8px" onclick="showProofTree(${i},'${esc(r.program)}')">Prolog推論ツリーを表示</button>
+          <div class="proof hidden" id="proof-${i}"></div>
+        </div>
+      </div>`;
+    }).join("");
     rows+="</details>";
   }
   if(blocked.length){
@@ -477,8 +501,79 @@ function numAnswer(key){
   doJudge();
 }
 
-// ---- proof ----
-async function showProofChat(program,idx){
+// ---- reason / proof ----
+const DETAIL_JA={
+  "kubun(kihon_teate)":"雇用保険の基本手当（失業給付）を受給できる可能性があります",
+  "kubun(sai_shushoku)":"早期に再就職した場合、再就職手当を受給できます",
+  "kubun(ippan_kyouiku)":"雇用保険加入者として教育訓練給付金の対象です",
+  "kubun(ippan)":"雇用保険加入者として対象となります",
+  "kubun(kougaku_ryouyou)":"医療費が自己負担限度額を超えた場合、超過分が還付されます",
+  "kubun(gengaku)":"住民税非課税世帯として入院時の食事代が減額されます",
+  "kubun(zenmen_seiho)":"生活保護受給世帯としてNHK受信料が全額免除されます",
+  "kubun(zenmen_shougai)":"障害者手帳保持・非課税世帯としてNHK受信料が全額免除されます",
+  "kubun(keigen_7wari)":"所得が軽減基準以下のため、国民健康保険料が7割軽減されます",
+  "kubun(keigen_5wari)":"所得が軽減基準以下のため、国民健康保険料が5割軽減されます",
+  "kubun(keigen_2wari)":"所得が軽減基準以下のため、国民健康保険料が2割軽減されます",
+  "kubun(zenmen)":"所得基準以下のため、国民年金保険料が全額免除されます",
+  "kubun(menjo_3_4)":"国民年金保険料の3/4が免除されます",
+  "kubun(menjo_half)":"国民年金保険料の半額が免除されます",
+  "kubun(menjo_1_4)":"国民年金保険料の1/4が免除されます",
+  "kubun(yuuyo)":"国民年金保険料の納付が猶予されます",
+  "kubun(shoubyou_teate)":"社会保険加入・休業中のため、標準報酬日額の2/3が支給されます",
+  "kubun(jukyo_kakuho)":"離職中のため、家賃相当額（上限あり）が支給されます",
+  "kubun(ikuji_kyuugyou)":"雇用保険加入者として育児休業給付金の対象です（給与の67%→50%）",
+  "kubun(kaigo_kyuugyou)":"雇用保険加入者として介護休業給付金の対象です（給与の67%）",
+  "kubun(jiritsu_kyouiku)":"ひとり親家庭として自立支援教育訓練給付金の対象です（受講費の60%）",
+  "kubun(jugyo_menjo)":"住民税非課税世帯の大学生として授業料・入学金が免除されます",
+  "kubun(kiso_1kyu)":"障害等級1級として障害基礎年金（年約100万円）の対象です",
+  "kubun(kiso_2kyu)":"障害等級2級として障害基礎年金（年約80万円）の対象です",
+  "kubun(muryou_pass)":"障害者手帳保持者として都営交通（バス・地下鉄等）が無料です",
+  "kubun(seiho_menjo)":"生活保護受給世帯として水道料金が免除されます",
+  "kubun(shougai_genmen)":"障害者手帳保持者として水道料金が減免されます",
+  "kubun(hitorioya_genmen)":"ひとり親世帯として水道料金が減免されます",
+  "kubun(silver_pass)":"70歳以上のため東京都シルバーパスの対象です",
+  "kubun(genmen)":"65歳以上・住民税非課税世帯として介護保険料が減免されます",
+  "kubun(kougaku_kaigo)":"要介護認定者として高額介護サービス費の対象です",
+  "kubun(kensin_14kai)":"妊婦健康診査（14回分）が公費で助成されます",
+  "kubun(menjo_4months)":"産前産後期間（4か月分）の国民年金保険料が免除されます",
+  "kubun(shussan_teate)":"社会保険加入の妊婦として出産手当金の対象です（標準報酬日額の2/3）",
+};
+function buildReasonJa(r){
+  const detail=(r.children||[]).find(s=>s.kind==="decided")?.detail||"";
+  const specificJa=DETAIL_JA[detail];
+  let items=[];
+  if(specificJa){
+    items.push(specificJa);
+  } else if(r.amount){
+    if(r.amount.type==="in_kind") items.push("条件を満たしているため、現物給付（医療費助成等）の対象です");
+    else items.push("条件を満たしているため、給付の対象です");
+  }
+  const numMatch=detail.match(/(?:amount|monthly|yearly|oneoff)\((\d+)\)/);
+  if(numMatch){
+    const v=parseInt(numMatch[1]);
+    const unitMap={monthly:"月額",yearly:"年額",oneoff:"一時金"};
+    const u=Object.keys(unitMap).find(k=>detail.startsWith(k+"("));
+    items.push(`支給額: ${u?unitMap[u]:""}${v.toLocaleString("ja-JP")}円`);
+  }
+  if(detail.startsWith("in_kind")) items.push("現物給付（医療費の自己負担分を助成）");
+  if(detail==="zenbu") items.push("全部支給の対象です");
+  if(detail==="ichibu") items.push("一部支給の対象です（所得に応じた減額あり）");
+  if(detail.startsWith("amount_yearly(")) {
+    const ym=detail.match(/amount_yearly\((\d+)\)/);
+    if(ym) items.push(`支給額: 年額${parseInt(ym[1]).toLocaleString("ja-JP")}円`);
+  }
+  if(detail.startsWith("amount_yearly_max(")) {
+    const ym=detail.match(/amount_yearly_max\((\d+)\)/);
+    if(ym) items.push(`支給上限: 年額${parseInt(ym[1]).toLocaleString("ja-JP")}円`);
+  }
+  if(!items.length) items.push("判定条件を満たしています");
+  return"<ul>"+items.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>";
+}
+function toggleReason(idx){
+  const box=document.getElementById("reason-"+idx);
+  if(box)box.classList.toggle("hidden");
+}
+async function showProofTree(idx,program){
   const box=document.getElementById("proof-"+idx);
   if(!box)return;
   box.classList.toggle("hidden");
@@ -490,7 +585,7 @@ async function showProofChat(program,idx){
     body:JSON.stringify({facts,program,subject:subj?subj.subject:"self",municipality})});
   if(!res.ok){box.textContent="取得できませんでした";return;}
   const body=await res.json();
-  try{box.innerHTML=`<div class="proof-title">判定根拠（Prolog推論エンジンの導出過程）</div><ul>`+renderProof(parseTerm(body.proof))+"</ul>";}
+  try{box.innerHTML=`<div class="proof-title">Prolog推論ツリー</div><ul>`+renderProof(parseTerm(body.proof))+"</ul>";}
   catch(e){box.textContent=body.proof;}
 }
 function parseTerm(s){

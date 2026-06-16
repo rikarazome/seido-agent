@@ -112,7 +112,8 @@ def _household_amount(meta, facts, facts_pl, as_of):
 
 def _aggregate(meta, subj_results, facts, facts_pl, as_of):
     card = {"program": meta["id"], "name": meta["name"],
-            "children": subj_results}
+            "children": subj_results,
+            "statute": meta.get("statute") or []}
     kinds = [s["kind"] for s in subj_results]
     decided_yen = sum(s["yen"] or 0 for s in subj_results
                       if s["kind"] == "decided")
