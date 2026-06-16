@@ -801,7 +801,7 @@
   status: supported
   statute:
   - ref: 杉並区心身障害者福祉手当
-    url: https://www.city.suginami.tokyo.jp/guide/fukushi/shogai/1004885.html
+    url: https://www.city.suginami.tokyo.jp/s036/8058.html
 - id: toshima_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（豊島区）
   layer: municipal
@@ -813,7 +813,7 @@
   status: supported
   statute:
   - ref: 豊島区心身障害者福祉手当
-    url: https://www.city.toshima.lg.jp/212/kenko/shogai/teate/004215.html
+    url: https://www.city.toshima.lg.jp/443/kenko/shogai/teate/013079.html
 - id: kita_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（北区）
   layer: municipal
@@ -825,7 +825,7 @@
   status: supported
   statute:
   - ref: 北区心身障害者福祉手当
-    url: https://www.city.kita.tokyo.jp/r-shogaifukushi/teate/shinshin.html
+    url: https://www.city.kita.lg.jp/socialcare-health/disabilities/1008784/1008785/1008788.html
 - id: arakawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（荒川区）
   layer: municipal
@@ -1065,7 +1065,7 @@
   status: supported
   statute:
   - ref: Suginami shugaku enjo
-    url: https://www.city.suginami.tokyo.jp/guide/kyouiku/gakko/enjo.html
+    url: https://www.city.suginami.tokyo.jp/s109/1443.html
 - id: toshima_shugaku_enjo
   name: 就学援助（toshima）
   layer: municipal
@@ -1077,7 +1077,7 @@
   status: supported
   statute:
   - ref: Toshima shugaku enjo
-    url: https://www.city.toshima.lg.jp/353/kosodate/gakko/enjo.html
+    url: https://www.city.toshima.lg.jp/353/kosodate/gakko/teate/005900.html
 - id: kita_shugaku_enjo
   name: 就学援助（kita）
   layer: municipal
@@ -1089,7 +1089,7 @@
   status: supported
   statute:
   - ref: Kita shugaku enjo
-    url: https://www.city.kita.tokyo.jp/gakko/enjo.html
+    url: https://www.city.kita.lg.jp/children-edu/schools/1003980/1003981.html
 - id: arakawa_shugaku_enjo
   name: 就学援助（arakawa）
   layer: municipal
@@ -1245,7 +1245,7 @@
   status: supported
   statute:
   - ref: Toshima birth celebration
-    url: https://www.city.toshima.lg.jp/353/kosodate/shussan/oiwai.html
+    url: https://www.city.toshima.lg.jp/258/2406201637.html
 - id: adachi_kosodate_ouen
   name: 足立区子育て応援金
   layer: municipal
@@ -1281,7 +1281,7 @@
   status: supported
   statute:
   - ref: Kita infant allowance
-    url: https://www.city.kita.tokyo.jp/r-kodomoseisaku/teate/nyuyoji.html
+    url: https://www.city.kita.lg.jp/children-edu/childcare/1002909/1002913/1002914.html
 - id: setagaya_shussan_oiwaikin
   name: 世田谷区出生祝い金
   layer: municipal
@@ -1389,7 +1389,7 @@
   status: supported
   statute:
   - ref: Suginami birth support
-    url: https://www.city.suginami.tokyo.jp/guide/kosodate/shussan/ouen.html
+    url: https://www.city.suginami.tokyo.jp/s054/19751.html
 - id: arakawa_shussan_oiwaikin
   name: 荒川区出産祝い金
   layer: municipal
@@ -1533,7 +1533,7 @@
   status: supported
   statute:
   - ref: Toshima hitorioya jutaku teate
-    url: https://www.city.toshima.lg.jp/212/kosodate/hitorioya/jutaku.html
+    url: https://www.city.toshima.lg.jp/kosodate/kosodate/hitorioya/index.html
 - id: kita_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（kita）
   layer: municipal
@@ -1545,7 +1545,7 @@
   status: supported
   statute:
   - ref: Kita hitorioya jutaku teate
-    url: https://www.city.kita.tokyo.jp/r-kodomoseisaku/hitorioya/jutaku.html
+    url: https://www.city.kita.lg.jp/children-edu/childcare/1002833/1002848/1016855.html
 - id: ota_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（ota）
   layer: municipal
@@ -1569,7 +1569,7 @@
   status: supported
   statute:
   - ref: Suginami hitorioya jutaku teate
-    url: https://www.city.suginami.tokyo.jp/guide/kosodate/hitorioya/jutaku.html
+    url: https://www.city.suginami.tokyo.jp/s053/12441.html
 - id: arakawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（arakawa）
   layer: municipal
