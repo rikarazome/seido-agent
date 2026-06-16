@@ -121,7 +121,7 @@
   - ref: 母子及び父子並びに寡婦福祉法31条
     url: https://laws.e-gov.go.jp/law/339AC0100000129
   - ref: こども家庭庁 自立支援教育訓練
-    url: https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyouiku
+    url: https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyuufukin
 - id: koto_shokugyo_kunren
   name: 高等職業訓練促進給付金
   layer: national
@@ -135,7 +135,7 @@
   - ref: 母子及び父子並びに寡婦福祉法31条
     url: https://laws.e-gov.go.jp/law/339AC0100000129
   - ref: こども家庭庁 高等職業訓練
-    url: https://www.cfa.go.jp/policies/hitori-oya/koto-shokugyo-kunren
+    url: https://www.cfa.go.jp/policies/hitori-oya/syokugyou-kunren
 - id: nanbyo_iryo_josei
   name: 難病医療費助成
   layer: national
@@ -239,7 +239,7 @@
   status: supported
   statute:
   - ref: 東京都ひとり親家庭等医療費助成制度（マル親）
-    url: https://www.fukushi.metro.tokyo.lg.jp/smph/iryo/josei/maruoya.html
+    url: https://www.fukushi.metro.tokyo.lg.jp/seikatsu/josei/maruoya
 - id: jukensei_challenge
   name: 受験生チャレンジ支援貸付
   layer: municipal
@@ -251,7 +251,7 @@
   status: supported
   statute:
   - ref: 東京都社会福祉協議会 受験生チャレンジ
-    url: https://www.tcsw.tvac.or.jp/activity/jukensei.html
+    url: https://www.tcsw.tvac.or.jp/activity/documents/3challenge.pdf
 - id: tokyo_judo_shinshin_teate
   name: 東京都重度心身障害者手当
   layer: municipal
@@ -275,7 +275,7 @@
   status: supported
   statute:
   - ref: 東京都心身障害者医療費助成制度（マル障）
-    url: https://www.fukushi.metro.tokyo.lg.jp/iryo/josei/marusyou.html
+    url: https://www.fukushi.metro.tokyo.lg.jp/seikatsu/josei/marusyo
 - id: shiritsu_koko_jugyoryo_keigen
   name: 私立高校授業料軽減助成金
   layer: municipal
@@ -287,7 +287,7 @@
   status: supported
   statute:
   - ref: 東京都私学財団 授業料軽減助成金
-    url: https://www.shigaku-tokyo.or.jp/parents/tuition.html
+    url: https://www.shigaku-tokyo.or.jp/parents_index/pa_jugyoryo/
 - id: tokyo_akachan_first
   name: 赤ちゃんファースト
   layer: municipal
@@ -335,7 +335,7 @@
   status: supported
   statute:
   - ref: 渋谷区心身障害者福祉手当
-    url: https://www.city.shibuya.tokyo.jp/kenko/shogai/teate/shinshin_teate.html
+    url: https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/teate-nenkin/teate.html
 - id: shibuya_shugaku_enjo
   name: 就学援助（渋谷区）
   layer: municipal
@@ -347,7 +347,7 @@
   status: supported
   statute:
   - ref: 渋谷区 就学援助
-    url: https://www.city.shibuya.tokyo.jp/kodomo/gakkou/enjo/shugaku_enjo.html
+    url: https://www.city.shibuya.tokyo.jp/kodomo/gakko-kyoiku/nyugaku-tennyu-shugaku/tetsuduki_g.html
 - id: shibuya_housing_tbd
   name: 住み替え家賃補助（住宅系・対応制度を選定中）
   layer: municipal
@@ -417,7 +417,7 @@
   status: supported
   statute:
   - ref: 千代田区次世代育成手当
-    url: https://www.city.chiyoda.lg.jp/kosodate/kosodate/teate/jisedai.html
+    url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/jisedai.html
 - id: chiyoda_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -645,7 +645,7 @@
   status: supported
   statute:
   - ref: 千代田区心身障害者福祉手当
-    url: https://www.city.chiyoda.lg.jp/koho/kenko/shogai/teate/shinshin.html
+    url: https://www.city.chiyoda.lg.jp/koho/kenko/shogaisha/techo/teate/shinshin.html
 - id: chuo_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（中央区）
   layer: municipal
@@ -657,7 +657,7 @@
   status: supported
   statute:
   - ref: 中央区心身障害者福祉手当
-    url: https://www.city.chuo.lg.jp/a0033/kenkouiryou/shougai/teate/shinshinshougaisha.html
+    url: https://www.city.chuo.lg.jp/a0023/kenkouiryou/shougaishafukushi/teate/sinsin.html
 - id: minato_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（港区）
   layer: municipal
@@ -669,7 +669,7 @@
   status: supported
   statute:
   - ref: 港区心身障害者福祉手当
-    url: https://www.city.minato.tokyo.jp/shougaifukushi/teate.html
+    url: https://www.city.minato.tokyo.jp/kenko/fukushi/shogaisha/teate/shinshinshogai.html
 - id: shinjuku_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（新宿区）
   layer: municipal
@@ -681,7 +681,7 @@
   status: supported
   statute:
   - ref: 新宿区心身障害者福祉手当
-    url: https://www.city.shinjuku.lg.jp/fukushi/fukushi01_002072.html
+    url: https://www.city.shinjuku.lg.jp/fukushi/file06_02_00003.html
 - id: bunkyo_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（文京区）
   layer: municipal
@@ -693,7 +693,7 @@
   status: supported
   statute:
   - ref: 文京区心身障害者福祉手当
-    url: https://www.city.bunkyo.lg.jp/tetsuzuki/shogai/teate/shinshin.html
+    url: https://www.city.bunkyo.lg.jp/b018/p003411.html
 - id: taito_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（台東区）
   layer: municipal
@@ -909,7 +909,7 @@
   status: supported
   statute:
   - ref: Chiyoda shugaku enjo
-    url: https://www.city.chiyoda.lg.jp/kosodate/gakko/enjo.html
+    url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/shugaku.html
 - id: chuo_shugaku_enjo
   name: 就学援助（chuo）
   layer: municipal
@@ -921,7 +921,7 @@
   status: supported
   statute:
   - ref: Chuo shugaku enjo
-    url: https://www.city.chuo.lg.jp/a0016/kosodate/gakko/enjo.html
+    url: https://www.city.chuo.lg.jp/a0049/kosodate/gakkoukyouiku/shouchuugakkou/syugakuenzyo.html
 - id: minato_shugaku_enjo
   name: 就学援助（minato）
   layer: municipal
@@ -933,7 +933,7 @@
   status: supported
   statute:
   - ref: Minato shugaku enjo
-    url: https://www.city.minato.tokyo.jp/gakkouuneishien/enjo.html
+    url: https://www.city.minato.tokyo.jp/gakkouuneishien/kodomo/gakko/shugakuenjo/
 - id: shinjuku_shugaku_enjo
   name: 就学援助（shinjuku）
   layer: municipal
@@ -945,7 +945,7 @@
   status: supported
   statute:
   - ref: Shinjuku shugaku enjo
-    url: https://www.city.shinjuku.lg.jp/kodomo/gakko01_001010.html
+    url: https://www.city.shinjuku.lg.jp/kodomo/file04_04_00005.html
 - id: bunkyo_shugaku_enjo
   name: 就学援助（bunkyo）
   layer: municipal
@@ -957,7 +957,7 @@
   status: supported
   statute:
   - ref: Bunkyo shugaku enjo
-    url: https://www.city.bunkyo.lg.jp/kyoiku/gakko/enjo.html
+    url: https://www.city.bunkyo.lg.jp/b048/p002122.html
 - id: taito_shugaku_enjo
   name: 就学援助（taito）
   layer: municipal
@@ -1173,7 +1173,7 @@
   status: supported
   statute:
   - ref: Minato birth cost subsidy
-    url: https://www.city.minato.tokyo.jp/kenko/kodomo/shussan/josei.html
+    url: https://www.city.minato.tokyo.jp/kodomokyufu/kenko/ninshin/shussan/jose.html
 - id: shibuya_hajimete_kosodate_ouen
   name: 渋谷区はじめて子育て応援金
   layer: municipal
@@ -1185,7 +1185,7 @@
   status: supported
   statute:
   - ref: Shibuya first childcare support
-    url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/hajimete.html
+    url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/
 - id: chuo_shussan_shien
   name: 中央区出産支援祝品
   layer: municipal
@@ -1197,7 +1197,7 @@
   status: supported
   statute:
   - ref: Chuo birth celebration gift
-    url: https://www.city.chuo.lg.jp/a0033/kosodate/shussan/shukuhin.html
+    url: https://www.city.chuo.lg.jp/a0020/kosodate/shussan/shussanshien/kaimonokenn.html
 - id: bunkyo_koukousei_ikusei_shienkin
   name: 文京区高校生世代育成支援金
   layer: municipal
@@ -1209,7 +1209,7 @@
   status: supported
   statute:
   - ref: Bunkyo high school support fund
-    url: https://www.city.bunkyo.lg.jp/tetsuzuki/kosodate/teate/koukousei.html
+    url: https://www.city.bunkyo.lg.jp/b022/p001412.html
 - id: koto_shussan_oiwaikin
   name: 江東区出産祝い金
   layer: municipal
@@ -1317,7 +1317,7 @@
   status: supported
   statute:
   - ref: Shinjuku birth celebration
-    url: https://www.city.shinjuku.lg.jp/kodomo/kosodate/shussan/oiwai.html
+    url: https://www.city.shinjuku.lg.jp/fukushi/syussan_kosodate_gift.html
 - id: meguro_shussan_josei
   name: 目黒区出産費用助成
   layer: municipal
@@ -1437,7 +1437,7 @@
   status: supported
   statute:
   - ref: Shibuya hitorioya jutaku teate
-    url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/jutaku_teate.html
+    url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_sumai.html
 - id: chiyoda_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（chiyoda）
   layer: municipal
@@ -1449,7 +1449,7 @@
   status: supported
   statute:
   - ref: Chiyoda hitorioya jutaku teate
-    url: https://www.city.chiyoda.lg.jp/koho/kosodate/hitorioya/jutaku.html
+    url: https://www.city.chiyoda.lg.jp/koho/machizukuri/sumai/jose/yachinjose.html
 - id: shinjuku_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shinjuku）
   layer: municipal
@@ -1461,7 +1461,7 @@
   status: supported
   statute:
   - ref: Shinjuku hitorioya jutaku teate
-    url: https://www.city.shinjuku.lg.jp/kodomo/hitorioya/jutaku.html
+    url: https://www.city.shinjuku.lg.jp/seikatsu/file07_02_00001.html
 - id: bunkyo_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（bunkyo）
   layer: municipal
@@ -1473,7 +1473,7 @@
   status: supported
   statute:
   - ref: Bunkyo hitorioya jutaku teate
-    url: https://www.city.bunkyo.lg.jp/tetsuzuki/kosodate/hitorioya/jutaku.html
+    url: https://www.city.bunkyo.lg.jp/tetsuzuki/jutaku/sumairujyutaku/nyuukyosya.html
 - id: koto_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（koto）
   layer: municipal
@@ -1689,7 +1689,7 @@
   status: supported
   statute:
   - ref: Minato hitorioya jutaku teate
-    url: https://www.city.minato.tokyo.jp/kodomo/hitorioya/jutaku.html
+    url: https://www.city.minato.tokyo.jp/kodomo/kodomo/hitorioya/
 - id: chuo_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（chuo）
   layer: municipal
@@ -1701,7 +1701,7 @@
   status: supported
   statute:
   - ref: Chuo hitorioya jutaku teate
-    url: https://www.city.chuo.lg.jp/a0033/kosodate/hitorioya/jutaku.html
+    url: https://www.city.chuo.lg.jp/a0042/kurashi/sumai/koutekijuutaku/hitorioyajyutaku.html
 - id: chiyoda_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（chiyoda）
   layer: municipal
@@ -2265,7 +2265,7 @@
   status: supported
   statute:
   - ref: Mother and Child Health Act Art.20
-    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/kodomo_kosodate/boshi-hoken/
+    url: https://www.mhlw.go.jp/stf/houdou/0000044116.html
 - id: shounimansei_iryo_josei
   name: 小児慢性特定疾病医療費助成
   layer: national
@@ -2289,7 +2289,7 @@
   status: supported
   statute:
   - ref: 物価高騰対応重点支援地方創生臨時交付金（内閣府）
-    url: https://www.cao.go.jp/bunken-suishin/taisakukoufukin/taisakukoufukin_index.html
+    url: https://www.chisou.go.jp/tiiki/rinjikoufukin/index.html
 - id: shitsugyo_kyufu
   name: 雇用保険基本手当（失業給付）
   layer: national
@@ -2331,7 +2331,7 @@
   - ref: 国民健康保険法81条、国民健康保険法施行令29条の7
     url: https://hourei.net/law/333AC0000000192
   - ref: 厚労省 国民健康保険の保険料軽減
-    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/iryouhoken/iryouhoken01/index.html
+    url: https://www.mhlw.go.jp/stf/newpage_21517.html
 - id: kokumin_nenkin_menjo
   name: 国民年金保険料の免除・猶予
   layer: national
@@ -2359,7 +2359,7 @@
   - ref: 健康保険法99条
     url: https://hourei.net/law/211AC0000000070
   - ref: 全国健康保険協会 傷病手当金
-    url: https://www.kyoukaikenpo.or.jp/g3/sb3040/r139/
+    url: https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/index.html
 - id: kyouiku_kunren_kyufu
   name: 教育訓練給付金
   layer: national
@@ -2425,7 +2425,7 @@
   status: supported
   statute:
   - ref: 放送法64条、日本放送協会放送受信料免除基準
-    url: https://www.nhk.or.jp/reception/exemption/
+    url: https://www.nhk-cs.jp/jushinryo/menjo/qa.html
 - id: boshi_jiritsu_kyouiku
   name: ひとり親家庭自立支援教育訓練給付金
   layer: national
@@ -2439,7 +2439,7 @@
   - ref: 母子及び父子並びに寡婦福祉法31条
     url: https://hourei.net/law/339AC0000000129
   - ref: 厚労省 母子家庭自立支援給付金
-    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062967_00005.html
 - id: boshi_koutou_kunren
   name: ひとり親家庭高等職業訓練促進給付金
   layer: national
@@ -2453,7 +2453,7 @@
   - ref: 母子及び父子並びに寡婦福祉法31条の2
     url: https://hourei.net/law/339AC0000000129
   - ref: 厚労省 高等職業訓練促進給付金
-    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062967_00005.html
 - id: shougai_kiso_nenkin
   name: 障害基礎年金
   layer: national
@@ -2479,7 +2479,7 @@
   status: supported
   statute:
   - ref: 東京都福祉保健局 都営交通無料乗車券
-    url: https://www.fukushi.metro.tokyo.lg.jp/shinsho/nichijo/muryou.html
+    url: https://www.fukushi.metro.tokyo.lg.jp/shougai/nichijo/jousyasyo
 - id: tokyo_suidou_genmen
   name: 水道料金の減免（東京都水道局）
   layer: municipal
@@ -2491,7 +2491,7 @@
   status: supported
   statute:
   - ref: 東京都水道局 水道料金・下水道料金の減免
-    url: https://www.waterworks.metro.tokyo.lg.jp/tetsuduki/ryokin/genmen.html
+    url: https://www.waterworks.metro.tokyo.lg.jp/tetsuduki/ryokin/genmen
 - id: shuugyou_sokushin_teate
   name: 就業促進定着手当
   layer: national
@@ -2519,7 +2519,7 @@
   - ref: 母子保健法13条
     url: https://hourei.net/law/340AC0000000141
   - ref: 厚労省 妊婦健診の公費負担
-    url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/
+    url: https://www.mhlw.go.jp/stf/houdou/0000044116.html
 - id: sanzen_sango_nenkin_menjo
   name: 産前産後の国民年金保険料免除
   layer: national
@@ -2615,7 +2615,7 @@
   status: supported
   statute:
   - ref: 東京都シルバーパス条例
-    url: https://www.fukushi.metro.tokyo.lg.jp/kourei/shisaku/silverpass.html
+    url: https://www.fukushi.metro.tokyo.lg.jp/kourei/shakai_shien/s_pass
 - id: kaigo_hokenryo_genmen
   name: 介護保険料の減免
   layer: national
@@ -2653,7 +2653,7 @@
   status: supported
   statute:
   - ref: 所得税法73条
-    url: https://hourei.net/law/340AC0000000033
+    url: https://laws.e-gov.go.jp/law/340AC0000000033/
   - ref: 国税庁 医療費控除
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm
 - id: self_medication
@@ -2667,7 +2667,7 @@
   status: supported
   statute:
   - ref: 租税特別措置法41条の17の2
-    url: https://hourei.net/law/332AC0000000026
+    url: https://laws.e-gov.go.jp/law/332AC0000000026/
   - ref: 国税庁 セルフメディケーション税制
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1129.htm
 - id: furusato_nouzei
@@ -2681,7 +2681,7 @@
   status: supported
   statute:
   - ref: 地方税法37条の2
-    url: https://hourei.net/law/325AC0000000226
+    url: https://laws.e-gov.go.jp/law/325AC0000000226/
   - ref: 総務省 ふるさと納税
     url: https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html
 - id: ideco_koujo
@@ -2695,7 +2695,7 @@
   status: supported
   statute:
   - ref: 確定拠出年金法3条
-    url: https://hourei.net/law/413AC0000000088
+    url: https://laws.e-gov.go.jp/law/413AC0000000088/
   - ref: iDeCo公式サイト
     url: https://www.ideco-koushiki.jp/
 - id: seimei_hoken_koujo
@@ -2709,7 +2709,7 @@
   status: supported
   statute:
   - ref: 所得税法76条
-    url: https://hourei.net/law/340AC0000000033
+    url: https://laws.e-gov.go.jp/law/340AC0000000033/
   - ref: 国税庁 生命保険料控除
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm
 - id: jishin_hoken_koujo
@@ -2723,7 +2723,7 @@
   status: supported
   statute:
   - ref: 所得税法77条
-    url: https://hourei.net/law/340AC0000000033
+    url: https://laws.e-gov.go.jp/law/340AC0000000033/
   - ref: 国税庁 地震保険料控除
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1145.htm
 - id: jutaku_loan_koujo
@@ -2737,7 +2737,7 @@
   status: supported
   statute:
   - ref: 租税特別措置法41条
-    url: https://hourei.net/law/332AC0000000026
+    url: https://laws.e-gov.go.jp/law/332AC0000000026/
   - ref: 国税庁 住宅ローン減税
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm
 - id: haiguusha_koujo
@@ -2751,6 +2751,6 @@
   status: supported
   statute:
   - ref: 所得税法83条・83条の2
-    url: https://hourei.net/law/340AC0000000033
+    url: https://laws.e-gov.go.jp/law/340AC0000000033/
   - ref: 国税庁 配偶者控除
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1191.htm
