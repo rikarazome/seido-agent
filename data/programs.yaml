@@ -186,9 +186,9 @@
   potential_amount: 53700
   status: supported
   statute:
-  - ref: "生活困窮者自立支援法4条・5条"
+  - ref: 生活困窮者自立支援法4条・5条
     url: https://hourei.net/law/425AC0000000105
-  - ref: "厚労省 住居確保給付金"
+  - ref: 厚労省 住居確保給付金
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000073432.html
 - id: tokyo_018_support
   name: 018サポート
@@ -2374,3 +2374,135 @@
     url: https://hourei.net/law/349AC0000000116
   - ref: ハローワーク 教育訓練給付制度
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_education.html
+- id: sai_shushoku_teate
+  name: 再就職手当
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 300000
+  status: supported
+  statute:
+  - ref: 雇用保険法56条の3
+    url: https://hourei.net/law/349AC0000000116
+  - ref: ハローワーク 再就職手当
+    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+- id: kougaku_ryouyouhi
+  name: 高額療養費制度
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: 0
+  status: supported
+  statute:
+  - ref: 健康保険法115条
+    url: https://hourei.net/law/211AC0000000070
+  - ref: 厚労省 高額療養費制度
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
+- id: nyuuin_shokuji_gengaku
+  name: 入院時食事療養費の標準負担額減額
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: 0
+  status: supported
+  statute:
+  - ref: 健康保険法85条
+    url: https://hourei.net/law/211AC0000000070
+- id: nhk_menjo
+  name: NHK受信料の免除
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 2200
+  status: supported
+  statute:
+  - ref: 放送法64条、日本放送協会放送受信料免除基準
+    url: https://www.nhk.or.jp/reception/exemption/
+- id: boshi_jiritsu_kyouiku
+  name: ひとり親家庭自立支援教育訓練給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 200000
+  status: supported
+  statute:
+  - ref: 母子及び父子並びに寡婦福祉法31条
+    url: https://hourei.net/law/339AC0000000129
+  - ref: 厚労省 母子家庭自立支援給付金
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
+- id: boshi_koutou_kunren
+  name: ひとり親家庭高等職業訓練促進給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 母子及び父子並びに寡婦福祉法31条の2
+    url: https://hourei.net/law/339AC0000000129
+  - ref: 厚労省 高等職業訓練促進給付金
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
+- id: shougai_kiso_nenkin
+  name: 障害基礎年金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 83700
+  status: supported
+  statute:
+  - ref: 国民年金法30条〜36条の4
+    url: https://hourei.net/law/334AC0000000141
+  - ref: 日本年金機構 障害基礎年金
+    url: https://www.nenkin.go.jp/service/jukyu/shougainenkin/jukyu-yoken/20150401-01.html
+- id: toei_kotsu_muryou
+  name: 都営交通無料乗車券
+  layer: municipal
+  municipality: tokyo
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: 0
+  status: supported
+  statute:
+  - ref: 東京都福祉保健局 都営交通無料乗車券
+    url: https://www.fukushi.metro.tokyo.lg.jp/shinsho/nichijo/muryou.html
+- id: tokyo_suidou_genmen
+  name: 水道料金の減免（東京都水道局）
+  layer: municipal
+  municipality: tokyo
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 5000
+  status: supported
+  statute:
+  - ref: 東京都水道局 水道料金・下水道料金の減免
+    url: https://www.waterworks.metro.tokyo.lg.jp/tetsuduki/ryokin/genmen.html
+- id: shuugyou_sokushin_teate
+  name: 就業促進定着手当
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 雇用保険法56条の3第3項
+    url: https://hourei.net/law/349AC0000000116
+  - ref: ハローワーク 就業促進定着手当
+    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html

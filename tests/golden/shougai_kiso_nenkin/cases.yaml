@@ -1,0 +1,40 @@
+- name: kiso_1kyu
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      shogai_techo: shintai_1
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(kiso_1kyu)
+- name: kiso_2kyu
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      shogai_techo: shintai_2
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(kiso_2kyu)
+- name: no_techo
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      shogai_techo: nashi
+  expect:
+    subject: self
+    status: ineligible
+    detail: no_shogai_techo
+- name: grade_3
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      shogai_techo: shintai_3
+  expect:
+    subject: self
+    status: ineligible
+    detail: grade_not_covered
