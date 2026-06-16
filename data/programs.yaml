@@ -777,7 +777,7 @@
   status: supported
   statute:
   - ref: 世田谷区心身障害者福祉手当
-    url: https://www.city.setagaya.lg.jp/mokuji/fukushi/001/003/d00129291.html
+    url: https://www.city.setagaya.lg.jp/02083/2692.html
 - id: nakano_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（中野区）
   layer: municipal
@@ -789,7 +789,7 @@
   status: supported
   statute:
   - ref: 中野区心身障害者福祉手当
-    url: https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/shogai/teate/shinshin.html
+    url: https://www.city.tokyo-nakano.lg.jp/kenko_hukushi/syogai/tecyo-teate-nenkin/syogaisyafukushi1.html
 - id: suginami_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（杉並区）
   layer: municipal
@@ -1041,7 +1041,7 @@
   status: supported
   statute:
   - ref: Setagaya shugaku enjo
-    url: https://www.city.setagaya.lg.jp/mokuji/kodomo/009/002/d00036730.html
+    url: https://www.city.setagaya.lg.jp/02046/3112.html
 - id: nakano_shugaku_enjo
   name: 就学援助（nakano）
   layer: municipal
@@ -1053,7 +1053,7 @@
   status: supported
   statute:
   - ref: Nakano shugaku enjo
-    url: https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/gakko/enjo.html
+    url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/gakko/jyosei/syugakuenjyohi.html
 - id: suginami_shugaku_enjo
   name: 就学援助（suginami）
   layer: municipal
@@ -1293,7 +1293,7 @@
   status: supported
   statute:
   - ref: Setagaya birth celebration
-    url: https://www.city.setagaya.lg.jp/mokuji/kodomo/009/d00210270.html
+    url: https://www.city.setagaya.lg.jp/02413/1206.html
 - id: nerima_dai3shi_ouen
   name: 練馬区第3子誕生祝い金
   layer: municipal
@@ -1377,7 +1377,7 @@
   status: supported
   statute:
   - ref: Nakano birth support
-    url: https://www.city.tokyo-nakano.lg.jp/kosodate/shussan/ouen.html
+    url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/nenreibetsu/syussan/index.html
 - id: suginami_shussan_ouen
   name: 杉並区出産応援金
   layer: municipal
@@ -1509,7 +1509,7 @@
   status: supported
   statute:
   - ref: Setagaya hitorioya jutaku teate
-    url: https://www.city.setagaya.lg.jp/mokuji/kodomo/009/003/d00036731.html
+    url: https://www.city.setagaya.lg.jp/03665/3722.html
 - id: nakano_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（nakano）
   layer: municipal
@@ -1521,7 +1521,7 @@
   status: supported
   statute:
   - ref: Nakano hitorioya jutaku teate
-    url: https://www.city.tokyo-nakano.lg.jp/kosodate/hitorioya/jutaku.html
+    url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/hitorioya/sumai/hitorioyazyuutakushien.html
 - id: toshima_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（toshima）
   layer: municipal
