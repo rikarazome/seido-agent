@@ -188,7 +188,9 @@ const FACT_JA={
   juutaku_type:"住宅の種類",shussan_yoteibi:"出産予定日",
   hoken_shubetsu:"健康保険の種類",byouki_kyugyou:"病気・ケガでの休業",
   kaigo_family:"介護休業中かどうか",daigaku_zaigaku:"大学等在学中かどうか",
-  kaigo_nintei:"介護認定の有無"
+  kaigo_nintei:"介護認定の有無",haiguusha:"配偶者の有無",
+  jutaku_loan:"住宅ローンの有無",iryouhi_10man:"医療費10万円超",
+  seimei_hoken:"生命保険の加入",jishin_hoken:"地震保険の加入"
 };
 const REASON_JA={
   "child past FY-end age 18":"18歳の年度末を過ぎています",
@@ -440,7 +442,7 @@ function renderResult(){
 
   addCard(`<div class="hero-inline">${heroBody}
     <div class="progress"><div class="bar"><i style="width:${Math.round(settled/total*100)}%"></i></div>
-    <span class="num">${settled}/${total} 判定済み</span></div>
+    <span class="num">${settled}/${total} 制度を判定済み（お住まいの区で対象の制度）</span></div>
   </div>${rows}`);
 }
 
@@ -534,6 +536,14 @@ const DETAIL_JA={
   "kubun(silver_pass)":"70歳以上のため東京都シルバーパスの対象です",
   "kubun(genmen)":"65歳以上・住民税非課税世帯として介護保険料が減免されます",
   "kubun(kougaku_kaigo)":"要介護認定者として高額介護サービス費の対象です",
+  "kubun(iryouhi_koujo)":"年間医療費が10万円を超えているため、確定申告で医療費控除が受けられます",
+  "kubun(self_medication)":"セルフメディケーション税制の対象です（OTC医薬品の購入費が1.2万円を超えた場合）",
+  "kubun(furusato_nouzei)":"ふるさと納税で寄附金控除が受けられます（実質2,000円で返礼品を受け取れます）",
+  "kubun(ideco_koujo)":"iDeCo（個人型確定拠出年金）に加入すると掛金が全額所得控除されます",
+  "kubun(seimei_hoken_koujo)":"生命保険料控除の対象です（最大12万円の所得控除）",
+  "kubun(jishin_hoken_koujo)":"地震保険料控除の対象です（最大5万円の所得控除）",
+  "kubun(jutaku_loan_koujo)":"住宅ローン減税の対象です（ローン残高の0.7%が最大13年間控除されます）",
+  "kubun(haiguusha_koujo)":"配偶者控除または配偶者特別控除の対象です（最大38万円の所得控除）",
   "kubun(kensin_14kai)":"妊婦健康診査（14回分）が公費で助成されます",
   "kubun(menjo_4months)":"産前産後期間（4か月分）の国民年金保険料が免除されます",
   "kubun(shussan_teate)":"社会保険加入の妊婦として出産手当金の対象です（標準報酬日額の2/3）",

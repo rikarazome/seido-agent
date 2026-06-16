@@ -1,140 +1,176 @@
-# 質問選定アルゴリズムの静的メタデータ（docs/specs/architecture.md 質問選定アルゴリズム）
-# 設計規則:
-#  (1) enum の choices は法定列挙のみ。「その他」(__free_text__) と「わからない/答えたくない」
-#      (declined) はエンジンが全質問に自動付与する
-#  (2) 式に入る数値fact（扶養人数等）は整数選択肢のみ・段階レンジ禁止
-#  (3) 金額系レンジの最上段は番兵上限 [lo, 999999999]
-
 - fact: hitorioya
   text: ひとり親世帯ですか
   type: boolean
   sensitive: true
-
 - fact: hitorioya_jiyuu
   text: ひとり親となった理由を教えてください
   type: enum
-  # 法4条1項の法定列挙（VERIFIED 2026-06-11、statute_source.md）。
-  # UIにはprimaryの3択+「その他」を表示し、残りは「その他」→自由文分類で拾う
-  choices: { rikon: 離婚, shibou: 死別, mikon: 未婚,
-             shougai: 父または母の重度障害, seishi_fumei: 生死不明,
-             iki: 1年以上の遺棄, koukin: 1年以上の拘禁, dv_hogo: DV保護命令 }
-  primary: [rikon, shibou, mikon]
+  choices:
+    rikon: 離婚
+    shibou: 死別
+    mikon: 未婚
+    shougai: 父または母の重度障害
+    seishi_fumei: 生死不明
+    iki: 1年以上の遺棄
+    koukin: 1年以上の拘禁
+    dv_hogo: DV保護命令
+  primary:
+  - rikon
+  - shibou
+  - mikon
   sensitive: true
-
 - fact: seikei_douitsu_partner
   text: 事実上の配偶者（同居のパートナー等）と生計を共にしていますか
   type: boolean
   sensitive: true
-
 - fact: fuyou_ninzu
   text: 税法上の扶養親族は何人ですか
   type: integer
-  choices: [0, 1, 2, 3, 4, 5]   # 6人以上は自由文へ
-
-- fact: income
-  askable_key: nenshu            # 回答の書き込み先（既定はfact名と同じ）
-  text: 昨年の年収（額面・源泉徴収票の支払金額）はどのくらいですか
-  type: range_choice             # 値は [lo, hi]。最上段は番兵上限規約
   choices:
-    - { value: [0, 2000000], label: 200万円未満 }
-    - { value: [2000000, 4000000], label: 200〜400万円 }
-    - { value: [4000000, 6000000], label: 400〜600万円 }
-    - { value: [6000000, 10000000], label: 600万〜1,000万円 }
-    - { value: [10000000, 999999999], label: 1,000万円以上 }
-
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+- fact: income
+  askable_key: nenshu
+  text: 昨年の年収（額面・源泉徴収票の支払金額）はどのくらいですか
+  type: range_choice
+  choices:
+  - value:
+    - 0
+    - 2000000
+    label: 200万円未満
+  - value:
+    - 2000000
+    - 4000000
+    label: 200〜400万円
+  - value:
+    - 4000000
+    - 6000000
+    label: 400〜600万円
+  - value:
+    - 6000000
+    - 10000000
+    label: "600万〜1,000万円"
+  - value:
+    - 10000000
+    - 999999999
+    label: "1,000万円以上"
 - fact: kenkou_hoken
   text: ご家族は健康保険（国民健康保険・社会保険など）に加入していますか
   type: boolean
-
 - fact: ninshin
   text: 現在妊娠中ですか
   type: boolean
   sensitive: true
-
 - fact: seikatsu_hogo
   text: 生活保護を受給中ですか
   type: boolean
   sensitive: true
-
 - fact: hikazei
   text: 住民税非課税世帯ですか
   type: boolean
-
 - fact: shogai_techo
   text: 障害者手帳をお持ちですか
   type: enum
-  choices: { nashi: 持っていない, shintai_1: 身体1級, shintai_2: 身体2級, shintai_3: 身体3級,
-             ryoiku: 愛の手帳（療育）, seishin_1: 精神1級, seishin_2: 精神2級 }
-  primary: [nashi, shintai_1, ryoiku, seishin_1]
+  choices:
+    nashi: 持っていない
+    shintai_1: 身体1級
+    shintai_2: 身体2級
+    shintai_3: 身体3級
+    ryoiku: 愛の手帳（療育）
+    seishin_1: 精神1級
+    seishin_2: 精神2級
+  primary:
+  - nashi
+  - shintai_1
+  - ryoiku
+  - seishin_1
   sensitive: true
-
 - fact: koyou_hoken
   text: 雇用保険に加入していますか（または過去に加入していましたか）
   type: boolean
-
 - fact: rishoku
   text: 現在離職中ですか（または収入が大幅に減少しましたか）
   type: boolean
   sensitive: true
-
 - fact: nanbyo_nintei
   text: 指定難病の認定を受けていますか（医療受給者証をお持ちですか）
   type: boolean
   sensitive: true
-
 - fact: hoken_shubetsu
   text: 加入している健康保険の種類を教えてください
   type: enum
-  choices: { shakai_hoken: 社会保険（会社の健保）, kokuho: 国民健康保険, koki_koureisha: 後期高齢者医療 }
-  primary: [shakai_hoken, kokuho]
-
+  choices:
+    shakai_hoken: 社会保険（会社の健保）
+    kokuho: 国民健康保険
+    koki_koureisha: 後期高齢者医療
+  primary:
+  - shakai_hoken
+  - kokuho
 - fact: byouki_kyugyou
   text: 現在、病気やケガで4日以上連続で仕事を休んでいますか
   type: boolean
   sensitive: true
-
 - fact: kaigo_family
   text: 現在、家族の介護のために仕事を休んでいますか（介護休業中ですか）
   type: boolean
   sensitive: true
-
 - fact: daigaku_zaigaku
   text: 大学・短大・専門学校等に在学中ですか（またはお子さんが在学中ですか）
   type: boolean
-
 - fact: kaigo_nintei
   text: 介護保険の要介護・要支援認定を受けていますか
   type: boolean
   sensitive: true
-
-# --- per-child askables（children[].askable。質問文の {child} は「2009年生まれのお子さん」等に展開） ---
-
+- fact: haiguusha
+  text: 配偶者（パートナー）はいますか
+  type: boolean
+- fact: jutaku_loan
+  text: 住宅ローンを組んでいますか（または過去10年以内に組みましたか）
+  type: boolean
+- fact: iryouhi_10man
+  text: 昨年の医療費の自己負担合計が10万円を超えていますか（家族合算）
+  type: boolean
+- fact: seimei_hoken
+  text: 生命保険・医療保険に加入していますか
+  type: boolean
+- fact: jishin_hoken
+  text: 地震保険に加入していますか
+  type: boolean
 - fact: koukou_zaigaku
   scope: per_child
-  text: "{child}は高校等（高等学校・高専・専修学校等）に在学していますか"
+  text: '{child}は高校等（高等学校・高専・専修学校等）に在学していますか'
   type: boolean
-
 - fact: gakkou_kubun
   scope: per_child
-  text: "{child}の学校の区分を教えてください"
+  text: '{child}の学校の区分を教えてください'
   type: enum
-  choices: { kouritsu: 公立（全日制）, shiritsu: 私立（全日制） }
-  # 高専・通信制は未対応（「その他」→自由文で案内のみ。statute_source参照）
-
+  choices:
+    kouritsu: 公立（全日制）
+    shiritsu: 私立（全日制）
 - fact: shogai_techo_child
   scope: per_child
-  text: "{child}は障害者手帳をお持ちですか"
+  text: '{child}は障害者手帳をお持ちですか'
   type: enum
-  choices: { nashi: 持っていない, shintai_1: 身体1級, shintai_2: 身体2級, shintai_3: 身体3級,
-             ryoiku: 愛の手帳（療育）, seishin_1: 精神1級, seishin_2: 精神2級 }
-  primary: [nashi, shintai_1, shintai_2, ryoiku]
+  choices:
+    nashi: 持っていない
+    shintai_1: 身体1級
+    shintai_2: 身体2級
+    shintai_3: 身体3級
+    ryoiku: 愛の手帳（療育）
+    seishin_1: 精神1級
+    seishin_2: 精神2級
+  primary:
+  - nashi
+  - shintai_1
+  - shintai_2
+  - ryoiku
   sensitive: true
-
 - fact: income_exact
   askable_key: shotoku_exact
-  # ハイブリッド方式（2026-06-11決定）: 年収レンジの概算変換が限度額を跨いだときだけ出る質問。
-  # 回答は facts.askable.shotoku_exact に書く（nenshuに書き戻さない — 回答は控除後所得であり年収ではない。
-  # factgenが shotoku_exact 優先で known(income(P), 点値) を生成する）
   text: 源泉徴収票の「給与所得控除後の金額」を教えてください（受け取っている養育費があれば年額も）
-  type: integer_input             # チップではなく数値入力欄（+「わからない」）
+  type: integer_input
   sensitive: true

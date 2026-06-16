@@ -49,6 +49,11 @@ ASKABLE_MAP = {
     "jido_yougo_shisetsu": ("jido_yougo_shisetsu", "per_child"),
     "hoken_shubetsu": ("hoken_shubetsu", "claimant"),
     "byouki_kyugyou": ("byouki_kyugyou", "claimant"),
+    "jishin_hoken": ("jishin_hoken", "claimant"),
+    "seimei_hoken": ("seimei_hoken", "claimant"),
+    "iryouhi_10man": ("iryouhi_10man", "claimant"),
+    "jutaku_loan": ("jutaku_loan", "claimant"),
+    "haiguusha": ("haiguusha", "claimant"),
     "kaigo_family": ("kaigo_family", "claimant"),
     "daigaku_zaigaku": ("daigaku_zaigaku", "claimant"),
 }

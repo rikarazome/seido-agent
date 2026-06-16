@@ -2642,3 +2642,115 @@
   statute:
   - ref: 介護保険法51条
     url: https://hourei.net/law/409AC0000000123
+- id: iryouhi_koujo
+  name: 医療費控除（確定申告）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 50000
+  status: supported
+  statute:
+  - ref: 所得税法73条
+    url: https://hourei.net/law/340AC0000000033
+  - ref: 国税庁 医療費控除
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm
+- id: self_medication
+  name: セルフメディケーション税制
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 20000
+  status: supported
+  statute:
+  - ref: 租税特別措置法41条の17の2
+    url: https://hourei.net/law/332AC0000000026
+  - ref: 国税庁 セルフメディケーション税制
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1129.htm
+- id: furusato_nouzei
+  name: ふるさと納税（寄附金控除）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 地方税法37条の2
+    url: https://hourei.net/law/325AC0000000226
+  - ref: 総務省 ふるさと納税
+    url: https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html
+- id: ideco_koujo
+  name: iDeCo（個人型確定拠出年金）の所得控除
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 276000
+  status: supported
+  statute:
+  - ref: 確定拠出年金法3条
+    url: https://hourei.net/law/413AC0000000088
+  - ref: iDeCo公式サイト
+    url: https://www.ideco-koushiki.jp/
+- id: seimei_hoken_koujo
+  name: 生命保険料控除
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 120000
+  status: supported
+  statute:
+  - ref: 所得税法76条
+    url: https://hourei.net/law/340AC0000000033
+  - ref: 国税庁 生命保険料控除
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm
+- id: jishin_hoken_koujo
+  name: 地震保険料控除
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 50000
+  status: supported
+  statute:
+  - ref: 所得税法77条
+    url: https://hourei.net/law/340AC0000000033
+  - ref: 国税庁 地震保険料控除
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1145.htm
+- id: jutaku_loan_koujo
+  name: 住宅ローン減税（住宅借入金等特別控除）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 400000
+  status: supported
+  statute:
+  - ref: 租税特別措置法41条
+    url: https://hourei.net/law/332AC0000000026
+  - ref: 国税庁 住宅ローン減税
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm
+- id: haiguusha_koujo
+  name: 配偶者控除・配偶者特別控除
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 380000
+  status: supported
+  statute:
+  - ref: 所得税法83条・83条の2
+    url: https://hourei.net/law/340AC0000000033
+  - ref: 国税庁 配偶者控除
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1191.htm
