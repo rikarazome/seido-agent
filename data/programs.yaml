@@ -2960,3 +2960,85 @@
     url: https://laws.e-gov.go.jp/law/322AC0000000175/
   - ref: 国税庁 災害減免法
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1902.htm
+- id: nenkin_seikatsusha_shien
+  name: 年金生活者支援給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 5620
+  status: supported
+  statute:
+  - ref: 年金生活者支援給付金の支給に関する法律
+    url: https://laws.e-gov.go.jp/law/424AC0000000102/
+  - ref: 日本年金機構 年金生活者支援給付金
+    url: https://www.nenkin.go.jp/service/jukyu/seido/sonota-kyufu/shienkyufukin/20190805.html
+- id: kourei_sai_shushoku
+  name: 高年齢再就職給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 雇用保険法61条の2
+    url: https://hourei.net/law/349AC0000000116
+  - ref: ハローワーク 高年齢再就職給付金
+    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+- id: tokutei_kyouiku_kunren
+  name: 特定一般教育訓練給付金（受講費40%）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 200000
+  status: supported
+  statute:
+  - ref: 雇用保険法60条の2
+    url: https://hourei.net/law/349AC0000000116
+  - ref: 厚労省 教育訓練給付制度
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
+- id: senmon_jissen_kyouiku
+  name: 専門実践教育訓練給付金（受講費70%）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 560000
+  status: supported
+  statute:
+  - ref: 雇用保険法60条の2
+    url: https://hourei.net/law/349AC0000000116
+  - ref: 厚労省 専門実践教育訓練
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
+- id: bukka_kodomo_teate
+  name: 物価高対応子育て応援手当（子ども1人2万円）
+  layer: national
+  municipality: null
+  subject: child
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 20000
+  status: supported
+  statute:
+  - ref: こども家庭庁 物価高対応子育て応援手当
+    url: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
+- id: seikatsu_hogo_seido
+  name: 生活保護制度（相談案内）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 130000
+  status: supported
+  statute:
+  - ref: 生活保護法
+    url: https://laws.e-gov.go.jp/law/325AC0000000144/
+  - ref: 厚労省 生活保護制度
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/index.html

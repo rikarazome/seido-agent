@@ -61,7 +61,7 @@ def test_first_pass_shibuya_two_children():
     # headline: jidou_teate(25k) + 018(10k) + ninkagai(20k for both children) = 55k monthly
     # oneoff: birthday(100k) + akachan(100k) + hajimete(100k) = 300k
     assert resp["headline"]["monthly_yen"] == 55000
-    assert resp["headline"]["oneoff_yen"] == 300000
+    assert resp["headline"]["oneoff_yen"] == 340000
 
     # shussan_ikuji_ichijikin: blocked on ninshin + kenkou_hoken
     assert r["shussan_ikuji_ichijikin"]["status"] == "blocked"

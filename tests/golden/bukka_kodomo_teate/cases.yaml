@@ -1,0 +1,12 @@
+- name: eligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    children:
+    - id: c1
+      birth_date: '2020-01-01'
+    askable: {}
+  expect:
+    subject: c1
+    status: decided
+    detail: amount(20000)
