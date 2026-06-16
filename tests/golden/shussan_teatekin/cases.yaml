@@ -1,0 +1,32 @@
+- name: eligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      ninshin: true
+      hoken_shubetsu: shakai_hoken
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(shussan_teate)
+- name: not_pregnant
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      ninshin: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_pregnant
+- name: kokuho
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      ninshin: true
+      hoken_shubetsu: kokuho
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_shakai_hoken

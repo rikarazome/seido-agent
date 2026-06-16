@@ -93,6 +93,20 @@
   type: boolean
   sensitive: true
 
+- fact: kaigo_family
+  text: 現在、家族の介護のために仕事を休んでいますか（介護休業中ですか）
+  type: boolean
+  sensitive: true
+
+- fact: daigaku_zaigaku
+  text: 大学・短大・専門学校等に在学中ですか（またはお子さんが在学中ですか）
+  type: boolean
+
+- fact: kaigo_nintei
+  text: 介護保険の要介護・要支援認定を受けていますか
+  type: boolean
+  sensitive: true
+
 # --- per-child askables（children[].askable。質問文の {child} は「2009年生まれのお子さん」等に展開） ---
 
 - fact: koukou_zaigaku

@@ -2506,3 +2506,139 @@
     url: https://hourei.net/law/349AC0000000116
   - ref: ハローワーク 就業促進定着手当
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+- id: ninpu_kensin_josei
+  name: 妊婦健康診査の公費助成（14回分）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: 0
+  status: supported
+  statute:
+  - ref: 母子保健法13条
+    url: https://hourei.net/law/340AC0000000141
+  - ref: 厚労省 妊婦健診の公費負担
+    url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/
+- id: sanzen_sango_nenkin_menjo
+  name: 産前産後の国民年金保険料免除
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 16980
+  status: supported
+  statute:
+  - ref: 国民年金法88条の2
+    url: https://hourei.net/law/334AC0000000141
+  - ref: 日本年金機構 産前産後の免除制度
+    url: https://www.nenkin.go.jp/service/kokunen/menjo/20180810.html
+- id: shussan_teatekin
+  name: 出産手当金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 200000
+  status: supported
+  statute:
+  - ref: 健康保険法102条
+    url: https://hourei.net/law/211AC0000000070
+  - ref: 全国健康保険協会 出産手当金
+    url: https://www.kyoukaikenpo.or.jp/g6/cat620/r311/
+- id: ikuji_kyuugyou_kyufu
+  name: 育児休業給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 300000
+  status: supported
+  statute:
+  - ref: 雇用保険法61条の7
+    url: https://hourei.net/law/349AC0000000116
+  - ref: ハローワーク 育児休業給付金
+    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+- id: kaigo_kyuugyou_kyufu
+  name: 介護休業給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 200000
+  status: supported
+  statute:
+  - ref: 雇用保険法61条の4
+    url: https://hourei.net/law/349AC0000000116
+  - ref: ハローワーク 介護休業給付金
+    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+- id: koutou_kyouiku_shien
+  name: 高等教育の修学支援新制度（大学等無償化）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: 0
+  status: supported
+  statute:
+  - ref: 大学等における修学の支援に関する法律
+    url: https://hourei.net/law/501AC0000000008
+  - ref: 文科省 高等教育の修学支援新制度
+    url: https://www.mext.go.jp/a_menu/koutou/hutankeigen/index.htm
+- id: kyufu_shougakukin
+  name: 給付型奨学金（JASSO）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 75800
+  status: supported
+  statute:
+  - ref: 独立行政法人日本学生支援機構法
+    url: https://hourei.net/law/415AC0000000094
+  - ref: JASSO 給付奨学金
+    url: https://www.jasso.go.jp/shogakukin/moshikomi/yoyaku/index.html
+- id: silver_pass
+  name: 東京都シルバーパス
+  layer: municipal
+  municipality: tokyo
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: 0
+  status: supported
+  statute:
+  - ref: 東京都シルバーパス条例
+    url: https://www.fukushi.metro.tokyo.lg.jp/kourei/shisaku/silverpass.html
+- id: kaigo_hokenryo_genmen
+  name: 介護保険料の減免
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 50000
+  status: supported
+  statute:
+  - ref: 介護保険法142条
+    url: https://hourei.net/law/409AC0000000123
+  - ref: 厚労省 介護保険料の減免
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/gaiyo/index.html
+- id: kougaku_kaigo_service
+  name: 高額介護サービス費
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: in_kind
+  potential_amount: 0
+  status: supported
+  statute:
+  - ref: 介護保険法51条
+    url: https://hourei.net/law/409AC0000000123

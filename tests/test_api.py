@@ -159,7 +159,8 @@ def test_interview_flow_end_to_end():
                          "seikatsu_hogo": False, "nanbyo_nintei": False,
                          "hikazei": False, "koyou_hoken": True,
                          "rishoku": False, "hoken_shubetsu": "shakai_hoken",
-                         "byouki_kyugyou": False}
+                         "byouki_kyugyou": False, "kaigo_family": False,
+                         "daigaku_zaigaku": False, "kaigo_nintei": False}
     per_child_answers = {"koukou_zaigaku": False, "gakkou_kubun": None,
                          "shogai_techo_child": "declined"}
     for _ in range(25):                                # frontend turn cap

@@ -1,0 +1,20 @@
+- name: eligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      kaigo_nintei: true
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(kougaku_kaigo)
+- name: no_kaigo
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      kaigo_nintei: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: no_kaigo_nintei
