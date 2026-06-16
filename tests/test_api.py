@@ -105,10 +105,27 @@ def test_child_id_injection_blocked_via_api():
     assert r.status_code == 422
 
 
+def test_judge_childless_with_claimant_birth_date():
+    """Chat UI scenario: no children, claimant birth_date for age-based programs."""
+    facts = {
+        "children": [],
+        "claimant": {"birth_date": "1990-03-01"},
+        "askable": {"nenshu": [2_000_000, 4_000_000]},
+    }
+    r = client.post("/api/judge", json={
+        "facts": facts, "as_of": "2026-06-11", "municipality": "shibuya"})
+    assert r.status_code == 200
+    body = r.json()
+    by = {x["program"]: x for x in body["results"]}
+    assert by["jidou_teate"]["status"] == "ineligible"
+    assert by["shussan_ikuji_ichijikin"]["status"] == "blocked"
+    assert body["next_question"] is not None
+
+
 def test_static_frontend_served():
     r = client.get("/")
     assert r.status_code == 200
-    assert "もらい忘れチェッカー" in r.text
+    assert "制度エージェント" in r.text
 
 
 def test_interview_flow_end_to_end():
@@ -140,11 +157,12 @@ def test_interview_flow_end_to_end():
                          "kenkou_hoken": True, "shotoku_exact": 1_400_000,
                          "ninshin": False, "shogai_techo": "declined",
                          "seikatsu_hogo": False, "nanbyo_nintei": False,
-                         "hikazei": False, "koyou_hoken": "declined",
-                         "rishoku": "declined"}
+                         "hikazei": False, "koyou_hoken": True,
+                         "rishoku": False, "hoken_shubetsu": "shakai_hoken",
+                         "byouki_kyugyou": False}
     per_child_answers = {"koukou_zaigaku": False, "gakkou_kubun": None,
                          "shogai_techo_child": "declined"}
-    for _ in range(15):                                # frontend turn cap
+    for _ in range(25):                                # frontend turn cap
         q = resp["next_question"]
         if q is None:
             break

@@ -61,11 +61,11 @@
   type: boolean
 
 - fact: shogai_techo
-  text: 障害者手帳をお持ちですか（種類を教えてください）
+  text: 障害者手帳をお持ちですか
   type: enum
-  choices: { shintai_1: 身体1級, shintai_2: 身体2級, shintai_3: 身体3級,
+  choices: { nashi: 持っていない, shintai_1: 身体1級, shintai_2: 身体2級, shintai_3: 身体3級,
              ryoiku: 愛の手帳（療育）, seishin_1: 精神1級, seishin_2: 精神2級 }
-  primary: [shintai_1, ryoiku, seishin_1]
+  primary: [nashi, shintai_1, ryoiku, seishin_1]
   sensitive: true
 
 - fact: koyou_hoken
@@ -79,6 +79,17 @@
 
 - fact: nanbyo_nintei
   text: 指定難病の認定を受けていますか（医療受給者証をお持ちですか）
+  type: boolean
+  sensitive: true
+
+- fact: hoken_shubetsu
+  text: 加入している健康保険の種類を教えてください
+  type: enum
+  choices: { shakai_hoken: 社会保険（会社の健保）, kokuho: 国民健康保険, koki_koureisha: 後期高齢者医療 }
+  primary: [shakai_hoken, kokuho]
+
+- fact: byouki_kyugyou
+  text: 現在、病気やケガで4日以上連続で仕事を休んでいますか
   type: boolean
   sensitive: true
 
@@ -98,11 +109,11 @@
 
 - fact: shogai_techo_child
   scope: per_child
-  text: "{child}は障害者手帳をお持ちですか（種類を教えてください）"
+  text: "{child}は障害者手帳をお持ちですか"
   type: enum
-  choices: { shintai_1: 身体1級, shintai_2: 身体2級, shintai_3: 身体3級,
+  choices: { nashi: 持っていない, shintai_1: 身体1級, shintai_2: 身体2級, shintai_3: 身体3級,
              ryoiku: 愛の手帳（療育）, seishin_1: 精神1級, seishin_2: 精神2級 }
-  primary: [shintai_1, shintai_2, ryoiku]
+  primary: [nashi, shintai_1, shintai_2, ryoiku]
   sensitive: true
 
 - fact: income_exact

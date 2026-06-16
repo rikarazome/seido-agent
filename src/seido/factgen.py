@@ -47,6 +47,8 @@ ASKABLE_MAP = {
     "seikatsu_hogo": ("seikatsu_hogo", "claimant"),
     "nanbyo_nintei": ("nanbyo_nintei", "claimant"),
     "jido_yougo_shisetsu": ("jido_yougo_shisetsu", "per_child"),
+    "hoken_shubetsu": ("hoken_shubetsu", "claimant"),
+    "byouki_kyugyou": ("byouki_kyugyou", "claimant"),
 }
 
 # Per-child askables (children[].askable): facts that genuinely differ per

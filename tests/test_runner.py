@@ -72,11 +72,10 @@ def test_first_pass_shibuya_two_children():
     # shinshin_shogaisha_iryo_josei: blocked (shogai_techo + income + fuyou_ninzu unknown)
     assert r["shinshin_shogaisha_iryo_josei"]["status"] == "blocked"
 
-    # next question: fuyou_ninzu unlocks 5 programs (most blocked programs need it)
+    # next question: income unlocks the most blocked programs (including new adult programs)
     q = resp["next_question"]
-    assert q["fact"] == "fuyou_ninzu"
-    assert "jidou_fuyou_teate" in q["why"]
-    assert len(q["why"]) >= 4  # grows as income-limited programs are added
+    assert q["fact"] == "income"
+    assert len(q["why"]) >= 6  # many programs need income
     labels = [c["label"] for c in q["choices"]]
     assert labels[-1].startswith("わからない")          # auto-appended, last
 
@@ -100,6 +99,68 @@ def test_childless_household_no_eligible_subject():
     # shussan_ikuji_ichijikin is claimant-level, still blocked even without children
     assert r["shussan_ikuji_ichijikin"]["status"] == "blocked"
     assert resp["next_question"] is not None
+
+
+def test_childless_claimant_with_birth_date():
+    """Chat UI scenario: adult user with no children, claimant birth_date
+    provided for age-based programs (disability, medical, etc.)."""
+    facts = {
+        "children": [],
+        "claimant": {"birth_date": "1985-05-15"},
+        "askable": {"nenshu": [2_000_000, 4_000_000]},
+    }
+    resp = judge_request(facts, AS_OF, municipality="shibuya")
+    r = by_id(resp)
+    # child programs ineligible (no children)
+    assert r["jidou_teate"]["status"] == "ineligible"
+    assert r["jidou_teate"]["reason"] == "no_eligible_subject"
+    # claimant-level programs still reachable
+    assert r["shussan_ikuji_ichijikin"]["status"] == "blocked"
+    # disability programs blocked on shogai_techo
+    assert r["tokubetsu_shogaisha_teate"]["status"] == "blocked"
+    # next question should exist (claimant programs are blocked)
+    assert resp["next_question"] is not None
+
+
+def test_chat_flow_childless_progressive_answers():
+    """Simulates the chat UI chip-tap flow for a childless user,
+    progressively answering questions until all programs settle."""
+    facts = {
+        "children": [],
+        "claimant": {"birth_date": "1990-03-01"},
+        "askable": {"nenshu": [2_000_000, 4_000_000]},
+    }
+    answers = {
+        "ninshin": False, "kenkou_hoken": True, "hitorioya": False,
+        "fuyou_ninzu": 0, "shogai_techo": "declined",
+        "seikatsu_hogo": False, "nanbyo_nintei": False,
+        "hikazei": False, "koyou_hoken": "declined",
+        "rishoku": "declined", "shotoku_exact": "declined",
+        "seikei_douitsu_partner": "declined",
+        "hitorioya_jiyuu": "declined",
+    }
+    for _ in range(20):
+        resp = judge_request(facts, AS_OF, municipality="shibuya")
+        q = resp["next_question"]
+        if q is None:
+            break
+        key = q["askable_key"]
+        if key in answers:
+            facts["askable"][key] = answers[key]
+        else:
+            facts["askable"][key] = "declined"
+    assert resp["next_question"] is None
+    r = by_id(resp)
+    # child programs ineligible (no children)
+    assert r["jidou_teate"]["status"] == "ineligible"
+    # programs with all-declined facts stay blocked (design: L436 of architecture.md)
+    # but no more questions are asked — verify no infinite loop
+    still_blocked = [p for p in r.values() if p["status"] == "blocked"]
+    for b in still_blocked:
+        # every missing fact must be declined (otherwise question selection is broken)
+        for m in b.get("missing", []):
+            assert facts["askable"].get(m) == "declined", (
+                f"{b['program']} blocked on {m} which is not declined")
 
 
 def test_other_ward_gets_national_and_tokyo_programs_only():

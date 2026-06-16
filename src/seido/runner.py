@@ -15,7 +15,7 @@ from pathlib import Path
 import yaml
 
 from .factgen import CHILD_ASKABLE_PREDS, CLAIMANT, facts_to_prolog, salary_to_shotoku
-from .prolog import judge, query_value
+from .prolog import PrologError, judge, query_value
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -88,7 +88,10 @@ def _household_amount(meta, facts, facts_pl, as_of):
     when income is only known as a range (architecture.md)."""
     rf = rule_file(meta)
     goal = f"teate_amount({CLAIMANT}, A)"
-    got = query_value(facts_pl, meta["id"], rf, goal)
+    try:
+        got = query_value(facts_pl, meta["id"], rf, goal)
+    except PrologError:
+        return None
     if got.isdigit():
         return {"type": meta["amount_type"], "yen": int(got)}
     nenshu = (facts.get("askable") or {}).get("nenshu")

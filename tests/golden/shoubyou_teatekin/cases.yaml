@@ -1,0 +1,38 @@
+- name: eligible
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hoken_shubetsu: shakai_hoken
+      byouki_kyugyou: true
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(shoubyou_teate)
+- name: not_shakai_hoken
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hoken_shubetsu: kokuho
+      byouki_kyugyou: true
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_shakai_hoken
+- name: not_sick
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hoken_shubetsu: shakai_hoken
+      byouki_kyugyou: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_byouki_kyugyou
+- name: unknown
+  as_of: '2026-06-15'
+  facts:
+    askable: {}
+  expect:
+    subject: self
+    status: blocked
+    detail: '[byouki_kyugyou,hoken_shubetsu]'

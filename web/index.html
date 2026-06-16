@@ -3,15 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>もらい忘れチェッカー（仮称） — 東京23区</title>
+<title>制度エージェント — 東京23区</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230017C1'/%3E%3Ctext x='16' y='23' font-size='18' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'%3E%C2%A5%3C/text%3E%3C/svg%3E">
 <style>
-/* ============================================================
-   Design tokens — based on the Digital Agency Design System
-   (デジタル庁デザインシステム) color/typography conventions.
-   ============================================================ */
 :root{
-  /* color */
   --blue-900:#000082; --blue-700:#0017C1; --blue-100:#C5D7FB; --blue-50:#E8F1FE;
   --ink:#1A1A1C; --ink-sub:#626264; --ink-faint:#949497;
   --border:#D8D8DB; --bg:#F1F1F4; --surface:#FFFFFF;
@@ -19,392 +14,523 @@
   --amber-800:#927200; --amber-50:#FBF5E0;
   --red-700:#EC0000; --red-50:#FDEEEE;
   --focus:#FFD43D;
-  /* shape */
   --r-s:8px; --r-m:12px; --r-pill:999px;
   --shadow:0 1px 3px rgba(26,26,28,.10), 0 1px 2px rgba(26,26,28,.06);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px}
+html{font-size:16px;height:100%}
 body{
   font-family:"Noto Sans JP","Hiragino Sans",-apple-system,"Segoe UI",sans-serif;
   background:var(--bg);color:var(--ink);line-height:1.7;
-  font-feature-settings:"palt";
+  font-feature-settings:"palt";height:100%;display:flex;flex-direction:column;
 }
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+button{cursor:pointer;border:none;font-family:inherit;font-weight:700}
 
-/* ---- app header ---- */
-.appbar{background:var(--surface);border-bottom:2px solid var(--blue-700)}
-.appbar-inner{max-width:680px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:12px}
-.logo{flex:none;width:40px;height:40px;border-radius:10px;background:var(--blue-700);
-  color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.2rem}
-.appbar h1{font-size:1.1rem;line-height:1.3;font-weight:700}
-.appbar .muni-badge{display:inline-block;font-size:.72rem;font-weight:600;color:var(--blue-700);
-  background:var(--blue-50);border:1px solid var(--blue-100);border-radius:var(--r-pill);
-  padding:1px 10px;margin-left:6px;vertical-align:2px}
-.appbar .tagline{font-size:.78rem;color:var(--ink-sub)}
+/* ---- header ---- */
+.appbar{background:var(--surface);border-bottom:2px solid var(--blue-700);flex:none}
+.appbar-inner{max-width:680px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.logo{flex:none;width:36px;height:36px;border-radius:10px;background:var(--blue-700);
+  color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.1rem}
+.appbar h1{font-size:1rem;line-height:1.3;font-weight:700}
+.appbar .muni-sel{margin-left:auto;font-size:.82rem;padding:4px 8px;border:1px solid var(--border);
+  border-radius:var(--r-s);background:var(--surface);font-family:inherit}
 
-.wrap{max-width:680px;margin:0 auto;padding:16px 16px 32px}
-.lead{font-size:.9rem;color:var(--ink-sub);margin:12px 2px 4px}
-.lead strong{color:var(--ink)}
+/* ---- chat area ---- */
+.chat-wrap{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.chat{max-width:680px;margin:0 auto;padding:12px 16px 80px}
 
-/* ---- cards ---- */
-.card{background:var(--surface);border-radius:var(--r-m);padding:20px;margin:14px 0;
-  box-shadow:var(--shadow);border:1px solid var(--border)}
-.card h2{font-size:1rem;margin-bottom:4px}
-.card .hint{font-size:.8rem;color:var(--ink-sub)}
+/* ---- bubbles ---- */
+.msg{margin:10px 0;display:flex;gap:10px;align-items:flex-start}
+.msg.agent{flex-direction:row}
+.msg.user{flex-direction:row-reverse}
+.msg .avatar{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  font-size:.75rem;font-weight:700;color:#fff}
+.msg.agent .avatar{background:var(--blue-700)}
+.msg.user .avatar{background:var(--ink-sub)}
+.bubble{max-width:85%;padding:12px 16px;border-radius:var(--r-m);font-size:.92rem;line-height:1.6}
+.msg.agent .bubble{background:var(--surface);border:1px solid var(--border);border-top-left-radius:4px}
+.msg.user .bubble{background:var(--blue-700);color:#fff;border-top-right-radius:4px}
 
-/* ---- form ---- */
-label{display:block;font-size:.88rem;margin:16px 0 6px;font-weight:700}
-label .opt{font-weight:400;color:var(--ink-sub);font-size:.78rem}
-input,select{width:100%;padding:11px 12px;border:1px solid var(--ink-faint);
-  border-radius:var(--r-s);font-size:1rem;font-family:inherit;background:var(--surface);color:var(--ink)}
-input:hover,select:hover{border-color:var(--ink-sub)}
-button{cursor:pointer;border:none;border-radius:var(--r-s);font-size:1rem;font-family:inherit;font-weight:700}
-.btn-main{width:100%;background:var(--blue-700);color:#fff;padding:15px;margin-top:20px;
-  border-radius:var(--r-s);transition:background .15s}
-.btn-main:hover{background:var(--blue-900)}
-.btn-sub{background:var(--surface);color:var(--blue-700);border:1px solid var(--blue-700);
-  padding:7px 14px;font-size:.85rem;margin-top:10px;border-radius:var(--r-s)}
-.btn-sub:hover{background:var(--blue-50)}
-.btn-ghost{background:none;color:var(--blue-700);font-size:.82rem;font-weight:600;
-  padding:4px 8px;text-decoration:underline;text-underline-offset:3px}
-.child-row{display:flex;gap:8px;align-items:center;margin:8px 0}
-.child-row .who{flex:none;font-size:.8rem;font-weight:700;color:var(--ink-sub);width:4.2em}
-.child-row button{flex:none;background:var(--surface);color:var(--red-700);
-  border:1px solid var(--red-700);padding:9px 12px;font-size:.82rem}
-.child-row button:hover{background:var(--red-50)}
-
-/* ---- headline hero ---- */
-.hero{background:linear-gradient(135deg,var(--blue-700),#1438D8 60%,#2E50E0);
-  color:#fff;border:none;border-radius:var(--r-m);padding:22px 20px;margin:14px 0;box-shadow:var(--shadow)}
-.hero .cap{font-size:.8rem;font-weight:600;opacity:.9;letter-spacing:.04em}
-.hero .amounts{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline;margin-top:4px}
-.hero .unit{font-size:.85rem;font-weight:600;opacity:.92}
-.hero .yen{font-size:1.9rem;font-weight:700;letter-spacing:.01em;font-variant-numeric:tabular-nums}
-.hero .none{font-size:.95rem;font-weight:600;margin-top:4px}
-.hero .floor-note{font-size:.72rem;opacity:.8;margin-top:8px}
-.progress{display:flex;align-items:center;gap:10px;margin-top:14px}
-.progress .bar{flex:1;height:8px;background:rgba(255,255,255,.25);border-radius:var(--r-pill);overflow:hidden}
-.progress .bar i{display:block;height:100%;background:#fff;border-radius:var(--r-pill);transition:width .4s}
-.progress .num{font-size:.78rem;font-weight:700;font-variant-numeric:tabular-nums}
-
-/* ---- question panel ---- */
-.qcard{border-left:6px solid var(--blue-700)}
-.qcard .qbadge{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;
-  background:var(--blue-700);color:#fff;font-size:.85rem;font-weight:700;margin-right:8px;vertical-align:-5px}
-.qcard .qtext{font-size:1rem;font-weight:700}
-.qwhy{font-size:.78rem;color:var(--ink-sub);margin-top:6px}
-.qwhy b{color:var(--blue-700)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+/* ---- chips inside chat ---- */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .chip{background:var(--surface);color:var(--blue-700);border:1.5px solid var(--blue-700);
-  padding:10px 18px;border-radius:var(--r-pill);font-weight:700;font-size:.92rem;transition:background .12s}
+  padding:9px 16px;border-radius:var(--r-pill);font-size:.88rem;transition:background .12s}
 .chip:hover{background:var(--blue-50)}
 .chip:active{background:var(--blue-100)}
 .chip.dim{color:var(--ink-sub);border-color:var(--border);font-weight:600}
 .chip.dim:hover{background:var(--bg)}
-.chips input[type=number]{max-width:200px;border-radius:var(--r-pill);padding:10px 16px}
-.done-note{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--green-700)}
+.chip-row-num{display:flex;gap:8px;margin-top:10px;align-items:center}
+.chip-row-num input{width:160px;padding:9px 12px;border:1px solid var(--ink-faint);
+  border-radius:var(--r-pill);font-size:.92rem;font-family:inherit}
+.chip-row-num button{padding:9px 16px}
 
-/* ---- program cards ---- */
-.pcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-m);
-  padding:16px 18px;margin:10px 0;box-shadow:var(--shadow)}
-.phead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.pname{font-weight:700;font-size:.95rem;flex:1;min-width:0}
-.badge{flex:none;font-size:.72rem;font-weight:700;border-radius:var(--r-pill);padding:2px 12px;letter-spacing:.03em}
+/* ---- result card (embedded in chat) ---- */
+.result-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-m);
+  padding:16px;margin:10px 0;box-shadow:var(--shadow);max-width:680px}
+.hero-inline{background:linear-gradient(135deg,var(--blue-700),#1438D8 60%,#2E50E0);
+  color:#fff;border-radius:var(--r-m);padding:18px 16px;margin-bottom:12px}
+.hero-inline .cap{font-size:.78rem;font-weight:600;opacity:.9;letter-spacing:.04em}
+.hero-inline .amounts{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline;margin-top:2px}
+.hero-inline .unit{font-size:.82rem;font-weight:600;opacity:.92}
+.hero-inline .yen{font-size:1.6rem;font-weight:700;font-variant-numeric:tabular-nums}
+.hero-inline .none{font-size:.9rem;font-weight:600;margin-top:2px}
+.progress{display:flex;align-items:center;gap:10px;margin-top:10px}
+.progress .bar{flex:1;height:6px;background:rgba(255,255,255,.25);border-radius:var(--r-pill);overflow:hidden}
+.progress .bar i{display:block;height:100%;background:#fff;border-radius:var(--r-pill);transition:width .4s}
+.progress .num{font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ---- program rows ---- */
+.prog-section{margin-top:8px}
+.prog-section summary{font-size:.82rem;font-weight:700;color:var(--ink-sub);cursor:pointer;padding:4px 0}
+.prow{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--bg);font-size:.86rem}
+.prow:last-child{border-bottom:none}
+.prow .pname{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge{flex:none;font-size:.68rem;font-weight:700;border-radius:var(--r-pill);padding:1px 10px;letter-spacing:.03em}
 .badge.decided{background:var(--green-50);color:var(--green-700)}
 .badge.blocked{background:var(--amber-50);color:var(--amber-800)}
-.badge.ineligible{background:var(--bg);color:var(--ink-sub)}
+.badge.ineligible{background:var(--bg);color:var(--ink-faint)}
 .badge.error{background:var(--red-50);color:var(--red-700)}
-.badge.unsupported{background:var(--bg);color:var(--ink-faint)}
-.pcard.ineligible .pname,.pcard.unsupported .pname{color:var(--ink-sub);font-weight:600}
-.pamount{font-weight:700;color:var(--green-700);font-size:1.05rem;margin-top:6px;font-variant-numeric:tabular-nums}
-.pstat{font-size:.84rem;color:var(--ink-sub);margin-top:6px}
-.layer-tag{flex:none;font-size:.68rem;color:var(--ink-faint);border:1px solid var(--border);
-  border-radius:4px;padding:0 6px}
-
-/* ---- proof tree ---- */
-.proof{font-size:.83rem;background:#F7F9FC;border:1px solid var(--blue-100);
-  border-radius:var(--r-s);padding:12px 14px;margin-top:10px;overflow-x:auto}
-.proof .proof-title{font-size:.75rem;font-weight:700;color:var(--blue-700);
-  letter-spacing:.05em;margin-bottom:6px}
-.proof ul{margin-left:16px;list-style:none;border-left:2px solid var(--blue-100);padding-left:10px}
+.prow .pamount{flex:none;font-weight:700;color:var(--green-700);font-size:.84rem;font-variant-numeric:tabular-nums}
+.prow.ineligible .pname{color:var(--ink-faint)}
+.proof-btn{background:none;color:var(--blue-700);font-size:.78rem;text-decoration:underline;
+  text-underline-offset:3px;padding:2px 4px;font-weight:600}
+.proof{font-size:.8rem;background:#F7F9FC;border:1px solid var(--blue-100);
+  border-radius:var(--r-s);padding:10px 12px;margin:6px 0;overflow-x:auto}
+.proof .proof-title{font-size:.72rem;font-weight:700;color:var(--blue-700);letter-spacing:.05em;margin-bottom:4px}
+.proof ul{margin-left:14px;list-style:none;border-left:2px solid var(--blue-100);padding-left:8px}
 .proof>ul{margin-left:0;border-left:none;padding-left:0}
 .proof li{margin:2px 0}
 .proof code{font-family:"Consolas","SF Mono",monospace;font-size:.86em;background:rgba(0,23,193,.06);
   border-radius:4px;padding:0 4px}
 .naf{color:var(--red-700)}
-.naf::before{content:"✓ ";font-weight:700}
+.naf::before{content:"OK ";font-weight:700}
 
-footer{font-size:.78rem;color:var(--ink-sub);margin-top:28px}
-.notice{background:var(--amber-50);border:1px solid #E8D58A;border-radius:var(--r-s);padding:12px 14px}
-a{color:var(--blue-700)}
+/* ---- footer / disclaimer ---- */
+.disclaimer{flex:none;background:var(--amber-50);border-top:1px solid #E8D58A;padding:8px 16px;
+  font-size:.72rem;color:var(--amber-800);text-align:center}
+
+/* ---- input bar ---- */
+.input-bar{flex:none;background:var(--surface);border-top:1px solid var(--border);padding:10px 16px}
+.input-inner{max-width:680px;margin:0 auto;display:flex;gap:8px;align-items:center}
+.input-inner input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:var(--r-pill);
+  font-size:.92rem;font-family:inherit}
+.input-inner button{padding:10px 20px;background:var(--blue-700);color:#fff;border-radius:var(--r-pill);
+  font-size:.92rem}
+.input-inner button:disabled{opacity:.4}
+.input-note{max-width:680px;margin:4px auto 0;font-size:.7rem;color:var(--ink-faint);text-align:center}
+
 .hidden{display:none}
-@media (max-width:480px){
-  .wrap{padding:12px 12px 28px}
-  .card{padding:16px}
-  .hero .yen{font-size:1.6rem}
+@media(max-width:480px){
+  .chat{padding:8px 10px 80px}
+  .hero-inline .yen{font-size:1.3rem}
+  .bubble{max-width:92%}
 }
 </style>
 </head>
 <body>
 <header class="appbar">
   <div class="appbar-inner">
-    <div class="logo">¥</div>
-    <div>
-      <h1>もらい忘れチェッカー<span class="muni-badge">東京23区対応・デモ</span></h1>
-      <div class="tagline">あなたが貰い損ねているお金を、根拠付きで見つける</div>
-    </div>
+    <div class="logo">&#165;</div>
+    <h1>制度エージェント</h1>
+    <select class="muni-sel" id="municipality" onchange="onMuniChange()">
+      <option value="shibuya">東京都渋谷区</option>
+    </select>
   </div>
 </header>
 
-<div class="wrap">
-  <p class="lead">家族構成と年収だけで、受け取れる可能性のある給付金を<strong>根拠条文つき</strong>で全部チェックします。入力情報はサーバーに保存されません。</p>
+<div class="chat-wrap" id="chat-wrap">
+  <div class="chat" id="chat"></div>
+</div>
 
-  <div class="card" id="form-card">
-    <h2>基本情報</h2>
-    <p class="hint">この3項目だけで一次判定できます。細かい条件はあとから一問一答で確認します。</p>
-    <label>お住まいの自治体</label>
-    <select id="municipality"><option value="shibuya">東京都渋谷区</option></select>
-    <div class="hint" id="muni-note">区独自制度のカバー範囲は区により異なります（全区で国・都の制度に対応）</div>
-    <label>お子さんの生年月日</label>
-    <div id="children"></div>
-    <button class="btn-sub" onclick="addChild()">＋ 子どもを追加</button>
-    <label>昨年の世帯主の年収 <span class="opt">額面・だいたいでOK</span></label>
-    <select id="nenshu">
-      <option value="">わからない（あとで質問されます）</option>
-      <option value="0,2000000">200万円未満</option>
-      <option value="2000000,4000000">200〜400万円</option>
-      <option value="4000000,6000000">400〜600万円</option>
-      <option value="6000000,10000000">600万〜1,000万円</option>
-      <option value="10000000,999999999">1,000万円以上</option>
-    </select>
-    <button class="btn-main" onclick="firstJudge()">いくら貰えるかチェック</button>
+<div class="disclaimer">
+  本サービスの判定は法的助言ではありません。最終的な判断は必ず自治体窓口でご確認ください。入力情報はサーバーに保存されません。
+</div>
+
+<div class="input-bar">
+  <div class="input-inner">
+    <input type="text" id="user-input" placeholder="自由に入力（Gemini連携で近日対応）" disabled>
+    <button id="send-btn" disabled>送信</button>
   </div>
-
-  <div id="result" class="hidden">
-    <div class="hero" id="headline"></div>
-    <div class="card qcard" id="question-panel"></div>
-    <div id="cards"></div>
-  </div>
-
-  <footer>
-    <div class="notice">⚠️ 本サービスの判定は<strong>法的助言ではありません</strong>。制度の最終的な該当判断・申請は必ずお住まいの自治体の公式窓口でご確認ください。入力された情報はサーバーに保存されません。</div>
-  </footer>
+  <div class="input-note">現在は選択肢チップからお選びください</div>
 </div>
 
 <script>
 "use strict";
-function esc(s){ const d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
-// ---- client-held state (stateless server: facts travel every request) ----
-let facts = { children: [], askable: {
-  nenshu: null, shotoku_exact: null, hitorioya: null, hitorioya_jiyuu: null,
-  seikei_douitsu_partner: null, fuyou_ninzu: null, kenkou_hoken: null } };
-let lastResp = null;
+function esc(s){const d=document.createElement("div");d.textContent=s;return d.innerHTML;}
 
-const REASON_JA = {
-  "child past FY-end age 18": "お子さんが18歳の年度末を過ぎています",
-  "past FY-end age 18": "お子さんが18歳の年度末を過ぎています",
-  "no single-parent cause (Art.4(1))": "ひとり親要件（法4条1項）に該当しません",
-  "no single-parent cause": "ひとり親要件に該当しません",
-  "child shares livelihood with parent de-facto spouse (Art.4(2) analog)": "事実上の配偶者と生計同一のため対象外（法4条2項）",
-  "de-facto marriage (ordinance exclusion)": "事実婚のため対象外（条例の除外規定）",
-  "income exceeds partial-payment limit": "所得が一部支給の限度額を超えています",
-  "income exceeds limit": "所得が限度額を超えています",
-  "not high-school age (FY-end 16-18)": "高校生年代（年度末16〜18歳）ではありません",
-  "not enrolled in an eligible high school": "対象となる高校等に在学していません",
-  "not covered by public health insurance": "健康保険に未加入のため対象外です",
-  "past the 1st-birthday support window": "1歳バースデーサポートの対象期間を過ぎています",
-  "grant for children born FY2026+ not yet announced (as of 2026-06)": "2026年度生まれの支給額は未発表です（2026年6月時点）",
-  "born before FY2023 (program start)": "事業開始（2023年度）前の生まれのため対象外です",
-  "no_eligible_subject": "対象となるお子さんがいません",
+let facts={children:[],askable:{}};
+let lastResp=null;
+let municipality="shibuya";
+let phase="init"; // init -> profile -> judging -> done
+
+const FACT_JA={
+  hitorioya:"ひとり親かどうか",hitorioya_jiyuu:"ひとり親の事由",
+  seikei_douitsu_partner:"事実婚の有無",fuyou_ninzu:"扶養人数",
+  income:"年収",income_exact:"正確な所得",kenkou_hoken:"健康保険",
+  koukou_zaigaku:"高校在学",gakkou_kubun:"学校区分",
+  ninshin:"妊娠中かどうか",seikatsu_hogo:"生活保護の受給",
+  hikazei:"住民税非課税",shogai_techo:"障害者手帳",
+  shogai_teido:"障害の程度",kaigo_nintei:"介護認定",
+  koyou_hoken:"雇用保険",rishoku:"離職中かどうか",
+  rishoku_jiyuu:"離職の理由",nanbyo_nintei:"難病認定",
+  jido_yougo_shisetsu:"児童養護施設入所",
+  shogai_techo_child:"お子さんの障害者手帳",
+  juutaku_type:"住宅の種類",shussan_yoteibi:"出産予定日",
+  hoken_shubetsu:"健康保険の種類",byouki_kyugyou:"病気・ケガでの休業"
 };
-const ja = r => REASON_JA[r] || r;
-const FACT_JA = { hitorioya:"ひとり親かどうか", hitorioya_jiyuu:"ひとり親の事由",
-  seikei_douitsu_partner:"事実婚の有無", fuyou_ninzu:"扶養人数", income:"年収",
-  income_exact:"正確な所得", kenkou_hoken:"健康保険", koukou_zaigaku:"高校在学",
-  gakkou_kubun:"学校区分" };
-const BADGE_JA = { decided:"受給見込み", blocked:"あと少し", ineligible:"対象外",
-  error:"要窓口確認", unsupported:"判定準備中" };
+const REASON_JA={
+  "child past FY-end age 18":"18歳の年度末を過ぎています",
+  "past FY-end age 18":"18歳の年度末を過ぎています",
+  "no single-parent cause (Art.4(1))":"ひとり親要件（法4条1項）に該当しません",
+  "no single-parent cause":"ひとり親要件に該当しません",
+  "child shares livelihood with parent de-facto spouse (Art.4(2) analog)":"事実上の配偶者と生計同一のため対象外",
+  "de-facto marriage (ordinance exclusion)":"事実婚のため対象外",
+  "income exceeds partial-payment limit":"所得が一部支給の限度額を超えています",
+  "income exceeds limit":"所得が限度額を超えています",
+  "not high-school age (FY-end 16-18)":"高校生年代ではありません",
+  "not enrolled in an eligible high school":"対象となる高校に在学していません",
+  "not covered by public health insurance":"健康保険に未加入のため対象外",
+  "past the 1st-birthday support window":"1歳バースデーサポート対象期間外",
+  "grant for children born FY2026+ not yet announced (as of 2026-06)":"2026年度生まれの支給額は未発表",
+  "born before FY2023 (program start)":"事業開始前の生まれのため対象外",
+  "no_eligible_subject":"対象となる方がいません",
+  "not_pregnant":"妊娠中ではないため対象外",
+  "receiving_seikatsu_hogo":"生活保護受給中のため対象外",
+  "in_jido_yougo_shisetsu":"児童養護施設入所中のため対象外",
+  "no_shogai_techo":"障害者手帳を持っていないため対象外",
+  "no_nanbyo_nintei":"難病認定を受けていないため対象外",
+};
+const BADGE_JA={decided:"受給見込み",blocked:"あと少し",ineligible:"対象外",
+  error:"要窓口確認",unsupported:"判定準備中"};
+const ja=r=>REASON_JA[r]||r;
 
+// ---- municipalities ----
 async function loadMunicipalities(){
   try{
-    const r = await fetch("/api/municipalities");
-    if(!r.ok) return;  // keep the static shibuya fallback
-    const munis = (await r.json()).municipalities;
-    const sel = document.getElementById("municipality");
-    sel.innerHTML = munis.map(m =>
-      `<option value="${esc(m.id)}"${m.id==="shibuya" ? " selected" : ""}>${esc(m.name)}</option>`).join("");
-  }catch(e){ /* offline fallback: static option remains */ }
+    const r=await fetch("/api/municipalities");
+    if(!r.ok)return;
+    const munis=(await r.json()).municipalities;
+    const sel=document.getElementById("municipality");
+    sel.innerHTML=munis.map(m=>
+      `<option value="${esc(m.id)}"${m.id==="shibuya"?" selected":""}>${esc(m.name)}</option>`).join("");
+  }catch(e){}
 }
 loadMunicipalities();
-
-function addChild(){
-  const n = document.querySelectorAll("#children .child-row").length + 1;
-  const row = document.createElement("div");
-  row.className = "child-row";
-  row.innerHTML = `<span class="who">${n}人目</span><input type="date" max="2026-12-31" aria-label="お子さん${n}人目の生年月日"><button onclick="this.parentNode.remove()">削除</button>`;
-  document.getElementById("children").appendChild(row);
-}
-addChild();
-
-function collectForm(){
-  facts.children = [];
-  document.querySelectorAll("#children input").forEach((el,i)=>{
-    if(el.value) facts.children.push({ id:"c"+(i+1), birth_date:el.value, askable:{} });
-  });
-  const n = document.getElementById("nenshu").value;
-  facts.askable.nenshu = n ? n.split(",").map(Number) : null;
+function onMuniChange(){
+  municipality=document.getElementById("municipality").value;
+  if(phase==="judging"||phase==="done"){doJudge();}
 }
 
-async function judge(){
-  const r = await fetch("/api/judge", { method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({ facts, municipality: document.getElementById("municipality").value })});
-  if(!r.ok){ alert("判定エラー: " + r.status); return; }
-  lastResp = await r.json();
-  document.querySelectorAll(".proof").forEach(el=>{ el.innerHTML=""; el.classList.add("hidden"); });
-  render();
+// ---- chat rendering ----
+function scrollBottom(){
+  const w=document.getElementById("chat-wrap");
+  setTimeout(()=>{w.scrollTop=w.scrollHeight;},50);
 }
-function firstJudge(){ collectForm();
-  if(!facts.children.length){ alert("お子さんの生年月日を入力してください"); return; }
-  judge(); }
 
-function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
+function addAgent(html){
+  const d=document.createElement("div");
+  d.className="msg agent";
+  d.innerHTML=`<div class="avatar">A</div><div class="bubble">${html}</div>`;
+  document.getElementById("chat").appendChild(d);
+  scrollBottom();
+}
+function addUser(text){
+  const d=document.createElement("div");
+  d.className="msg user";
+  d.innerHTML=`<div class="avatar">U</div><div class="bubble">${esc(text)}</div>`;
+  document.getElementById("chat").appendChild(d);
+  scrollBottom();
+}
+function addCard(html){
+  const d=document.createElement("div");
+  d.className="result-card";
+  d.id="result-card";
+  document.getElementById("chat").appendChild(d);
+  d.innerHTML=html;
+  scrollBottom();
+}
+function removeOldChips(){
+  document.querySelectorAll("#chat .live-chips").forEach(el=>el.remove());
+}
+function addChips(html){
+  removeOldChips();
+  const d=document.createElement("div");
+  d.className="live-chips";
+  d.innerHTML=html;
+  document.getElementById("chat").appendChild(d);
+  scrollBottom();
+}
+
+// ---- profile collection (chat-style) ----
+function startChat(){
+  addAgent("はじめまして！あなたが受け取れる可能性のある給付金を、根拠つきで全部お調べします。<br><br>まず、いくつか教えてください。<br><br><b>お住まいの区を選んでください。</b>（ヘッダーで変更できます）");
+  askBirthDate();
+}
+
+function askBirthDate(){
+  addAgent("<b>あなたの生年月日を教えてください。</b><br><span style='font-size:.82rem;color:var(--ink-sub)'>年齢に応じた制度の判定に使います。</span>");
+  addChips(`<div class="chips live-chips"><input type="date" id="bd-input" max="2026-12-31" style="border-radius:var(--r-pill);padding:9px 14px;border:1px solid var(--ink-faint);font-size:.92rem;font-family:inherit;width:200px"><button class="chip" onclick="submitBirthDate()">決定</button><button class="chip dim" onclick="skipBirthDate()">スキップ</button></div>`);
+}
+function submitBirthDate(){
+  const v=document.getElementById("bd-input").value;
+  if(!v){skipBirthDate();return;}
+  addUser(v);
+  removeOldChips();
+  facts.claimant={birth_date:v};
+  askChildren();
+}
+function skipBirthDate(){
+  addUser("スキップ");
+  removeOldChips();
+  askChildren();
+}
+
+function askChildren(){
+  addAgent("<b>お子さんはいらっしゃいますか？</b>");
+  addChips(`<div class="chips live-chips"><button class="chip" onclick="answerHasChildren(true)">はい</button><button class="chip" onclick="answerHasChildren(false)">いいえ</button></div>`);
+}
+function answerHasChildren(yes){
+  addUser(yes?"はい":"いいえ");
+  removeOldChips();
+  if(yes){askChildBirthDates();}
+  else{facts.children=[];askIncome();}
+}
+
+let tempChildren=[];
+function askChildBirthDates(){
+  tempChildren=[];
+  addAgent("<b>お子さんの生年月日を入力してください。</b><br><span style='font-size:.82rem;color:var(--ink-sub)'>複数いる場合は1人ずつ追加できます。</span>");
+  showChildInput();
+}
+function showChildInput(){
+  const n=tempChildren.length+1;
+  addChips(`<div class="chips live-chips" style="flex-direction:column;gap:6px">
+    <div style="display:flex;gap:8px;align-items:center">
+      <span style="font-size:.82rem;font-weight:700;color:var(--ink-sub)">${n}人目</span>
+      <input type="date" id="child-bd" max="2026-12-31" style="border-radius:var(--r-pill);padding:9px 14px;border:1px solid var(--ink-faint);font-size:.92rem;font-family:inherit;width:200px">
+      <button class="chip" onclick="addChildDate()">追加</button>
+    </div>
+    ${tempChildren.length>0?'<button class="chip dim" onclick="doneChildren()">これで全員です</button>':''}
+  </div>`);
+}
+function addChildDate(){
+  const v=document.getElementById("child-bd").value;
+  if(!v)return;
+  tempChildren.push(v);
+  addUser(`${tempChildren.length}人目: ${v}`);
+  removeOldChips();
+  showChildInput();
+}
+function doneChildren(){
+  removeOldChips();
+  facts.children=tempChildren.map((bd,i)=>({id:"c"+(i+1),birth_date:bd,askable:{}}));
+  addUser(`お子さん ${tempChildren.length}人`);
+  askIncome();
+}
+
+function askIncome(){
+  addAgent("<b>昨年の世帯主の年収はどのくらいですか？</b><br><span style='font-size:.82rem;color:var(--ink-sub)'>額面・だいたいでOKです。</span>");
+  addChips(`<div class="chips live-chips">
+    <button class="chip" onclick="answerIncome([0,2000000])">200万円未満</button>
+    <button class="chip" onclick="answerIncome([2000000,4000000])">200〜400万円</button>
+    <button class="chip" onclick="answerIncome([4000000,6000000])">400〜600万円</button>
+    <button class="chip" onclick="answerIncome([6000000,10000000])">600万〜1,000万円</button>
+    <button class="chip" onclick="answerIncome([10000000,999999999])">1,000万円以上</button>
+    <button class="chip dim" onclick="answerIncome(null)">わからない</button>
+  </div>`);
+}
+function answerIncome(v){
+  if(v){
+    const labels={"0,2000000":"200万円未満","2000000,4000000":"200〜400万円","4000000,6000000":"400〜600万円","6000000,10000000":"600万〜1,000万円","10000000,999999999":"1,000万円以上"};
+    addUser(labels[v.join(",")]||v.join("〜"));
+  }else{addUser("わからない");}
+  removeOldChips();
+  facts.askable.nenshu=v;
+  phase="judging";
+  addAgent("ありがとうございます。判定しています...");
+  doJudge();
+}
+
+// ---- judge ----
+function yen(n){return n.toLocaleString("ja-JP")+"円";}
 function amountText(a){
-  if(!a) return "";
-  if(a.type === "in_kind") return "医療費の自己負担分を助成";
-  const unit = {monthly:"月", oneoff:"一時金 ", yearly:"年"}[a.type] || "";
-  if(a.yen_min != null) return `${unit}${yen(a.yen_min)}〜${yen(a.yen_max)}`;
-  return `${unit}${yen(a.yen)}`;
+  if(!a)return"";
+  if(a.type==="in_kind")return"医療費助成";
+  const unit={monthly:"月",oneoff:"一時金 ",yearly:"年"}[a.type]||"";
+  if(a.yen_min!=null)return`${unit}${yen(a.yen_min)}〜${yen(a.yen_max)}`;
+  return`${unit}${yen(a.yen)}`;
 }
 
-function render(){
-  document.getElementById("result").classList.remove("hidden");
-  const h = lastResp.headline;
-  let parts = [];
-  if(h.monthly_yen) parts.push(`<span><span class="unit">月</span> <span class="yen">${yen(h.monthly_yen)}</span></span>`);
-  if(h.oneoff_yen) parts.push(`<span><span class="unit">一時金</span> <span class="yen">${yen(h.oneoff_yen)}</span></span>`);
-  if(h.yearly_yen) parts.push(`<span><span class="unit">年</span> <span class="yen">${yen(h.yearly_yen)}</span></span>`);
-  if(h.in_kind_count) parts.push(`<span><span class="unit">現物給付</span> <span class="yen">${h.in_kind_count}件</span></span>`);
-  const total = lastResp.results.length;
-  const settled = lastResp.results.filter(r=>["decided","ineligible","error","unsupported"].includes(r.status)).length;
-  const body = parts.length
-    ? `<div class="cap">受け取れる見込み（確定分のみ・下限）</div><div class="amounts">${parts.join("")}</div>`
-    : `<div class="cap">受け取れる見込み</div><div class="none">現時点で確定した給付はありません。下の質問に答えると増える可能性があります。</div>`;
-  document.getElementById("headline").innerHTML = body +
-    `<div class="progress"><div class="bar"><i style="width:${Math.round(settled/total*100)}%"></i></div>
-     <span class="num">${settled} / ${total} 制度 判定済み</span></div>`;
-  renderQuestion();
-  renderCards();
-}
-
-function renderQuestion(){
-  const panel = document.getElementById("question-panel");
-  const q = lastResp.next_question;
-  if(!q){ panel.innerHTML = `<div class="done-note">✅ すべての質問が完了しました。判定結果は以下のとおりです。</div>`; return; }
-  const why = q.why.length ? `<div class="qwhy">この質問に答えると <b>${q.why.length} 制度</b> の判定が進みます</div>` : "";
-  let chips = q.choices.map(c=>{
-    const v = JSON.stringify(c.value);
-    const cls = c.value === "declined" ? "chip dim" : "chip";
-    return `<button class="${cls}" onclick='answer(${JSON.stringify(q.askable_key)}, ${v}, ${JSON.stringify(q.child||null)})'>${esc(c.label)}</button>`;
-  }).join("");
-  const num = q.input === "number"
-    ? `<div class="chips"><input type="number" id="num-in" placeholder="金額（円）" aria-label="金額を入力">
-       <button class="chip" onclick='answerNum(${JSON.stringify(q.askable_key)})'>送信</button></div>` : "";
-  panel.innerHTML = `<span class="qbadge">Q</span><span class="qtext">${esc(q.text)}</span>${why}<div class="chips">${chips}</div>${num}
-    <div class="qwhy">自由文での回答は近日対応（現在は選択肢からお選びください）</div>`;
-}
-
-function answer(key, value, childId){
-  if(childId){
-    const ch = facts.children.find(c=>c.id===childId);
-    if(ch) ch.askable[key] = value;
-  } else { facts.askable[key] = value; }
-  judge();
-}
-function answerNum(key){
-  const v = parseInt(document.getElementById("num-in").value, 10);
-  if(!isNaN(v)) answer(key, v, null);
-}
-
-function renderCards(){
-  const el = document.getElementById("cards");
-  el.innerHTML = lastResp.results.map((r,idx)=>{
-    let body = "";
-    if(r.status === "decided"){
-      body = `<div class="pamount">${amountText(r.amount)}</div>
-        <button class="btn-sub" onclick="showProof(${idx})">なぜ？（判定の根拠を見る）</button>
-        <div class="proof hidden" id="proof-${idx}"></div>`;
-    } else if(r.status === "blocked"){
-      const m = (r.missing||[]).map(f=>esc(FACT_JA[f]||f)).join("・");
-      body = `<div class="pstat">あと確認が必要: ${m}</div>` +
-        (r.partial_amount ? `<div class="pamount">確定済み ${amountText(r.partial_amount)}</div>` : "");
-    } else if(r.status === "ineligible"){
-      body = `<div class="pstat">${esc(ja(r.reason))}</div>`;
-    } else if(r.status === "error"){
-      body = `<div class="pstat">この条件では自動判定できません。お手数ですが窓口でご確認ください。</div>`;
-    } else {
-      body = `<div class="pstat">この制度はまだ自動判定に対応していません</div>`;
-    }
-    return `<div class="pcard ${esc(r.status)}"><div class="phead">
-      <span class="pname">${esc(r.name)}</span>
-      <span class="badge ${esc(r.status)}">${esc(BADGE_JA[r.status]||r.status)}</span>
-    </div>${body}</div>`;
-  }).join("");
-}
-
-// ---- proof tree: fetch lazily, parse the Prolog term, render nested ----
-async function showProof(idx){
-  const r = lastResp.results[idx];
-  const box = document.getElementById("proof-"+idx);
-  box.classList.toggle("hidden");
-  if(box.innerHTML) return;
-  const subj = (r.children||[]).find(s=>s.kind==="decided");
-  const res = await fetch("/api/proof", { method:"POST",
+async function doJudge(){
+  const r=await fetch("/api/judge",{method:"POST",
     headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({ facts, program: r.program, subject: subj ? subj.subject : "self" })});
-  if(!res.ok){ box.textContent = "取得できませんでした"; return; }
-  const body = await res.json();
-  try { box.innerHTML = `<div class="proof-title">判定の証明（推論エンジンの導出過程）</div><ul>` + renderProof(parseTerm(body.proof)) + `</ul>`; }
-  catch(e){ box.textContent = body.proof; }
+    body:JSON.stringify({facts,municipality})});
+  if(!r.ok){addAgent("判定中にエラーが発生しました。");return;}
+  lastResp=await r.json();
+  renderResult();
+  renderNextQuestion();
+}
+
+function renderResult(){
+  const old=document.getElementById("result-card");
+  if(old)old.remove();
+
+  const h=lastResp.headline;
+  let parts=[];
+  if(h.monthly_yen)parts.push(`<span><span class="unit">月</span> <span class="yen">${yen(h.monthly_yen)}</span></span>`);
+  if(h.oneoff_yen)parts.push(`<span><span class="unit">一時金</span> <span class="yen">${yen(h.oneoff_yen)}</span></span>`);
+  if(h.yearly_yen)parts.push(`<span><span class="unit">年</span> <span class="yen">${yen(h.yearly_yen)}</span></span>`);
+  if(h.in_kind_count)parts.push(`<span><span class="unit">現物給付</span> <span class="yen">${h.in_kind_count}件</span></span>`);
+  const total=lastResp.results.length;
+  const settled=lastResp.results.filter(r=>["decided","ineligible","error","unsupported"].includes(r.status)).length;
+  const heroBody=parts.length
+    ?`<div class="cap">受け取れる見込み（確定分のみ・下限）</div><div class="amounts">${parts.join("")}</div>`
+    :`<div class="cap">受け取れる見込み</div><div class="none">質問に答えると該当制度が見つかる可能性があります</div>`;
+
+  const decided=lastResp.results.filter(r=>r.status==="decided");
+  const blocked=lastResp.results.filter(r=>r.status==="blocked");
+  const ineligible=lastResp.results.filter(r=>r.status==="ineligible"||r.status==="error"||r.status==="unsupported");
+
+  let rows="";
+  if(decided.length){
+    rows+=`<details class="prog-section" open><summary>受給見込み（${decided.length}件）</summary>`;
+    rows+=decided.map((r,i)=>`<div class="prow"><span class="pname">${esc(r.name)}</span><span class="pamount">${amountText(r.amount)}</span><span class="badge decided">受給見込み</span><button class="proof-btn" onclick="showProofChat('${esc(r.program)}',${i})">根拠</button></div><div class="proof hidden" id="proof-${i}"></div>`).join("");
+    rows+="</details>";
+  }
+  if(blocked.length){
+    rows+=`<details class="prog-section" open><summary>あと少し（${blocked.length}件）</summary>`;
+    rows+=blocked.map(r=>{
+      const m=(r.missing||[]).map(f=>esc(FACT_JA[f]||f)).join("・");
+      return`<div class="prow"><span class="pname">${esc(r.name)}</span><span style="font-size:.78rem;color:var(--amber-800)">要確認: ${m}</span><span class="badge blocked">あと少し</span></div>`;
+    }).join("");
+    rows+="</details>";
+  }
+  if(ineligible.length){
+    rows+=`<details class="prog-section"><summary>対象外（${ineligible.length}件）</summary>`;
+    rows+=ineligible.map(r=>`<div class="prow ineligible"><span class="pname">${esc(r.name)}</span><span style="font-size:.78rem;color:var(--ink-faint)">${esc(ja(r.reason||""))}</span></div>`).join("");
+    rows+="</details>";
+  }
+
+  addCard(`<div class="hero-inline">${heroBody}
+    <div class="progress"><div class="bar"><i style="width:${Math.round(settled/total*100)}%"></i></div>
+    <span class="num">${settled}/${total} 判定済み</span></div>
+  </div>${rows}`);
+}
+
+function renderNextQuestion(){
+  removeOldChips();
+  const q=lastResp.next_question;
+  if(!q){
+    phase="done";
+    const blockedLeft=lastResp.results.filter(r=>r.status==="blocked").length;
+    if(blockedLeft){
+      addAgent(`すべての質問が完了しました。${blockedLeft}件の制度は回答がなかったため確定できませんでした。詳しくはお住まいの自治体窓口でご確認ください。`);
+    }else{
+      addAgent("すべての制度の判定が完了しました。上の結果カードをご確認ください。");
+    }
+    return;
+  }
+  const whyText=q.why.length?`<br><span style="font-size:.82rem;color:var(--ink-sub)">この質問で <b>${q.why.length}制度</b> の判定が進みます</span>`:"";
+  addAgent(`<b>${esc(q.text)}</b>${whyText}`);
+
+  let chipsHtml=q.choices.map(c=>{
+    const v=JSON.stringify(c.value).replace(/'/g,"&#39;");
+    const cls=c.value==="declined"?"chip dim":"chip";
+    const ak=JSON.stringify(q.askable_key).replace(/'/g,"&#39;");
+    const ch=JSON.stringify(q.child||null).replace(/'/g,"&#39;");
+    return`<button class="${cls}" onclick='chipAnswer(${ak},${v},${ch})'>${esc(c.label)}</button>`;
+  }).join("");
+
+  let numHtml="";
+  if(q.input==="number"){
+    const ak=JSON.stringify(q.askable_key).replace(/'/g,"&#39;");
+    numHtml=`<div class="chip-row-num"><input type="number" id="num-in" placeholder="金額（円）"><button class="chip" onclick='numAnswer(${ak})'>送信</button></div>`;
+  }
+  addChips(`<div class="chips live-chips">${chipsHtml}</div>${numHtml}`);
+}
+
+function chipAnswer(key,value,childId){
+  const label=document.querySelector(".live-chips .chip:not(.dim)")?.textContent||String(value);
+  // find label from clicked button
+  const btns=document.querySelectorAll(".live-chips .chip");
+  let clickedLabel=String(value);
+  btns.forEach(b=>{try{if(JSON.parse(b.getAttribute("onclick").match(/,([^,]+),/)?.[1]||"null")===value)clickedLabel=b.textContent;}catch(e){}});
+  addUser(clickedLabel||String(value));
+  removeOldChips();
+  if(childId){
+    const ch=facts.children.find(c=>c.id===childId);
+    if(ch)ch.askable[key]=value;
+  }else{
+    facts.askable[key]=value;
+  }
+  doJudge();
+}
+function numAnswer(key){
+  const v=parseInt(document.getElementById("num-in").value,10);
+  if(isNaN(v))return;
+  addUser(yen(v));
+  removeOldChips();
+  facts.askable[key]=v;
+  doJudge();
+}
+
+// ---- proof ----
+async function showProofChat(program,idx){
+  const box=document.getElementById("proof-"+idx);
+  if(!box)return;
+  box.classList.toggle("hidden");
+  if(box.innerHTML)return;
+  const r=lastResp.results.find(x=>x.program===program);
+  const subj=(r.children||[]).find(s=>s.kind==="decided");
+  const res=await fetch("/api/proof",{method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({facts,program,subject:subj?subj.subject:"self",municipality})});
+  if(!res.ok){box.textContent="取得できませんでした";return;}
+  const body=await res.json();
+  try{box.innerHTML=`<div class="proof-title">判定根拠（Prolog推論エンジンの導出過程）</div><ul>`+renderProof(parseTerm(body.proof))+"</ul>";}
+  catch(e){box.textContent=body.proof;}
 }
 function parseTerm(s){
-  let i = 0;
-  function ws(){ while(i<s.length && s[i]===" ") i++; }
+  let i=0;
+  function ws(){while(i<s.length&&s[i]===" ")i++;}
   function term(){
     ws();
-    if(s[i]==="'"){ let buf=""; i++; while(s[i]!=="'"){ buf+=s[i++]; } i++; return {f:buf, args:[]}; }
-    if(s[i]==="["){ i++; const items=[]; ws();
-      if(s[i]==="]"){ i++; return {list:items}; }
-      for(;;){ items.push(term()); ws(); if(s[i]===","){i++;continue;} if(s[i]==="]"){i++;break;} }
-      return {list:items}; }
-    let j=i; while(i<s.length && /[A-Za-z0-9_.\-]/.test(s[i])) i++;
-    const name = s.slice(j,i);
-    if(s[i]==="("){ i++; const args=[];
-      for(;;){ args.push(term()); ws(); if(s[i]===","){i++;continue;} if(s[i]===")"){i++;break;} }
-      return {f:name, args}; }
-    return {f:name, args:[]};
+    if(s[i]==="'"){let buf="";i++;while(s[i]!=="'"){buf+=s[i++];}i++;return{f:buf,args:[]};}
+    if(s[i]==="["){i++;const items=[];ws();
+      if(s[i]==="]"){i++;return{list:items};}
+      for(;;){items.push(term());ws();if(s[i]===","){i++;continue;}if(s[i]==="]"){i++;break;}}
+      return{list:items};}
+    let j=i;while(i<s.length&&/[A-Za-z0-9_.\-]/.test(s[i]))i++;
+    const name=s.slice(j,i);
+    if(s[i]==="("){i++;const args=[];
+      for(;;){args.push(term());ws();if(s[i]===","){i++;continue;}if(s[i]===")"){i++;break;}}
+      return{f:name,args};}
+    return{f:name,args:[]};
   }
   return term();
 }
 function fmtGoal(t){
-  if(t.list) return "[" + t.list.map(fmtGoal).join(", ") + "]";
-  if(!t.args.length) return esc(t.f);
-  return esc(t.f) + "(" + t.args.map(fmtGoal).join(", ") + ")";
+  if(t.list)return"["+t.list.map(fmtGoal).join(", ")+"]";
+  if(!t.args.length)return esc(t.f);
+  return esc(t.f)+"("+t.args.map(fmtGoal).join(", ")+")";
 }
 function renderProof(t){
-  if(!t || !t.f) return "";
-  if(t.f === "true" || t.f === "cut") return "";
-  if(t.f === "and") return t.args.map(renderProof).join("");
-  if(t.f === "or") return renderProof(t.args[0]);
-  if(t.f === "naf") return `<li class="naf">「<code>${fmtGoal(t.args[0])}</code>」に該当しない（確認済み）</li>`;
-  if(t.f === "builtin") return `<li><code>${fmtGoal(t.args[0])}</code></li>`;
-  if(t.f === "node"){
-    const sub = renderProof(t.args[1]);
-    return `<li><strong><code>${fmtGoal(t.args[0])}</code></strong>${sub ? `<ul>${sub}</ul>` : ""}</li>`;
+  if(!t||!t.f)return"";
+  if(t.f==="true"||t.f==="cut")return"";
+  if(t.f==="and")return t.args.map(renderProof).join("");
+  if(t.f==="or")return renderProof(t.args[0]);
+  if(t.f==="naf")return`<li class="naf">「<code>${fmtGoal(t.args[0])}</code>」に該当しない</li>`;
+  if(t.f==="builtin")return`<li><code>${fmtGoal(t.args[0])}</code></li>`;
+  if(t.f==="node"){
+    const sub=renderProof(t.args[1]);
+    return`<li><strong><code>${fmtGoal(t.args[0])}</code></strong>${sub?`<ul>${sub}</ul>`:""}</li>`;
   }
-  return `<li><code>${fmtGoal(t)}</code></li>`;
+  return`<li><code>${fmtGoal(t)}</code></li>`;
 }
+
+// ---- init ----
+startChat();
 </script>
 </body>
 </html>

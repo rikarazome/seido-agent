@@ -1,0 +1,37 @@
+- name: hikazei_eligible
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hikazei: true
+      seikatsu_hogo: false
+  expect:
+    subject: self
+    status: decided
+    detail: amount(30000)
+- name: not_hikazei
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hikazei: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_hikazei
+- name: seikatsu_hogo
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hikazei: true
+      seikatsu_hogo: true
+  expect:
+    subject: self
+    status: ineligible
+    detail: receiving_seikatsu_hogo
+- name: unknown_hikazei
+  as_of: '2026-06-15'
+  facts:
+    askable: {}
+  expect:
+    subject: self
+    status: blocked
+    detail: '[hikazei,seikatsu_hogo]'

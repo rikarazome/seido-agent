@@ -1,0 +1,38 @@
+- name: eligible
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      koyou_hoken: true
+      rishoku: true
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(kihon_teate)
+- name: not_enrolled
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      koyou_hoken: false
+      rishoku: true
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_enrolled_koyou_hoken
+- name: not_rishoku
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      koyou_hoken: true
+      rishoku: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_rishoku
+- name: unknown
+  as_of: '2026-06-15'
+  facts:
+    askable: {}
+  expect:
+    subject: self
+    status: blocked
+    detail: '[koyou_hoken,rishoku]'

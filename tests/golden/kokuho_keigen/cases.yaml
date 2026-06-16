@@ -1,0 +1,47 @@
+- name: keigen_7wari
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hoken_shubetsu: kokuho
+      nenshu: 900000
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(keigen_7wari)
+- name: keigen_2wari
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hoken_shubetsu: kokuho
+      nenshu: 4000000
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(keigen_2wari)
+- name: not_kokuho
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hoken_shubetsu: shakai_hoken
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_kokuho
+- name: income_too_high
+  as_of: '2026-06-15'
+  facts:
+    askable:
+      hoken_shubetsu: kokuho
+      nenshu: 8000000
+  expect:
+    subject: self
+    status: ineligible
+    detail: income_exceeds_limit
+- name: unknown
+  as_of: '2026-06-15'
+  facts:
+    askable: {}
+  expect:
+    subject: self
+    status: blocked
+    detail: '[hoken_shubetsu]'

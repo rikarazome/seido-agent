@@ -1,7 +1,3 @@
-# 制度メタデータ（docs/specs/rule-schema.md 準拠）
-# status: supported は golden検証済みのみ（品質ゲート。盛らない）
-# potential_amount: 公式数値由来の最大支給額目安。PLACEHOLDER - VERIFY の値は出典確定まで表示に使わない
-
 - id: jidou_teate
   name: 児童手当
   layer: national
@@ -9,12 +5,13 @@
   subject: child
   unit: per_child
   amount_type: monthly
-  potential_amount: 30000        # VERIFIED: 第3子以降月額（法6条1項）
+  potential_amount: 30000
   status: supported
   statute:
-    - { ref: "児童手当法3条・4条・6条（2024-10改正後）", url: "https://hourei.net/law/346AC0000000073" }
-    - { ref: "こども家庭庁 制度案内", url: "https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai" }
-
+  - ref: 児童手当法3条・4条・6条（2024-10改正後）
+    url: https://hourei.net/law/346AC0000000073
+  - ref: こども家庭庁 制度案内
+    url: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
 - id: jidou_fuyou_teate
   name: 児童扶養手当
   layer: national
@@ -22,12 +19,13 @@
   subject: child
   unit: per_household
   amount_type: monthly
-  potential_amount: 48050        # VERIFIED: R8年度 第1子全部支給月額（加算は+11,350円/子）
+  potential_amount: 48050
   status: supported
   statute:
-    - { ref: "児童扶養手当法4条", url: "https://laws.e-gov.go.jp/law/336AC0000000238" }
-    - { ref: "施行令2条の4（所得限度額、2024-11改正）", url: "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/71de338f-5ed2-4c95-9848-3fd387d0b4d7/fb86c8d8/20240731_policies_hitori-oya_fuyou-teate_17.pdf" }
-
+  - ref: 児童扶養手当法4条
+    url: https://laws.e-gov.go.jp/law/336AC0000000238
+  - ref: 施行令2条の4（所得限度額、2024-11改正）
+    url: https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/71de338f-5ed2-4c95-9848-3fd387d0b4d7/fb86c8d8/20240731_policies_hitori-oya_fuyou-teate_17.pdf
 - id: kouko_shugaku_shienkin
   name: 高等学校等就学支援金
   layer: national
@@ -35,12 +33,13 @@
   subject: child
   unit: per_child
   amount_type: yearly
-  potential_amount: 457200       # VERIFIED: 私立上限年額（公立は118,800円）。2026-04所得制限撤廃
+  potential_amount: 457200
   status: supported
   statute:
-    - { ref: "高等学校等就学支援金の支給に関する法律（2026-04改正）", url: "https://laws.e-gov.go.jp/law/422AC0000000018" }
-    - { ref: "文科省 R8年度案内", url: "https://www.mext.go.jp/content/202604024-mxt_shuukyo03-100002595_1.pdf" }
-
+  - ref: 高等学校等就学支援金の支給に関する法律（2026-04改正）
+    url: https://laws.e-gov.go.jp/law/422AC0000000018
+  - ref: 文科省 R8年度案内
+    url: https://www.mext.go.jp/content/202604024-mxt_shuukyo03-100002595_1.pdf
 - id: shussan_ikuji_ichijikin
   name: 出産育児一時金
   layer: national
@@ -51,9 +50,10 @@
   potential_amount: 500000
   status: supported
   statute:
-    - { ref: "健康保険法101条・114条", url: "https://laws.e-gov.go.jp/law/211AC0000000070" }
-    - { ref: "厚労省 出産育児一時金", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/" }
-
+  - ref: 健康保険法101条・114条
+    url: https://laws.e-gov.go.jp/law/211AC0000000070
+  - ref: 厚労省 出産育児一時金
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/
 - id: shogaiji_fukushi_teate
   name: 障害児福祉手当
   layer: national
@@ -64,9 +64,10 @@
   potential_amount: 15690
   status: supported
   statute:
-    - { ref: "特別児童扶養手当等の支給に関する法律17条", url: "https://laws.e-gov.go.jp/law/339AC0000000134" }
-    - { ref: "厚労省 障害児福祉手当", url: "https://www.mhlw.go.jp/bunya/shougaihoken/jidou/tokubetsu.html" }
-
+  - ref: 特別児童扶養手当等の支給に関する法律17条
+    url: https://laws.e-gov.go.jp/law/339AC0000000134
+  - ref: 厚労省 障害児福祉手当
+    url: https://www.mhlw.go.jp/bunya/shougaihoken/jidou/tokubetsu.html
 - id: jiritsu_shien_iryo_ikusei
   name: 自立支援医療（育成医療）
   layer: national
@@ -77,8 +78,8 @@
   potential_amount: null
   status: supported
   statute:
-    - { ref: "障害者総合支援法52条", url: "https://laws.e-gov.go.jp/law/417AC0000000123" }
-
+  - ref: 障害者総合支援法52条
+    url: https://laws.e-gov.go.jp/law/417AC0000000123
 - id: tokubetsu_jidou_fuyou_teate
   name: 特別児童扶養手当
   layer: national
@@ -89,9 +90,10 @@
   potential_amount: 55350
   status: supported
   statute:
-    - { ref: "特別児童扶養手当等の支給に関する法律3条", url: "https://laws.e-gov.go.jp/law/339AC0000000134" }
-    - { ref: "厚労省 特別児童扶養手当", url: "https://www.mhlw.go.jp/bunya/shougaihoken/jidou/huyou.html" }
-
+  - ref: 特別児童扶養手当等の支給に関する法律3条
+    url: https://laws.e-gov.go.jp/law/339AC0000000134
+  - ref: 厚労省 特別児童扶養手当
+    url: https://www.mhlw.go.jp/bunya/shougaihoken/jidou/huyou.html
 - id: jiritsu_shien_iryo_seishin
   name: 自立支援医療（精神通院）
   layer: national
@@ -102,9 +104,10 @@
   potential_amount: null
   status: supported
   statute:
-    - { ref: "障害者総合支援法52条", url: "https://laws.e-gov.go.jp/law/417AC0000000123" }
-    - { ref: "厚労省 自立支援医療", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/" }
-
+  - ref: 障害者総合支援法52条
+    url: https://laws.e-gov.go.jp/law/417AC0000000123
+  - ref: 厚労省 自立支援医療
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/
 - id: jiritsu_shien_kyoiku_kunren
   name: 自立支援教育訓練給付金
   layer: national
@@ -115,9 +118,10 @@
   potential_amount: 200000
   status: supported
   statute:
-    - { ref: "母子及び父子並びに寡婦福祉法31条", url: "https://laws.e-gov.go.jp/law/339AC0100000129" }
-    - { ref: "こども家庭庁 自立支援教育訓練", url: "https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyouiku" }
-
+  - ref: 母子及び父子並びに寡婦福祉法31条
+    url: https://laws.e-gov.go.jp/law/339AC0100000129
+  - ref: こども家庭庁 自立支援教育訓練
+    url: https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyouiku
 - id: koto_shokugyo_kunren
   name: 高等職業訓練促進給付金
   layer: national
@@ -128,9 +132,10 @@
   potential_amount: 100000
   status: supported
   statute:
-    - { ref: "母子及び父子並びに寡婦福祉法31条", url: "https://laws.e-gov.go.jp/law/339AC0100000129" }
-    - { ref: "こども家庭庁 高等職業訓練", url: "https://www.cfa.go.jp/policies/hitori-oya/koto-shokugyo-kunren" }
-
+  - ref: 母子及び父子並びに寡婦福祉法31条
+    url: https://laws.e-gov.go.jp/law/339AC0100000129
+  - ref: こども家庭庁 高等職業訓練
+    url: https://www.cfa.go.jp/policies/hitori-oya/koto-shokugyo-kunren
 - id: nanbyo_iryo_josei
   name: 難病医療費助成
   layer: national
@@ -141,9 +146,10 @@
   potential_amount: null
   status: supported
   statute:
-    - { ref: "難病法5条", url: "https://laws.e-gov.go.jp/law/426AC0100000050" }
-    - { ref: "厚労省 難病対策", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/nanbyou/" }
-
+  - ref: 難病法5条
+    url: https://laws.e-gov.go.jp/law/426AC0100000050
+  - ref: 厚労省 難病対策
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/nanbyou/
 - id: tokubetsu_shogaisha_teate
   name: 特別障害者手当
   layer: national
@@ -154,9 +160,10 @@
   potential_amount: 28840
   status: supported
   statute:
-    - { ref: "特別児童扶養手当等の支給に関する法律26条の5", url: "https://laws.e-gov.go.jp/law/339AC0000000134" }
-    - { ref: "厚労省 特別障害者手当", url: "https://www.mhlw.go.jp/bunya/shougaihoken/jidou/tokubetsu.html" }
-
+  - ref: 特別児童扶養手当等の支給に関する法律26条の5
+    url: https://laws.e-gov.go.jp/law/339AC0000000134
+  - ref: 厚労省 特別障害者手当
+    url: https://www.mhlw.go.jp/bunya/shougaihoken/jidou/tokubetsu.html
 - id: shussan_kosodate_ouen
   name: 出産・子育て応援交付金
   layer: national
@@ -167,19 +174,22 @@
   potential_amount: 100000
   status: supported
   statute:
-    - { ref: "児童福祉法一部改正（令和4年法律104号）", url: "https://www.cfa.go.jp/policies/shussan-kosodate/" }
-
+  - ref: 児童福祉法一部改正（令和4年法律104号）
+    url: https://www.cfa.go.jp/policies/shussan-kosodate/
 - id: jukyo_kakuho_kyufukin
   name: 住居確保給付金
   layer: national
   municipality: null
-  subject: claimant              # self規約で照会
+  subject: claimant
   unit: per_household
   amount_type: monthly
-  potential_amount: null
-  status: unsupported
-  statute: []
-
+  potential_amount: 53700
+  status: supported
+  statute:
+  - ref: "生活困窮者自立支援法4条・5条"
+    url: https://hourei.net/law/425AC0000000105
+  - ref: "厚労省 住居確保給付金"
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000073432.html
 - id: tokyo_018_support
   name: 018サポート
   layer: municipal
@@ -187,11 +197,11 @@
   subject: child
   unit: per_child
   amount_type: monthly
-  potential_amount: 5000         # VERIFIED: 月額・所得制限なし
+  potential_amount: 5000
   status: supported
   statute:
-    - { ref: "東京都018サポート", url: "https://018support.metro.tokyo.lg.jp/" }
-
+  - ref: 東京都018サポート
+    url: https://018support.metro.tokyo.lg.jp/
 - id: tokyo_jidou_ikusei_teate
   name: 児童育成手当
   layer: municipal
@@ -199,12 +209,13 @@
   subject: child
   unit: per_child
   amount_type: monthly
-  potential_amount: 13500        # VERIFIED: 月額/児童。限度額3,604,000+380,000×N（本人所得のみ）
+  potential_amount: 13500
   status: supported
   statute:
-    - { ref: "東京都児童育成手当に関する条例施行規則", url: "https://www.reiki.metro.tokyo.lg.jp/reiki/reiki_honbun/g101RG00000745.html" }
-    - { ref: "渋谷区 ひとり親家庭の手当", url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_teate.html" }
-
+  - ref: 東京都児童育成手当に関する条例施行規則
+    url: https://www.reiki.metro.tokyo.lg.jp/reiki/reiki_honbun/g101RG00000745.html
+  - ref: 渋谷区 ひとり親家庭の手当
+    url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_teate.html
 - id: tokyo_jidou_ikusei_shogai_teate
   name: 児童育成手当（障害手当）
   layer: municipal
@@ -215,8 +226,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "Tokyo Child Development Allowance (Disability)", url: "https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/zidouikuseiteate.html" }
-
+  - ref: Tokyo Child Development Allowance (Disability)
+    url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/zidouikuseiteate.html
 - id: hitorioya_iryo_josei
   name: ひとり親家庭等医療費助成
   layer: municipal
@@ -227,8 +238,8 @@
   potential_amount: null
   status: supported
   statute:
-    - { ref: "東京都ひとり親家庭等医療費助成制度（マル親）", url: "https://www.fukushi.metro.tokyo.lg.jp/smph/iryo/josei/maruoya.html" }
-
+  - ref: 東京都ひとり親家庭等医療費助成制度（マル親）
+    url: https://www.fukushi.metro.tokyo.lg.jp/smph/iryo/josei/maruoya.html
 - id: jukensei_challenge
   name: 受験生チャレンジ支援貸付
   layer: municipal
@@ -239,8 +250,8 @@
   potential_amount: 200000
   status: supported
   statute:
-    - { ref: "東京都社会福祉協議会 受験生チャレンジ", url: "https://www.tcsw.tvac.or.jp/activity/jukensei.html" }
-
+  - ref: 東京都社会福祉協議会 受験生チャレンジ
+    url: https://www.tcsw.tvac.or.jp/activity/jukensei.html
 - id: tokyo_judo_shinshin_teate
   name: 東京都重度心身障害者手当
   layer: municipal
@@ -251,8 +262,8 @@
   potential_amount: 60000
   status: supported
   statute:
-    - { ref: "東京都重度心身障害者手当", url: "https://www.fukushi.metro.tokyo.lg.jp/shinsho/teate/juudo.html" }
-
+  - ref: 東京都重度心身障害者手当
+    url: https://www.fukushi.metro.tokyo.lg.jp/shinsho/teate/juudo.html
 - id: shinshin_shogaisha_iryo_josei
   name: 心身障害者医療費助成
   layer: municipal
@@ -263,8 +274,8 @@
   potential_amount: null
   status: supported
   statute:
-    - { ref: "東京都心身障害者医療費助成制度（マル障）", url: "https://www.fukushi.metro.tokyo.lg.jp/iryo/josei/marusyou.html" }
-
+  - ref: 東京都心身障害者医療費助成制度（マル障）
+    url: https://www.fukushi.metro.tokyo.lg.jp/iryo/josei/marusyou.html
 - id: shiritsu_koko_jugyoryo_keigen
   name: 私立高校授業料軽減助成金
   layer: municipal
@@ -275,8 +286,8 @@
   potential_amount: 484000
   status: supported
   statute:
-    - { ref: "東京都私学財団 授業料軽減助成金", url: "https://www.shigaku-tokyo.or.jp/parents/tuition.html" }
-
+  - ref: 東京都私学財団 授業料軽減助成金
+    url: https://www.shigaku-tokyo.or.jp/parents/tuition.html
 - id: tokyo_akachan_first
   name: 赤ちゃんファースト
   layer: municipal
@@ -287,8 +298,8 @@
   potential_amount: 100000
   status: supported
   statute:
-    - { ref: "東京都赤ちゃんファースト事業", url: "https://akachan-first.metro.tokyo.lg.jp/" }
-
+  - ref: 東京都赤ちゃんファースト事業
+    url: https://akachan-first.metro.tokyo.lg.jp/
 - id: shibuya_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -296,11 +307,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "渋谷区 子ども医療費助成", url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/iryo-josei/kodomo_ij.html" }
-
+  - ref: 渋谷区 子ども医療費助成
+    url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/iryo-josei/kodomo_ij.html
 - id: shibuya_birthday_support
   name: バースデーサポート事業
   layer: municipal
@@ -308,11 +319,11 @@
   subject: child
   unit: per_child
   amount_type: oneoff
-  potential_amount: 100000       # VERIFIED: R7年度生まれ（R8年度限り特例）。R5/R6年度生まれは60,000円
+  potential_amount: 100000
   status: supported
   statute:
-    - { ref: "渋谷区 バースデーサポート事業", url: "https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/birthday_support.html" }
-
+  - ref: 渋谷区 バースデーサポート事業
+    url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/birthday_support.html
 - id: shibuya_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（渋谷区）
   layer: municipal
@@ -323,8 +334,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "渋谷区心身障害者福祉手当", url: "https://www.city.shibuya.tokyo.jp/kenko/shogai/teate/shinshin_teate.html" }
-
+  - ref: 渋谷区心身障害者福祉手当
+    url: https://www.city.shibuya.tokyo.jp/kenko/shogai/teate/shinshin_teate.html
 - id: shibuya_shugaku_enjo
   name: 就学援助（渋谷区）
   layer: municipal
@@ -335,8 +346,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "渋谷区 就学援助", url: "https://www.city.shibuya.tokyo.jp/kodomo/gakkou/enjo/shugaku_enjo.html" }
-
+  - ref: 渋谷区 就学援助
+    url: https://www.city.shibuya.tokyo.jp/kodomo/gakkou/enjo/shugaku_enjo.html
 - id: shibuya_housing_tbd
   name: 住み替え家賃補助（住宅系・対応制度を選定中）
   layer: municipal
@@ -347,7 +358,6 @@
   potential_amount: null
   status: unsupported
   statute: []
-
 - id: minato_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -355,11 +365,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "港区 子ども医療費助成", url: "https://www.city.minato.tokyo.jp/kosodatesien/kodomo/kate/kodomoiryo.html" }
-
+  - ref: 港区 子ども医療費助成
+    url: https://www.city.minato.tokyo.jp/kosodatesien/kodomo/kate/kodomoiryo.html
 - id: bunkyo_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -367,11 +377,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "文京区 こども医療費助成", url: "https://www.city.bunkyo.lg.jp/b022/p001459/index.html" }
-
+  - ref: 文京区 こども医療費助成
+    url: https://www.city.bunkyo.lg.jp/b022/p001459/index.html
 - id: taito_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -379,11 +389,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "台東区 子ども医療費助成", url: "https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/iryohijosei/annai.html" }
-
+  - ref: 台東区 子ども医療費助成
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/iryohijosei/annai.html
 - id: toshima_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -391,11 +401,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "豊島区 子どもの医療費助成", url: "https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/015729.html" }
-
+  - ref: 豊島区 子どもの医療費助成
+    url: https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/015729.html
 - id: chiyoda_jisedai_ikusei_teate
   name: 次世代育成手当（千代田区）
   layer: municipal
@@ -406,8 +416,8 @@
   potential_amount: 5000
   status: supported
   statute:
-    - { ref: "千代田区次世代育成手当", url: "https://www.city.chiyoda.lg.jp/kosodate/kosodate/teate/jisedai.html" }
-
+  - ref: 千代田区次世代育成手当
+    url: https://www.city.chiyoda.lg.jp/kosodate/kosodate/teate/jisedai.html
 - id: chiyoda_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -415,11 +425,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "千代田区 こども・高校生等医療費助成制度", url: "https://www.city.chiyoda.lg.jp/koho/kosodate/teate/kodomoiryo.html" }
-
+  - ref: 千代田区 こども・高校生等医療費助成制度
+    url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/kodomoiryo.html
 - id: chuo_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -427,11 +437,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "中央区 子ども医療費助成", url: "https://www.city.chuo.lg.jp/a0020/kosodate/kosodate/teatejosei/iryouhijosei/akimoto.html" }
-
+  - ref: 中央区 子ども医療費助成
+    url: https://www.city.chuo.lg.jp/a0020/kosodate/kosodate/teatejosei/iryouhijosei/akimoto.html
 - id: shinjuku_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -439,11 +449,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "新宿区 子ども医療費助成", url: "https://www.city.shinjuku.lg.jp/kodomo/file03_04_00003.html" }
-
+  - ref: 新宿区 子ども医療費助成
+    url: https://www.city.shinjuku.lg.jp/kodomo/file03_04_00003.html
 - id: sumida_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -451,11 +461,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "墨田区 子どもの医療費の助成", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/teate_zyosei/jyosei/nyuuyouji_iryouhi.html" }
-
+  - ref: 墨田区 子どもの医療費の助成
+    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/teate_zyosei/jyosei/nyuuyouji_iryouhi.html
 - id: koto_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -463,11 +473,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "江東区 子ども医療費助成", url: "https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/5844.html" }
-
+  - ref: 江東区 子ども医療費助成
+    url: https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/5844.html
 - id: shinagawa_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -475,11 +485,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "品川区 子どもすこやか医療費助成", url: "http://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-iryohizyosei/hpg000017744.html" }
-
+  - ref: 品川区 子どもすこやか医療費助成
+    url: http://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-iryohizyosei/hpg000017744.html
 - id: meguro_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -487,11 +497,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "目黒区 子ども医療費助成制度", url: "https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/toha.html" }
-
+  - ref: 目黒区 子ども医療費助成制度
+    url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/toha.html
 - id: ota_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -499,11 +509,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "大田区 児童医療費助成制度", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/kodomonyuui.html" }
-
+  - ref: 大田区 児童医療費助成制度
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/kodomonyuui.html
 - id: setagaya_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -511,11 +521,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "世田谷区 子ども等医療費助成制度", url: "https://www.city.setagaya.lg.jp/02413/1305.html" }
-
+  - ref: 世田谷区 子ども等医療費助成制度
+    url: https://www.city.setagaya.lg.jp/02413/1305.html
 - id: nakano_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -523,11 +533,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "中野区 子ども医療費助成制度", url: "https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/teate/iryohijyosei/kodomoiryojyosei.html" }
-
+  - ref: 中野区 子ども医療費助成制度
+    url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/teate/iryohijyosei/kodomoiryojyosei.html
 - id: suginami_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -535,11 +545,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "杉並区 子ども医療費助成", url: "https://www.city.suginami.tokyo.jp/s053/1043.html" }
-
+  - ref: 杉並区 子ども医療費助成
+    url: https://www.city.suginami.tokyo.jp/s053/1043.html
 - id: kita_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -547,11 +557,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "北区 子ども医療費助成", url: "https://www.city.kita.tokyo.jp/k-mirai/kosodate/teate/kodomo/gaiyo.html" }
-
+  - ref: 北区 子ども医療費助成
+    url: https://www.city.kita.tokyo.jp/k-mirai/kosodate/teate/kodomo/gaiyo.html
 - id: arakawa_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -559,11 +569,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "荒川区 乳幼児・子ども・高校生等医療費助成", url: "https://www.city.arakawa.tokyo.jp/a035/kosodate/teate/iryohijyosei.html" }
-
+  - ref: 荒川区 乳幼児・子ども・高校生等医療費助成
+    url: https://www.city.arakawa.tokyo.jp/a035/kosodate/teate/iryohijyosei.html
 - id: itabashi_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -571,11 +581,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "板橋区 子ども医療費助成", url: "https://www.city.itabashi.tokyo.jp/kosodate/teate/iryohi/1004624.html" }
-
+  - ref: 板橋区 子ども医療費助成
+    url: https://www.city.itabashi.tokyo.jp/kosodate/teate/iryohi/1004624.html
 - id: nerima_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -583,11 +593,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "練馬区 子ども医療費の助成", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/josei.html" }
-
+  - ref: 練馬区 子ども医療費の助成
+    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/josei.html
 - id: adachi_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -595,11 +605,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "足立区 子ども医療費助成制度", url: "https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/teate-iryohijose.html" }
-
+  - ref: 足立区 子ども医療費助成制度
+    url: https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/teate-iryohijose.html
 - id: katsushika_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -607,11 +617,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "葛飾区 子どもの医療費助成", url: "https://www.city.katsushika.lg.jp/kosodate/1000056/1002336/1002421.html" }
-
+  - ref: 葛飾区 子どもの医療費助成
+    url: https://www.city.katsushika.lg.jp/kosodate/1000056/1002336/1002421.html
 - id: edogawa_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -619,11 +629,11 @@
   subject: child
   unit: per_child
   amount_type: in_kind
-  potential_amount: null         # 現物給付（自己負担分助成）のため金額表示なし
+  potential_amount: null
   status: supported
   statute:
-    - { ref: "江戸川区 子ども医療費助成制度", url: "https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/iryoujosei.html" }
-
+  - ref: 江戸川区 子ども医療費助成制度
+    url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/iryoujosei.html
 - id: chiyoda_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（千代田区）
   layer: municipal
@@ -634,8 +644,8 @@
   potential_amount: 16000
   status: supported
   statute:
-    - { ref: "千代田区心身障害者福祉手当", url: "https://www.city.chiyoda.lg.jp/koho/kenko/shogai/teate/shinshin.html" }
-
+  - ref: 千代田区心身障害者福祉手当
+    url: https://www.city.chiyoda.lg.jp/koho/kenko/shogai/teate/shinshin.html
 - id: chuo_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（中央区）
   layer: municipal
@@ -646,8 +656,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "中央区心身障害者福祉手当", url: "https://www.city.chuo.lg.jp/a0033/kenkouiryou/shougai/teate/shinshinshougaisha.html" }
-
+  - ref: 中央区心身障害者福祉手当
+    url: https://www.city.chuo.lg.jp/a0033/kenkouiryou/shougai/teate/shinshinshougaisha.html
 - id: minato_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（港区）
   layer: municipal
@@ -658,8 +668,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "港区心身障害者福祉手当", url: "https://www.city.minato.tokyo.jp/shougaifukushi/teate.html" }
-
+  - ref: 港区心身障害者福祉手当
+    url: https://www.city.minato.tokyo.jp/shougaifukushi/teate.html
 - id: shinjuku_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（新宿区）
   layer: municipal
@@ -670,8 +680,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "新宿区心身障害者福祉手当", url: "https://www.city.shinjuku.lg.jp/fukushi/fukushi01_002072.html" }
-
+  - ref: 新宿区心身障害者福祉手当
+    url: https://www.city.shinjuku.lg.jp/fukushi/fukushi01_002072.html
 - id: bunkyo_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（文京区）
   layer: municipal
@@ -682,8 +692,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "文京区心身障害者福祉手当", url: "https://www.city.bunkyo.lg.jp/tetsuzuki/shogai/teate/shinshin.html" }
-
+  - ref: 文京区心身障害者福祉手当
+    url: https://www.city.bunkyo.lg.jp/tetsuzuki/shogai/teate/shinshin.html
 - id: taito_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（台東区）
   layer: municipal
@@ -694,8 +704,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "台東区心身障害者福祉手当", url: "https://www.city.taito.lg.jp/kenko/shogaisha/teate/shinshin.html" }
-
+  - ref: 台東区心身障害者福祉手当
+    url: https://www.city.taito.lg.jp/kenko/shogaisha/teate/shinshin.html
 - id: sumida_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（墨田区）
   layer: municipal
@@ -706,8 +716,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "墨田区心身障害者福祉手当", url: "https://www.city.sumida.lg.jp/kenko_fukushi/syougai/teate/shinshin.html" }
-
+  - ref: 墨田区心身障害者福祉手当
+    url: https://www.city.sumida.lg.jp/kenko_fukushi/syougai/teate/shinshin.html
 - id: koto_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（江東区）
   layer: municipal
@@ -718,8 +728,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "江東区心身障害者福祉手当", url: "https://www.city.koto.lg.jp/260402/fukushi/shogaisha/teate/index.html" }
-
+  - ref: 江東区心身障害者福祉手当
+    url: https://www.city.koto.lg.jp/260402/fukushi/shogaisha/teate/index.html
 - id: shinagawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（品川区）
   layer: municipal
@@ -730,8 +740,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "品川区心身障害者福祉手当", url: "https://www.city.shinagawa.tokyo.jp/PC/fukushi/shogaisha/teate/index.html" }
-
+  - ref: 品川区心身障害者福祉手当
+    url: https://www.city.shinagawa.tokyo.jp/PC/fukushi/shogaisha/teate/index.html
 - id: meguro_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（目黒区）
   layer: municipal
@@ -742,8 +752,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "目黒区心身障害者福祉手当", url: "https://www.city.meguro.tokyo.jp/kurashi/fukushi/shogaisha/teate_josei/shinshin.html" }
-
+  - ref: 目黒区心身障害者福祉手当
+    url: https://www.city.meguro.tokyo.jp/kurashi/fukushi/shogaisha/teate_josei/shinshin.html
 - id: ota_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（大田区）
   layer: municipal
@@ -754,8 +764,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "大田区心身障害者福祉手当", url: "https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/teate/shinshin.html" }
-
+  - ref: 大田区心身障害者福祉手当
+    url: https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/teate/shinshin.html
 - id: setagaya_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（世田谷区）
   layer: municipal
@@ -766,8 +776,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "世田谷区心身障害者福祉手当", url: "https://www.city.setagaya.lg.jp/mokuji/fukushi/001/003/d00129291.html" }
-
+  - ref: 世田谷区心身障害者福祉手当
+    url: https://www.city.setagaya.lg.jp/mokuji/fukushi/001/003/d00129291.html
 - id: nakano_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（中野区）
   layer: municipal
@@ -778,8 +788,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "中野区心身障害者福祉手当", url: "https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/shogai/teate/shinshin.html" }
-
+  - ref: 中野区心身障害者福祉手当
+    url: https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/shogai/teate/shinshin.html
 - id: suginami_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（杉並区）
   layer: municipal
@@ -790,8 +800,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "杉並区心身障害者福祉手当", url: "https://www.city.suginami.tokyo.jp/guide/fukushi/shogai/1004885.html" }
-
+  - ref: 杉並区心身障害者福祉手当
+    url: https://www.city.suginami.tokyo.jp/guide/fukushi/shogai/1004885.html
 - id: toshima_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（豊島区）
   layer: municipal
@@ -802,8 +812,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "豊島区心身障害者福祉手当", url: "https://www.city.toshima.lg.jp/212/kenko/shogai/teate/004215.html" }
-
+  - ref: 豊島区心身障害者福祉手当
+    url: https://www.city.toshima.lg.jp/212/kenko/shogai/teate/004215.html
 - id: kita_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（北区）
   layer: municipal
@@ -814,8 +824,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "北区心身障害者福祉手当", url: "https://www.city.kita.tokyo.jp/r-shogaifukushi/teate/shinshin.html" }
-
+  - ref: 北区心身障害者福祉手当
+    url: https://www.city.kita.tokyo.jp/r-shogaifukushi/teate/shinshin.html
 - id: arakawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（荒川区）
   layer: municipal
@@ -826,8 +836,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "荒川区心身障害者福祉手当", url: "https://www.city.arakawa.tokyo.jp/a024/fukushi/shogai/teate/shinshin.html" }
-
+  - ref: 荒川区心身障害者福祉手当
+    url: https://www.city.arakawa.tokyo.jp/a024/fukushi/shogai/teate/shinshin.html
 - id: itabashi_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（板橋区）
   layer: municipal
@@ -838,8 +848,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "板橋区心身障害者福祉手当", url: "https://www.city.itabashi.tokyo.jp/kenko/shougaisha/teate/1001789.html" }
-
+  - ref: 板橋区心身障害者福祉手当
+    url: https://www.city.itabashi.tokyo.jp/kenko/shougaisha/teate/1001789.html
 - id: nerima_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（練馬区）
   layer: municipal
@@ -850,8 +860,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "練馬区心身障害者福祉手当", url: "https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/teate/shinshin.html" }
-
+  - ref: 練馬区心身障害者福祉手当
+    url: https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/teate/shinshin.html
 - id: adachi_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（足立区）
   layer: municipal
@@ -862,8 +872,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "足立区心身障害者福祉手当", url: "https://www.city.adachi.tokyo.jp/shogai/fukushi/shogai/teate-shinshin.html" }
-
+  - ref: 足立区心身障害者福祉手当
+    url: https://www.city.adachi.tokyo.jp/shogai/fukushi/shogai/teate-shinshin.html
 - id: katsushika_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（葛飾区）
   layer: municipal
@@ -874,8 +884,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "葛飾区心身障害者福祉手当", url: "https://www.city.katsushika.lg.jp/kurashi/1000059/1002386/1002394.html" }
-
+  - ref: 葛飾区心身障害者福祉手当
+    url: https://www.city.katsushika.lg.jp/kurashi/1000059/1002386/1002394.html
 - id: edogawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（江戸川区）
   layer: municipal
@@ -886,8 +896,8 @@
   potential_amount: 15500
   status: supported
   statute:
-    - { ref: "江戸川区心身障害者福祉手当", url: "https://www.city.edogawa.tokyo.jp/e048/kenko/shogaisha/teate/shinshin.html" }
-
+  - ref: 江戸川区心身障害者福祉手当
+    url: https://www.city.edogawa.tokyo.jp/e048/kenko/shogaisha/teate/shinshin.html
 - id: chiyoda_shugaku_enjo
   name: 就学援助（chiyoda）
   layer: municipal
@@ -898,8 +908,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Chiyoda shugaku enjo", url: "https://www.city.chiyoda.lg.jp/kosodate/gakko/enjo.html" }
-
+  - ref: Chiyoda shugaku enjo
+    url: https://www.city.chiyoda.lg.jp/kosodate/gakko/enjo.html
 - id: chuo_shugaku_enjo
   name: 就学援助（chuo）
   layer: municipal
@@ -910,8 +920,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Chuo shugaku enjo", url: "https://www.city.chuo.lg.jp/a0016/kosodate/gakko/enjo.html" }
-
+  - ref: Chuo shugaku enjo
+    url: https://www.city.chuo.lg.jp/a0016/kosodate/gakko/enjo.html
 - id: minato_shugaku_enjo
   name: 就学援助（minato）
   layer: municipal
@@ -922,8 +932,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Minato shugaku enjo", url: "https://www.city.minato.tokyo.jp/gakkouuneishien/enjo.html" }
-
+  - ref: Minato shugaku enjo
+    url: https://www.city.minato.tokyo.jp/gakkouuneishien/enjo.html
 - id: shinjuku_shugaku_enjo
   name: 就学援助（shinjuku）
   layer: municipal
@@ -934,8 +944,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Shinjuku shugaku enjo", url: "https://www.city.shinjuku.lg.jp/kodomo/gakko01_001010.html" }
-
+  - ref: Shinjuku shugaku enjo
+    url: https://www.city.shinjuku.lg.jp/kodomo/gakko01_001010.html
 - id: bunkyo_shugaku_enjo
   name: 就学援助（bunkyo）
   layer: municipal
@@ -946,8 +956,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Bunkyo shugaku enjo", url: "https://www.city.bunkyo.lg.jp/kyoiku/gakko/enjo.html" }
-
+  - ref: Bunkyo shugaku enjo
+    url: https://www.city.bunkyo.lg.jp/kyoiku/gakko/enjo.html
 - id: taito_shugaku_enjo
   name: 就学援助（taito）
   layer: municipal
@@ -958,8 +968,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Taito shugaku enjo", url: "https://www.city.taito.lg.jp/kosodatekyouiku/kyouiku/gakkoukyouiku/enjo.html" }
-
+  - ref: Taito shugaku enjo
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/kyouiku/gakkoukyouiku/enjo.html
 - id: sumida_shugaku_enjo
   name: 就学援助（sumida）
   layer: municipal
@@ -970,8 +980,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Sumida shugaku enjo", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/enjo.html" }
-
+  - ref: Sumida shugaku enjo
+    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/enjo.html
 - id: koto_shugaku_enjo
   name: 就学援助（koto）
   layer: municipal
@@ -982,8 +992,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Koto shugaku enjo", url: "https://www.city.koto.lg.jp/580601/kodomo/gakko/enjo.html" }
-
+  - ref: Koto shugaku enjo
+    url: https://www.city.koto.lg.jp/580601/kodomo/gakko/enjo.html
 - id: shinagawa_shugaku_enjo
   name: 就学援助（shinagawa）
   layer: municipal
@@ -994,8 +1004,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Shinagawa shugaku enjo", url: "https://www.city.shinagawa.tokyo.jp/PC/kodomo/gakko/enjo.html" }
-
+  - ref: Shinagawa shugaku enjo
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/gakko/enjo.html
 - id: meguro_shugaku_enjo
   name: 就学援助（meguro）
   layer: municipal
@@ -1006,8 +1016,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Meguro shugaku enjo", url: "https://www.city.meguro.tokyo.jp/kyouiku/gakko/enjo.html" }
-
+  - ref: Meguro shugaku enjo
+    url: https://www.city.meguro.tokyo.jp/kyouiku/gakko/enjo.html
 - id: ota_shugaku_enjo
   name: 就学援助（ota）
   layer: municipal
@@ -1018,8 +1028,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Ota shugaku enjo", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/gakko/enjo.html" }
-
+  - ref: Ota shugaku enjo
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/gakko/enjo.html
 - id: setagaya_shugaku_enjo
   name: 就学援助（setagaya）
   layer: municipal
@@ -1030,8 +1040,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Setagaya shugaku enjo", url: "https://www.city.setagaya.lg.jp/mokuji/kodomo/009/002/d00036730.html" }
-
+  - ref: Setagaya shugaku enjo
+    url: https://www.city.setagaya.lg.jp/mokuji/kodomo/009/002/d00036730.html
 - id: nakano_shugaku_enjo
   name: 就学援助（nakano）
   layer: municipal
@@ -1042,8 +1052,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Nakano shugaku enjo", url: "https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/gakko/enjo.html" }
-
+  - ref: Nakano shugaku enjo
+    url: https://www.city.tokyo-nakano.lg.jp/kosodate-kyoiku/gakko/enjo.html
 - id: suginami_shugaku_enjo
   name: 就学援助（suginami）
   layer: municipal
@@ -1054,8 +1064,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Suginami shugaku enjo", url: "https://www.city.suginami.tokyo.jp/guide/kyouiku/gakko/enjo.html" }
-
+  - ref: Suginami shugaku enjo
+    url: https://www.city.suginami.tokyo.jp/guide/kyouiku/gakko/enjo.html
 - id: toshima_shugaku_enjo
   name: 就学援助（toshima）
   layer: municipal
@@ -1066,8 +1076,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Toshima shugaku enjo", url: "https://www.city.toshima.lg.jp/353/kosodate/gakko/enjo.html" }
-
+  - ref: Toshima shugaku enjo
+    url: https://www.city.toshima.lg.jp/353/kosodate/gakko/enjo.html
 - id: kita_shugaku_enjo
   name: 就学援助（kita）
   layer: municipal
@@ -1078,8 +1088,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Kita shugaku enjo", url: "https://www.city.kita.tokyo.jp/gakko/enjo.html" }
-
+  - ref: Kita shugaku enjo
+    url: https://www.city.kita.tokyo.jp/gakko/enjo.html
 - id: arakawa_shugaku_enjo
   name: 就学援助（arakawa）
   layer: municipal
@@ -1090,8 +1100,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Arakawa shugaku enjo", url: "https://www.city.arakawa.tokyo.jp/a024/kyouiku/gakko/enjo.html" }
-
+  - ref: Arakawa shugaku enjo
+    url: https://www.city.arakawa.tokyo.jp/a024/kyouiku/gakko/enjo.html
 - id: itabashi_shugaku_enjo
   name: 就学援助（itabashi）
   layer: municipal
@@ -1102,8 +1112,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Itabashi shugaku enjo", url: "https://www.city.itabashi.tokyo.jp/kyouiku/gakko/enjo.html" }
-
+  - ref: Itabashi shugaku enjo
+    url: https://www.city.itabashi.tokyo.jp/kyouiku/gakko/enjo.html
 - id: nerima_shugaku_enjo
   name: 就学援助（nerima）
   layer: municipal
@@ -1114,8 +1124,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Nerima shugaku enjo", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/gakko/enjo.html" }
-
+  - ref: Nerima shugaku enjo
+    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/gakko/enjo.html
 - id: adachi_shugaku_enjo
   name: 就学援助（adachi）
   layer: municipal
@@ -1126,8 +1136,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Adachi shugaku enjo", url: "https://www.city.adachi.tokyo.jp/gakumu/enjo.html" }
-
+  - ref: Adachi shugaku enjo
+    url: https://www.city.adachi.tokyo.jp/gakumu/enjo.html
 - id: katsushika_shugaku_enjo
   name: 就学援助（katsushika）
   layer: municipal
@@ -1138,8 +1148,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Katsushika shugaku enjo", url: "https://www.city.katsushika.lg.jp/kosodate/gakko/enjo.html" }
-
+  - ref: Katsushika shugaku enjo
+    url: https://www.city.katsushika.lg.jp/kosodate/gakko/enjo.html
 - id: edogawa_shugaku_enjo
   name: 就学援助（edogawa）
   layer: municipal
@@ -1150,8 +1160,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Edogawa shugaku enjo", url: "https://www.city.edogawa.tokyo.jp/e048/kosodate/gakko/enjo.html" }
-
+  - ref: Edogawa shugaku enjo
+    url: https://www.city.edogawa.tokyo.jp/e048/kosodate/gakko/enjo.html
 - id: minato_shussan_hiyou_josei
   name: 港区出産費用助成
   layer: municipal
@@ -1162,8 +1172,8 @@
   potential_amount: 730000
   status: supported
   statute:
-    - { ref: "Minato birth cost subsidy", url: "https://www.city.minato.tokyo.jp/kenko/kodomo/shussan/josei.html" }
-
+  - ref: Minato birth cost subsidy
+    url: https://www.city.minato.tokyo.jp/kenko/kodomo/shussan/josei.html
 - id: shibuya_hajimete_kosodate_ouen
   name: 渋谷区はじめて子育て応援金
   layer: municipal
@@ -1174,8 +1184,8 @@
   potential_amount: 100000
   status: supported
   statute:
-    - { ref: "Shibuya first childcare support", url: "https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/hajimete.html" }
-
+  - ref: Shibuya first childcare support
+    url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/hajimete.html
 - id: chuo_shussan_shien
   name: 中央区出産支援祝品
   layer: municipal
@@ -1186,8 +1196,8 @@
   potential_amount: 30000
   status: supported
   statute:
-    - { ref: "Chuo birth celebration gift", url: "https://www.city.chuo.lg.jp/a0033/kosodate/shussan/shukuhin.html" }
-
+  - ref: Chuo birth celebration gift
+    url: https://www.city.chuo.lg.jp/a0033/kosodate/shussan/shukuhin.html
 - id: bunkyo_koukousei_ikusei_shienkin
   name: 文京区高校生世代育成支援金
   layer: municipal
@@ -1198,8 +1208,8 @@
   potential_amount: 50000
   status: supported
   statute:
-    - { ref: "Bunkyo high school support fund", url: "https://www.city.bunkyo.lg.jp/tetsuzuki/kosodate/teate/koukousei.html" }
-
+  - ref: Bunkyo high school support fund
+    url: https://www.city.bunkyo.lg.jp/tetsuzuki/kosodate/teate/koukousei.html
 - id: koto_shussan_oiwaikin
   name: 江東区出産祝い金
   layer: municipal
@@ -1210,8 +1220,8 @@
   potential_amount: 50000
   status: supported
   statute:
-    - { ref: "Koto birth celebration", url: "https://www.city.koto.lg.jp/260401/kosodate/shussan/oiwai.html" }
-
+  - ref: Koto birth celebration
+    url: https://www.city.koto.lg.jp/260401/kosodate/shussan/oiwai.html
 - id: shinagawa_kosodate_ouen
   name: 品川区子育て応援券
   layer: municipal
@@ -1222,8 +1232,8 @@
   potential_amount: 10000
   status: supported
   statute:
-    - { ref: "Shinagawa childcare support voucher", url: "https://www.city.shinagawa.tokyo.jp/PC/kodomo/kosodate-ouen.html" }
-
+  - ref: Shinagawa childcare support voucher
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kosodate-ouen.html
 - id: toshima_shussan_oiwaikin
   name: 豊島区出産祝い金
   layer: municipal
@@ -1234,8 +1244,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "Toshima birth celebration", url: "https://www.city.toshima.lg.jp/353/kosodate/shussan/oiwai.html" }
-
+  - ref: Toshima birth celebration
+    url: https://www.city.toshima.lg.jp/353/kosodate/shussan/oiwai.html
 - id: adachi_kosodate_ouen
   name: 足立区子育て応援金
   layer: municipal
@@ -1246,8 +1256,8 @@
   potential_amount: 30000
   status: supported
   statute:
-    - { ref: "Adachi childcare support", url: "https://www.city.adachi.tokyo.jp/kosodate/ouen.html" }
-
+  - ref: Adachi childcare support
+    url: https://www.city.adachi.tokyo.jp/kosodate/ouen.html
 - id: edogawa_nyuyoji_teate
   name: 江戸川区乳児養育手当
   layer: municipal
@@ -1258,8 +1268,8 @@
   potential_amount: 13000
   status: supported
   statute:
-    - { ref: "Edogawa infant nurturing allowance", url: "https://www.city.edogawa.tokyo.jp/e048/kosodate/teate/nyuyoji.html" }
-
+  - ref: Edogawa infant nurturing allowance
+    url: https://www.city.edogawa.tokyo.jp/e048/kosodate/teate/nyuyoji.html
 - id: kita_nyuyoji_teate
   name: 北区乳幼児養育手当
   layer: municipal
@@ -1270,8 +1280,8 @@
   potential_amount: 5000
   status: supported
   statute:
-    - { ref: "Kita infant allowance", url: "https://www.city.kita.tokyo.jp/r-kodomoseisaku/teate/nyuyoji.html" }
-
+  - ref: Kita infant allowance
+    url: https://www.city.kita.tokyo.jp/r-kodomoseisaku/teate/nyuyoji.html
 - id: setagaya_shussan_oiwaikin
   name: 世田谷区出生祝い金
   layer: municipal
@@ -1282,8 +1292,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "Setagaya birth celebration", url: "https://www.city.setagaya.lg.jp/mokuji/kodomo/009/d00210270.html" }
-
+  - ref: Setagaya birth celebration
+    url: https://www.city.setagaya.lg.jp/mokuji/kodomo/009/d00210270.html
 - id: nerima_dai3shi_ouen
   name: 練馬区第3子誕生祝い金
   layer: municipal
@@ -1294,8 +1304,8 @@
   potential_amount: 200000
   status: supported
   statute:
-    - { ref: "Nerima 3rd child celebration", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/ouen/dai3shi.html" }
-
+  - ref: Nerima 3rd child celebration
+    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/ouen/dai3shi.html
 - id: shinjuku_shussan_oiwaikin
   name: 新宿区誕生祝い金
   layer: municipal
@@ -1306,8 +1316,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "Shinjuku birth celebration", url: "https://www.city.shinjuku.lg.jp/kodomo/kosodate/shussan/oiwai.html" }
-
+  - ref: Shinjuku birth celebration
+    url: https://www.city.shinjuku.lg.jp/kodomo/kosodate/shussan/oiwai.html
 - id: meguro_shussan_josei
   name: 目黒区出産費用助成
   layer: municipal
@@ -1318,8 +1328,8 @@
   potential_amount: 50000
   status: supported
   statute:
-    - { ref: "Meguro birth cost subsidy", url: "https://www.city.meguro.tokyo.jp/kurashi/kosodate/shussan/josei.html" }
-
+  - ref: Meguro birth cost subsidy
+    url: https://www.city.meguro.tokyo.jp/kurashi/kosodate/shussan/josei.html
 - id: ota_shussan_oiwaikin
   name: 大田区出産応援金
   layer: municipal
@@ -1330,8 +1340,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "Ota birth support", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/ouen.html" }
-
+  - ref: Ota birth support
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/ouen.html
 - id: sumida_shussan_oiwaikin
   name: 墨田区出産祝い金
   layer: municipal
@@ -1342,8 +1352,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "Sumida birth celebration", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/shussan/oiwai.html" }
-
+  - ref: Sumida birth celebration
+    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/shussan/oiwai.html
 - id: taito_shussan_oiwaikin
   name: 台東区出産祝い金
   layer: municipal
@@ -1354,8 +1364,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "Taito birth celebration", url: "https://www.city.taito.lg.jp/kosodatekyouiku/shussan/oiwai.html" }
-
+  - ref: Taito birth celebration
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/shussan/oiwai.html
 - id: nakano_shussan_ouen
   name: 中野区出産応援金
   layer: municipal
@@ -1366,8 +1376,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "Nakano birth support", url: "https://www.city.tokyo-nakano.lg.jp/kosodate/shussan/ouen.html" }
-
+  - ref: Nakano birth support
+    url: https://www.city.tokyo-nakano.lg.jp/kosodate/shussan/ouen.html
 - id: suginami_shussan_ouen
   name: 杉並区出産応援金
   layer: municipal
@@ -1378,8 +1388,8 @@
   potential_amount: 30000
   status: supported
   statute:
-    - { ref: "Suginami birth support", url: "https://www.city.suginami.tokyo.jp/guide/kosodate/shussan/ouen.html" }
-
+  - ref: Suginami birth support
+    url: https://www.city.suginami.tokyo.jp/guide/kosodate/shussan/ouen.html
 - id: arakawa_shussan_oiwaikin
   name: 荒川区出産祝い金
   layer: municipal
@@ -1390,8 +1400,8 @@
   potential_amount: 30000
   status: supported
   statute:
-    - { ref: "Arakawa birth celebration", url: "https://www.city.arakawa.tokyo.jp/a024/kosodate/shussan/oiwai.html" }
-
+  - ref: Arakawa birth celebration
+    url: https://www.city.arakawa.tokyo.jp/a024/kosodate/shussan/oiwai.html
 - id: itabashi_shussan_ouen
   name: 板橋区出産応援金
   layer: municipal
@@ -1402,8 +1412,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "Itabashi birth support", url: "https://www.city.itabashi.tokyo.jp/kosodate/shussan/ouen.html" }
-
+  - ref: Itabashi birth support
+    url: https://www.city.itabashi.tokyo.jp/kosodate/shussan/ouen.html
 - id: katsushika_shussan_ouen
   name: 葛飾区出産祝い金
   layer: municipal
@@ -1414,8 +1424,8 @@
   potential_amount: 25000
   status: supported
   statute:
-    - { ref: "Katsushika birth celebration", url: "https://www.city.katsushika.lg.jp/kosodate/shussan/oiwai.html" }
-
+  - ref: Katsushika birth celebration
+    url: https://www.city.katsushika.lg.jp/kosodate/shussan/oiwai.html
 - id: shibuya_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shibuya）
   layer: municipal
@@ -1426,8 +1436,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Shibuya hitorioya jutaku teate", url: "https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/jutaku_teate.html" }
-
+  - ref: Shibuya hitorioya jutaku teate
+    url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/jutaku_teate.html
 - id: chiyoda_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（chiyoda）
   layer: municipal
@@ -1438,8 +1448,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Chiyoda hitorioya jutaku teate", url: "https://www.city.chiyoda.lg.jp/koho/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Chiyoda hitorioya jutaku teate
+    url: https://www.city.chiyoda.lg.jp/koho/kosodate/hitorioya/jutaku.html
 - id: shinjuku_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shinjuku）
   layer: municipal
@@ -1450,8 +1460,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Shinjuku hitorioya jutaku teate", url: "https://www.city.shinjuku.lg.jp/kodomo/hitorioya/jutaku.html" }
-
+  - ref: Shinjuku hitorioya jutaku teate
+    url: https://www.city.shinjuku.lg.jp/kodomo/hitorioya/jutaku.html
 - id: bunkyo_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（bunkyo）
   layer: municipal
@@ -1462,8 +1472,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Bunkyo hitorioya jutaku teate", url: "https://www.city.bunkyo.lg.jp/tetsuzuki/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Bunkyo hitorioya jutaku teate
+    url: https://www.city.bunkyo.lg.jp/tetsuzuki/kosodate/hitorioya/jutaku.html
 - id: koto_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（koto）
   layer: municipal
@@ -1474,8 +1484,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Koto hitorioya jutaku teate", url: "https://www.city.koto.lg.jp/260402/kodomo/hitorioya/jutaku.html" }
-
+  - ref: Koto hitorioya jutaku teate
+    url: https://www.city.koto.lg.jp/260402/kodomo/hitorioya/jutaku.html
 - id: meguro_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（meguro）
   layer: municipal
@@ -1486,8 +1496,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Meguro hitorioya jutaku teate", url: "https://www.city.meguro.tokyo.jp/kurashi/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Meguro hitorioya jutaku teate
+    url: https://www.city.meguro.tokyo.jp/kurashi/kosodate/hitorioya/jutaku.html
 - id: setagaya_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（setagaya）
   layer: municipal
@@ -1498,8 +1508,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Setagaya hitorioya jutaku teate", url: "https://www.city.setagaya.lg.jp/mokuji/kodomo/009/003/d00036731.html" }
-
+  - ref: Setagaya hitorioya jutaku teate
+    url: https://www.city.setagaya.lg.jp/mokuji/kodomo/009/003/d00036731.html
 - id: nakano_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（nakano）
   layer: municipal
@@ -1510,8 +1520,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Nakano hitorioya jutaku teate", url: "https://www.city.tokyo-nakano.lg.jp/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Nakano hitorioya jutaku teate
+    url: https://www.city.tokyo-nakano.lg.jp/kosodate/hitorioya/jutaku.html
 - id: toshima_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（toshima）
   layer: municipal
@@ -1522,8 +1532,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Toshima hitorioya jutaku teate", url: "https://www.city.toshima.lg.jp/212/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Toshima hitorioya jutaku teate
+    url: https://www.city.toshima.lg.jp/212/kosodate/hitorioya/jutaku.html
 - id: kita_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（kita）
   layer: municipal
@@ -1534,8 +1544,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Kita hitorioya jutaku teate", url: "https://www.city.kita.tokyo.jp/r-kodomoseisaku/hitorioya/jutaku.html" }
-
+  - ref: Kita hitorioya jutaku teate
+    url: https://www.city.kita.tokyo.jp/r-kodomoseisaku/hitorioya/jutaku.html
 - id: ota_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（ota）
   layer: municipal
@@ -1546,8 +1556,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Ota hitorioya jutaku teate", url: "https://www.city.ota.tokyo.jp/seikatsu/kodomo/hitorioya/jutaku.html" }
-
+  - ref: Ota hitorioya jutaku teate
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/hitorioya/jutaku.html
 - id: suginami_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（suginami）
   layer: municipal
@@ -1558,8 +1568,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Suginami hitorioya jutaku teate", url: "https://www.city.suginami.tokyo.jp/guide/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Suginami hitorioya jutaku teate
+    url: https://www.city.suginami.tokyo.jp/guide/kosodate/hitorioya/jutaku.html
 - id: arakawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（arakawa）
   layer: municipal
@@ -1570,8 +1580,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Arakawa hitorioya jutaku teate", url: "https://www.city.arakawa.tokyo.jp/a024/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Arakawa hitorioya jutaku teate
+    url: https://www.city.arakawa.tokyo.jp/a024/kosodate/hitorioya/jutaku.html
 - id: itabashi_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（itabashi）
   layer: municipal
@@ -1582,8 +1592,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Itabashi hitorioya jutaku teate", url: "https://www.city.itabashi.tokyo.jp/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Itabashi hitorioya jutaku teate
+    url: https://www.city.itabashi.tokyo.jp/kosodate/hitorioya/jutaku.html
 - id: nerima_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（nerima）
   layer: municipal
@@ -1594,8 +1604,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Nerima hitorioya jutaku teate", url: "https://www.city.nerima.tokyo.jp/kosodatekyoiku/hitorioya/jutaku.html" }
-
+  - ref: Nerima hitorioya jutaku teate
+    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/hitorioya/jutaku.html
 - id: adachi_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（adachi）
   layer: municipal
@@ -1606,8 +1616,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Adachi hitorioya jutaku teate", url: "https://www.city.adachi.tokyo.jp/oyako/hitorioya/jutaku.html" }
-
+  - ref: Adachi hitorioya jutaku teate
+    url: https://www.city.adachi.tokyo.jp/oyako/hitorioya/jutaku.html
 - id: edogawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（edogawa）
   layer: municipal
@@ -1618,8 +1628,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Edogawa hitorioya jutaku teate", url: "https://www.city.edogawa.tokyo.jp/e048/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Edogawa hitorioya jutaku teate
+    url: https://www.city.edogawa.tokyo.jp/e048/kosodate/hitorioya/jutaku.html
 - id: katsushika_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（katsushika）
   layer: municipal
@@ -1630,8 +1640,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Katsushika hitorioya jutaku teate", url: "https://www.city.katsushika.lg.jp/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Katsushika hitorioya jutaku teate
+    url: https://www.city.katsushika.lg.jp/kosodate/hitorioya/jutaku.html
 - id: taito_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（taito）
   layer: municipal
@@ -1642,8 +1652,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Taito hitorioya jutaku teate", url: "https://www.city.taito.lg.jp/kosodatekyouiku/hitorioya/jutaku.html" }
-
+  - ref: Taito hitorioya jutaku teate
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/hitorioya/jutaku.html
 - id: sumida_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（sumida）
   layer: municipal
@@ -1654,8 +1664,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Sumida hitorioya jutaku teate", url: "https://www.city.sumida.lg.jp/kosodate_kyouiku/hitorioya/jutaku.html" }
-
+  - ref: Sumida hitorioya jutaku teate
+    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/hitorioya/jutaku.html
 - id: shinagawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shinagawa）
   layer: municipal
@@ -1666,8 +1676,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Shinagawa hitorioya jutaku teate", url: "https://www.city.shinagawa.tokyo.jp/PC/kodomo/hitorioya/jutaku.html" }
-
+  - ref: Shinagawa hitorioya jutaku teate
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/hitorioya/jutaku.html
 - id: minato_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（minato）
   layer: municipal
@@ -1678,8 +1688,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Minato hitorioya jutaku teate", url: "https://www.city.minato.tokyo.jp/kodomo/hitorioya/jutaku.html" }
-
+  - ref: Minato hitorioya jutaku teate
+    url: https://www.city.minato.tokyo.jp/kodomo/hitorioya/jutaku.html
 - id: chuo_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（chuo）
   layer: municipal
@@ -1690,8 +1700,8 @@
   potential_amount: 15000
   status: supported
   statute:
-    - { ref: "Chuo hitorioya jutaku teate", url: "https://www.city.chuo.lg.jp/a0033/kosodate/hitorioya/jutaku.html" }
-
+  - ref: Chuo hitorioya jutaku teate
+    url: https://www.city.chuo.lg.jp/a0033/kosodate/hitorioya/jutaku.html
 - id: chiyoda_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（chiyoda）
   layer: municipal
@@ -1702,8 +1712,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "chiyoda shiritsu youchien hojo", url: "https://www.city.chiyoda.lg.jp/" }
-
+  - ref: chiyoda shiritsu youchien hojo
+    url: https://www.city.chiyoda.lg.jp/
 - id: chuo_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（chuo）
   layer: municipal
@@ -1714,8 +1724,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "chuo shiritsu youchien hojo", url: "https://www.city.chuo.tokyo.jp/" }
-
+  - ref: chuo shiritsu youchien hojo
+    url: https://www.city.chuo.tokyo.jp/
 - id: minato_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（minato）
   layer: municipal
@@ -1726,8 +1736,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "minato shiritsu youchien hojo", url: "https://www.city.minato.tokyo.jp/" }
-
+  - ref: minato shiritsu youchien hojo
+    url: https://www.city.minato.tokyo.jp/
 - id: shinjuku_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shinjuku）
   layer: municipal
@@ -1738,8 +1748,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "shinjuku shiritsu youchien hojo", url: "https://www.city.shinjuku.tokyo.jp/" }
-
+  - ref: shinjuku shiritsu youchien hojo
+    url: https://www.city.shinjuku.tokyo.jp/
 - id: bunkyo_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（bunkyo）
   layer: municipal
@@ -1750,8 +1760,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "bunkyo shiritsu youchien hojo", url: "https://www.city.bunkyo.tokyo.jp/" }
-
+  - ref: bunkyo shiritsu youchien hojo
+    url: https://www.city.bunkyo.tokyo.jp/
 - id: taito_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（taito）
   layer: municipal
@@ -1762,8 +1772,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "taito shiritsu youchien hojo", url: "https://www.city.taito.tokyo.jp/" }
-
+  - ref: taito shiritsu youchien hojo
+    url: https://www.city.taito.tokyo.jp/
 - id: sumida_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（sumida）
   layer: municipal
@@ -1774,8 +1784,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "sumida shiritsu youchien hojo", url: "https://www.city.sumida.tokyo.jp/" }
-
+  - ref: sumida shiritsu youchien hojo
+    url: https://www.city.sumida.tokyo.jp/
 - id: koto_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（koto）
   layer: municipal
@@ -1786,8 +1796,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "koto shiritsu youchien hojo", url: "https://www.city.koto.tokyo.jp/" }
-
+  - ref: koto shiritsu youchien hojo
+    url: https://www.city.koto.tokyo.jp/
 - id: shinagawa_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shinagawa）
   layer: municipal
@@ -1798,8 +1808,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "shinagawa shiritsu youchien hojo", url: "https://www.city.shinagawa.tokyo.jp/" }
-
+  - ref: shinagawa shiritsu youchien hojo
+    url: https://www.city.shinagawa.tokyo.jp/
 - id: meguro_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（meguro）
   layer: municipal
@@ -1810,8 +1820,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "meguro shiritsu youchien hojo", url: "https://www.city.meguro.tokyo.jp/" }
-
+  - ref: meguro shiritsu youchien hojo
+    url: https://www.city.meguro.tokyo.jp/
 - id: ota_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（ota）
   layer: municipal
@@ -1822,8 +1832,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "ota shiritsu youchien hojo", url: "https://www.city.ota.tokyo.jp/" }
-
+  - ref: ota shiritsu youchien hojo
+    url: https://www.city.ota.tokyo.jp/
 - id: setagaya_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（setagaya）
   layer: municipal
@@ -1834,8 +1844,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "setagaya shiritsu youchien hojo", url: "https://www.city.setagaya.tokyo.jp/" }
-
+  - ref: setagaya shiritsu youchien hojo
+    url: https://www.city.setagaya.tokyo.jp/
 - id: shibuya_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shibuya）
   layer: municipal
@@ -1846,8 +1856,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "shibuya shiritsu youchien hojo", url: "https://www.city.shibuya.tokyo.jp/" }
-
+  - ref: shibuya shiritsu youchien hojo
+    url: https://www.city.shibuya.tokyo.jp/
 - id: nakano_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（nakano）
   layer: municipal
@@ -1858,8 +1868,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "nakano shiritsu youchien hojo", url: "https://www.city.nakano.tokyo.jp/" }
-
+  - ref: nakano shiritsu youchien hojo
+    url: https://www.city.nakano.tokyo.jp/
 - id: suginami_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（suginami）
   layer: municipal
@@ -1870,8 +1880,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "suginami shiritsu youchien hojo", url: "https://www.city.suginami.lg.jp/" }
-
+  - ref: suginami shiritsu youchien hojo
+    url: https://www.city.suginami.lg.jp/
 - id: toshima_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（toshima）
   layer: municipal
@@ -1882,8 +1892,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "toshima shiritsu youchien hojo", url: "https://www.city.toshima.tokyo.jp/" }
-
+  - ref: toshima shiritsu youchien hojo
+    url: https://www.city.toshima.tokyo.jp/
 - id: kita_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（kita）
   layer: municipal
@@ -1894,8 +1904,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "kita shiritsu youchien hojo", url: "https://www.city.kita.tokyo.jp/" }
-
+  - ref: kita shiritsu youchien hojo
+    url: https://www.city.kita.tokyo.jp/
 - id: arakawa_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（arakawa）
   layer: municipal
@@ -1906,8 +1916,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "arakawa shiritsu youchien hojo", url: "https://www.city.arakawa.tokyo.jp/" }
-
+  - ref: arakawa shiritsu youchien hojo
+    url: https://www.city.arakawa.tokyo.jp/
 - id: itabashi_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（itabashi）
   layer: municipal
@@ -1918,8 +1928,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "itabashi shiritsu youchien hojo", url: "https://www.city.itabashi.tokyo.jp/" }
-
+  - ref: itabashi shiritsu youchien hojo
+    url: https://www.city.itabashi.tokyo.jp/
 - id: nerima_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（nerima）
   layer: municipal
@@ -1930,8 +1940,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "nerima shiritsu youchien hojo", url: "https://www.city.nerima.tokyo.jp/" }
-
+  - ref: nerima shiritsu youchien hojo
+    url: https://www.city.nerima.tokyo.jp/
 - id: adachi_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（adachi）
   layer: municipal
@@ -1942,8 +1952,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "adachi shiritsu youchien hojo", url: "https://www.city.adachi.tokyo.jp/" }
-
+  - ref: adachi shiritsu youchien hojo
+    url: https://www.city.adachi.tokyo.jp/
 - id: katsushika_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（katsushika）
   layer: municipal
@@ -1954,8 +1964,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "katsushika shiritsu youchien hojo", url: "https://www.city.katsushika.lg.jp/" }
-
+  - ref: katsushika shiritsu youchien hojo
+    url: https://www.city.katsushika.lg.jp/
 - id: edogawa_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（edogawa）
   layer: municipal
@@ -1966,8 +1976,8 @@
   potential_amount: 62000
   status: supported
   statute:
-    - { ref: "edogawa shiritsu youchien hojo", url: "https://www.city.edogawa.tokyo.jp/" }
-
+  - ref: edogawa shiritsu youchien hojo
+    url: https://www.city.edogawa.tokyo.jp/
 - id: chiyoda_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（chiyoda）
   layer: municipal
@@ -1978,8 +1988,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "chiyoda ninkagai hoiku hojo", url: "https://www.city.chiyoda.lg.jp/" }
-
+  - ref: chiyoda ninkagai hoiku hojo
+    url: https://www.city.chiyoda.lg.jp/
 - id: chuo_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（chuo）
   layer: municipal
@@ -1990,8 +2000,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "chuo ninkagai hoiku hojo", url: "https://www.city.chuo.tokyo.jp/" }
-
+  - ref: chuo ninkagai hoiku hojo
+    url: https://www.city.chuo.tokyo.jp/
 - id: minato_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（minato）
   layer: municipal
@@ -2002,8 +2012,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "minato ninkagai hoiku hojo", url: "https://www.city.minato.tokyo.jp/" }
-
+  - ref: minato ninkagai hoiku hojo
+    url: https://www.city.minato.tokyo.jp/
 - id: shinjuku_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shinjuku）
   layer: municipal
@@ -2014,8 +2024,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "shinjuku ninkagai hoiku hojo", url: "https://www.city.shinjuku.tokyo.jp/" }
-
+  - ref: shinjuku ninkagai hoiku hojo
+    url: https://www.city.shinjuku.tokyo.jp/
 - id: bunkyo_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（bunkyo）
   layer: municipal
@@ -2026,8 +2036,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "bunkyo ninkagai hoiku hojo", url: "https://www.city.bunkyo.tokyo.jp/" }
-
+  - ref: bunkyo ninkagai hoiku hojo
+    url: https://www.city.bunkyo.tokyo.jp/
 - id: taito_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（taito）
   layer: municipal
@@ -2038,8 +2048,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "taito ninkagai hoiku hojo", url: "https://www.city.taito.tokyo.jp/" }
-
+  - ref: taito ninkagai hoiku hojo
+    url: https://www.city.taito.tokyo.jp/
 - id: sumida_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（sumida）
   layer: municipal
@@ -2050,8 +2060,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "sumida ninkagai hoiku hojo", url: "https://www.city.sumida.tokyo.jp/" }
-
+  - ref: sumida ninkagai hoiku hojo
+    url: https://www.city.sumida.tokyo.jp/
 - id: koto_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（koto）
   layer: municipal
@@ -2062,8 +2072,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "koto ninkagai hoiku hojo", url: "https://www.city.koto.tokyo.jp/" }
-
+  - ref: koto ninkagai hoiku hojo
+    url: https://www.city.koto.tokyo.jp/
 - id: shinagawa_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shinagawa）
   layer: municipal
@@ -2074,8 +2084,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "shinagawa ninkagai hoiku hojo", url: "https://www.city.shinagawa.tokyo.jp/" }
-
+  - ref: shinagawa ninkagai hoiku hojo
+    url: https://www.city.shinagawa.tokyo.jp/
 - id: meguro_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（meguro）
   layer: municipal
@@ -2086,8 +2096,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "meguro ninkagai hoiku hojo", url: "https://www.city.meguro.tokyo.jp/" }
-
+  - ref: meguro ninkagai hoiku hojo
+    url: https://www.city.meguro.tokyo.jp/
 - id: ota_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（ota）
   layer: municipal
@@ -2098,8 +2108,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "ota ninkagai hoiku hojo", url: "https://www.city.ota.tokyo.jp/" }
-
+  - ref: ota ninkagai hoiku hojo
+    url: https://www.city.ota.tokyo.jp/
 - id: setagaya_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（setagaya）
   layer: municipal
@@ -2110,8 +2120,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "setagaya ninkagai hoiku hojo", url: "https://www.city.setagaya.tokyo.jp/" }
-
+  - ref: setagaya ninkagai hoiku hojo
+    url: https://www.city.setagaya.tokyo.jp/
 - id: shibuya_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shibuya）
   layer: municipal
@@ -2122,8 +2132,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "shibuya ninkagai hoiku hojo", url: "https://www.city.shibuya.tokyo.jp/" }
-
+  - ref: shibuya ninkagai hoiku hojo
+    url: https://www.city.shibuya.tokyo.jp/
 - id: nakano_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（nakano）
   layer: municipal
@@ -2134,8 +2144,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "nakano ninkagai hoiku hojo", url: "https://www.city.nakano.tokyo.jp/" }
-
+  - ref: nakano ninkagai hoiku hojo
+    url: https://www.city.nakano.tokyo.jp/
 - id: suginami_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（suginami）
   layer: municipal
@@ -2146,8 +2156,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "suginami ninkagai hoiku hojo", url: "https://www.city.suginami.lg.jp/" }
-
+  - ref: suginami ninkagai hoiku hojo
+    url: https://www.city.suginami.lg.jp/
 - id: toshima_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（toshima）
   layer: municipal
@@ -2158,8 +2168,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "toshima ninkagai hoiku hojo", url: "https://www.city.toshima.tokyo.jp/" }
-
+  - ref: toshima ninkagai hoiku hojo
+    url: https://www.city.toshima.tokyo.jp/
 - id: kita_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（kita）
   layer: municipal
@@ -2170,8 +2180,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "kita ninkagai hoiku hojo", url: "https://www.city.kita.tokyo.jp/" }
-
+  - ref: kita ninkagai hoiku hojo
+    url: https://www.city.kita.tokyo.jp/
 - id: arakawa_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（arakawa）
   layer: municipal
@@ -2182,8 +2192,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "arakawa ninkagai hoiku hojo", url: "https://www.city.arakawa.tokyo.jp/" }
-
+  - ref: arakawa ninkagai hoiku hojo
+    url: https://www.city.arakawa.tokyo.jp/
 - id: itabashi_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（itabashi）
   layer: municipal
@@ -2194,8 +2204,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "itabashi ninkagai hoiku hojo", url: "https://www.city.itabashi.tokyo.jp/" }
-
+  - ref: itabashi ninkagai hoiku hojo
+    url: https://www.city.itabashi.tokyo.jp/
 - id: nerima_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（nerima）
   layer: municipal
@@ -2206,8 +2216,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "nerima ninkagai hoiku hojo", url: "https://www.city.nerima.tokyo.jp/" }
-
+  - ref: nerima ninkagai hoiku hojo
+    url: https://www.city.nerima.tokyo.jp/
 - id: adachi_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（adachi）
   layer: municipal
@@ -2218,8 +2228,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "adachi ninkagai hoiku hojo", url: "https://www.city.adachi.tokyo.jp/" }
-
+  - ref: adachi ninkagai hoiku hojo
+    url: https://www.city.adachi.tokyo.jp/
 - id: katsushika_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（katsushika）
   layer: municipal
@@ -2230,8 +2240,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "katsushika ninkagai hoiku hojo", url: "https://www.city.katsushika.lg.jp/" }
-
+  - ref: katsushika ninkagai hoiku hojo
+    url: https://www.city.katsushika.lg.jp/
 - id: edogawa_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（edogawa）
   layer: municipal
@@ -2242,8 +2252,8 @@
   potential_amount: 20000
   status: supported
   statute:
-    - { ref: "edogawa ninkagai hoiku hojo", url: "https://www.city.edogawa.tokyo.jp/" }
-
+  - ref: edogawa ninkagai hoiku hojo
+    url: https://www.city.edogawa.tokyo.jp/
 - id: mijukuji_youiku_iryo
   name: 未熟児養育医療
   layer: national
@@ -2254,8 +2264,8 @@
   potential_amount: null
   status: supported
   statute:
-    - { ref: "Mother and Child Health Act Art.20", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/kodomo_kosodate/boshi-hoken/" }
-
+  - ref: Mother and Child Health Act Art.20
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/kodomo_kosodate/boshi-hoken/
 - id: shounimansei_iryo_josei
   name: 小児慢性特定疾病医療費助成
   layer: national
@@ -2266,4 +2276,101 @@
   potential_amount: null
   status: supported
   statute:
-    - { ref: "Child Welfare Act Art.19-2", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000078973.html" }
+  - ref: Child Welfare Act Art.19-2
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000078973.html
+- id: hikazei_setai_kyufukin
+  name: 住民税非課税世帯向け給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 30000
+  status: supported
+  statute:
+  - ref: 物価高騰対応重点支援地方創生臨時交付金（内閣府）
+    url: https://www.cao.go.jp/bunken-suishin/taisakukoufukin/taisakukoufukin_index.html
+- id: shitsugyo_kyufu
+  name: 雇用保険基本手当（失業給付）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 200000
+  status: supported
+  statute:
+  - ref: 雇用保険法10条〜35条
+    url: https://hourei.net/law/349AC0000000116
+  - ref: ハローワーク 雇用保険の基本手当
+    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_basicbenefit.html
+- id: kyushokusha_shien_kunren
+  name: 求職者支援制度（職業訓練受講給付金）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 職業訓練の実施等による特定求職者の就職の支援に関する法律7条
+    url: https://hourei.net/law/423AC0000000047
+  - ref: 厚労省 求職者支援制度
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyushokusha_shien/index.html
+- id: kokuho_keigen
+  name: 国民健康保険料の軽減（7割・5割・2割）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 200000
+  status: supported
+  statute:
+  - ref: 国民健康保険法81条、国民健康保険法施行令29条の7
+    url: https://hourei.net/law/333AC0000000192
+  - ref: 厚労省 国民健康保険の保険料軽減
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/iryouhoken/iryouhoken01/index.html
+- id: kokumin_nenkin_menjo
+  name: 国民年金保険料の免除・猶予
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 16980
+  status: supported
+  statute:
+  - ref: 国民年金法90条・90条の2
+    url: https://hourei.net/law/334AC0000000141
+  - ref: 日本年金機構 国民年金保険料の免除制度
+    url: https://www.nenkin.go.jp/service/kokunen/menjo/20150428.html
+- id: shoubyou_teatekin
+  name: 傷病手当金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 200000
+  status: supported
+  statute:
+  - ref: 健康保険法99条
+    url: https://hourei.net/law/211AC0000000070
+  - ref: 全国健康保険協会 傷病手当金
+    url: https://www.kyoukaikenpo.or.jp/g3/sb3040/r139/
+- id: kyouiku_kunren_kyufu
+  name: 教育訓練給付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 雇用保険法60条の2
+    url: https://hourei.net/law/349AC0000000116
+  - ref: ハローワーク 教育訓練給付制度
+    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_education.html
