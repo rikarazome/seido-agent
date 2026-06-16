@@ -504,80 +504,130 @@ function numAnswer(key){
 }
 
 // ---- reason / proof ----
-const DETAIL_JA={
-  "kubun(kihon_teate)":"雇用保険の基本手当（失業給付）を受給できる可能性があります",
-  "kubun(sai_shushoku)":"早期に再就職した場合、再就職手当を受給できます",
-  "kubun(ippan_kyouiku)":"雇用保険加入者として教育訓練給付金の対象です",
-  "kubun(ippan)":"雇用保険加入者として対象となります",
-  "kubun(kougaku_ryouyou)":"医療費が自己負担限度額を超えた場合、超過分が還付されます",
-  "kubun(gengaku)":"住民税非課税世帯として入院時の食事代が減額されます",
-  "kubun(zenmen_seiho)":"生活保護受給世帯としてNHK受信料が全額免除されます",
-  "kubun(zenmen_shougai)":"障害者手帳保持・非課税世帯としてNHK受信料が全額免除されます",
-  "kubun(keigen_7wari)":"所得が軽減基準以下のため、国民健康保険料が7割軽減されます",
-  "kubun(keigen_5wari)":"所得が軽減基準以下のため、国民健康保険料が5割軽減されます",
-  "kubun(keigen_2wari)":"所得が軽減基準以下のため、国民健康保険料が2割軽減されます",
-  "kubun(zenmen)":"所得基準以下のため、国民年金保険料が全額免除されます",
-  "kubun(menjo_3_4)":"国民年金保険料の3/4が免除されます",
-  "kubun(menjo_half)":"国民年金保険料の半額が免除されます",
-  "kubun(menjo_1_4)":"国民年金保険料の1/4が免除されます",
-  "kubun(yuuyo)":"国民年金保険料の納付が猶予されます",
-  "kubun(shoubyou_teate)":"社会保険加入・休業中のため、標準報酬日額の2/3が支給されます",
-  "kubun(jukyo_kakuho)":"離職中のため、家賃相当額（上限あり）が支給されます",
-  "kubun(ikuji_kyuugyou)":"雇用保険加入者として育児休業給付金の対象です（給与の67%→50%）",
-  "kubun(kaigo_kyuugyou)":"雇用保険加入者として介護休業給付金の対象です（給与の67%）",
-  "kubun(jiritsu_kyouiku)":"ひとり親家庭として自立支援教育訓練給付金の対象です（受講費の60%）",
-  "kubun(jugyo_menjo)":"住民税非課税世帯の大学生として授業料・入学金が免除されます",
-  "kubun(kiso_1kyu)":"障害等級1級として障害基礎年金（年約100万円）の対象です",
-  "kubun(kiso_2kyu)":"障害等級2級として障害基礎年金（年約80万円）の対象です",
-  "kubun(muryou_pass)":"障害者手帳保持者として都営交通（バス・地下鉄等）が無料です",
-  "kubun(seiho_menjo)":"生活保護受給世帯として水道料金が免除されます",
-  "kubun(shougai_genmen)":"障害者手帳保持者として水道料金が減免されます",
-  "kubun(hitorioya_genmen)":"ひとり親世帯として水道料金が減免されます",
-  "kubun(silver_pass)":"70歳以上のため東京都シルバーパスの対象です",
-  "kubun(genmen)":"65歳以上・住民税非課税世帯として介護保険料が減免されます",
-  "kubun(kougaku_kaigo)":"要介護認定者として高額介護サービス費の対象です",
-  "kubun(iryouhi_koujo)":"年間医療費が10万円を超えているため、確定申告で医療費控除が受けられます",
-  "kubun(self_medication)":"セルフメディケーション税制の対象です（OTC医薬品の購入費が1.2万円を超えた場合）",
-  "kubun(furusato_nouzei)":"ふるさと納税で寄附金控除が受けられます（実質2,000円で返礼品を受け取れます）",
-  "kubun(ideco_koujo)":"iDeCo（個人型確定拠出年金）に加入すると掛金が全額所得控除されます",
-  "kubun(seimei_hoken_koujo)":"生命保険料控除の対象です（最大12万円の所得控除）",
-  "kubun(jishin_hoken_koujo)":"地震保険料控除の対象です（最大5万円の所得控除）",
-  "kubun(jutaku_loan_koujo)":"住宅ローン減税の対象です（ローン残高の0.7%が最大13年間控除されます）",
-  "kubun(haiguusha_koujo)":"配偶者控除または配偶者特別控除の対象です（最大38万円の所得控除）",
-  "kubun(kensin_14kai)":"妊婦健康診査（14回分）が公費で助成されます",
-  "kubun(menjo_4months)":"産前産後期間（4か月分）の国民年金保険料が免除されます",
-  "kubun(shussan_teate)":"社会保険加入の妊婦として出産手当金の対象です（標準報酬日額の2/3）",
+const ASKABLE_JA={
+  nenshu:"年収",shotoku_exact:"所得（控除後）",hitorioya:"ひとり親である",
+  hitorioya_jiyuu:"ひとり親の事由",seikei_douitsu_partner:"事実婚でない",
+  fuyou_ninzu:"扶養親族の人数",kenkou_hoken:"健康保険に加入している",
+  ninshin:"妊娠中である",seikatsu_hogo:"生活保護を受給していない",
+  hikazei:"住民税非課税世帯である",shogai_techo:"障害者手帳",
+  koyou_hoken:"雇用保険に加入している",rishoku:"離職中である",
+  nanbyo_nintei:"難病認定を受けている",hoken_shubetsu:"健康保険の種類",
+  byouki_kyugyou:"病気・ケガで休業中である",kaigo_family:"家族の介護で休業中である",
+  daigaku_zaigaku:"大学等に在学中である",kaigo_nintei:"要介護認定を受けている",
+  haiguusha:"配偶者がいる",jutaku_loan:"住宅ローンを組んでいる",
+  iryouhi_10man:"年間医療費が10万円を超えている",seimei_hoken:"生命保険に加入している",
+  jishin_hoken:"地震保険に加入している",
 };
+const VAL_JA={
+  "true":"はい","false":"いいえ","shakai_hoken":"社会保険",
+  "kokuho":"国民健康保険","nashi":"持っていない",
+  "shintai_1":"身体1級","shintai_2":"身体2級","shintai_3":"身体3級",
+  "ryoiku":"愛の手帳","seishin_1":"精神1級","seishin_2":"精神2級",
+  "rikon":"離婚","shibou":"死別","mikon":"未婚",
+};
+function fmtVal(key,v){
+  if(v==="declined")return null;
+  if(v===true)return null;
+  if(v===false)return"いいえ";
+  if(Array.isArray(v))return`${(v[0]/10000).toFixed(0)}万〜${(v[1]/10000).toFixed(0)}万円`;
+  if(typeof v==="number")return v.toLocaleString("ja-JP")+(key.includes("nenshu")||key.includes("shotoku")?"円":"");
+  return VAL_JA[v]||String(v);
+}
 function buildReasonJa(r){
-  const detail=(r.children||[]).find(s=>s.kind==="decided")?.detail||"";
-  const specificJa=DETAIL_JA[detail];
   let items=[];
-  if(specificJa){
-    items.push(specificJa);
-  } else if(r.amount){
-    if(r.amount.type==="in_kind") items.push("条件を満たしているため、現物給付（医療費助成等）の対象です");
-    else items.push("条件を満たしているため、給付の対象です");
+  // Extract which facts the user answered that led to this decision
+  const ak=facts.askable||{};
+  // Map program's required conditions from the Prolog detail
+  const detail=(r.children||[]).find(s=>s.kind==="decided")?.detail||"";
+
+  // Build "your answers that matched" from the askable facts
+  // We check which askable keys are relevant by looking at questions that
+  // this program's rules would check. Since we don't have that mapping client-side,
+  // we use a heuristic: show all non-null, non-declined askable values that
+  // differ from the "universal" default (everyone has them).
+  // Better: use the program's "missing" from when it was blocked.
+  // The result card has "children" with subject results - each has the raw Prolog term.
+  // We parse the decided detail to understand what was checked.
+
+  // Strategy: show answered facts as "conditions met"
+  const relevantKeys=guessRelevantKeys(r.program, detail);
+  for(const key of relevantKeys){
+    const v=ak[key];
+    if(v===undefined||v===null||v==="declined")continue;
+    const label=ASKABLE_JA[key]||FACT_JA[key]||key;
+    const valStr=fmtVal(key,v);
+    if(v===true) items.push(label);
+    else if(valStr) items.push(`${label}: ${valStr}`);
   }
+
+  // Amount info
   const numMatch=detail.match(/(?:amount|monthly|yearly|oneoff)\((\d+)\)/);
   if(numMatch){
     const v=parseInt(numMatch[1]);
     const unitMap={monthly:"月額",yearly:"年額",oneoff:"一時金"};
     const u=Object.keys(unitMap).find(k=>detail.startsWith(k+"("));
-    items.push(`支給額: ${u?unitMap[u]:""}${v.toLocaleString("ja-JP")}円`);
+    items.push(`→ ${u?unitMap[u]:""}${v.toLocaleString("ja-JP")}円`);
   }
-  if(detail.startsWith("in_kind")) items.push("現物給付（医療費の自己負担分を助成）");
-  if(detail==="zenbu") items.push("全部支給の対象です");
-  if(detail==="ichibu") items.push("一部支給の対象です（所得に応じた減額あり）");
-  if(detail.startsWith("amount_yearly(")) {
+  if(detail.startsWith("in_kind")) items.push("→ 現物給付（自己負担分を助成）");
+  if(detail==="zenbu") items.push("→ 全部支給");
+  if(detail==="ichibu") items.push("→ 一部支給（所得に応じた減額）");
+  if(detail.match(/amount_yearly\((\d+)\)/)){
     const ym=detail.match(/amount_yearly\((\d+)\)/);
-    if(ym) items.push(`支給額: 年額${parseInt(ym[1]).toLocaleString("ja-JP")}円`);
+    items.push(`→ 年額${parseInt(ym[1]).toLocaleString("ja-JP")}円`);
   }
-  if(detail.startsWith("amount_yearly_max(")) {
-    const ym=detail.match(/amount_yearly_max\((\d+)\)/);
-    if(ym) items.push(`支給上限: 年額${parseInt(ym[1]).toLocaleString("ja-JP")}円`);
-  }
+
   if(!items.length) items.push("判定条件を満たしています");
-  return"<ul>"+items.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>";
+  return'<div style="font-size:.8rem;font-weight:700;color:var(--ink-sub);margin-bottom:4px">あなたが該当する理由:</div><ul>'+items.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>";
+}
+
+function guessRelevantKeys(program, detail){
+  // Map program IDs to the askable keys their rules check
+  const PROG_KEYS={
+    shitsugyo_kyufu:["koyou_hoken","rishoku"],
+    sai_shushoku_teate:["koyou_hoken","rishoku"],
+    kyushokusha_shien_kunren:["koyou_hoken","rishoku"],
+    kyouiku_kunren_kyufu:["koyou_hoken"],
+    shuugyou_sokushin_teate:["koyou_hoken"],
+    ikuji_kyuugyou_kyufu:["koyou_hoken"],
+    kaigo_kyuugyou_kyufu:["koyou_hoken","kaigo_family"],
+    kougaku_ryouyouhi:["kenkou_hoken"],
+    shoubyou_teatekin:["hoken_shubetsu","byouki_kyugyou"],
+    hikazei_setai_kyufukin:["hikazei","seikatsu_hogo"],
+    nyuuin_shokuji_gengaku:["hikazei"],
+    kokuho_keigen:["hoken_shubetsu","nenshu"],
+    kokumin_nenkin_menjo:["nenshu","seikatsu_hogo"],
+    jukyo_kakuho_kyufukin:["rishoku","seikatsu_hogo"],
+    nhk_menjo:["seikatsu_hogo","shogai_techo","hikazei"],
+    shougai_kiso_nenkin:["shogai_techo"],
+    tokubetsu_shogaisha_teate:["shogai_techo","nenshu","fuyou_ninzu"],
+    toei_kotsu_muryou:["shogai_techo"],
+    tokyo_suidou_genmen:["seikatsu_hogo","shogai_techo","hitorioya"],
+    silver_pass:[],
+    kaigo_hokenryo_genmen:["hikazei"],
+    kougaku_kaigo_service:["kaigo_nintei"],
+    ninpu_kensin_josei:["ninshin"],
+    sanzen_sango_nenkin_menjo:["ninshin"],
+    shussan_teatekin:["ninshin","hoken_shubetsu"],
+    shussan_ikuji_ichijikin:["ninshin","kenkou_hoken"],
+    boshi_jiritsu_kyouiku:["hitorioya"],
+    boshi_koutou_kunren:["hitorioya"],
+    koutou_kyouiku_shien:["hikazei","daigaku_zaigaku"],
+    kyufu_shougakukin:["hikazei","daigaku_zaigaku"],
+    iryouhi_koujo:["iryouhi_10man"],
+    self_medication:["iryouhi_10man"],
+    furusato_nouzei:["seikatsu_hogo"],
+    ideco_koujo:[],
+    seimei_hoken_koujo:["seimei_hoken"],
+    jishin_hoken_koujo:["jishin_hoken"],
+    jutaku_loan_koujo:["jutaku_loan"],
+    haiguusha_koujo:["haiguusha"],
+    hitorioya_iryo_josei:["hitorioya","kenkou_hoken","nenshu","fuyou_ninzu"],
+    jidou_fuyou_teate:["hitorioya","hitorioya_jiyuu","seikei_douitsu_partner","nenshu","fuyou_ninzu"],
+    jidou_teate:[],
+    tokyo_018_support:[],
+    tokyo_jidou_ikusei_teate:["hitorioya","nenshu","fuyou_ninzu"],
+  };
+  return PROG_KEYS[program]||Object.keys(ASKABLE_JA);
 }
 function toggleReason(idx){
   const box=document.getElementById("reason-"+idx);
