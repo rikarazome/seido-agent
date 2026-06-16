@@ -299,7 +299,7 @@
   status: supported
   statute:
   - ref: 東京都赤ちゃんファースト事業
-    url: https://akachan-first.metro.tokyo.lg.jp/
+    url: https://tokyobabyfirst.metro.tokyo.lg.jp/
 - id: shibuya_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -417,7 +417,7 @@
   status: supported
   statute:
   - ref: 千代田区次世代育成手当
-    url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/jisedai.html
+    url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/index.html
 - id: chiyoda_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -1209,7 +1209,7 @@
   status: supported
   statute:
   - ref: Bunkyo high school support fund
-    url: https://www.city.bunkyo.lg.jp/b022/p001412.html
+    url: https://www.city.bunkyo.lg.jp/kosodatekyouiku/kosodate/teate/index.html
 - id: koto_shussan_oiwaikin
   name: 江東区出産祝い金
   layer: municipal
@@ -1365,7 +1365,7 @@
   status: supported
   statute:
   - ref: Taito birth celebration
-    url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokuteki/teate_josei/syussanhiyoujyosei.html
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/syussanhiyoujyosei.html
 - id: nakano_shussan_ouen
   name: 中野区出産応援金
   layer: municipal
@@ -1725,7 +1725,7 @@
   status: supported
   statute:
   - ref: chuo shiritsu youchien hojo
-    url: https://www.city.chuo.tokyo.jp/
+    url: https://www.city.chuo.lg.jp/
 - id: minato_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（minato）
   layer: municipal
@@ -1749,7 +1749,7 @@
   status: supported
   statute:
   - ref: shinjuku shiritsu youchien hojo
-    url: https://www.city.shinjuku.tokyo.jp/
+    url: https://www.city.shinjuku.lg.jp/
 - id: bunkyo_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（bunkyo）
   layer: municipal
@@ -1761,7 +1761,7 @@
   status: supported
   statute:
   - ref: bunkyo shiritsu youchien hojo
-    url: https://www.city.bunkyo.tokyo.jp/
+    url: https://www.city.bunkyo.lg.jp/
 - id: taito_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（taito）
   layer: municipal
@@ -1773,7 +1773,7 @@
   status: supported
   statute:
   - ref: taito shiritsu youchien hojo
-    url: https://www.city.taito.tokyo.jp/
+    url: https://www.city.taito.lg.jp/
 - id: sumida_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（sumida）
   layer: municipal
@@ -1785,7 +1785,7 @@
   status: supported
   statute:
   - ref: sumida shiritsu youchien hojo
-    url: https://www.city.sumida.tokyo.jp/
+    url: https://www.city.sumida.lg.jp/
 - id: koto_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（koto）
   layer: municipal
@@ -1797,7 +1797,7 @@
   status: supported
   statute:
   - ref: koto shiritsu youchien hojo
-    url: https://www.city.koto.tokyo.jp/
+    url: https://www.city.koto.lg.jp/
 - id: shinagawa_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shinagawa）
   layer: municipal
@@ -1845,7 +1845,7 @@
   status: supported
   statute:
   - ref: setagaya shiritsu youchien hojo
-    url: https://www.city.setagaya.tokyo.jp/
+    url: https://www.city.setagaya.lg.jp/
 - id: shibuya_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shibuya）
   layer: municipal
@@ -1869,7 +1869,7 @@
   status: supported
   statute:
   - ref: nakano shiritsu youchien hojo
-    url: https://www.city.nakano.tokyo.jp/
+    url: https://www.city.tokyo-nakano.lg.jp/
 - id: suginami_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（suginami）
   layer: municipal
@@ -1881,7 +1881,7 @@
   status: supported
   statute:
   - ref: suginami shiritsu youchien hojo
-    url: https://www.city.suginami.lg.jp/
+    url: https://www.city.suginami.tokyo.jp/
 - id: toshima_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（toshima）
   layer: municipal
@@ -1893,7 +1893,7 @@
   status: supported
   statute:
   - ref: toshima shiritsu youchien hojo
-    url: https://www.city.toshima.tokyo.jp/
+    url: https://www.city.toshima.lg.jp/
 - id: kita_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（kita）
   layer: municipal
@@ -2001,7 +2001,7 @@
   status: supported
   statute:
   - ref: chuo ninkagai hoiku hojo
-    url: https://www.city.chuo.tokyo.jp/
+    url: https://www.city.chuo.lg.jp/
 - id: minato_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（minato）
   layer: municipal
@@ -2025,7 +2025,7 @@
   status: supported
   statute:
   - ref: shinjuku ninkagai hoiku hojo
-    url: https://www.city.shinjuku.tokyo.jp/
+    url: https://www.city.shinjuku.lg.jp/
 - id: bunkyo_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（bunkyo）
   layer: municipal
@@ -2037,7 +2037,7 @@
   status: supported
   statute:
   - ref: bunkyo ninkagai hoiku hojo
-    url: https://www.city.bunkyo.tokyo.jp/
+    url: https://www.city.bunkyo.lg.jp/
 - id: taito_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（taito）
   layer: municipal
@@ -2049,7 +2049,7 @@
   status: supported
   statute:
   - ref: taito ninkagai hoiku hojo
-    url: https://www.city.taito.tokyo.jp/
+    url: https://www.city.taito.lg.jp/
 - id: sumida_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（sumida）
   layer: municipal
@@ -2061,7 +2061,7 @@
   status: supported
   statute:
   - ref: sumida ninkagai hoiku hojo
-    url: https://www.city.sumida.tokyo.jp/
+    url: https://www.city.sumida.lg.jp/
 - id: koto_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（koto）
   layer: municipal
@@ -2073,7 +2073,7 @@
   status: supported
   statute:
   - ref: koto ninkagai hoiku hojo
-    url: https://www.city.koto.tokyo.jp/
+    url: https://www.city.koto.lg.jp/
 - id: shinagawa_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shinagawa）
   layer: municipal
@@ -2121,7 +2121,7 @@
   status: supported
   statute:
   - ref: setagaya ninkagai hoiku hojo
-    url: https://www.city.setagaya.tokyo.jp/
+    url: https://www.city.setagaya.lg.jp/
 - id: shibuya_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shibuya）
   layer: municipal
@@ -2145,7 +2145,7 @@
   status: supported
   statute:
   - ref: nakano ninkagai hoiku hojo
-    url: https://www.city.nakano.tokyo.jp/
+    url: https://www.city.tokyo-nakano.lg.jp/
 - id: suginami_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（suginami）
   layer: municipal
@@ -2157,7 +2157,7 @@
   status: supported
   statute:
   - ref: suginami ninkagai hoiku hojo
-    url: https://www.city.suginami.lg.jp/
+    url: https://www.city.suginami.tokyo.jp/
 - id: toshima_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（toshima）
   layer: municipal
@@ -2169,7 +2169,7 @@
   status: supported
   statute:
   - ref: toshima ninkagai hoiku hojo
-    url: https://www.city.toshima.tokyo.jp/
+    url: https://www.city.toshima.lg.jp/
 - id: kita_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（kita）
   layer: municipal
@@ -2265,7 +2265,7 @@
   status: supported
   statute:
   - ref: Mother and Child Health Act Art.20
-    url: https://www.mhlw.go.jp/stf/houdou/0000044116.html
+    url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/
 - id: shounimansei_iryo_josei
   name: 小児慢性特定疾病医療費助成
   layer: national
@@ -2439,7 +2439,7 @@
   - ref: 母子及び父子並びに寡婦福祉法31条
     url: https://hourei.net/law/339AC0000000129
   - ref: 厚労省 母子家庭自立支援給付金
-    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062967_00005.html
+    url: https://www.cfa.go.jp/policies/hitori-oya/syokugyou-kunren
 - id: boshi_koutou_kunren
   name: ひとり親家庭高等職業訓練促進給付金
   layer: national
@@ -2453,7 +2453,7 @@
   - ref: 母子及び父子並びに寡婦福祉法31条の2
     url: https://hourei.net/law/339AC0000000129
   - ref: 厚労省 高等職業訓練促進給付金
-    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062967_00005.html
+    url: https://www.cfa.go.jp/policies/hitori-oya/syokugyou-kunren
 - id: shougai_kiso_nenkin
   name: 障害基礎年金
   layer: national
@@ -2519,7 +2519,7 @@
   - ref: 母子保健法13条
     url: https://hourei.net/law/340AC0000000141
   - ref: 厚労省 妊婦健診の公費負担
-    url: https://www.mhlw.go.jp/stf/houdou/0000044116.html
+    url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/
 - id: sanzen_sango_nenkin_menjo
   name: 産前産後の国民年金保険料免除
   layer: national
