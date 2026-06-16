@@ -585,7 +585,7 @@
   status: supported
   statute:
   - ref: 板橋区 子ども医療費助成
-    url: https://www.city.itabashi.tokyo.jp/kosodate/teate/iryohi/1004624.html
+    url: https://www.city.itabashi.tokyo.jp/kosodate/teate/iryohi/1053428/1053072.html
 - id: nerima_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -837,7 +837,7 @@
   status: supported
   statute:
   - ref: 荒川区心身障害者福祉手当
-    url: https://www.city.arakawa.tokyo.jp/a024/fukushi/shogai/teate/shinshin.html
+    url: https://www.city.arakawa.tokyo.jp/a030/shougaisha/teate/sinsinsyougaisyateat.html
 - id: itabashi_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（板橋区）
   layer: municipal
@@ -849,7 +849,7 @@
   status: supported
   statute:
   - ref: 板橋区心身障害者福祉手当
-    url: https://www.city.itabashi.tokyo.jp/kenko/shougaisha/teate/1001789.html
+    url: https://www.city.itabashi.tokyo.jp/kenko/shogai/teate/1003209.html
 - id: nerima_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（練馬区）
   layer: municipal
@@ -861,7 +861,7 @@
   status: supported
   statute:
   - ref: 練馬区心身障害者福祉手当
-    url: https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/teate/shinshin.html
+    url: https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/teate/shinshin_fukushi.html
 - id: adachi_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（足立区）
   layer: municipal
@@ -873,7 +873,7 @@
   status: supported
   statute:
   - ref: 足立区心身障害者福祉手当
-    url: https://www.city.adachi.tokyo.jp/shogai/fukushi/shogai/teate-shinshin.html
+    url: https://www.city.adachi.tokyo.jp/shogai/fukushi-kenko/shinshin/teate-s-shogaisha.html
 - id: katsushika_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（葛飾区）
   layer: municipal
@@ -885,7 +885,7 @@
   status: supported
   statute:
   - ref: 葛飾区心身障害者福祉手当
-    url: https://www.city.katsushika.lg.jp/kurashi/1000059/1002386/1002394.html
+    url: https://www.city.katsushika.lg.jp/kenkou/1000053/1002245/index.html
 - id: edogawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（江戸川区）
   layer: municipal
@@ -897,7 +897,7 @@
   status: supported
   statute:
   - ref: 江戸川区心身障害者福祉手当
-    url: https://www.city.edogawa.tokyo.jp/e048/kenko/shogaisha/teate/shinshin.html
+    url: https://www.city.edogawa.tokyo.jp/e041/kenko/fukushikaigo/shogaisha/teate/teate/shinshin.html
 - id: chiyoda_shugaku_enjo
   name: 就学援助（chiyoda）
   layer: municipal
@@ -1101,7 +1101,7 @@
   status: supported
   statute:
   - ref: Arakawa shugaku enjo
-    url: https://www.city.arakawa.tokyo.jp/a024/kyouiku/gakko/enjo.html
+    url: https://www.city.arakawa.tokyo.jp/kyouiku-seishounen/kyouikushien/index.html
 - id: itabashi_shugaku_enjo
   name: 就学援助（itabashi）
   layer: municipal
@@ -1113,7 +1113,7 @@
   status: supported
   statute:
   - ref: Itabashi shugaku enjo
-    url: https://www.city.itabashi.tokyo.jp/kyouiku/gakko/enjo.html
+    url: https://www.city.itabashi.tokyo.jp/kyoikuiinkai/shugakuenjo/1044885/1012230.html
 - id: nerima_shugaku_enjo
   name: 就学援助（nerima）
   layer: municipal
@@ -1125,7 +1125,7 @@
   status: supported
   statute:
   - ref: Nerima shugaku enjo
-    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/gakko/enjo.html
+    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kyoiku/enjo/enjo.html
 - id: adachi_shugaku_enjo
   name: 就学援助（adachi）
   layer: municipal
@@ -1137,7 +1137,7 @@
   status: supported
   statute:
   - ref: Adachi shugaku enjo
-    url: https://www.city.adachi.tokyo.jp/gakumu/enjo.html
+    url: https://www.city.adachi.tokyo.jp/gakumu/k-kyoiku/shochu/tetsuzuki-shugaku.html
 - id: katsushika_shugaku_enjo
   name: 就学援助（katsushika）
   layer: municipal
@@ -1149,7 +1149,7 @@
   status: supported
   statute:
   - ref: Katsushika shugaku enjo
-    url: https://www.city.katsushika.lg.jp/kosodate/gakko/enjo.html
+    url: https://www.city.katsushika.lg.jp/kosodate/1000057/1002479/1002748.html
 - id: edogawa_shugaku_enjo
   name: 就学援助（edogawa）
   layer: municipal
@@ -1161,7 +1161,7 @@
   status: supported
   statute:
   - ref: Edogawa shugaku enjo
-    url: https://www.city.edogawa.tokyo.jp/e048/kosodate/gakko/enjo.html
+    url: https://www.city.edogawa.tokyo.jp/e069/kosodate/kyoiku/kyouiku/tetuduki/shugakuenjo.html
 - id: minato_shussan_hiyou_josei
   name: 港区出産費用助成
   layer: municipal
@@ -1257,7 +1257,7 @@
   status: supported
   statute:
   - ref: Adachi childcare support
-    url: https://www.city.adachi.tokyo.jp/kosodate/ouen.html
+    url: https://www.city.adachi.tokyo.jp/oyako/bukkadakataiou_kosodateouenteate.html
 - id: edogawa_nyuyoji_teate
   name: 江戸川区乳児養育手当
   layer: municipal
@@ -1269,7 +1269,7 @@
   status: supported
   statute:
   - ref: Edogawa infant nurturing allowance
-    url: https://www.city.edogawa.tokyo.jp/e048/kosodate/teate/nyuyoji.html
+    url: https://www.city.edogawa.tokyo.jp/kosodate/kosodate/teateshien/index.html
 - id: kita_nyuyoji_teate
   name: 北区乳幼児養育手当
   layer: municipal
@@ -1305,7 +1305,7 @@
   status: supported
   statute:
   - ref: Nerima 3rd child celebration
-    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/ouen/dai3shi.html
+    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/shussan/iwaikin.html
 - id: shinjuku_shussan_oiwaikin
   name: 新宿区誕生祝い金
   layer: municipal
@@ -1401,7 +1401,7 @@
   status: supported
   statute:
   - ref: Arakawa birth celebration
-    url: https://www.city.arakawa.tokyo.jp/a024/kosodate/shussan/oiwai.html
+    url: https://www.city.arakawa.tokyo.jp/a033/kosodate/shussankosodate/shussankosodate.html
 - id: itabashi_shussan_ouen
   name: 板橋区出産応援金
   layer: municipal
@@ -1413,7 +1413,7 @@
   status: supported
   statute:
   - ref: Itabashi birth support
-    url: https://www.city.itabashi.tokyo.jp/kosodate/shussan/ouen.html
+    url: https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1056054.html
 - id: katsushika_shussan_ouen
   name: 葛飾区出産祝い金
   layer: municipal
@@ -1425,7 +1425,7 @@
   status: supported
   statute:
   - ref: Katsushika birth celebration
-    url: https://www.city.katsushika.lg.jp/kosodate/shussan/oiwai.html
+    url: https://www.city.katsushika.lg.jp/kenkou/1000050/1001803/1030902.html
 - id: shibuya_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shibuya）
   layer: municipal
@@ -1581,7 +1581,7 @@
   status: supported
   statute:
   - ref: Arakawa hitorioya jutaku teate
-    url: https://www.city.arakawa.tokyo.jp/a024/kosodate/hitorioya/jutaku.html
+    url: https://www.city.arakawa.tokyo.jp/a035/kosodate/hitorioyakatei/hitorioyatenkyoshien.html
 - id: itabashi_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（itabashi）
   layer: municipal
@@ -1593,7 +1593,7 @@
   status: supported
   statute:
   - ref: Itabashi hitorioya jutaku teate
-    url: https://www.city.itabashi.tokyo.jp/kosodate/hitorioya/jutaku.html
+    url: https://www.city.itabashi.tokyo.jp/kosodate/hitorioya/index.html
 - id: nerima_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（nerima）
   layer: municipal
@@ -1605,7 +1605,7 @@
   status: supported
   statute:
   - ref: Nerima hitorioya jutaku teate
-    url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/hitorioya/jutaku.html
+    url: https://www.city.nerima.tokyo.jp/kurashi/jinken/hitorioya/tentakushien.html
 - id: adachi_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（adachi）
   layer: municipal
@@ -1617,7 +1617,7 @@
   status: supported
   statute:
   - ref: Adachi hitorioya jutaku teate
-    url: https://www.city.adachi.tokyo.jp/oyako/hitorioya/jutaku.html
+    url: https://www.city.adachi.tokyo.jp/k-kyoiku/kosodate/hitorioya/index.html
 - id: edogawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（edogawa）
   layer: municipal
@@ -1629,7 +1629,7 @@
   status: supported
   statute:
   - ref: Edogawa hitorioya jutaku teate
-    url: https://www.city.edogawa.tokyo.jp/e048/kosodate/hitorioya/jutaku.html
+    url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/iryohijose.html
 - id: katsushika_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（katsushika）
   layer: municipal
@@ -1641,7 +1641,7 @@
   status: supported
   statute:
   - ref: Katsushika hitorioya jutaku teate
-    url: https://www.city.katsushika.lg.jp/kosodate/hitorioya/jutaku.html
+    url: https://www.city.katsushika.lg.jp/kosodate/1000056/1002341/index.html
 - id: taito_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（taito）
   layer: municipal
