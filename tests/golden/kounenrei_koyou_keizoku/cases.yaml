@@ -1,0 +1,36 @@
+- name: eligible_62
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    claimant:
+      birth_date: '1964-01-01'
+    askable:
+      koyou_hoken: true
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(kounenrei_keizoku)
+- name: under_60
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    claimant:
+      birth_date: '1990-01-01'
+    askable:
+      koyou_hoken: true
+  expect:
+    subject: self
+    status: ineligible
+    detail: under_60
+- name: over_65
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    claimant:
+      birth_date: '1955-01-01'
+    askable:
+      koyou_hoken: true
+  expect:
+    subject: self
+    status: ineligible
+    detail: over_65

@@ -1,0 +1,20 @@
+- name: eligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      hoken_shubetsu: kokuho
+  expect:
+    subject: self
+    status: decided
+    detail: amount(70000)
+- name: not_kokuho
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      hoken_shubetsu: shakai_hoken
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_kokuho

@@ -138,8 +138,13 @@ def test_chat_flow_childless_progressive_answers():
         "rishoku": "declined", "shotoku_exact": "declined",
         "seikei_douitsu_partner": "declined",
         "hitorioya_jiyuu": "declined",
+        "hoken_shubetsu": "shakai_hoken", "byouki_kyugyou": False,
+        "kaigo_family": False, "daigaku_zaigaku": False,
+        "kaigo_nintei": False, "haiguusha": False,
+        "jutaku_loan": False, "iryouhi_10man": False,
+        "seimei_hoken": False, "jishin_hoken": False,
     }
-    for _ in range(20):
+    for _ in range(40):
         resp = judge_request(facts, AS_OF, municipality="shibuya")
         q = resp["next_question"]
         if q is None:

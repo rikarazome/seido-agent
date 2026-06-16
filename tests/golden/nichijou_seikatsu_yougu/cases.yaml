@@ -1,0 +1,20 @@
+- name: eligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      shogai_techo: ryoiku
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(yougu_kyufu)
+- name: nashi
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      shogai_techo: nashi
+  expect:
+    subject: self
+    status: ineligible
+    detail: no_shogai_techo
