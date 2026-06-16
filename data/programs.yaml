@@ -705,7 +705,7 @@
   status: supported
   statute:
   - ref: 台東区心身障害者福祉手当
-    url: https://www.city.taito.lg.jp/kenko/shogaisha/teate/shinshin.html
+    url: https://www.city.taito.lg.jp/kenkohukusi/shogai/teate/sha/syougaifukusiteate.html
 - id: sumida_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（墨田区）
   layer: municipal
@@ -717,7 +717,7 @@
   status: supported
   statute:
   - ref: 墨田区心身障害者福祉手当
-    url: https://www.city.sumida.lg.jp/kenko_fukushi/syougai/teate/shinshin.html
+    url: https://www.city.sumida.lg.jp/kenko_fukushi/syougai/teate_nenkin_iryou/kuteate_seido.html
 - id: koto_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（江東区）
   layer: municipal
@@ -729,7 +729,7 @@
   status: supported
   statute:
   - ref: 江東区心身障害者福祉手当
-    url: https://www.city.koto.lg.jp/260402/fukushi/shogaisha/teate/index.html
+    url: https://www.city.koto.lg.jp/222015/fukushi/shogaisha/waribiki/teate/6774.html
 - id: shinagawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（品川区）
   layer: municipal
@@ -741,7 +741,7 @@
   status: supported
   statute:
   - ref: 品川区心身障害者福祉手当
-    url: https://www.city.shinagawa.tokyo.jp/PC/fukushi/shogaisha/teate/index.html
+    url: http://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-teate/hpg000024970.html
 - id: meguro_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（目黒区）
   layer: municipal
@@ -753,7 +753,7 @@
   status: supported
   statute:
   - ref: 目黒区心身障害者福祉手当
-    url: https://www.city.meguro.tokyo.jp/kurashi/fukushi/shogaisha/teate_josei/shinshin.html
+    url: https://www.city.meguro.tokyo.jp/shougaishien/kenkoufukushi/shougaisha/ku_teate.html
 - id: ota_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（大田区）
   layer: municipal
@@ -969,7 +969,7 @@
   status: supported
   statute:
   - ref: Taito shugaku enjo
-    url: https://www.city.taito.lg.jp/kosodatekyouiku/kyouiku/gakkoukyouiku/enjo.html
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/kuritsushocyugakko/nyugakutugaku/syugakuenjo/enjo.html
 - id: sumida_shugaku_enjo
   name: 就学援助（sumida）
   layer: municipal
@@ -981,7 +981,7 @@
   status: supported
   statute:
   - ref: Sumida shugaku enjo
-    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/enjo.html
+    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/school/syuugaku_enjo/index.html
 - id: koto_shugaku_enjo
   name: 就学援助（koto）
   layer: municipal
@@ -993,7 +993,7 @@
   status: supported
   statute:
   - ref: Koto shugaku enjo
-    url: https://www.city.koto.lg.jp/580601/kodomo/gakko/enjo.html
+    url: https://www.city.koto.lg.jp/581101/kodomo/gakko/enjo/shugaku/6154.html
 - id: shinagawa_shugaku_enjo
   name: 就学援助（shinagawa）
   layer: municipal
@@ -1005,7 +1005,7 @@
   status: supported
   statute:
   - ref: Shinagawa shugaku enjo
-    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/gakko/enjo.html
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/hpg000000893.html
 - id: meguro_shugaku_enjo
   name: 就学援助（meguro）
   layer: municipal
@@ -1017,7 +1017,7 @@
   status: supported
   statute:
   - ref: Meguro shugaku enjo
-    url: https://www.city.meguro.tokyo.jp/kyouiku/gakko/enjo.html
+    url: https://www.city.meguro.tokyo.jp/kurashi/kosodate/josei/shoteate/index.html
 - id: ota_shugaku_enjo
   name: 就学援助（ota）
   layer: municipal
@@ -1221,7 +1221,7 @@
   status: supported
   statute:
   - ref: Koto birth celebration
-    url: https://www.city.koto.lg.jp/260401/kosodate/shussan/oiwai.html
+    url: https://www.city.koto.lg.jp/260501/kodomo/ninshinshussan/ninshin/97552.html
 - id: shinagawa_kosodate_ouen
   name: 品川区子育て応援券
   layer: municipal
@@ -1233,7 +1233,7 @@
   status: supported
   statute:
   - ref: Shinagawa childcare support voucher
-    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kosodate-ouen.html
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-iryohizyosei/20251202195614.html
 - id: toshima_shussan_oiwaikin
   name: 豊島区出産祝い金
   layer: municipal
@@ -1329,7 +1329,7 @@
   status: supported
   statute:
   - ref: Meguro birth cost subsidy
-    url: https://www.city.meguro.tokyo.jp/kurashi/kosodate/shussan/josei.html
+    url: https://www.city.meguro.tokyo.jp/hokenyobou/kosodatekyouiku/ninshin/syussankosodateouenkoufukin.html
 - id: ota_shussan_oiwaikin
   name: 大田区出産応援金
   layer: municipal
@@ -1353,7 +1353,7 @@
   status: supported
   statute:
   - ref: Sumida birth celebration
-    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/shussan/oiwai.html
+    url: https://www.city.sumida.lg.jp/kenko_fukushi/kenko/oyako_kenko/syussan_junbi_class/skogift.html
 - id: taito_shussan_oiwaikin
   name: 台東区出産祝い金
   layer: municipal
@@ -1365,7 +1365,7 @@
   status: supported
   statute:
   - ref: Taito birth celebration
-    url: https://www.city.taito.lg.jp/kosodatekyouiku/shussan/oiwai.html
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokuteki/teate_josei/syussanhiyoujyosei.html
 - id: nakano_shussan_ouen
   name: 中野区出産応援金
   layer: municipal
@@ -1485,7 +1485,7 @@
   status: supported
   statute:
   - ref: Koto hitorioya jutaku teate
-    url: https://www.city.koto.lg.jp/260402/kodomo/hitorioya/jutaku.html
+    url: https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/96043.html
 - id: meguro_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（meguro）
   layer: municipal
@@ -1497,7 +1497,7 @@
   status: supported
   statute:
   - ref: Meguro hitorioya jutaku teate
-    url: https://www.city.meguro.tokyo.jp/kurashi/kosodate/hitorioya/jutaku.html
+    url: https://www.city.meguro.tokyo.jp/kurashi/kosodate/josei/kosodate_seikatsushien_hitorioya.html
 - id: setagaya_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（setagaya）
   layer: municipal
@@ -1653,7 +1653,7 @@
   status: supported
   statute:
   - ref: Taito hitorioya jutaku teate
-    url: https://www.city.taito.lg.jp/kosodatekyouiku/hitorioya/jutaku.html
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/hitorioya/index.html
 - id: sumida_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（sumida）
   layer: municipal
@@ -1665,7 +1665,7 @@
   status: supported
   statute:
   - ref: Sumida hitorioya jutaku teate
-    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/hitorioya/jutaku.html
+    url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/index.html
 - id: shinagawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shinagawa）
   layer: municipal
@@ -1677,7 +1677,7 @@
   status: supported
   statute:
   - ref: Shinagawa hitorioya jutaku teate
-    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/hitorioya/jutaku.html
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/index.html
 - id: minato_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（minato）
   layer: municipal
