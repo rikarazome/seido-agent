@@ -765,7 +765,7 @@
   status: supported
   statute:
   - ref: 大田区心身障害者福祉手当
-    url: https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/teate/shinshin.html
+    url: https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/teate_nenkin/ootaku.html
 - id: setagaya_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（世田谷区）
   layer: municipal
@@ -1016,8 +1016,8 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Meguro shugaku enjo
-    url: https://www.city.meguro.tokyo.jp/kurashi/kosodate/josei/shoteate/index.html
+  - ref: 目黒区 就学援助制度
+    url: https://www.city.meguro.tokyo.jp/gakkouunei/kosodatekyouiku/gakkoukyouiku/gimu.html
 - id: ota_shugaku_enjo
   name: 就学援助（ota）
   layer: municipal
@@ -1029,7 +1029,7 @@
   status: supported
   statute:
   - ref: Ota shugaku enjo
-    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/gakko/enjo.html
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/kyouiku/gakko/syugaku_enjo/enjo_taishosha.html
 - id: setagaya_shugaku_enjo
   name: 就学援助（setagaya）
   layer: municipal
@@ -1329,7 +1329,7 @@
   status: supported
   statute:
   - ref: Meguro birth cost subsidy
-    url: https://www.city.meguro.tokyo.jp/hokenyobou/kosodatekyouiku/ninshin/syussankosodateouenkoufukin.html
+    url: https://www.city.meguro.tokyo.jp/kosodatekyouiku/ninshin/shussanshien/josei/index.html
 - id: ota_shussan_oiwaikin
   name: 大田区出産応援金
   layer: municipal
@@ -1341,7 +1341,7 @@
   status: supported
   statute:
   - ref: Ota birth support
-    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/ouen.html
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/index.html
 - id: sumida_shussan_oiwaikin
   name: 墨田区出産祝い金
   layer: municipal
@@ -1497,7 +1497,7 @@
   status: supported
   statute:
   - ref: Meguro hitorioya jutaku teate
-    url: https://www.city.meguro.tokyo.jp/kurashi/kosodate/josei/kosodate_seikatsushien_hitorioya.html
+    url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/jidofuyoteate.html
 - id: setagaya_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（setagaya）
   layer: municipal
@@ -1557,7 +1557,7 @@
   status: supported
   statute:
   - ref: Ota hitorioya jutaku teate
-    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/hitorioya/jutaku.html
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/shien/index.html
 - id: suginami_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（suginami）
   layer: municipal
