@@ -153,6 +153,13 @@
 - fact: juutaku_kaishu
   text: 住宅のバリアフリー改修・省エネ改修・耐震改修を行いましたか
   type: boolean
+- fact: haiguusha_shibou
+  text: 配偶者を亡くされましたか
+  type: boolean
+  sensitive: true
+- fact: jutaku_shinchiku
+  text: 今年、住宅の新築・購入・リフォームをしましたか（または予定ですか）
+  type: boolean
 - fact: koukou_zaigaku
   scope: per_child
   text: '{child}は高校等（高等学校・高専・専修学校等）に在学していますか'

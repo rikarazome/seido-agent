@@ -3042,3 +3042,97 @@
     url: https://laws.e-gov.go.jp/law/325AC0000000144/
   - ref: 厚労省 生活保護制度
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/index.html
+- id: izoku_kiso_nenkin
+  name: 遺族基礎年金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 68000
+  status: supported
+  statute:
+  - ref: 国民年金法37条
+    url: https://laws.e-gov.go.jp/law/334AC0000000141
+  - ref: 日本年金機構 遺族基礎年金
+    url: https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150401-04.html
+- id: izoku_kousei_nenkin
+  name: 遺族厚生年金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: monthly
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 厚生年金保険法58条
+    url: https://laws.e-gov.go.jp/law/329AC0000000115/
+  - ref: 日本年金機構 遺族厚生年金
+    url: https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150424.html
+- id: mirai_eco_jutaku
+  name: みらいエコ住宅2026事業（住宅省エネ補助金）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 1250000
+  status: supported
+  statute:
+  - ref: 国土交通省 みらいエコ住宅2026事業
+    url: https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk4_000243.html
+- id: tokutei_shishutsu_koujo
+  name: 特定支出控除（給与所得者の経費控除）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 500000
+  status: supported
+  statute:
+  - ref: 所得税法57条の2
+    url: https://laws.e-gov.go.jp/law/340AC0000000033/
+  - ref: 国税庁 特定支出控除
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1415.htm
+- id: nisa_hikazei
+  name: NISA（少額投資非課税制度）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: yearly
+  potential_amount: 0
+  status: supported
+  statute:
+  - ref: 租税特別措置法37条の14
+    url: https://laws.e-gov.go.jp/law/332AC0000000026/
+  - ref: 金融庁 NISA特設サイト
+    url: https://www.fsa.go.jp/policy/nisa2/index.html
+- id: seikatsu_fukushi_shikin
+  name: 生活福祉資金貸付制度（緊急小口資金等）
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 生活福祉資金貸付制度要綱
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatsu-fukushi-shikin1/index.html
+- id: boshi_fukushi_shikin
+  name: 母子父子寡婦福祉資金貸付金
+  layer: national
+  municipality: null
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 3000000
+  status: supported
+  statute:
+  - ref: 母子及び父子並びに寡婦福祉法13条
+    url: https://laws.e-gov.go.jp/law/339AC0000000129/
+  - ref: 厚労省 母子父子寡婦福祉資金貸付金
+    url: https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyuufukin

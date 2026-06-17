@@ -1,0 +1,9 @@
+- name: eligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable: {}
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(nisa_info)

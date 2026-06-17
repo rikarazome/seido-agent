@@ -1,0 +1,20 @@
+- name: eligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      haiguusha_shibou: true
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(izoku_kousei)
+- name: no_death
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      haiguusha_shibou: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: no_spouse_death
