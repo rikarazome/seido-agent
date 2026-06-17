@@ -2384,10 +2384,10 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 300000
-  status: unsupported
+  status: supported
   statute:
   - ref: 雇用保険法56条の3
-    url: https://hourei.net/law/349AC0000000116
+    url: https://laws.e-gov.go.jp/law/349AC0000000116/
   - ref: ハローワーク 再就職手当
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
 - id: kougaku_ryouyouhi
@@ -2502,10 +2502,10 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 100000
-  status: unsupported
+  status: supported
   statute:
   - ref: 雇用保険法56条の3第3項
-    url: https://hourei.net/law/349AC0000000116
+    url: https://laws.e-gov.go.jp/law/349AC0000000116/
   - ref: ハローワーク 就業促進定着手当
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
 - id: ninpu_kensin_josei
@@ -2558,10 +2558,12 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 300000
-  status: unsupported
+  status: supported
   statute:
   - ref: 雇用保険法61条の7
-    url: https://hourei.net/law/349AC0000000116
+    url: https://laws.e-gov.go.jp/law/349AC0000000116/
+  - ref: ハローワーク 育児休業給付金
+    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
   - ref: ハローワーク 育児休業給付金
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
 - id: kaigo_kyuugyou_kyufu
@@ -2572,10 +2574,10 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 200000
-  status: unsupported
+  status: supported
   statute:
   - ref: 雇用保険法61条の4
-    url: https://hourei.net/law/349AC0000000116
+    url: https://laws.e-gov.go.jp/law/349AC0000000116/
   - ref: ハローワーク 介護休業給付金
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
 - id: koutou_kyouiku_shien
