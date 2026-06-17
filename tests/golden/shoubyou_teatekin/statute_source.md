@@ -1,7 +1,17 @@
 # 傷病手当金
 
-- 健康保険法99条: https://hourei.net/law/211AC0000000070
-- 全国健康保険協会 傷病手当金: https://www.kyoukaikenpo.or.jp/g3/sb3040/r139/
+- 健康保険法99条: https://laws.e-gov.go.jp/law/211AC0000000070/
+- 協会けんぽ 傷病手当金: https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/index.html
 
-## Conditions
-hoken_shubetsu=shakai_hoken, byouki_kyugyou=true
+## 支給要件（健康保険法99条・協会けんぽ公式より）
+1. 業務外の事由による傷病の療養のための休業であること
+2. 労務不能であること（仕事に就くことができない）
+3. 連続する3日間を含み4日以上仕事に就くことができなかったこと
+4. 休業した期間について賃金の支払いがないこと
+- 支給額: 標準報酬日額の2/3
+- 支給期間: 支給開始日から通算1年6か月
+- 対象: 健康保険（社会保険）の被保険者のみ（国保には原則なし）
+
+## 現ルールでの判定
+- hoken_shubetsu=shakai_hoken（社会保険加入）かつ byouki_kyugyou=true（4日以上休業中）
+- 両条件とも健康保険法99条の要件に直接対応

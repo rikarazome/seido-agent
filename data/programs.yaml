@@ -2356,26 +2356,26 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 200000
-  status: unsupported
+  status: supported
   statute:
   - ref: 健康保険法99条
-    url: https://hourei.net/law/211AC0000000070
-  - ref: 全国健康保険協会 傷病手当金
+    url: https://laws.e-gov.go.jp/law/211AC0000000070/
+  - ref: 協会けんぽ 傷病手当金
     url: https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/index.html
 - id: kyouiku_kunren_kyufu
-  name: 教育訓練給付金
+  name: 教育訓練給付金（一般教育訓練 受講費40%）
   layer: national
   municipality: null
   subject: claimant
   unit: per_household
   amount_type: oneoff
-  potential_amount: 100000
-  status: unsupported
+  potential_amount: 200000
+  status: supported
   statute:
   - ref: 雇用保険法60条の2
-    url: https://hourei.net/law/349AC0000000116
-  - ref: ハローワーク 教育訓練給付制度
-    url: https://www.hellowork.mhlw.go.jp/insurance/insurance_education.html
+    url: https://laws.e-gov.go.jp/law/349AC0000000116/
+  - ref: 厚労省 教育訓練給付制度
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
 - id: sai_shushoku_teate
   name: 再就職手当
   layer: national
@@ -2398,10 +2398,10 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: unsupported
+  status: supported
   statute:
   - ref: 健康保険法115条
-    url: https://hourei.net/law/211AC0000000070
+    url: https://laws.e-gov.go.jp/law/211AC0000000070/
   - ref: 厚労省 高額療養費制度
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
 - id: nyuuin_shokuji_gengaku
