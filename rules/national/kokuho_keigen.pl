@@ -1,18 +1,23 @@
-% WARNING: Income thresholds are for SINGLE-PERSON household only.
-% Correct formula: 7wari=43万, 5wari=43万+29.5万*N, 2wari=43万+54.5万*N
-% This rule is unsupported and must not be marked supported without rewrite.
+% kokuho_keigen - National Health Insurance Premium Reduction (7/5/2 wari)
+% Source: 国民健康保険法81条, 施行令29条の7
+% Formula: 7wari=43万, 5wari=43万+29.5万*N, 2wari=43万+54.5万*N
+% N = hishosha count (approximated by fuyou_ninzu+1)
 :- module(kokuho_keigen, [kettei_status/3, required_fact/3]).
+
+keigen_limit_5(N, L) :- integer(N), N >= 0, L is 430000 + 295000 * (N + 1).
+keigen_limit_2(N, L) :- integer(N), N >= 0, L is 430000 + 545000 * (N + 1).
 
 required_fact(P, hoken_shubetsu, "health insurance type") :-
     claimant(P), unknown(hoken_shubetsu(P)).
 required_fact(P, income, "income") :-
     claimant(P), val(hoken_shubetsu(P), kokuho), unknown(income(P)).
+required_fact(P, fuyou_ninzu, "dependents") :-
+    claimant(P), val(hoken_shubetsu(P), kokuho),
+    val(income(P), I), \+ v_lt(I, 430001),
+    unknown(fuyou_ninzu(P)).
 
 kettei_status(P, self, ineligible(not_kokuho)) :-
     claimant(P), val(hoken_shubetsu(P), T), T \= kokuho, !.
-kettei_status(P, self, ineligible(income_exceeds_limit)) :-
-    claimant(P), val(hoken_shubetsu(P), kokuho),
-    val(income(P), I), v_geq(I, 3000001), !.
 kettei_status(P, self, blocked(Missing)) :-
     claimant(P), findall(F, required_fact(P, F, _), Fs), sort(Fs, Missing), Missing \= [], !.
 kettei_status(P, self, decided(kubun(keigen_7wari))) :-
@@ -20,8 +25,14 @@ kettei_status(P, self, decided(kubun(keigen_7wari))) :-
     val(income(P), I), v_lt(I, 430001), !.
 kettei_status(P, self, decided(kubun(keigen_5wari))) :-
     claimant(P), val(hoken_shubetsu(P), kokuho),
-    val(income(P), I), v_lt(I, 1050001), !.
+    val(income(P), I), val(fuyou_ninzu(P), N),
+    keigen_limit_5(N, L5), v_lt(I, L5), !.
 kettei_status(P, self, decided(kubun(keigen_2wari))) :-
     claimant(P), val(hoken_shubetsu(P), kokuho),
-    val(income(P), I), v_lt(I, 3000001), !.
+    val(income(P), I), val(fuyou_ninzu(P), N),
+    keigen_limit_2(N, L2), v_lt(I, L2), !.
+kettei_status(P, self, ineligible(income_exceeds_limit)) :-
+    claimant(P), val(hoken_shubetsu(P), kokuho),
+    val(income(P), I), val(fuyou_ninzu(P), N),
+    keigen_limit_2(N, L2), v_geq(I, L2), !.
 kettei_status(_, _, error(no_rule_matched)).

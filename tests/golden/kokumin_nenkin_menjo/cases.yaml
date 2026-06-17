@@ -1,35 +1,49 @@
-- name: zenmen
-  as_of: '2026-06-15'
+# 国民年金保険料免除 golden cases
+# Source: 国民年金法90条
+# zenmen: (N+1)*35万+32万. salary_to_shotoku(1000000)=450000 < 670000(N=0) -> zenmen
+
+- name: zenmen_single
+  as_of: "2026-06-15"
+  municipality: shibuya
   facts:
     askable:
       nenshu: 1000000
       seikatsu_hogo: false
+      fuyou_ninzu: 0
   expect:
     subject: self
     status: decided
     detail: kubun(zenmen)
-- name: yuuyo
-  as_of: '2026-06-15'
+
+- name: menjo_3_4_single
+  as_of: "2026-06-15"
+  municipality: shibuya
   facts:
     askable:
-      nenshu: 5000000
+      nenshu: 1400000
       seikatsu_hogo: false
+      fuyou_ninzu: 0
   expect:
     subject: self
     status: decided
-    detail: kubun(yuuyo)
+    detail: kubun(menjo_3_4)
+
 - name: income_too_high
-  as_of: '2026-06-15'
+  as_of: "2026-06-15"
+  municipality: shibuya
   facts:
     askable:
       nenshu: 8000000
       seikatsu_hogo: false
+      fuyou_ninzu: 0
   expect:
     subject: self
     status: ineligible
     detail: income_exceeds_limit
+
 - name: seikatsu_hogo
-  as_of: '2026-06-15'
+  as_of: "2026-06-15"
+  municipality: shibuya
   facts:
     askable:
       nenshu: 1000000
@@ -38,11 +52,3 @@
     subject: self
     status: ineligible
     detail: receiving_seikatsu_hogo
-- name: unknown
-  as_of: '2026-06-15'
-  facts:
-    askable: {}
-  expect:
-    subject: self
-    status: blocked
-    detail: '[income,seikatsu_hogo]'

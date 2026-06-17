@@ -2328,7 +2328,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 200000
-  status: unsupported
+  status: supported
   statute:
   - ref: 国民健康保険法81条、国民健康保険法施行令29条の7
     url: https://hourei.net/law/333AC0000000192
@@ -2342,7 +2342,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 16980
-  status: unsupported
+  status: supported
   statute:
   - ref: 国民年金法90条・90条の2
     url: https://hourei.net/law/334AC0000000141
