@@ -57,6 +57,7 @@ ASKABLE_MAP = {
     "kaigo_family": ("kaigo_family", "claimant"),
     "daigaku_zaigaku": ("daigaku_zaigaku", "claimant"),
     "jutaku_shinchiku": ("jutaku_shinchiku", "claimant"),
+    "rousai": ("rousai", "claimant"),
     "haiguusha_shibou": ("haiguusha_shibou", "claimant"),
     "juutaku_kaishu": ("juutaku_kaishu", "claimant"),
     "saigai_higai": ("saigai_higai", "claimant"),

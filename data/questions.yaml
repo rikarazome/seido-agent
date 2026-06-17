@@ -194,3 +194,7 @@
   text: 源泉徴収票の「給与所得控除後の金額」を教えてください（受け取っている養育費があれば年額も）
   type: integer_input
   sensitive: true
+- fact: rousai
+  text: 業務中または通勤中の事故・病気（労災）がありましたか
+  type: boolean
+  sensitive: true

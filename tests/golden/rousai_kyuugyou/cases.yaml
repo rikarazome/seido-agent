@@ -1,0 +1,20 @@
+- name: eligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      rousai: true
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(rousai_kyuugyou)
+- name: no_rousai
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      rousai: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: no_rousai
