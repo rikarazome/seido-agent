@@ -2654,7 +2654,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 50000
-  status: unsupported
+  status: supported
   statute:
   - ref: 所得税法73条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2668,7 +2668,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 20000
-  status: unsupported
+  status: supported
   statute:
   - ref: 租税特別措置法41条の17の2
     url: https://laws.e-gov.go.jp/law/332AC0000000026/
@@ -2682,7 +2682,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 100000
-  status: unsupported
+  status: supported
   statute:
   - ref: 地方税法37条の2
     url: https://laws.e-gov.go.jp/law/325AC0000000226/
@@ -2696,7 +2696,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 276000
-  status: unsupported
+  status: supported
   statute:
   - ref: 確定拠出年金法3条
     url: https://laws.e-gov.go.jp/law/413AC0000000088/
@@ -2710,7 +2710,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 120000
-  status: unsupported
+  status: supported
   statute:
   - ref: 所得税法76条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2724,7 +2724,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 50000
-  status: unsupported
+  status: supported
   statute:
   - ref: 所得税法77条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2738,7 +2738,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 400000
-  status: unsupported
+  status: supported
   statute:
   - ref: 租税特別措置法41条
     url: https://laws.e-gov.go.jp/law/332AC0000000026/
@@ -2752,7 +2752,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 380000
-  status: unsupported
+  status: supported
   statute:
   - ref: 所得税法83条・83条の2
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
