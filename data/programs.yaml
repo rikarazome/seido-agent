@@ -184,7 +184,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 53700
-  status: supported
+  status: unsupported
   statute:
   - ref: 生活困窮者自立支援法4条・5条
     url: https://hourei.net/law/425AC0000000105
@@ -1206,7 +1206,7 @@
   unit: per_child
   amount_type: yearly
   potential_amount: 50000
-  status: supported
+  status: unsupported
   statute:
   - ref: Bunkyo区 高校生世代育成支援金
     url: https://www.city.bunkyo.lg.jp/kosodatekyouiku/kosodate/teate/index.html
@@ -1266,7 +1266,7 @@
   unit: per_child
   amount_type: monthly
   potential_amount: 13000
-  status: supported
+  status: unsupported
   statute:
   - ref: Edogawa区 乳幼児養育手当
     url: https://www.city.edogawa.tokyo.jp/kosodate/kosodate/teateshien/index.html
@@ -1278,7 +1278,7 @@
   unit: per_child
   amount_type: monthly
   potential_amount: 5000
-  status: supported
+  status: unsupported
   statute:
   - ref: Kita区 乳幼児医療費助成
     url: https://www.city.kita.lg.jp/children-edu/childcare/1002909/1002913/1002914.html
@@ -1302,7 +1302,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: Nerima 3rd child celebration
     url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/shussan/iwaikin.html
@@ -1326,7 +1326,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 50000
-  status: supported
+  status: unsupported
   statute:
   - ref: Meguro区 出産費用助成
     url: https://www.city.meguro.tokyo.jp/kosodatekyouiku/ninshin/shussanshien/josei/index.html
@@ -2286,7 +2286,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 30000
-  status: supported
+  status: unsupported
   statute:
   - ref: 物価高騰対応重点支援地方創生臨時交付金（内閣府）
     url: https://www.chisou.go.jp/tiiki/rinjikoufukin/index.html
@@ -2298,7 +2298,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法10条〜35条
     url: https://hourei.net/law/349AC0000000116
@@ -2312,7 +2312,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 職業訓練の実施等による特定求職者の就職の支援に関する法律7条
     url: https://hourei.net/law/423AC0000000047
@@ -2326,7 +2326,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: 国民健康保険法81条、国民健康保険法施行令29条の7
     url: https://hourei.net/law/333AC0000000192
@@ -2340,7 +2340,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 16980
-  status: supported
+  status: unsupported
   statute:
   - ref: 国民年金法90条・90条の2
     url: https://hourei.net/law/334AC0000000141
@@ -2354,7 +2354,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: 健康保険法99条
     url: https://hourei.net/law/211AC0000000070
@@ -2368,7 +2368,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法60条の2
     url: https://hourei.net/law/349AC0000000116
@@ -2382,7 +2382,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 300000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法56条の3
     url: https://hourei.net/law/349AC0000000116
@@ -2396,7 +2396,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 健康保険法115条
     url: https://hourei.net/law/211AC0000000070
@@ -2410,7 +2410,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 健康保険法85条
     url: https://hourei.net/law/211AC0000000070
@@ -2422,7 +2422,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 2200
-  status: supported
+  status: unsupported
   statute:
   - ref: 放送法64条、日本放送協会放送受信料免除基準
     url: https://www.nhk-cs.jp/jushinryo/menjo/qa.html
@@ -2434,7 +2434,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: 母子及び父子並びに寡婦福祉法31条
     url: https://hourei.net/law/339AC0000000129
@@ -2448,7 +2448,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 母子及び父子並びに寡婦福祉法31条の2
     url: https://hourei.net/law/339AC0000000129
@@ -2462,7 +2462,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 83700
-  status: supported
+  status: unsupported
   statute:
   - ref: 国民年金法30条〜36条の4
     url: https://hourei.net/law/334AC0000000141
@@ -2476,7 +2476,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 東京都福祉保健局 都営交通無料乗車券
     url: https://www.fukushi.metro.tokyo.lg.jp/shougai/nichijo/jousyasyo
@@ -2488,7 +2488,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 5000
-  status: supported
+  status: unsupported
   statute:
   - ref: 東京都水道局 水道料金・下水道料金の減免
     url: https://www.waterworks.metro.tokyo.lg.jp/tetsuduki/ryokin/genmen
@@ -2500,7 +2500,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法56条の3第3項
     url: https://hourei.net/law/349AC0000000116
@@ -2514,7 +2514,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 母子保健法13条
     url: https://hourei.net/law/340AC0000000141
@@ -2528,7 +2528,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 16980
-  status: supported
+  status: unsupported
   statute:
   - ref: 国民年金法88条の2
     url: https://hourei.net/law/334AC0000000141
@@ -2542,7 +2542,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: 健康保険法102条
     url: https://hourei.net/law/211AC0000000070
@@ -2556,7 +2556,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 300000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法61条の7
     url: https://hourei.net/law/349AC0000000116
@@ -2570,7 +2570,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法61条の4
     url: https://hourei.net/law/349AC0000000116
@@ -2584,7 +2584,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 大学等における修学の支援に関する法律
     url: https://hourei.net/law/501AC0000000008
@@ -2598,7 +2598,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 75800
-  status: supported
+  status: unsupported
   statute:
   - ref: 独立行政法人日本学生支援機構法
     url: https://hourei.net/law/415AC0000000094
@@ -2612,7 +2612,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 東京都シルバーパス条例
     url: https://www.fukushi.metro.tokyo.lg.jp/kourei/shakai_shien/s_pass
@@ -2624,7 +2624,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 50000
-  status: supported
+  status: unsupported
   statute:
   - ref: 介護保険法142条
     url: https://hourei.net/law/409AC0000000123
@@ -2638,7 +2638,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 介護保険法51条
     url: https://hourei.net/law/409AC0000000123
@@ -2650,7 +2650,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 50000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法73条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2664,7 +2664,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 20000
-  status: supported
+  status: unsupported
   statute:
   - ref: 租税特別措置法41条の17の2
     url: https://laws.e-gov.go.jp/law/332AC0000000026/
@@ -2678,7 +2678,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 地方税法37条の2
     url: https://laws.e-gov.go.jp/law/325AC0000000226/
@@ -2692,7 +2692,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 276000
-  status: supported
+  status: unsupported
   statute:
   - ref: 確定拠出年金法3条
     url: https://laws.e-gov.go.jp/law/413AC0000000088/
@@ -2706,7 +2706,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 120000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法76条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2720,7 +2720,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 50000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法77条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2734,7 +2734,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 400000
-  status: supported
+  status: unsupported
   statute:
   - ref: 租税特別措置法41条
     url: https://laws.e-gov.go.jp/law/332AC0000000026/
@@ -2748,7 +2748,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 380000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法83条・83条の2
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2762,7 +2762,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 270000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法79条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2776,7 +2776,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 350000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法81条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2790,7 +2790,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法61条
     url: https://hourei.net/law/349AC0000000116
@@ -2804,7 +2804,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 障害者総合支援法52条
     url: https://laws.e-gov.go.jp/law/417AC0000000123
@@ -2818,7 +2818,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 障害者総合支援法76条
     url: https://laws.e-gov.go.jp/law/417AC0000000123
@@ -2832,7 +2832,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 障害者総合支援法77条
     url: https://laws.e-gov.go.jp/law/417AC0000000123
@@ -2844,7 +2844,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 50000
-  status: supported
+  status: unsupported
   statute:
   - ref: 健康保険法100条
     url: https://laws.e-gov.go.jp/law/211AC0000000070
@@ -2858,7 +2858,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 70000
-  status: supported
+  status: unsupported
   statute:
   - ref: 国民健康保険法58条
     url: https://hourei.net/law/333AC0000000192
@@ -2870,7 +2870,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 270000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法82条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2884,7 +2884,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 840000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法75条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2898,7 +2898,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 650000
-  status: supported
+  status: unsupported
   statute:
   - ref: 租税特別措置法25条の2
     url: https://laws.e-gov.go.jp/law/332AC0000000026/
@@ -2912,7 +2912,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 8000000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法30条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2926,7 +2926,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 500000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法72条
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -2940,7 +2940,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 250000
-  status: supported
+  status: unsupported
   statute:
   - ref: 租税特別措置法41条の3の2
     url: https://laws.e-gov.go.jp/law/332AC0000000026/
@@ -2954,7 +2954,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 500000
-  status: supported
+  status: unsupported
   statute:
   - ref: 災害被害者に対する租税の減免、徴収猶予等に関する法律
     url: https://laws.e-gov.go.jp/law/322AC0000000175/
@@ -2968,7 +2968,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 5620
-  status: supported
+  status: unsupported
   statute:
   - ref: 年金生活者支援給付金の支給に関する法律
     url: https://laws.e-gov.go.jp/law/424AC0000000102/
@@ -2982,7 +2982,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法61条の2
     url: https://hourei.net/law/349AC0000000116
@@ -2996,7 +2996,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法60条の2
     url: https://hourei.net/law/349AC0000000116
@@ -3010,7 +3010,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 560000
-  status: supported
+  status: unsupported
   statute:
   - ref: 雇用保険法60条の2
     url: https://hourei.net/law/349AC0000000116
@@ -3024,7 +3024,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: supported
+  status: unsupported
   statute:
   - ref: こども家庭庁 物価高対応子育て応援手当
     url: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
@@ -3036,7 +3036,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 130000
-  status: supported
+  status: unsupported
   statute:
   - ref: 生活保護法
     url: https://laws.e-gov.go.jp/law/325AC0000000144/
@@ -3050,7 +3050,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 68000
-  status: supported
+  status: unsupported
   statute:
   - ref: 国民年金法37条
     url: https://laws.e-gov.go.jp/law/334AC0000000141
@@ -3064,7 +3064,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 厚生年金保険法58条
     url: https://laws.e-gov.go.jp/law/329AC0000000115/
@@ -3078,7 +3078,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 1250000
-  status: supported
+  status: unsupported
   statute:
   - ref: 国土交通省 みらいエコ住宅2026事業
     url: https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk4_000243.html
@@ -3090,7 +3090,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 500000
-  status: supported
+  status: unsupported
   statute:
   - ref: 所得税法57条の2
     url: https://laws.e-gov.go.jp/law/340AC0000000033/
@@ -3104,7 +3104,7 @@
   unit: per_household
   amount_type: yearly
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 租税特別措置法37条の14
     url: https://laws.e-gov.go.jp/law/332AC0000000026/
@@ -3118,7 +3118,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 生活福祉資金貸付制度要綱
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatsu-fukushi-shikin1/index.html
@@ -3130,7 +3130,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 3000000
-  status: supported
+  status: unsupported
   statute:
   - ref: 母子及び父子並びに寡婦福祉法13条
     url: https://laws.e-gov.go.jp/law/339AC0000000129/
@@ -3144,7 +3144,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: supported
+  status: unsupported
   statute:
   - ref: 労働者災害補償保険法13条
     url: https://laws.e-gov.go.jp/law/322AC0000000050/
@@ -3156,7 +3156,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 200000
-  status: supported
+  status: unsupported
   statute:
   - ref: 労働者災害補償保険法14条
     url: https://laws.e-gov.go.jp/law/322AC0000000050/
@@ -3168,7 +3168,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 300000
-  status: supported
+  status: unsupported
   statute:
   - ref: 労働者災害補償保険法15条
     url: https://laws.e-gov.go.jp/law/322AC0000000050/

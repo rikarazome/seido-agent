@@ -148,7 +148,7 @@ def test_interview_flow_end_to_end():
 
     resp = judge()
     assert resp["headline"]["monthly_yen"] == 55000   # jidou_teate + 018 + ninkagai
-    assert resp["headline"]["oneoff_yen"] == 340000   # birthday + akachan + hajimete (c2) + bukka 2x20k
+    assert resp["headline"]["oneoff_yen"] == 300000   # birthday + akachan + hajimete (c2)
     assert resp["next_question"] is not None
 
     # answer chips in the order the engine asks
@@ -193,7 +193,7 @@ def test_interview_flow_end_to_end():
     assert by["tokyo_jidou_ikusei_teate"]["status"] == "decided"
     assert by["shibuya_kodomo_iryouhi"]["status"] == "decided"
     # full monthly after all answers (many programs now contribute)
-    assert resp["headline"]["monthly_yen"] == 311900
+    assert resp["headline"]["monthly_yen"] == 211900
 
     # proof retrievable for a decided program (what the なぜ? button does)
     r = client.post("/api/proof", json={
