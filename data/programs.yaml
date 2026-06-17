@@ -2516,11 +2516,11 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: unsupported
+  status: supported
   statute:
   - ref: 母子保健法13条
-    url: https://hourei.net/law/340AC0000000141
-  - ref: 厚労省 妊婦健診の公費負担
+    url: https://laws.e-gov.go.jp/law/340AC0000000141/
+  - ref: 厚労省 妊婦健診リーフレット
     url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/
 - id: sanzen_sango_nenkin_menjo
   name: 産前産後の国民年金保険料免除
@@ -2530,10 +2530,10 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 16980
-  status: unsupported
+  status: supported
   statute:
   - ref: 国民年金法88条の2
-    url: https://hourei.net/law/334AC0000000141
+    url: https://laws.e-gov.go.jp/law/334AC0000000141/
   - ref: 日本年金機構 産前産後の免除制度
     url: https://www.nenkin.go.jp/service/kokunen/menjo/20180810.html
 - id: shussan_teatekin
@@ -2544,12 +2544,12 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 200000
-  status: unsupported
+  status: supported
   statute:
   - ref: 健康保険法102条
-    url: https://hourei.net/law/211AC0000000070
-  - ref: 全国健康保険協会 出産手当金
-    url: https://www.kyoukaikenpo.or.jp/g6/cat620/r311/
+    url: https://laws.e-gov.go.jp/law/211AC0000000070/
+  - ref: 協会けんぽ 出産手当金
+    url: https://www.kyoukaikenpo.or.jp/benefit/childbirth/001/index.html
 - id: ikuji_kyuugyou_kyufu
   name: 育児休業給付金
   layer: national
