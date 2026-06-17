@@ -25,6 +25,6 @@ kettei_status(P, C, blocked(Missing)) :-
     claimant(P), kango_by(C, P), child(C),
     findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
     Missing \= [], !.
-kettei_status(P, C, decided(yearly(15000))) :-
+kettei_status(P, C, decided(kubun(shugaku_enjo))) :-
     claimant(P), kango_by(C, P), child(C), yes(hikazei(P)), !.
 kettei_status(_, _, error(no_rule_matched)).
