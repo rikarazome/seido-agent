@@ -1,7 +1,7 @@
 % kokuho_keigen - National Health Insurance Premium Reduction (7/5/2 wari)
-% Source: 国民健康保険法81条, 施行令29条の7
-% Formula: 7wari=43万, 5wari=43万+29.5万*N, 2wari=43万+54.5万*N
-% N = hishosha count (approximated by fuyou_ninzu+1)
+% Source: NHI Act Art.81, Enforcement Order Art.29-7
+% Formula: 7wari<=430000, 5wari<=430000+295000*(N+1), 2wari<=430000+545000*(N+1)
+% N = fuyou_ninzu (approximation of insured person count)
 :- module(kokuho_keigen, [kettei_status/3, required_fact/3]).
 
 keigen_limit_5(N, L) :- integer(N), N >= 0, L is 430000 + 295000 * (N + 1).

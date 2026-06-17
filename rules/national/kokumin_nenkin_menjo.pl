@@ -1,7 +1,7 @@
 % kokumin_nenkin_menjo - National Pension Premium Exemption
-% Source: 国民年金法90条・90条の2
-% zenmen/yuuyo: (N+1)*35万+32万, 3/4: 88万+38万*N, half: 128万+38万*N, 1/4: 168万+38万*N
-% N = fuyou_ninzu. 38万 per dependent is approximate (扶養控除額).
+% Source: National Pension Act Art.90
+% zenmen: (N+1)*350000+320000, 3/4: 880000+380000*N, half: 1280000+380000*N, 1/4: 1680000+380000*N
+% N = fuyou_ninzu. 380000 per dependent is approximate (dependent deduction).
 :- module(kokumin_nenkin_menjo, [kettei_status/3, required_fact/3]).
 
 zenmen_limit(N, L) :- integer(N), N >= 0, L is (N + 1) * 350000 + 320000.

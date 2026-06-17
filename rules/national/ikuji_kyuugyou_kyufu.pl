@@ -1,5 +1,5 @@
 % ikuji_kyuugyou_kyufu - Childcare Leave Benefit
-% 雇用保険法61条の7. koyou_hoken + ikuji_kyuugyou.
+% Koyou Hoken Act Art.61-7. koyou_hoken + ikuji_kyuugyou.
 :- module(ikuji_kyuugyou_kyufu, [kettei_status/3, required_fact/3]).
 
 required_fact(P, koyou_hoken, "koyou hoken enrollment") :-

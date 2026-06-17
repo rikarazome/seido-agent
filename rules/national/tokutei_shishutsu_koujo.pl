@@ -1,5 +1,5 @@
 % tokutei_shishutsu_koujo - Specified Expense Deduction
-% 所得税法57条の2. koyou_hoken + tokutei_shishutsu_ari.
+% Income Tax Act Art.57-2. koyou_hoken + tokutei_shishutsu_ari.
 :- module(tokutei_shishutsu_koujo, [kettei_status/3, required_fact/3]).
 
 required_fact(P, koyou_hoken, "koyou hoken enrollment") :-

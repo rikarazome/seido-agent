@@ -1,5 +1,5 @@
 % shuugyou_sokushin_teate - Employment Promotion Settlement Allowance
-% 雇用保険法56条の3第3項. Requires sai_shushoku_teate received.
+% Koyou Hoken Act Art.56-3-3. Requires sai_shushoku_teate received.
 :- module(shuugyou_sokushin_teate, [kettei_status/3, required_fact/3]).
 
 required_fact(P, sai_shushoku_teate_jukyuu, "sai shushoku teate received") :-
