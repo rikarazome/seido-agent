@@ -1268,10 +1268,10 @@
   unit: per_child
   amount_type: monthly
   potential_amount: 13000
-  status: unsupported
+  status: supported
   statute:
-  - ref: Edogawa区 乳幼児養育手当
-    url: https://www.city.edogawa.tokyo.jp/kosodate/kosodate/teateshien/index.html
+  - ref: 江戸川区 乳児養育手当（ゼロ歳児）
+    url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/youiku.html
 - id: kita_nyuyoji_teate
   name: 北区乳幼児養育手当
   layer: municipal
@@ -1297,16 +1297,16 @@
   - ref: Setagaya区 出産祝い金
     url: https://www.city.setagaya.lg.jp/02413/1206.html
 - id: nerima_dai3shi_ouen
-  name: 練馬区第3子誕生祝い金
+  name: 練馬区第3子誕生祝金
   layer: municipal
   municipality: nerima
   subject: child
   unit: per_child
   amount_type: oneoff
-  potential_amount: 200000
-  status: unsupported
+  potential_amount: 100000
+  status: supported
   statute:
-  - ref: Nerima 3rd child celebration
+  - ref: 練馬区 第3子誕生祝金
     url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/shussan/iwaikin.html
 - id: shinjuku_shussan_oiwaikin
   name: 新宿区誕生祝い金
