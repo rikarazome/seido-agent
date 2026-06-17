@@ -29,8 +29,8 @@ kettei_status(P, self, blocked(Missing)) :-
     claimant(P),
     findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
     Missing \= [], !.
-kettei_status(P, self, decided(monthly(15500))) :-
+kettei_status(P, self, decided(monthly(17500))) :-
     claimant(P), val(shogai_techo(P), G), grade_a(G), !.
-kettei_status(P, self, decided(monthly(7750))) :-
+kettei_status(P, self, decided(monthly(4500))) :-
     claimant(P), val(shogai_techo(P), G), grade_b(G), !.
 kettei_status(_, _, error(no_rule_matched)).

@@ -7,7 +7,7 @@
     claimant: { birth_date: "1970-01-01" }
     children: []
     askable: { shogai_techo: "shintai_1" }
-  expect: { subject: self, status: decided, detail: "monthly(15500)" }
+  expect: { subject: self, status: decided, detail: "monthly(17500)" }
 
 - name: ota_shinshin_decided_b
   as_of: "2026-06-15"
@@ -15,7 +15,7 @@
     claimant: { birth_date: "1970-01-01" }
     children: []
     askable: { shogai_techo: "shintai_3" }
-  expect: { subject: self, status: decided, detail: "monthly(7750)" }
+  expect: { subject: self, status: decided, detail: "monthly(4500)" }
 
 - name: ota_shinshin_ineligible_seishin
   as_of: "2026-06-15"

@@ -31,6 +31,6 @@ kettei_status(P, self, blocked(Missing)) :-
     Missing \= [], !.
 kettei_status(P, self, decided(monthly(15500))) :-
     claimant(P), val(shogai_techo(P), G), grade_a(G), !.
-kettei_status(P, self, decided(monthly(7750))) :-
+kettei_status(P, self, decided(monthly(9500))) :-
     claimant(P), val(shogai_techo(P), G), grade_b(G), !.
 kettei_status(_, _, error(no_rule_matched)).
