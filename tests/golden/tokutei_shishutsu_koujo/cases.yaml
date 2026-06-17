@@ -1,15 +1,32 @@
+# 特定支出控除 golden cases
+# Source: 所得税法57条の2
+
 - name: eligible
-  as_of: '2026-06-15'
+  as_of: "2026-06-15"
   municipality: shibuya
   facts:
     askable:
       koyou_hoken: true
+      tokutei_shishutsu_ari: true
   expect:
     subject: self
     status: decided
     detail: kubun(tokutei_shishutsu)
+
+- name: no_tokutei_shishutsu
+  as_of: "2026-06-15"
+  municipality: shibuya
+  facts:
+    askable:
+      koyou_hoken: true
+      tokutei_shishutsu_ari: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: no_tokutei_shishutsu
+
 - name: not_salaryman
-  as_of: '2026-06-15'
+  as_of: "2026-06-15"
   municipality: shibuya
   facts:
     askable:

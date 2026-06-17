@@ -160,6 +160,15 @@
 - fact: jutaku_shinchiku
   text: 今年、住宅の新築・購入・リフォームをしましたか（または予定ですか）
   type: boolean
+- fact: ikuji_kyuugyou
+  text: 現在、育児休業を取得中ですか
+  type: boolean
+- fact: sai_shushoku_teate_jukyuu
+  text: 再就職手当を受給しましたか（離職後に早期再就職した場合）
+  type: boolean
+- fact: tokutei_shishutsu_ari
+  text: 通勤費・転居費・研修費等の特定支出が給与所得控除額の半分を超えましたか
+  type: boolean
 - fact: koukou_zaigaku
   scope: per_child
   text: '{child}は高校等（高等学校・高専・専修学校等）に在学していますか'

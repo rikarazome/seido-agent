@@ -1,3 +1,6 @@
+% WARNING: Income thresholds in this rule are INCORRECT.
+% Correct values depend on dependents: zenmen=(N+1)*35+32, 3/4=88+deductions, etc.
+% This rule is unsupported and must not be marked supported without rewrite.
 :- module(kokumin_nenkin_menjo, [kettei_status/3, required_fact/3]).
 
 required_fact(P, income, "income") :-

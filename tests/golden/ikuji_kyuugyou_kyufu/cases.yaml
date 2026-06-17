@@ -1,15 +1,32 @@
+# 育児休業給付金 golden cases
+# Source: 雇用保険法61条の7
+
 - name: eligible
-  as_of: '2026-06-15'
+  as_of: "2026-06-15"
   municipality: shibuya
   facts:
     askable:
       koyou_hoken: true
+      ikuji_kyuugyou: true
   expect:
     subject: self
     status: decided
     detail: kubun(ikuji_kyuugyou)
+
+- name: not_on_leave
+  as_of: "2026-06-15"
+  municipality: shibuya
+  facts:
+    askable:
+      koyou_hoken: true
+      ikuji_kyuugyou: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_on_leave
+
 - name: no_koyou_hoken
-  as_of: '2026-06-15'
+  as_of: "2026-06-15"
   municipality: shibuya
   facts:
     askable:

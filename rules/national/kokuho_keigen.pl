@@ -1,3 +1,6 @@
+% WARNING: Income thresholds are for SINGLE-PERSON household only.
+% Correct formula: 7wari=43万, 5wari=43万+29.5万*N, 2wari=43万+54.5万*N
+% This rule is unsupported and must not be marked supported without rewrite.
 :- module(kokuho_keigen, [kettei_status/3, required_fact/3]).
 
 required_fact(P, hoken_shubetsu, "health insurance type") :-
