@@ -66,8 +66,8 @@
   statute:
   - ref: 特別児童扶養手当等の支給に関する法律17条
     url: https://laws.e-gov.go.jp/law/339AC0000000134
-  - ref: 厚労省 障害児福祉手当
-    url: https://www.mhlw.go.jp/bunya/shougaihoken/jidou/tokubetsu.html
+  - ref: 厚労省 特別児童扶養手当等（障害児福祉手当含む）
+    url: https://www.mhlw.go.jp/bunya/shougaihoken/jidou/huyou.html
 - id: jiritsu_shien_iryo_ikusei
   name: 自立支援医療（育成医療）
   layer: national
@@ -908,7 +908,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Chiyoda shugaku enjo
+  - ref: Chiyoda区 就学援助
     url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/shugaku.html
 - id: chuo_shugaku_enjo
   name: 就学援助（chuo）
@@ -920,7 +920,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Chuo shugaku enjo
+  - ref: Chuo区 就学援助
     url: https://www.city.chuo.lg.jp/a0049/kosodate/gakkoukyouiku/shouchuugakkou/syugakuenzyo.html
 - id: minato_shugaku_enjo
   name: 就学援助（minato）
@@ -932,7 +932,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Minato shugaku enjo
+  - ref: Minato区 就学援助
     url: https://www.city.minato.tokyo.jp/gakkouuneishien/kodomo/gakko/shugakuenjo/
 - id: shinjuku_shugaku_enjo
   name: 就学援助（shinjuku）
@@ -944,7 +944,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Shinjuku shugaku enjo
+  - ref: Shinjuku区 就学援助
     url: https://www.city.shinjuku.lg.jp/kodomo/file04_04_00005.html
 - id: bunkyo_shugaku_enjo
   name: 就学援助（bunkyo）
@@ -956,7 +956,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Bunkyo shugaku enjo
+  - ref: Bunkyo区 就学援助
     url: https://www.city.bunkyo.lg.jp/b048/p002122.html
 - id: taito_shugaku_enjo
   name: 就学援助（taito）
@@ -968,7 +968,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Taito shugaku enjo
+  - ref: Taito区 就学援助
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kuritsushocyugakko/nyugakutugaku/syugakuenjo/enjo.html
 - id: sumida_shugaku_enjo
   name: 就学援助（sumida）
@@ -980,7 +980,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Sumida shugaku enjo
+  - ref: Sumida区 就学援助
     url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/school/syuugaku_enjo/index.html
 - id: koto_shugaku_enjo
   name: 就学援助（koto）
@@ -992,7 +992,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Koto shugaku enjo
+  - ref: Koto区 就学援助
     url: https://www.city.koto.lg.jp/581101/kodomo/gakko/enjo/shugaku/6154.html
 - id: shinagawa_shugaku_enjo
   name: 就学援助（shinagawa）
@@ -1004,7 +1004,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Shinagawa shugaku enjo
+  - ref: Shinagawa区 就学援助
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/hpg000000893.html
 - id: meguro_shugaku_enjo
   name: 就学援助（meguro）
@@ -1028,7 +1028,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Ota shugaku enjo
+  - ref: Ota区 就学援助
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/kyouiku/gakko/syugaku_enjo/enjo_taishosha.html
 - id: setagaya_shugaku_enjo
   name: 就学援助（setagaya）
@@ -1040,7 +1040,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Setagaya shugaku enjo
+  - ref: Setagaya区 就学援助
     url: https://www.city.setagaya.lg.jp/02046/3112.html
 - id: nakano_shugaku_enjo
   name: 就学援助（nakano）
@@ -1052,7 +1052,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Nakano shugaku enjo
+  - ref: Nakano区 就学援助
     url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/gakko/jyosei/syugakuenjyohi.html
 - id: suginami_shugaku_enjo
   name: 就学援助（suginami）
@@ -1064,7 +1064,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Suginami shugaku enjo
+  - ref: Suginami区 就学援助
     url: https://www.city.suginami.tokyo.jp/s109/1443.html
 - id: toshima_shugaku_enjo
   name: 就学援助（toshima）
@@ -1076,7 +1076,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Toshima shugaku enjo
+  - ref: Toshima区 就学援助
     url: https://www.city.toshima.lg.jp/353/kosodate/gakko/teate/005900.html
 - id: kita_shugaku_enjo
   name: 就学援助（kita）
@@ -1088,7 +1088,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Kita shugaku enjo
+  - ref: Kita区 就学援助
     url: https://www.city.kita.lg.jp/children-edu/schools/1003980/1003981.html
 - id: arakawa_shugaku_enjo
   name: 就学援助（arakawa）
@@ -1100,7 +1100,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Arakawa shugaku enjo
+  - ref: Arakawa区 就学援助
     url: https://www.city.arakawa.tokyo.jp/kyouiku-seishounen/kyouikushien/index.html
 - id: itabashi_shugaku_enjo
   name: 就学援助（itabashi）
@@ -1112,7 +1112,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Itabashi shugaku enjo
+  - ref: Itabashi区 就学援助
     url: https://www.city.itabashi.tokyo.jp/kyoikuiinkai/shugakuenjo/1044885/1012230.html
 - id: nerima_shugaku_enjo
   name: 就学援助（nerima）
@@ -1124,7 +1124,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Nerima shugaku enjo
+  - ref: Nerima区 就学援助
     url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kyoiku/enjo/enjo.html
 - id: adachi_shugaku_enjo
   name: 就学援助（adachi）
@@ -1136,7 +1136,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Adachi shugaku enjo
+  - ref: Adachi区 就学援助
     url: https://www.city.adachi.tokyo.jp/gakumu/k-kyoiku/shochu/tetsuzuki-shugaku.html
 - id: katsushika_shugaku_enjo
   name: 就学援助（katsushika）
@@ -1148,7 +1148,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Katsushika shugaku enjo
+  - ref: Katsushika区 就学援助
     url: https://www.city.katsushika.lg.jp/kosodate/1000057/1002479/1002748.html
 - id: edogawa_shugaku_enjo
   name: 就学援助（edogawa）
@@ -1160,7 +1160,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Edogawa shugaku enjo
+  - ref: Edogawa区 就学援助
     url: https://www.city.edogawa.tokyo.jp/e069/kosodate/kyoiku/kyouiku/tetuduki/shugakuenjo.html
 - id: minato_shussan_hiyou_josei
   name: 港区出産費用助成
@@ -1172,7 +1172,7 @@
   potential_amount: 730000
   status: supported
   statute:
-  - ref: Minato birth cost subsidy
+  - ref: Minato区 出産費用助成
     url: https://www.city.minato.tokyo.jp/kodomokyufu/kenko/ninshin/shussan/jose.html
 - id: shibuya_hajimete_kosodate_ouen
   name: 渋谷区はじめて子育て応援金
@@ -1184,7 +1184,7 @@
   potential_amount: 100000
   status: supported
   statute:
-  - ref: Shibuya first childcare support
+  - ref: Shibuya区 はじめてのコソダテ応援
     url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/
 - id: chuo_shussan_shien
   name: 中央区出産支援祝品
@@ -1196,7 +1196,7 @@
   potential_amount: 30000
   status: supported
   statute:
-  - ref: Chuo birth celebration gift
+  - ref: Chuo区 出産祝い品
     url: https://www.city.chuo.lg.jp/a0020/kosodate/shussan/shussanshien/kaimonokenn.html
 - id: bunkyo_koukousei_ikusei_shienkin
   name: 文京区高校生世代育成支援金
@@ -1208,7 +1208,7 @@
   potential_amount: 50000
   status: supported
   statute:
-  - ref: Bunkyo high school support fund
+  - ref: Bunkyo区 高校生世代育成支援金
     url: https://www.city.bunkyo.lg.jp/kosodatekyouiku/kosodate/teate/index.html
 - id: koto_shussan_oiwaikin
   name: 江東区出産祝い金
@@ -1220,7 +1220,7 @@
   potential_amount: 50000
   status: supported
   statute:
-  - ref: Koto birth celebration
+  - ref: Koto区 出産祝い金
     url: https://www.city.koto.lg.jp/260501/kodomo/ninshinshussan/ninshin/97552.html
 - id: shinagawa_kosodate_ouen
   name: 品川区子育て応援券
@@ -1232,8 +1232,8 @@
   potential_amount: 10000
   status: supported
   statute:
-  - ref: Shinagawa childcare support voucher
-    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-iryohizyosei/20251202195614.html
+  - ref: Shinagawa区 子育て応援券
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
 - id: toshima_shussan_oiwaikin
   name: 豊島区出産祝い金
   layer: municipal
@@ -1244,7 +1244,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: Toshima birth celebration
+  - ref: Toshima区 出産祝い金
     url: https://www.city.toshima.lg.jp/258/2406201637.html
 - id: adachi_kosodate_ouen
   name: 足立区子育て応援金
@@ -1256,7 +1256,7 @@
   potential_amount: 30000
   status: supported
   statute:
-  - ref: Adachi childcare support
+  - ref: Adachi区 子育て応援手当
     url: https://www.city.adachi.tokyo.jp/oyako/bukkadakataiou_kosodateouenteate.html
 - id: edogawa_nyuyoji_teate
   name: 江戸川区乳児養育手当
@@ -1268,7 +1268,7 @@
   potential_amount: 13000
   status: supported
   statute:
-  - ref: Edogawa infant nurturing allowance
+  - ref: Edogawa区 乳幼児養育手当
     url: https://www.city.edogawa.tokyo.jp/kosodate/kosodate/teateshien/index.html
 - id: kita_nyuyoji_teate
   name: 北区乳幼児養育手当
@@ -1280,7 +1280,7 @@
   potential_amount: 5000
   status: supported
   statute:
-  - ref: Kita infant allowance
+  - ref: Kita区 乳幼児医療費助成
     url: https://www.city.kita.lg.jp/children-edu/childcare/1002909/1002913/1002914.html
 - id: setagaya_shussan_oiwaikin
   name: 世田谷区出生祝い金
@@ -1292,7 +1292,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: Setagaya birth celebration
+  - ref: Setagaya区 出産祝い金
     url: https://www.city.setagaya.lg.jp/02413/1206.html
 - id: nerima_dai3shi_ouen
   name: 練馬区第3子誕生祝い金
@@ -1316,7 +1316,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: Shinjuku birth celebration
+  - ref: Shinjuku区 出産祝い金
     url: https://www.city.shinjuku.lg.jp/fukushi/syussan_kosodate_gift.html
 - id: meguro_shussan_josei
   name: 目黒区出産費用助成
@@ -1328,7 +1328,7 @@
   potential_amount: 50000
   status: supported
   statute:
-  - ref: Meguro birth cost subsidy
+  - ref: Meguro区 出産費用助成
     url: https://www.city.meguro.tokyo.jp/kosodatekyouiku/ninshin/shussanshien/josei/index.html
 - id: ota_shussan_oiwaikin
   name: 大田区出産応援金
@@ -1340,7 +1340,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: Ota birth support
+  - ref: Ota区 出産応援事業
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/index.html
 - id: sumida_shussan_oiwaikin
   name: 墨田区出産祝い金
@@ -1352,7 +1352,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: Sumida birth celebration
+  - ref: Sumida区 出産祝い金
     url: https://www.city.sumida.lg.jp/kenko_fukushi/kenko/oyako_kenko/syussan_junbi_class/skogift.html
 - id: taito_shussan_oiwaikin
   name: 台東区出産祝い金
@@ -1364,7 +1364,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: Taito birth celebration
+  - ref: Taito区 出産祝い金
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/syussanhiyoujyosei.html
 - id: nakano_shussan_ouen
   name: 中野区出産応援金
@@ -1376,7 +1376,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: Nakano birth support
+  - ref: Nakano区 出産応援事業
     url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/nenreibetsu/syussan/index.html
 - id: suginami_shussan_ouen
   name: 杉並区出産応援金
@@ -1388,7 +1388,7 @@
   potential_amount: 30000
   status: supported
   statute:
-  - ref: Suginami birth support
+  - ref: Suginami区 出産応援事業
     url: https://www.city.suginami.tokyo.jp/s054/19751.html
 - id: arakawa_shussan_oiwaikin
   name: 荒川区出産祝い金
@@ -1400,7 +1400,7 @@
   potential_amount: 30000
   status: supported
   statute:
-  - ref: Arakawa birth celebration
+  - ref: Arakawa区 出産祝い金
     url: https://www.city.arakawa.tokyo.jp/a033/kosodate/shussankosodate/shussankosodate.html
 - id: itabashi_shussan_ouen
   name: 板橋区出産応援金
@@ -1412,7 +1412,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: Itabashi birth support
+  - ref: 板橋区 妊婦のための支援給付
     url: https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1056054.html
 - id: katsushika_shussan_ouen
   name: 葛飾区出産祝い金
@@ -1424,7 +1424,7 @@
   potential_amount: 25000
   status: supported
   statute:
-  - ref: Katsushika birth celebration
+  - ref: Katsushika区 出産祝い金
     url: https://www.city.katsushika.lg.jp/kenkou/1000050/1001803/1030902.html
 - id: shibuya_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shibuya）
@@ -1436,7 +1436,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Shibuya hitorioya jutaku teate
+  - ref: Shibuya区 ひとり親家庭住宅支援
     url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_sumai.html
 - id: chiyoda_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（chiyoda）
@@ -1448,7 +1448,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Chiyoda hitorioya jutaku teate
+  - ref: Chiyoda区 ひとり親家庭住宅支援
     url: https://www.city.chiyoda.lg.jp/koho/machizukuri/sumai/jose/yachinjose.html
 - id: shinjuku_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shinjuku）
@@ -1460,7 +1460,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Shinjuku hitorioya jutaku teate
+  - ref: Shinjuku区 ひとり親家庭住宅支援
     url: https://www.city.shinjuku.lg.jp/seikatsu/file07_02_00001.html
 - id: bunkyo_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（bunkyo）
@@ -1472,7 +1472,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Bunkyo hitorioya jutaku teate
+  - ref: Bunkyo区 ひとり親家庭住宅支援
     url: https://www.city.bunkyo.lg.jp/tetsuzuki/jutaku/sumairujyutaku/nyuukyosya.html
 - id: koto_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（koto）
@@ -1484,7 +1484,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Koto hitorioya jutaku teate
+  - ref: Koto区 ひとり親家庭住宅支援
     url: https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/96043.html
 - id: meguro_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（meguro）
@@ -1496,7 +1496,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Meguro hitorioya jutaku teate
+  - ref: Meguro区 ひとり親家庭住宅支援
     url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/jidofuyoteate.html
 - id: setagaya_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（setagaya）
@@ -1508,7 +1508,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Setagaya hitorioya jutaku teate
+  - ref: Setagaya区 ひとり親家庭住宅支援
     url: https://www.city.setagaya.lg.jp/03665/3722.html
 - id: nakano_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（nakano）
@@ -1520,7 +1520,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Nakano hitorioya jutaku teate
+  - ref: Nakano区 ひとり親家庭住宅支援
     url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/hitorioya/sumai/hitorioyazyuutakushien.html
 - id: toshima_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（toshima）
@@ -1532,7 +1532,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Toshima hitorioya jutaku teate
+  - ref: Toshima区 ひとり親家庭住宅支援
     url: https://www.city.toshima.lg.jp/kosodate/kosodate/hitorioya/index.html
 - id: kita_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（kita）
@@ -1544,7 +1544,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Kita hitorioya jutaku teate
+  - ref: Kita区 ひとり親家庭住宅支援
     url: https://www.city.kita.lg.jp/children-edu/childcare/1002833/1002848/1016855.html
 - id: ota_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（ota）
@@ -1556,7 +1556,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Ota hitorioya jutaku teate
+  - ref: Ota区 ひとり親家庭住宅支援
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/shien/index.html
 - id: suginami_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（suginami）
@@ -1568,7 +1568,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Suginami hitorioya jutaku teate
+  - ref: Suginami区 ひとり親家庭住宅支援
     url: https://www.city.suginami.tokyo.jp/s053/12441.html
 - id: arakawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（arakawa）
@@ -1580,7 +1580,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Arakawa hitorioya jutaku teate
+  - ref: Arakawa区 ひとり親家庭住宅支援
     url: https://www.city.arakawa.tokyo.jp/a035/kosodate/hitorioyakatei/hitorioyatenkyoshien.html
 - id: itabashi_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（itabashi）
@@ -1592,7 +1592,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Itabashi hitorioya jutaku teate
+  - ref: Itabashi区 ひとり親家庭住宅支援
     url: https://www.city.itabashi.tokyo.jp/kosodate/hitorioya/index.html
 - id: nerima_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（nerima）
@@ -1604,7 +1604,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Nerima hitorioya jutaku teate
+  - ref: Nerima区 ひとり親家庭住宅支援
     url: https://www.city.nerima.tokyo.jp/kurashi/jinken/hitorioya/tentakushien.html
 - id: adachi_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（adachi）
@@ -1616,7 +1616,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Adachi hitorioya jutaku teate
+  - ref: Adachi区 ひとり親家庭住宅支援
     url: https://www.city.adachi.tokyo.jp/k-kyoiku/kosodate/hitorioya/index.html
 - id: edogawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（edogawa）
@@ -1628,7 +1628,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Edogawa hitorioya jutaku teate
+  - ref: Edogawa区 ひとり親家庭住宅支援
     url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/iryohijose.html
 - id: katsushika_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（katsushika）
@@ -1640,7 +1640,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Katsushika hitorioya jutaku teate
+  - ref: Katsushika区 ひとり親家庭住宅支援
     url: https://www.city.katsushika.lg.jp/kosodate/1000056/1002341/index.html
 - id: taito_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（taito）
@@ -1652,7 +1652,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Taito hitorioya jutaku teate
+  - ref: Taito区 ひとり親家庭住宅支援
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/hitorioya/index.html
 - id: sumida_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（sumida）
@@ -1664,7 +1664,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Sumida hitorioya jutaku teate
+  - ref: Sumida区 ひとり親家庭住宅支援
     url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/index.html
 - id: shinagawa_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（shinagawa）
@@ -1676,7 +1676,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Shinagawa hitorioya jutaku teate
+  - ref: Shinagawa区 ひとり親家庭住宅支援
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/index.html
 - id: minato_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（minato）
@@ -1688,7 +1688,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Minato hitorioya jutaku teate
+  - ref: Minato区 ひとり親家庭住宅支援
     url: https://www.city.minato.tokyo.jp/kodomo/kodomo/hitorioya/
 - id: chuo_hitorioya_jutaku
   name: ひとり親家庭等住宅手当（chuo）
@@ -1700,7 +1700,7 @@
   potential_amount: 15000
   status: supported
   statute:
-  - ref: Chuo hitorioya jutaku teate
+  - ref: Chuo区 ひとり親家庭住宅支援
     url: https://www.city.chuo.lg.jp/a0042/kurashi/sumai/koutekijuutaku/hitorioyajyutaku.html
 - id: chiyoda_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（chiyoda）
@@ -1712,7 +1712,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: chiyoda shiritsu youchien hojo
+  - ref: chiyoda区 私立幼稚園等補助金
     url: https://www.city.chiyoda.lg.jp/
 - id: chuo_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（chuo）
@@ -1724,7 +1724,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: chuo shiritsu youchien hojo
+  - ref: chuo区 私立幼稚園等補助金
     url: https://www.city.chuo.lg.jp/
 - id: minato_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（minato）
@@ -1736,7 +1736,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: minato shiritsu youchien hojo
+  - ref: minato区 私立幼稚園等補助金
     url: https://www.city.minato.tokyo.jp/
 - id: shinjuku_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shinjuku）
@@ -1748,7 +1748,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: shinjuku shiritsu youchien hojo
+  - ref: shinjuku区 私立幼稚園等補助金
     url: https://www.city.shinjuku.lg.jp/
 - id: bunkyo_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（bunkyo）
@@ -1760,7 +1760,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: bunkyo shiritsu youchien hojo
+  - ref: bunkyo区 私立幼稚園等補助金
     url: https://www.city.bunkyo.lg.jp/
 - id: taito_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（taito）
@@ -1772,7 +1772,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: taito shiritsu youchien hojo
+  - ref: taito区 私立幼稚園等補助金
     url: https://www.city.taito.lg.jp/
 - id: sumida_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（sumida）
@@ -1784,7 +1784,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: sumida shiritsu youchien hojo
+  - ref: sumida区 私立幼稚園等補助金
     url: https://www.city.sumida.lg.jp/
 - id: koto_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（koto）
@@ -1796,7 +1796,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: koto shiritsu youchien hojo
+  - ref: koto区 私立幼稚園等補助金
     url: https://www.city.koto.lg.jp/
 - id: shinagawa_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shinagawa）
@@ -1808,7 +1808,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: shinagawa shiritsu youchien hojo
+  - ref: shinagawa区 私立幼稚園等補助金
     url: https://www.city.shinagawa.tokyo.jp/
 - id: meguro_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（meguro）
@@ -1820,7 +1820,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: meguro shiritsu youchien hojo
+  - ref: meguro区 私立幼稚園等補助金
     url: https://www.city.meguro.tokyo.jp/
 - id: ota_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（ota）
@@ -1832,7 +1832,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: ota shiritsu youchien hojo
+  - ref: ota区 私立幼稚園等補助金
     url: https://www.city.ota.tokyo.jp/
 - id: setagaya_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（setagaya）
@@ -1844,7 +1844,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: setagaya shiritsu youchien hojo
+  - ref: setagaya区 私立幼稚園等補助金
     url: https://www.city.setagaya.lg.jp/
 - id: shibuya_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shibuya）
@@ -1856,7 +1856,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: shibuya shiritsu youchien hojo
+  - ref: shibuya区 私立幼稚園等補助金
     url: https://www.city.shibuya.tokyo.jp/
 - id: nakano_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（nakano）
@@ -1868,7 +1868,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: nakano shiritsu youchien hojo
+  - ref: nakano区 私立幼稚園等補助金
     url: https://www.city.tokyo-nakano.lg.jp/
 - id: suginami_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（suginami）
@@ -1880,7 +1880,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: suginami shiritsu youchien hojo
+  - ref: suginami区 私立幼稚園等補助金
     url: https://www.city.suginami.tokyo.jp/
 - id: toshima_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（toshima）
@@ -1892,7 +1892,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: toshima shiritsu youchien hojo
+  - ref: toshima区 私立幼稚園等補助金
     url: https://www.city.toshima.lg.jp/
 - id: kita_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（kita）
@@ -1904,7 +1904,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: kita shiritsu youchien hojo
+  - ref: kita区 私立幼稚園等補助金
     url: https://www.city.kita.tokyo.jp/
 - id: arakawa_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（arakawa）
@@ -1916,7 +1916,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: arakawa shiritsu youchien hojo
+  - ref: arakawa区 私立幼稚園等補助金
     url: https://www.city.arakawa.tokyo.jp/
 - id: itabashi_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（itabashi）
@@ -1928,7 +1928,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: itabashi shiritsu youchien hojo
+  - ref: itabashi区 私立幼稚園等補助金
     url: https://www.city.itabashi.tokyo.jp/
 - id: nerima_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（nerima）
@@ -1940,7 +1940,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: nerima shiritsu youchien hojo
+  - ref: nerima区 私立幼稚園等補助金
     url: https://www.city.nerima.tokyo.jp/
 - id: adachi_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（adachi）
@@ -1952,7 +1952,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: adachi shiritsu youchien hojo
+  - ref: adachi区 私立幼稚園等補助金
     url: https://www.city.adachi.tokyo.jp/
 - id: katsushika_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（katsushika）
@@ -1964,7 +1964,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: katsushika shiritsu youchien hojo
+  - ref: katsushika区 私立幼稚園等補助金
     url: https://www.city.katsushika.lg.jp/
 - id: edogawa_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（edogawa）
@@ -1976,7 +1976,7 @@
   potential_amount: 62000
   status: supported
   statute:
-  - ref: edogawa shiritsu youchien hojo
+  - ref: edogawa区 私立幼稚園等補助金
     url: https://www.city.edogawa.tokyo.jp/
 - id: chiyoda_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（chiyoda）
@@ -1988,7 +1988,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: chiyoda ninkagai hoiku hojo
+  - ref: chiyoda区 認可外保育施設利用者補助
     url: https://www.city.chiyoda.lg.jp/
 - id: chuo_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（chuo）
@@ -2000,7 +2000,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: chuo ninkagai hoiku hojo
+  - ref: chuo区 認可外保育施設利用者補助
     url: https://www.city.chuo.lg.jp/
 - id: minato_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（minato）
@@ -2012,7 +2012,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: minato ninkagai hoiku hojo
+  - ref: minato区 認可外保育施設利用者補助
     url: https://www.city.minato.tokyo.jp/
 - id: shinjuku_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shinjuku）
@@ -2024,7 +2024,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: shinjuku ninkagai hoiku hojo
+  - ref: shinjuku区 認可外保育施設利用者補助
     url: https://www.city.shinjuku.lg.jp/
 - id: bunkyo_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（bunkyo）
@@ -2036,7 +2036,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: bunkyo ninkagai hoiku hojo
+  - ref: bunkyo区 認可外保育施設利用者補助
     url: https://www.city.bunkyo.lg.jp/
 - id: taito_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（taito）
@@ -2048,7 +2048,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: taito ninkagai hoiku hojo
+  - ref: taito区 認可外保育施設利用者補助
     url: https://www.city.taito.lg.jp/
 - id: sumida_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（sumida）
@@ -2060,7 +2060,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: sumida ninkagai hoiku hojo
+  - ref: sumida区 認可外保育施設利用者補助
     url: https://www.city.sumida.lg.jp/
 - id: koto_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（koto）
@@ -2072,7 +2072,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: koto ninkagai hoiku hojo
+  - ref: koto区 認可外保育施設利用者補助
     url: https://www.city.koto.lg.jp/
 - id: shinagawa_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shinagawa）
@@ -2084,7 +2084,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: shinagawa ninkagai hoiku hojo
+  - ref: shinagawa区 認可外保育施設利用者補助
     url: https://www.city.shinagawa.tokyo.jp/
 - id: meguro_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（meguro）
@@ -2096,7 +2096,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: meguro ninkagai hoiku hojo
+  - ref: meguro区 認可外保育施設利用者補助
     url: https://www.city.meguro.tokyo.jp/
 - id: ota_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（ota）
@@ -2108,7 +2108,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: ota ninkagai hoiku hojo
+  - ref: ota区 認可外保育施設利用者補助
     url: https://www.city.ota.tokyo.jp/
 - id: setagaya_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（setagaya）
@@ -2120,7 +2120,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: setagaya ninkagai hoiku hojo
+  - ref: setagaya区 認可外保育施設利用者補助
     url: https://www.city.setagaya.lg.jp/
 - id: shibuya_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shibuya）
@@ -2132,7 +2132,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: shibuya ninkagai hoiku hojo
+  - ref: shibuya区 認可外保育施設利用者補助
     url: https://www.city.shibuya.tokyo.jp/
 - id: nakano_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（nakano）
@@ -2144,7 +2144,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: nakano ninkagai hoiku hojo
+  - ref: nakano区 認可外保育施設利用者補助
     url: https://www.city.tokyo-nakano.lg.jp/
 - id: suginami_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（suginami）
@@ -2156,7 +2156,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: suginami ninkagai hoiku hojo
+  - ref: suginami区 認可外保育施設利用者補助
     url: https://www.city.suginami.tokyo.jp/
 - id: toshima_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（toshima）
@@ -2168,7 +2168,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: toshima ninkagai hoiku hojo
+  - ref: toshima区 認可外保育施設利用者補助
     url: https://www.city.toshima.lg.jp/
 - id: kita_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（kita）
@@ -2180,7 +2180,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: kita ninkagai hoiku hojo
+  - ref: kita区 認可外保育施設利用者補助
     url: https://www.city.kita.tokyo.jp/
 - id: arakawa_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（arakawa）
@@ -2192,7 +2192,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: arakawa ninkagai hoiku hojo
+  - ref: arakawa区 認可外保育施設利用者補助
     url: https://www.city.arakawa.tokyo.jp/
 - id: itabashi_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（itabashi）
@@ -2204,7 +2204,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: itabashi ninkagai hoiku hojo
+  - ref: itabashi区 認可外保育施設利用者補助
     url: https://www.city.itabashi.tokyo.jp/
 - id: nerima_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（nerima）
@@ -2216,7 +2216,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: nerima ninkagai hoiku hojo
+  - ref: nerima区 認可外保育施設利用者補助
     url: https://www.city.nerima.tokyo.jp/
 - id: adachi_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（adachi）
@@ -2228,7 +2228,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: adachi ninkagai hoiku hojo
+  - ref: adachi区 認可外保育施設利用者補助
     url: https://www.city.adachi.tokyo.jp/
 - id: katsushika_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（katsushika）
@@ -2240,7 +2240,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: katsushika ninkagai hoiku hojo
+  - ref: katsushika区 認可外保育施設利用者補助
     url: https://www.city.katsushika.lg.jp/
 - id: edogawa_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（edogawa）
@@ -2252,7 +2252,7 @@
   potential_amount: 20000
   status: supported
   statute:
-  - ref: edogawa ninkagai hoiku hojo
+  - ref: edogawa区 認可外保育施設利用者補助
     url: https://www.city.edogawa.tokyo.jp/
 - id: mijukuji_youiku_iryo
   name: 未熟児養育医療
@@ -2264,7 +2264,7 @@
   potential_amount: null
   status: supported
   statute:
-  - ref: Mother and Child Health Act Art.20
+  - ref: 母子保健法20条（未熟児養育医療）
     url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/
 - id: shounimansei_iryo_josei
   name: 小児慢性特定疾病医療費助成
@@ -3134,8 +3134,8 @@
   statute:
   - ref: 母子及び父子並びに寡婦福祉法13条
     url: https://laws.e-gov.go.jp/law/339AC0000000129/
-  - ref: 厚労省 母子父子寡婦福祉資金貸付金
-    url: https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyuufukin
+  - ref: こども家庭庁 ひとり親家庭等の支援
+    url: https://www.cfa.go.jp/policies/hitori-oya
 - id: rousai_ryouyou
   name: 労災保険 療養補償給付（治療費全額）
   layer: national
