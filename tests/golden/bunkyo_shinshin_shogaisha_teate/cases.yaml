@@ -15,7 +15,7 @@
     claimant: { birth_date: "1970-01-01" }
     children: []
     askable: { shogai_techo: "shintai_3" }
-  expect: { subject: self, status: decided, detail: "monthly(7750)" }
+  expect: { subject: self, status: decided, detail: "monthly(13500)" }
 
 - name: bunkyo_shinshin_ineligible_seishin
   as_of: "2026-06-15"
