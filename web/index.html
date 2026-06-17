@@ -376,7 +376,7 @@ function answerIncome(v){
 function yen(n){return n.toLocaleString("ja-JP")+"円";}
 function amountText(a){
   if(!a)return"";
-  if(a.type==="in_kind")return"医療費助成";
+  if(a.type==="in_kind")return"現物給付・費用助成";
   const unit={monthly:"月",oneoff:"一時金 ",yearly:"年"}[a.type]||"";
   if(a.yen_min!=null)return`${unit}${yen(a.yen_min)}〜${yen(a.yen_max)}`;
   return`${unit}${yen(a.yen)}`;
