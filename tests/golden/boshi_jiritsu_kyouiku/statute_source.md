@@ -1,4 +1,10 @@
 # ひとり親家庭自立支援教育訓練給付金
 
-- 母子及び父子並びに寡婦福祉法31条: https://hourei.net/law/339AC0000000129
-- 厚労省 母子家庭自立支援給付金: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
+- 母子及び父子並びに寡婦福祉法31条: https://laws.e-gov.go.jp/law/339AC0000000129/
+- こども家庭庁 自立支援教育訓練給付金: https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyuufukin
+
+## 支給要件（法31条・こども家庭庁公式より）
+- ひとり親家庭の母または父
+- 20歳未満の子を扶養
+- 指定教育訓練講座を受講・修了
+- 支給額: 受講費の60%（一般上限20万円、専門実践上限240万円）
