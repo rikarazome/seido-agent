@@ -7,7 +7,7 @@
     claimant: { birth_date: "1990-01-01" }
     children: []
     askable: { ninshin: true }
-  expect: { subject: self, status: decided, detail: "oneoff(730000)" }
+  expect: { subject: self, status: decided, detail: "oneoff(310000)" }
 - name: minato_ouen_ineligible
   as_of: "2026-06-15"
   facts:
