@@ -5,7 +5,7 @@
   facts:
     claimant: { birth_date: "1990-01-01" }
     children: [ { id: c1, birth_date: "2024-06-01" } ]
-  expect: { subject: c1, status: decided, detail: "monthly(20000)" }
+  expect: { subject: c1, status: decided, detail: "kubun(ninkagai_hojo)" }
 
 - name: suginami_ninkagai_ineligible
   as_of: "2026-06-15"

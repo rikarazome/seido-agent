@@ -1986,8 +1986,8 @@
   municipality: chiyoda
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: chiyoda区 認可外保育施設利用者補助
@@ -1998,8 +1998,8 @@
   municipality: chuo
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: chuo区 認可外保育施設利用者補助
@@ -2010,8 +2010,8 @@
   municipality: minato
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: minato区 認可外保育施設利用者補助
@@ -2022,8 +2022,8 @@
   municipality: shinjuku
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: shinjuku区 認可外保育施設利用者補助
@@ -2034,8 +2034,8 @@
   municipality: bunkyo
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: bunkyo区 認可外保育施設利用者補助
@@ -2046,8 +2046,8 @@
   municipality: taito
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: taito区 認可外保育施設利用者補助
@@ -2058,8 +2058,8 @@
   municipality: sumida
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: sumida区 認可外保育施設利用者補助
@@ -2070,8 +2070,8 @@
   municipality: koto
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: koto区 認可外保育施設利用者補助
@@ -2082,8 +2082,8 @@
   municipality: shinagawa
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: shinagawa区 認可外保育施設利用者補助
@@ -2094,8 +2094,8 @@
   municipality: meguro
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: meguro区 認可外保育施設利用者補助
@@ -2106,8 +2106,8 @@
   municipality: ota
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: ota区 認可外保育施設利用者補助
@@ -2118,8 +2118,8 @@
   municipality: setagaya
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: setagaya区 認可外保育施設利用者補助
@@ -2130,8 +2130,8 @@
   municipality: shibuya
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: shibuya区 認可外保育施設利用者補助
@@ -2142,8 +2142,8 @@
   municipality: nakano
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: nakano区 認可外保育施設利用者補助
@@ -2154,8 +2154,8 @@
   municipality: suginami
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: suginami区 認可外保育施設利用者補助
@@ -2166,8 +2166,8 @@
   municipality: toshima
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: toshima区 認可外保育施設利用者補助
@@ -2178,8 +2178,8 @@
   municipality: kita
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: kita区 認可外保育施設利用者補助
@@ -2190,8 +2190,8 @@
   municipality: arakawa
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: arakawa区 認可外保育施設利用者補助
@@ -2202,8 +2202,8 @@
   municipality: itabashi
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: itabashi区 認可外保育施設利用者補助
@@ -2214,8 +2214,8 @@
   municipality: nerima
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: nerima区 認可外保育施設利用者補助
@@ -2226,8 +2226,8 @@
   municipality: adachi
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: adachi区 認可外保育施設利用者補助
@@ -2238,8 +2238,8 @@
   municipality: katsushika
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: katsushika区 認可外保育施設利用者補助
@@ -2250,8 +2250,8 @@
   municipality: edogawa
   subject: child
   unit: per_child
-  amount_type: monthly
-  potential_amount: 20000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: edogawa区 認可外保育施設利用者補助
