@@ -147,7 +147,7 @@ def test_interview_flow_end_to_end():
         return r.json()
 
     resp = judge()
-    assert resp["headline"]["monthly_yen"] == 55000   # jidou_teate + 018 + ninkagai
+    assert resp["headline"]["monthly_yen"] == 35000   # jidou_teate + 018 (ninkagai is in_kind)
     assert resp["headline"]["oneoff_yen"] == 340000   # birthday + akachan + hajimete (c2) + bukka 2x20k
     assert resp["next_question"] is not None
 
