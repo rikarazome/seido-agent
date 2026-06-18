@@ -1710,8 +1710,8 @@
   municipality: chiyoda
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: chiyoda区 私立幼稚園等補助金
@@ -1722,8 +1722,8 @@
   municipality: chuo
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: chuo区 私立幼稚園等補助金
@@ -1734,8 +1734,8 @@
   municipality: minato
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: minato区 私立幼稚園等補助金
@@ -1746,8 +1746,8 @@
   municipality: shinjuku
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: shinjuku区 私立幼稚園等補助金
@@ -1758,8 +1758,8 @@
   municipality: bunkyo
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: bunkyo区 私立幼稚園等補助金
@@ -1770,8 +1770,8 @@
   municipality: taito
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: taito区 私立幼稚園等補助金
@@ -1782,8 +1782,8 @@
   municipality: sumida
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: sumida区 私立幼稚園等補助金
@@ -1794,8 +1794,8 @@
   municipality: koto
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: koto区 私立幼稚園等補助金
@@ -1806,8 +1806,8 @@
   municipality: shinagawa
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: shinagawa区 私立幼稚園等補助金
@@ -1818,8 +1818,8 @@
   municipality: meguro
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: meguro区 私立幼稚園等補助金
@@ -1830,8 +1830,8 @@
   municipality: ota
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: ota区 私立幼稚園等補助金
@@ -1842,8 +1842,8 @@
   municipality: setagaya
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: setagaya区 私立幼稚園等補助金
@@ -1854,8 +1854,8 @@
   municipality: shibuya
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: shibuya区 私立幼稚園等補助金
@@ -1866,8 +1866,8 @@
   municipality: nakano
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: nakano区 私立幼稚園等補助金
@@ -1878,8 +1878,8 @@
   municipality: suginami
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: suginami区 私立幼稚園等補助金
@@ -1890,8 +1890,8 @@
   municipality: toshima
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: toshima区 私立幼稚園等補助金
@@ -1902,8 +1902,8 @@
   municipality: kita
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: kita区 私立幼稚園等補助金
@@ -1914,8 +1914,8 @@
   municipality: arakawa
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: arakawa区 私立幼稚園等補助金
@@ -1926,8 +1926,8 @@
   municipality: itabashi
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: itabashi区 私立幼稚園等補助金
@@ -1938,8 +1938,8 @@
   municipality: nerima
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: nerima区 私立幼稚園等補助金
@@ -1950,8 +1950,8 @@
   municipality: adachi
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: adachi区 私立幼稚園等補助金
@@ -1962,8 +1962,8 @@
   municipality: katsushika
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: katsushika区 私立幼稚園等補助金
@@ -1974,8 +1974,8 @@
   municipality: edogawa
   subject: child
   unit: per_child
-  amount_type: yearly
-  potential_amount: 62000
+  amount_type: in_kind
+  potential_amount: null
   status: supported
   statute:
   - ref: edogawa区 私立幼稚園等補助金
