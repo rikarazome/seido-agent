@@ -58,8 +58,8 @@ def test_first_pass_shibuya_two_children():
     # shugaku_enjo now supported (hikazei-based), blocked on hikazei
     assert r["shibuya_shugaku_enjo"]["status"] == "blocked"
 
-    # headline: jidou_teate(25k) + 018(10k) = 35k monthly (ninkagai is in_kind, not counted)
-    # oneoff: birthday(100k) + akachan(100k) + hajimete(100k) = 300k
+    # headline: jidou_teate(25k) + 018(10k) = 35k monthly
+    # oneoff: birthday(100k) + akachan(100k) + hajimete(100k) + bukka(2x20k) = 340k
     assert resp["headline"]["monthly_yen"] == 35000
     assert resp["headline"]["oneoff_yen"] == 340000
 
