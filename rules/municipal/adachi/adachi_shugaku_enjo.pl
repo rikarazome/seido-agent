@@ -11,6 +11,8 @@
 
 school_age(C) :-
     child(C), age_nendo_matsu(C, A), A >= 6, A =< 15.
+elementary(C) :-
+    child(C), age_nendo_matsu(C, A), A >= 6, A =< 11.
 
 required_fact(P, hikazei, "non-taxable household") :-
     claimant(P), unknown(hikazei(P)).
@@ -25,6 +27,10 @@ kettei_status(P, C, blocked(Missing)) :-
     claimant(P), kango_by(C, P), child(C),
     findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
     Missing \= [], !.
-kettei_status(P, C, decided(kubun(shugaku_enjo))) :-
-    claimant(P), kango_by(C, P), child(C), yes(hikazei(P)), !.
+kettei_status(P, C, decided(yearly(65000))) :-
+    claimant(P), kango_by(C, P), child(C),
+    yes(hikazei(P)), elementary(C), !.
+kettei_status(P, C, decided(yearly(75000))) :-
+    claimant(P), kango_by(C, P), child(C),
+    yes(hikazei(P)), !.
 kettei_status(_, _, error(no_rule_matched)).

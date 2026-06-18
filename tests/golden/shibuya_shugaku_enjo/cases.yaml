@@ -1,15 +1,24 @@
-# 渋谷区就学援助 golden cases（statute_source.md）
-# subject: child, amount: yearly 15,000 (approx)
+# 渋谷区就学援助 golden cases
 # conditions: hikazei + FY-end age 6-15
+# amounts: elementary ~65K/yr, middle ~75K/yr (approx from Ota ward official)
 
-- name: enjo_decided
+- name: enjo_decided_elementary
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1985-01-01" }
     children:
-      - { id: c1, birth_date: "2017-06-01" }   # FY-end age 9 (sho3)
+      - { id: c1, birth_date: "2017-06-01" }   # FY-end age 9 (elementary)
     askable: { hikazei: true }
-  expect: { subject: c1, status: decided, detail: "kubun(shugaku_enjo)" }
+  expect: { subject: c1, status: decided, detail: "yearly(65000)" }
+
+- name: enjo_decided_middle
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1985-01-01" }
+    children:
+      - { id: c1, birth_date: "2013-06-01" }   # FY-end age 13 (middle school)
+    askable: { hikazei: true }
+  expect: { subject: c1, status: decided, detail: "yearly(75000)" }
 
 - name: enjo_ineligible_not_hikazei
   as_of: "2026-06-15"
@@ -54,13 +63,13 @@
     children:
       - { id: c1, birth_date: "2020-02-01" }   # FY-end age 6 (sho1)
     askable: { hikazei: true }
-  expect: { subject: c1, status: decided, detail: "kubun(shugaku_enjo)" }
+  expect: { subject: c1, status: decided, detail: "yearly(65000)" }
 
 - name: enjo_boundary_age15
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1985-01-01" }
     children:
-      - { id: c1, birth_date: "2012-02-01" }   # FY-end age 15 (chu3)
+      - { id: c1, birth_date: "2012-02-01" }   # FY-end age 14 (chu3)
     askable: { hikazei: true }
-  expect: { subject: c1, status: decided, detail: "kubun(shugaku_enjo)" }
+  expect: { subject: c1, status: decided, detail: "yearly(75000)" }

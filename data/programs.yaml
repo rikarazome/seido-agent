@@ -344,8 +344,8 @@
   municipality: shibuya
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 渋谷区 就学援助
@@ -906,8 +906,8 @@
   municipality: chiyoda
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 千代田区 就学援助
@@ -918,8 +918,8 @@
   municipality: chuo
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 中央区 就学援助
@@ -930,8 +930,8 @@
   municipality: minato
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 港区 就学援助
@@ -942,8 +942,8 @@
   municipality: shinjuku
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 新宿区 就学援助
@@ -954,8 +954,8 @@
   municipality: bunkyo
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 文京区 就学援助
@@ -966,8 +966,8 @@
   municipality: taito
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 台東区 就学援助
@@ -978,8 +978,8 @@
   municipality: sumida
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 墨田区 就学援助
@@ -990,8 +990,8 @@
   municipality: koto
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Koto区 就学援助
@@ -1002,8 +1002,8 @@
   municipality: shinagawa
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Shinagawa区 就学援助
@@ -1014,8 +1014,8 @@
   municipality: meguro
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: 目黒区 就学援助制度
@@ -1026,8 +1026,8 @@
   municipality: ota
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Ota区 就学援助
@@ -1038,8 +1038,8 @@
   municipality: setagaya
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Setagaya区 就学援助
@@ -1050,8 +1050,8 @@
   municipality: nakano
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Nakano区 就学援助
@@ -1062,8 +1062,8 @@
   municipality: suginami
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Suginami区 就学援助
@@ -1074,8 +1074,8 @@
   municipality: toshima
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Toshima区 就学援助
@@ -1086,8 +1086,8 @@
   municipality: kita
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Kita区 就学援助
@@ -1098,8 +1098,8 @@
   municipality: arakawa
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Arakawa区 就学援助
@@ -1110,8 +1110,8 @@
   municipality: itabashi
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Itabashi区 就学援助
@@ -1122,8 +1122,8 @@
   municipality: nerima
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Nerima区 就学援助
@@ -1134,8 +1134,8 @@
   municipality: adachi
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Adachi区 就学援助
@@ -1146,8 +1146,8 @@
   municipality: katsushika
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Katsushika区 就学援助
@@ -1158,8 +1158,8 @@
   municipality: edogawa
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: null
+  amount_type: yearly
+  potential_amount: 75000
   status: supported
   statute:
   - ref: Edogawa区 就学援助
