@@ -1436,7 +1436,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Shibuya区 ひとり親家庭住宅支援
     url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_sumai.html
@@ -1448,7 +1448,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Chiyoda区 ひとり親家庭住宅支援
     url: https://www.city.chiyoda.lg.jp/koho/machizukuri/sumai/jose/yachinjose.html
@@ -1460,7 +1460,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Shinjuku区 ひとり親家庭住宅支援
     url: https://www.city.shinjuku.lg.jp/seikatsu/file07_02_00001.html
@@ -1472,7 +1472,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Bunkyo区 ひとり親家庭住宅支援
     url: https://www.city.bunkyo.lg.jp/tetsuzuki/jutaku/sumairujyutaku/nyuukyosya.html
@@ -1484,7 +1484,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Koto区 ひとり親家庭住宅支援
     url: https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/96043.html
@@ -1496,7 +1496,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Meguro区 ひとり親家庭住宅支援
     url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/jidofuyoteate.html
@@ -1508,7 +1508,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Setagaya区 ひとり親家庭住宅支援
     url: https://www.city.setagaya.lg.jp/03665/3722.html
@@ -1520,7 +1520,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Nakano区 ひとり親家庭住宅支援
     url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/hitorioya/sumai/hitorioyazyuutakushien.html
@@ -1532,7 +1532,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Toshima区 ひとり親家庭住宅支援
     url: https://www.city.toshima.lg.jp/kosodate/kosodate/hitorioya/index.html
@@ -1544,7 +1544,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Kita区 ひとり親家庭住宅支援
     url: https://www.city.kita.lg.jp/children-edu/childcare/1002833/1002848/1016855.html
@@ -1556,7 +1556,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Ota区 ひとり親家庭住宅支援
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/shien/index.html
@@ -1568,7 +1568,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Suginami区 ひとり親家庭住宅支援
     url: https://www.city.suginami.tokyo.jp/s053/12441.html
@@ -1580,7 +1580,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Arakawa区 ひとり親家庭住宅支援
     url: https://www.city.arakawa.tokyo.jp/a035/kosodate/hitorioyakatei/hitorioyatenkyoshien.html
@@ -1592,7 +1592,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Itabashi区 ひとり親家庭住宅支援
     url: https://www.city.itabashi.tokyo.jp/kosodate/hitorioya/index.html
@@ -1604,7 +1604,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Nerima区 ひとり親家庭住宅支援
     url: https://www.city.nerima.tokyo.jp/kurashi/jinken/hitorioya/tentakushien.html
@@ -1616,7 +1616,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Adachi区 ひとり親家庭住宅支援
     url: https://www.city.adachi.tokyo.jp/k-kyoiku/kosodate/hitorioya/index.html
@@ -1628,7 +1628,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Edogawa区 ひとり親家庭住宅支援
     url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/iryohijose.html
@@ -1640,7 +1640,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Katsushika区 ひとり親家庭住宅支援
     url: https://www.city.katsushika.lg.jp/kosodate/1000056/1002341/index.html
@@ -1652,7 +1652,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Taito区 ひとり親家庭住宅支援
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/hitorioya/index.html
@@ -1664,7 +1664,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Sumida区 ひとり親家庭住宅支援
     url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/index.html
@@ -1676,7 +1676,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Shinagawa区 ひとり親家庭住宅支援
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/index.html
@@ -1688,7 +1688,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Minato区 ひとり親家庭住宅支援
     url: https://www.city.minato.tokyo.jp/kodomo/kodomo/hitorioya/
@@ -1700,7 +1700,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: supported
+  status: unsupported
   statute:
   - ref: Chuo区 ひとり親家庭住宅支援
     url: https://www.city.chuo.lg.jp/a0042/kurashi/sumai/koutekijuutaku/hitorioyajyutaku.html
