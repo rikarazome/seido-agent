@@ -13,6 +13,6 @@ kettei_status(P, C, error(structural_facts_missing)) :-
 kettei_status(P, C, ineligible(age_over)) :-
     claimant(P), kango_by(C, P), child(C),
     age_nendo_matsu(C, A), A > 1, !.
-kettei_status(P, C, decided(oneoff(20000))) :-
+kettei_status(P, C, decided(oneoff(10000))) :-
     claimant(P), kango_by(C, P), child(C), !.
 kettei_status(_, _, error(no_rule_matched)).

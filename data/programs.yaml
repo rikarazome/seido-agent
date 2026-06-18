@@ -1220,7 +1220,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 50000
-  status: supported
+  status: unsupported
   statute:
   - ref: Koto区 出産祝い金
     url: https://www.city.koto.lg.jp/260501/kodomo/ninshinshussan/ninshin/97552.html
@@ -1232,7 +1232,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 10000
-  status: supported
+  status: unsupported
   statute:
   - ref: Shinagawa区 子育て応援券
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
@@ -1256,7 +1256,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 30000
-  status: supported
+  status: unsupported
   statute:
   - ref: Adachi区 子育て応援手当
     url: https://www.city.adachi.tokyo.jp/oyako/bukkadakataiou_kosodateouenteate.html
@@ -1316,7 +1316,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: supported
+  status: unsupported
   statute:
   - ref: Shinjuku区 出産祝い金
     url: https://www.city.shinjuku.lg.jp/fukushi/syussan_kosodate_gift.html
@@ -1340,7 +1340,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: supported
+  status: unsupported
   statute:
   - ref: Ota区 出産応援事業
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/index.html
@@ -1352,7 +1352,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: supported
+  status: unsupported
   statute:
   - ref: Sumida区 出産祝い金
     url: https://www.city.sumida.lg.jp/kenko_fukushi/kenko/oyako_kenko/syussan_junbi_class/skogift.html
@@ -1400,7 +1400,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 30000
-  status: supported
+  status: unsupported
   statute:
   - ref: Arakawa区 出産祝い金
     url: https://www.city.arakawa.tokyo.jp/a033/kosodate/shussankosodate/shussankosodate.html
@@ -1412,7 +1412,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: supported
+  status: unsupported
   statute:
   - ref: 板橋区 妊婦のための支援給付
     url: https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1056054.html
@@ -1424,7 +1424,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 25000
-  status: supported
+  status: unsupported
   statute:
   - ref: Katsushika区 出産祝い金
     url: https://www.city.katsushika.lg.jp/kenkou/1000050/1001803/1030902.html

@@ -6,7 +6,7 @@
   facts:
     claimant: { birth_date: "1990-01-01" }
     children: [ { id: c1, birth_date: "2025-06-01" } ]
-  expect: { subject: c1, status: decided, detail: "oneoff(20000)" }
+  expect: { subject: c1, status: decided, detail: "oneoff(50000)" }
 - name: setagaya_ouen_ineligible_age
   as_of: "2026-06-15"
   facts:
