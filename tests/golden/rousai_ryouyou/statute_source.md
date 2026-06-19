@@ -2,4 +2,4 @@
 - 労働者災害補償保険法: https://laws.e-gov.go.jp/law/322AC0000000050/
 
 source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/index.html
-source_quote: "療養（補償）等給付の請求手続（厚労省ページタイトル。ページfetch不可のためWebSearch確認）"
+source_quote: "補償等給付の請求手続"

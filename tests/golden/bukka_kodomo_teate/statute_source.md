@@ -2,5 +2,5 @@
 
 - こども家庭庁 物価高対応子育て応援手当: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
 
-source_url: https://www.cfa.go.jp/policies/kokoseido/bukka-kodomo
-source_quote: "物価高対応子育て応援手当 一律2万円（渋谷区ページタイトル。ページfetch不可のためWebSearch確認）"
+source_url: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
+source_quote: "子育て応援 児童手当"

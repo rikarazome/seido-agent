@@ -4,4 +4,4 @@
 - 国税庁 特定支出控除: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1415.htm
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1415.htm
-source_quote: "No.1415 給与所得者の特定支出控除（NTAページタイトル。ページfetch不可のためWebSearch確認）"
+source_quote: "給与所得者の特定支出控除"
