@@ -64,5 +64,5 @@
     claimant: { birth_date: "1970-01-01" }
     children: [ { id: c1, birth_date: "2010-01-01" } ]
     askable: { shogai_techo: "shintai_1", seikatsu_hogo: false, fuyou_ninzu: 2, shotoku_exact: 3800000 }
-  expect: { subject: self, status: decided, detail: "monthly(28840)" }
-  # limit(2) = 3,604,000 + 760,000 = 4,364,000. shotoku 3,800,000 < limit
+  expect: { subject: self, status: decided, detail: "monthly(30450)" }
+  # limit(2) = 3,661,000 + 760,000 = 4,421,000. shotoku 3,800,000 < limit

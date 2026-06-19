@@ -196,8 +196,8 @@ def test_interview_flow_end_to_end():
     assert by["tokyo_jidou_ikusei_teate"]["status"] == "decided"
     assert by["shibuya_kodomo_iryouhi"]["status"] == "decided"
     # monthly: jidou_teate(25k) + jidou_fuyou(59.4k) + koto_kunren(70.5k)
-    #   + 018(10k) + jidou_ikusei(27k) + boshi_koutou(100k) = 291900
-    assert resp["headline"]["monthly_yen"] == 291900
+    #   + 018(10k) + jidou_ikusei(27k) = 191900 (boshi_koutou removed as duplicate)
+    assert resp["headline"]["monthly_yen"] == 191900
 
     # proof retrievable for a decided program (what the なぜ? button does)
     r = client.post("/api/proof", json={

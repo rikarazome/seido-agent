@@ -1,5 +1,5 @@
-# 千代田区次世代育成手当 golden cases（statute_source.md）
-# subject: child, amount: monthly 5,000. FY-end age 16-18, no income limit
+# 千代田区中高生世代応援手当 golden cases
+# subject: child, amount: monthly 15,000. FY-end age 12-18, no income limit
 
 - name: chiyoda_jisedai_decided
   as_of: "2026-06-15"
@@ -23,6 +23,14 @@
     claimant: { birth_date: "1980-01-01" }
     children:
       - { id: c1, birth_date: "2008-06-01" }   # FY-end age 18
+  expect: { subject: c1, status: decided, detail: "monthly(15000)" }
+
+- name: chiyoda_jisedai_age12_boundary
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children:
+      - { id: c1, birth_date: "2014-06-01" }   # FY-end age 12 (中1相当)
   expect: { subject: c1, status: decided, detail: "monthly(15000)" }
 
 - name: chiyoda_jisedai_ineligible_young
