@@ -2,3 +2,6 @@
 
 - 障害者総合支援法52条: https://laws.e-gov.go.jp/law/417AC0000000123
 - 厚労省 自立支援医療: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/index.html
+source_quote: "自立支援医療（更生医療）身体障害者の医療費自己負担を軽減"

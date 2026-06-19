@@ -14,3 +14,6 @@
 ## 現ルールでの判定
 - jutaku_loan=true（住宅ローンあり）で判定。租特法41条の主要要件に対応。
 - 所得・床面積の詳細要件は窓口確認を案内。
+
+source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm
+source_quote: "住宅借入金等特別控除として所得税額から控除される"

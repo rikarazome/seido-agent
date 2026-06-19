@@ -13,3 +13,6 @@
 ## 現ルールでの判定
 - ninshin=true + hoken_shubetsu=shakai_hoken を判定条件として使用
 - 両条件とも健康保険法102条の要件に直接対応
+
+source_url: https://www.kyoukaikenpo.or.jp/g6/cat620/r314/
+source_quote: "出産のため会社を休み、その間に給与の支払いを受けなかった場合に支給"

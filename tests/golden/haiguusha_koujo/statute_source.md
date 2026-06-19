@@ -13,3 +13,6 @@
 ## 現ルールでの判定
 - haiguusha=true（配偶者あり）で判定。所得税法83条の主要要件に対応。
 - 配偶者・本人の所得要件は現askableでは詳細チェック不可（窓口確認を案内）。
+
+source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1191.htm
+source_quote: "配偶者控除として一定の金額の所得控除を受けることができる"

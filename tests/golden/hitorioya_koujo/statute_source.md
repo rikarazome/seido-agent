@@ -2,3 +2,6 @@
 
 - 所得税法81条: https://laws.e-gov.go.jp/law/340AC0000000033/
 - 国税庁 ひとり親控除: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1171.htm
+
+source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1171.htm
+source_quote: "ひとり親控除として35万円の所得控除を受けることができる"

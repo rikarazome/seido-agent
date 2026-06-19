@@ -12,3 +12,6 @@
 ## 現ルールでの判定
 - shogai_techo の等級で判定。shintai_1/seishin_1→1級、shintai_2/seishin_2→2級
 - 障害年金の等級と手帳等級は厳密には異なるが、近似として使用
+
+source_url: https://www.syougainenkin-shien.com/amount_of_money2026
+source_quote: "1級 1,059,125円（月額 88,260円） 2級 847,300円（月額 70,608円）"

@@ -13,3 +13,6 @@
 ## 現ルールでの判定
 - iryouhi_10man=false（医療費10万円以下→医療費控除非該当）の場合にセルフメディケーション税制を案内
 - 医療費控除と排他的に判定（条文の選択適用規定に対応）
+
+source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1129.htm
+source_quote: "特定一般用医薬品等購入費を支払った場合に所得控除を受けることができる"

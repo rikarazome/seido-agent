@@ -2,3 +2,6 @@
 
 - 雇用保険法61条の2: https://hourei.net/law/349AC0000000116
 - ハローワーク 高年齢再就職給付金: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+
+source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+source_quote: "高年齢再就職給付金として賃金低下を補填"

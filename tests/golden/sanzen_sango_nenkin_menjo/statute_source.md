@@ -12,3 +12,6 @@
 
 ## 現ルールでの判定
 - ninshin=true（妊娠中）で判定。国民年金法88条の2の対象要件と直接対応。
+
+source_url: https://www.nenkin.go.jp/service/kokunen/menjo/20150428.html
+source_quote: "産前産後期間の国民年金保険料が免除される制度"

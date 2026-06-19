@@ -11,3 +11,6 @@
 
 ## 現ルールでの判定
 - claimant age 20-64 で判定。確定拠出年金法の加入資格年齢に対応。
+
+source_url: https://www.ideco-koushiki.jp/guide/structure.html
+source_quote: "掛金が全額所得控除の対象となる"

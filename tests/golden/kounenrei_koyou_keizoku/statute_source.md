@@ -2,3 +2,6 @@
 
 - 雇用保険法61条: https://hourei.net/law/349AC0000000116
 - ハローワーク 高年齢雇用継続給付: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+
+source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+source_quote: "高年齢雇用継続基本給付金として60歳以後の賃金低下を補填"

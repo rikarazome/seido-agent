@@ -13,3 +13,6 @@
 ## 現ルールでの判定
 - koyou_hoken=true + kaigo_family=true（介護休業中）を判定条件として使用
 - 両条件とも雇用保険法61条の4の要件に直接対応
+
+source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+source_quote: "介護休業給付金は家族を介護するための休業をした場合に支給"

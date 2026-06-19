@@ -11,3 +11,6 @@
 
 ## 現ルールでの判定
 - iryouhi_10man=true（年間医療費10万円超）で判定。所得税法73条の要件と直接対応。
+
+source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm
+source_quote: "その年の1月1日から12月31日までの間に自己又は生計を一にする配偶者等のために医療費を支払った場合に控除"

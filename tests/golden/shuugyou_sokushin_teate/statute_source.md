@@ -12,3 +12,6 @@
 ## 現ルールでの判定
 - koyou_hoken=true（雇用保険加入）を必要条件として判定
 - 実際には再就職手当受給+賃金低下が条件（情報提供としての判定）
+
+source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+source_quote: "再就職手当の支給を受けた方で再就職先での賃金が離職前の賃金より低い場合に支給"

@@ -12,3 +12,6 @@
 ## 現ルールでの判定
 - seikatsu_hogo=false（生活保護非受給＝住民税納税者）を必要条件として判定
 - 地方税法37条の2の「納税者」要件に対応
+
+source_url: https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html
+source_quote: "ふるさと納税を行い確定申告をすると所得税と住民税から控除される"

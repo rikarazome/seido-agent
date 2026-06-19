@@ -14,3 +14,6 @@
 ## 現ルールでの判定
 - koyou_hoken=true（雇用保険加入）を必要条件として判定
 - 被保険者期間の年数は現askableでは不可能（窓口確認を案内）
+
+source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+source_quote: "育児休業給付金は1歳未満の子を養育するために育児休業を取得した場合に支給"
