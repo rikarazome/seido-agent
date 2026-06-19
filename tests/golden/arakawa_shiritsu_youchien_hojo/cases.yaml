@@ -1,15 +1,30 @@
-# arakawa private kindergarten subsidy golden cases
+# 荒川区私立幼稚園等園児保護者補助金 golden cases
+# 条文: 3-5歳、入園料上限70,000円/年、保育料=所得応じ、給食費上限7,500円/月
 
-- name: arakawa_youchien_decided
+- name: arakawa_youchien_decided_age4
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
-    children: [ { id: c1, birth_date: "2022-06-01" } ]
+    children: [ { id: c1, birth_date: "2022-06-01" } ]   # FY-end age 4
   expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
 
-- name: arakawa_youchien_ineligible
+- name: arakawa_youchien_decided_age3
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
-    children: [ { id: c1, birth_date: "2018-06-01" } ]
+    children: [ { id: c1, birth_date: "2023-06-01" } ]   # FY-end age 3
+  expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
+
+- name: arakawa_youchien_ineligible_too_old
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2018-06-01" } ]   # FY-end age 8
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }
+
+- name: arakawa_youchien_ineligible_too_young
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2024-06-01" } ]   # FY-end age 2
   expect: { subject: c1, status: ineligible, detail: "not_target_age" }
