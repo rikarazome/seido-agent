@@ -14,3 +14,6 @@
 ## 現ルールでの簡略化
 - 収入基準・資産基準は世帯構成で変動するため、離職+非生活保護を必要条件として判定
 - 詳細な基準は窓口での確認を案内
+
+source_url: https://corona-support.mhlw.go.jp/jukyokakuhokyufukin/index.html
+source_quote: "市区町村ごとに定める額を上限に実際の家賃額を原則3か月間支給します"

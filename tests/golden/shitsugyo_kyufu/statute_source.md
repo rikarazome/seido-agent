@@ -13,3 +13,6 @@
 ## 現ルールでの判定
 - koyou_hoken=true（雇用保険に加入/加入していた）かつ rishoku=true（離職中）を必要条件として判定
 - 被保険者期間の詳細や給付制限期間はProlog判定の範囲外（窓口確認を案内）
+
+source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_basicbenefit.html
+source_quote: "雇用保険の被保険者の方が離職し、失業中の生活を心配しないで新しい仕事を探すために支給されるもの"

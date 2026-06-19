@@ -16,3 +16,6 @@
 - koyou_hoken=false（雇用保険非加入）かつ rishoku=true（離職中）を必要条件として判定
 - 本人収入基準・資産基準は世帯構成に依存するため現ルールでは簡略化
 - 金額: amount(100000) = 月10万円（条文通り）
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyushokusha_shien/index.html
+source_quote: "月10万円の生活支援の給付金を受給しながら、無料の職業訓練を受講する制度です"

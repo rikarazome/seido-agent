@@ -18,3 +18,6 @@
 
 注: 本制度は認定の有無のみで判定。認定プロセス（診断書→都道府県審査）は申請手続きの案内で補足。
 v1では自己負担上限額の算出は省略し、「医療費負担が軽減されます」とin_kindで案内。
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/nanbyou/index.html
+source_quote: "指定難病について、治療方法の確立等に資するため、医療費助成を行っている"

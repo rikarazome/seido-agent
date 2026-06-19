@@ -15,3 +15,6 @@
 ## 現ルールでの判定
 - hoken_shubetsu=shakai_hoken（社会保険加入）かつ byouki_kyugyou=true（4日以上休業中）
 - 両条件とも健康保険法99条の要件に直接対応
+
+source_url: https://www.kyoukaikenpo.or.jp/g6/cat620/r307/
+source_quote: "標準報酬月額を平均した額÷30日×（2/3）"
