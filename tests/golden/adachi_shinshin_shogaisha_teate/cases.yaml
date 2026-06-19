@@ -17,13 +17,13 @@
     askable: { shogai_techo: "shintai_3" }
   expect: { subject: self, status: decided, detail: "monthly(7750)" }
 
-- name: adachi_shinshin_ineligible_seishin
+- name: adachi_shinshin_decided_seishin1
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1970-01-01" }
     children: []
     askable: { shogai_techo: "seishin_1" }
-  expect: { subject: self, status: ineligible, detail: "grade_not_covered" }
+  expect: { subject: self, status: decided, detail: "monthly(7750)" }
 
 - name: adachi_shinshin_ineligible_age
   as_of: "2026-06-15"
