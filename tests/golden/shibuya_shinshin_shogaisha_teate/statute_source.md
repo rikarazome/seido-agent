@@ -22,4 +22,4 @@
 - seishin_1, seishin_2: 対象外（渋谷区は精神障害を本手当の対象としていない）
 
 source_url: https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/teate-nenkin/teate.html
-source_quote: "心身障害者福祉手当を支給"
+source_quote: "心身障害者福祉手当（区制度）"
