@@ -4,4 +4,4 @@
 - 国税庁 特定支出控除: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1415.htm
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1415.htm
-source_quote: "特定支出控除として給与所得控除額の半分を超える特定支出を控除"
+source_quote: "No.1415 給与所得者の特定支出控除（NTAページタイトル。ページfetch不可のためWebSearch確認）"

@@ -4,4 +4,4 @@ Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
 Source: suginami ward official site (unlicensed daycare subsidy page)
 
 source_url: https://www.city.suginami.tokyo.jp/s034/3844.html
-source_quote: "認可外保育施設等の保育料補助"
+source_quote: "認可外保育施設等の保育料補助（ページfetch不可のためWebSearch確認）"

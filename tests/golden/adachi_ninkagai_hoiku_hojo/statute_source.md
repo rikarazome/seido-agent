@@ -4,4 +4,4 @@ Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
 Source: adachi ward official site (unlicensed daycare subsidy page)
 
 source_url: https://www.city.adachi.tokyo.jp/hoiku/ninkagai-hojokin.html
-source_quote: "認可外保育施設等保育料助成"
+source_quote: "認可外保育施設等保育料助成（ページfetch不可のためWebSearch確認）"
