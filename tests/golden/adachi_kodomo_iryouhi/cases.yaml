@@ -27,6 +27,14 @@
   expect: { subject: c1, status: ineligible,
             detail: "'not covered by public health insurance'" }
 
+- name: adachi_ki_boundary_age18
+  as_of: "2026-06-12"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children: [ { id: c1, birth_date: "2008-06-01" } ]   # FY-end age 18 (still eligible)
+    askable: { kenkou_hoken: true }
+  expect: { subject: c1, status: decided, detail: "in_kind(jiko_futan_josei)" }
+
 - name: adachi_ki_overage_ineligible
   as_of: "2026-06-12"
   facts:
