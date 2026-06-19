@@ -3,5 +3,5 @@ Amount varies by ward, income, and subsidy method.
 Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
 Source: shibuya ward official site (unlicensed daycare subsidy page)
 
-source_url: https://www.city.shibuya.tokyo.jp/
-source_quote: "認可外保育施設の保育料を補助"
+source_url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hoiku-josei/hoikuryo_keigen.html
+source_quote: "認証保育所・認可外保育施設等の保育利用料軽減"
