@@ -1954,8 +1954,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: adachi区 私立幼稚園等補助金
-    url: https://www.city.adachi.tokyo.jp/
+  - ref: 足立区 私立幼稚園保護者補助金
+    url: https://www.city.adachi.tokyo.jp/kodomo-nyuuen/yochienhogoshahojokin2024.html
 - id: katsushika_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（katsushika）
   layer: municipal

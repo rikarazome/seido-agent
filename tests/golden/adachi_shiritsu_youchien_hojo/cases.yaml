@@ -1,15 +1,38 @@
-# adachi private kindergarten subsidy golden cases
+# 足立区私立幼稚園保護者補助金 golden cases
+# 条文: 3-5歳児（満3歳含む）、私立幼稚園等在園、所得制限なし
+# 金額: 移行園=月35,000円(国25,700+区9,300)、未移行園=別体系 → kubun
 
-- name: adachi_youchien_decided
+- name: adachi_youchien_decided_age4
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
-    children: [ { id: c1, birth_date: "2022-06-01" } ]
+    children: [ { id: c1, birth_date: "2022-06-01" } ]   # FY-end age 4
   expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
 
-- name: adachi_youchien_ineligible
+- name: adachi_youchien_decided_age3
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
-    children: [ { id: c1, birth_date: "2018-06-01" } ]
+    children: [ { id: c1, birth_date: "2023-06-01" } ]   # FY-end age 3
+  expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
+
+- name: adachi_youchien_decided_age5
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2021-06-01" } ]   # FY-end age 5
+  expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
+
+- name: adachi_youchien_ineligible_too_young
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2024-06-01" } ]   # FY-end age 2
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }
+
+- name: adachi_youchien_ineligible_too_old
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2018-06-01" } ]   # FY-end age 8
   expect: { subject: c1, status: ineligible, detail: "not_target_age" }

@@ -1,7 +1,26 @@
-# adachi private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: adachi ward official site (private kindergarten subsidy page)
+# 足立区私立幼稚園保護者補助金 — 出典固定
+
+**状態: VERIFIED（2026-06-20, 公式ページ直接読み取り）**
+
+| 項目 | 確定値 |
+|---|---|
+| 対象 | 3-5歳児（満3歳含む）、区内在住、私立幼稚園等在園 |
+| 移行園 | 保育料25,700円/月（国無償化）+ 特定負担額9,300円/月（都・区）= 月35,000円 |
+| 未移行園 | 保育料月額上限33,000円まで補助 |
+| 入園料 | 補助あり |
+| 所得制限 | なし |
+
+出典（公式ページ直接読み取り）:
+- 足立区公式: https://www.city.adachi.tokyo.jp/kodomo-nyuuen/yochienhogoshahojokin2024.html
+- 「補助対象経費35,000円＝【国】保育料25,700円《無償化》＋【都・区】特定負担額・その他学納金9,300円」
+- 「足立区内の新制度移行園（令和8年度：22園）」
+- 対象: 「3歳児…令和4年4月2日から令和5年4月1日生まれ」等
+
+ルールの条文対応:
+- age_nendo_matsu 3-5: 条文「3歳児・4歳児・5歳児」に対応 ✓
+- 所得制限なし: 条文と一致 ✓
+- kubun(youchien_hojo): 移行園/未移行園で金額が異なるためin_kind ✓
+- 私立幼稚園在園の判定: v1ではaskableになし。対象年齢の子がいれば案内 △
 
 source_url: https://www.city.adachi.tokyo.jp/kodomo-nyuuen/yochienhogoshahojokin2024.html
-source_quote: "私立幼稚園保護者補助金"
+source_quote: "私立幼稚園保護者補助金 補助対象経費35,000円"
