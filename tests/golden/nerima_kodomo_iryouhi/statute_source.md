@@ -18,4 +18,4 @@ data/ward_iryouhi_sources.yaml から生成する（手編集しない）。
 区内在住はフォームの居住自治体選択から暗黙に充足。
 
 source_url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/josei.html
-source_quote: "こどもの医療費の自己負担分を助成"
+source_quote: "子ども医療費の助成（マル乳・マル子・マル青）"

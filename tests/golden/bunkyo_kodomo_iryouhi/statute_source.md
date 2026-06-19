@@ -20,4 +20,4 @@ data/ward_iryouhi_sources.yaml から生成する（手編集しない）。
 区内在住はフォームの居住自治体選択から暗黙に充足。
 
 source_url: https://www.city.bunkyo.lg.jp/b022/p001459/index.html
-source_quote: "こどもの医療費の自己負担分を助成"
+source_quote: "こども医療費助成"
