@@ -2450,7 +2450,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 100000
-  status: supported
+  status: unsupported
   statute:
   - ref: 母子及び父子並びに寡婦福祉法31条の2
     url: https://hourei.net/law/339AC0000000129

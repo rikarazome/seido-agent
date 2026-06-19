@@ -13,3 +13,6 @@
 ## 現ルールでの判定
 - koyou_hoken=true（雇用保険に加入/加入していた）を必要条件として判定
 - 被保険者期間の年数チェックは現askableでは不可能（窓口確認を案内）
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
+source_quote: "教育訓練経費の20%（上限10万円）が訓練修了後に支給されます"

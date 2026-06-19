@@ -14,3 +14,6 @@
 - kenkou_hoken=true（健康保険加入）を必要条件として判定
 - 実際の利用は医療費が限度額を超えた場合のみ（情報提供としての判定）
 - amount_type: in_kind（現物給付＝還付）
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
+source_quote: "自己負担限度額を超えた部分が高額療養費として支給されます"

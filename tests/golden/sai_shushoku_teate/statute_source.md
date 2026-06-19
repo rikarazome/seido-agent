@@ -15,3 +15,6 @@
 ## 現ルールでの判定
 - koyou_hoken=true + rishoku=true を必要条件として判定
 - 離職中の人に「再就職すれば受給可能」として案内
+
+source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+source_quote: "基本手当の受給資格がある方が安定した職業に就いた場合に支給残日数の3分の1以上で支給"
