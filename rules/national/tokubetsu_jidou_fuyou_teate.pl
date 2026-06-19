@@ -49,10 +49,10 @@ kettei_status(P, C, ineligible(income_over)) :-
     claimant(P), kango_by(C, P), child(C),
     val(income(P), V), val(fuyou_ninzu(P), N),
     tokujif_limit(N, L), v_geq(V, L), !.
-kettei_status(P, C, decided(monthly(55350))) :-
+kettei_status(P, C, decided(monthly(58450))) :-
     claimant(P), kango_by(C, P), child(C),
     val(shogai_techo_child(C), G), taisho_1kyu(G), !.
-kettei_status(P, C, decided(monthly(36860))) :-
+kettei_status(P, C, decided(monthly(38930))) :-
     claimant(P), kango_by(C, P), child(C),
     val(shogai_techo_child(C), G), taisho_2kyu(G), !.
 kettei_status(_, _, error(no_rule_matched)).
