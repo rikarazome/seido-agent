@@ -1,7 +1,7 @@
 % kokumin_nenkin_menjo - National Pension Premium Exemption
 % Source: National Pension Act Art.90
 % zenmen: (N+1)*350000+320000, 3/4: 880000+380000*N, half: 1280000+380000*N, 1/4: 1680000+380000*N
-% N = fuyou_ninzu. 380000 per dependent is approximate (dependent deduction).
+% N = fuyou_ninzu. 380000/dep = general deduction; actual varies (tokutei 630K, roujin 480K).
 :- module(kokumin_nenkin_menjo, [kettei_status/3, required_fact/3]).
 
 zenmen_limit(N, L) :- integer(N), N >= 0, L is (N + 1) * 350000 + 320000.

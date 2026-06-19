@@ -1,7 +1,6 @@
 # 23区就学援助 -- ward data (shibuya already hand-implemented, excluded)
-# v1: hikazei-based eligibility, yearly 15,000 JPY (elementary base approx).
-# Actual amounts and criteria differ by ward; this is a conservative estimate.
-# VERIFIED 2026-06-15 (all wards have shugaku enjo programs)
+# LEGACY: original batch data. Rules now use elementary 65K / middle 75K (Ota ward official).
+# This file is not used at runtime.
 
 - { id: chiyoda,    name_ja: "chiyoda",    yen: 15000, ref: "Chiyoda shugaku enjo", url: "https://www.city.chiyoda.lg.jp/kosodate/gakko/enjo.html", verified: "2026-06-15" }
 - { id: chuo,       name_ja: "chuo",       yen: 15000, ref: "Chuo shugaku enjo", url: "https://www.city.chuo.lg.jp/a0016/kosodate/gakko/enjo.html", verified: "2026-06-15" }

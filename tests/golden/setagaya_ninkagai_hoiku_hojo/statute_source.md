@@ -1,4 +1,4 @@
 # setagaya unlicensed daycare subsidy -- source fixation
-**VERIFIED (2026-06-15)**
-Amount: approx 20000 JPY/month. FY-end age 0-5.
+Amount varies by ward, income, and subsidy method.
+Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
 Source: setagaya ward official site (unlicensed daycare subsidy page)

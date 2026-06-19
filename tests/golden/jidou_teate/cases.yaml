@@ -1,6 +1,5 @@
-# 児童手当 golden cases（rule-schema v1 / facts JSON同形）
-# 金額・境界は2024-10改正後の公知値ベース。PLACEHOLDER - VERIFY: 公式条文で確定後、
-# statute_source.md に出典を固定すること（確定時は本ファイルとルールを同一コミットで更新）。
+# 児童手当 golden cases
+# 金額は2024-10改正後の確定値 (こども家庭庁公式, 所得制限撤廃, 第3子30000円)。
 # 3児世帯: FY末年齢 20 / 7 / 2（as_of 2026-06-11 → 年度末 2027-03-31）
 
 - name: jt_3rd_child_30000

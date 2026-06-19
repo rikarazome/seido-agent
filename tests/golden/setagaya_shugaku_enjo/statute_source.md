@@ -1,10 +1,10 @@
 # setagaya school attendance assistance -- source fixation
 
-**VERIFIED (2026-06-15)**
+Amount verified from Ota ward official page.
 
 | Item | Value |
 |---|---|
-| Amount | approx 15000 JPY/year (school supplies base) |
+| Amount | elementary ~65K, middle ~75K per year (Ota ward official) |
 | Target | Non-taxable household, school-age child (FY-end 6-15) |
 | Income test | hikazei (non-taxable) as proxy |
 

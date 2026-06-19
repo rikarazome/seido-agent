@@ -1,4 +1,4 @@
 # bunkyo private kindergarten subsidy -- source fixation
-**VERIFIED (2026-06-15)**
-Amount: approx 62000 JPY/year. FY-end age 3-5. No income limit.
+Amount varies by ward and income bracket.
+Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
 Source: bunkyo ward official site (private kindergarten subsidy page)
