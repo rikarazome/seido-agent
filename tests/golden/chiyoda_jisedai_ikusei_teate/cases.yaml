@@ -7,7 +7,7 @@
     claimant: { birth_date: "1980-01-01" }
     children:
       - { id: c1, birth_date: "2009-06-01" }   # FY-end age 17
-  expect: { subject: c1, status: decided, detail: "monthly(5000)" }
+  expect: { subject: c1, status: decided, detail: "monthly(15000)" }
 
 - name: chiyoda_jisedai_age16_boundary
   as_of: "2026-06-15"
@@ -15,7 +15,7 @@
     claimant: { birth_date: "1980-01-01" }
     children:
       - { id: c1, birth_date: "2011-02-01" }   # FY-end age 16
-  expect: { subject: c1, status: decided, detail: "monthly(5000)" }
+  expect: { subject: c1, status: decided, detail: "monthly(15000)" }
 
 - name: chiyoda_jisedai_age18_boundary
   as_of: "2026-06-15"
@@ -23,7 +23,7 @@
     claimant: { birth_date: "1980-01-01" }
     children:
       - { id: c1, birth_date: "2008-06-01" }   # FY-end age 18
-  expect: { subject: c1, status: decided, detail: "monthly(5000)" }
+  expect: { subject: c1, status: decided, detail: "monthly(15000)" }
 
 - name: chiyoda_jisedai_ineligible_young
   as_of: "2026-06-15"
