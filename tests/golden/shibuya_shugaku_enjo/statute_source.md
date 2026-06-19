@@ -22,4 +22,4 @@ v1簡略化:
 - FY-end age 6-15を小中学生相当とする
 
 source_url: https://www.city.shibuya.tokyo.jp/kodomo/gakko-kyoiku/nyugaku-tennyu-shugaku/tetsuduki_g.html
-source_quote: "就学援助として学用品費・給食費等を援助"
+source_quote: "就学援助"
