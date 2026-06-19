@@ -1134,7 +1134,7 @@
   municipality: adachi
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
