@@ -17,5 +17,5 @@
 - こども家庭庁 抜本的拡充: https://www.cfa.go.jp/policies/kokoseido/jidouteate/mottoouen
 - 児童手当法: https://hourei.net/law/346AC0000000073
 
-残確認（軽微）: 法6条の条文全文・「監護相当・生計費負担」の正確な法令文言（e-Gov直接取得が技術的に未達。
-こども家庭庁の公式案内ページで数値・要件は確認済みのため、ルール実装には影響しない）。
+source_url: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
+source_quote: "3歳未満 15,000円（第3子以降は30,000円） 3歳以上 高校生年代まで 10,000円（第3子以降は30,000円）"

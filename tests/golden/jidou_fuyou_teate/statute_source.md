@@ -47,6 +47,7 @@
 - こども家庭庁 限度額資料（2024-07-31）: https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/71de338f-5ed2-4c95-9848-3fd387d0b4d7/fb86c8d8/20240731_policies_hitori-oya_fuyou-teate_17.pdf
 - R8年度額: 西宮市 https://www.nishi.or.jp/kosodate/teate/jidofuyoteate/2025_gakukaitei.html / R7年度: 江戸川区・神戸市・京田辺市（逓減式）
 
-**注意（残タスク）**: R8年度額はこども家庭庁サイト未掲載のため自治体公表値ベース。こども家庭庁/官報の
-掲載を確認したら本ファイルに追記する。所得定義: ハイブリッド方式で実装済み — nenshu は給与所得控除の概算変換（salary_to_shotoku、
-端数表・養育費・諸控除は省略の概算）、正確値は income_exact 質問 → shotoku_exact。
+**注意**: R8年度額は自治体公表値ベース（大田区公式）。
+
+source_url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/jidouteate/jidoufuyou.html
+source_quote: "手当額（令和8年4月分～） 対象児童1人 48,050円 48,040円から11,340円 対象児童2人以上 1人につき 11,350円加算 11,340円から5,680円加算"
