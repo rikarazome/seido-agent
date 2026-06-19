@@ -2221,17 +2221,17 @@
   - ref: nerima区 認可外保育施設利用者補助
     url: https://www.city.nerima.tokyo.jp/
 - id: adachi_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（adachi）
+  name: 認可外保育施設保育料補助（adachi）
   layer: municipal
   municipality: adachi
   subject: child
   unit: per_child
-  amount_type: in_kind
-  potential_amount: 240000
+  amount_type: monthly
+  potential_amount: 80000
   status: supported
   statute:
-  - ref: adachi区 認可外保育施設利用者補助
-    url: https://www.city.adachi.tokyo.jp/
+  - ref: 足立区 認可外保育施設の保育料補助
+    url: https://www.city.adachi.tokyo.jp/kodomo-nyuuen/ninnkagai_teikiriyou.html
 - id: katsushika_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（katsushika）
   layer: municipal

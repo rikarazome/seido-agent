@@ -1,15 +1,43 @@
-# adachi unlicensed daycare subsidy golden cases
+# 足立区認可外保育施設保育料補助 golden cases
+# 条文: 0-2歳=月80,000円、3-5歳=月77,000円
+# Source: city.adachi.tokyo.jp/kodomo-nyuuen/ninnkagai_teikiriyou.html
 
-- name: adachi_ninkagai_decided
+- name: adachi_ninkagai_age1_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2025-06-01" } ]   # FY-end age 1
+    askable: { hikazei: true }
+  expect: { subject: c1, status: decided, detail: "monthly(80000)" }
+
+- name: adachi_ninkagai_age4_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2022-06-01" } ]   # FY-end age 4
+    askable: { hikazei: false }
+  expect: { subject: c1, status: decided, detail: "monthly(77000)" }
+
+- name: adachi_ninkagai_age0_decided
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2026-03-01" } ]   # FY-end age 0
+    askable: { hikazei: false }
+  expect: { subject: c1, status: decided, detail: "monthly(80000)" }
+
+- name: adachi_ninkagai_ineligible_age
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2018-06-01" } ]   # FY-end age 8
+    askable: { hikazei: true }
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }
+
+- name: adachi_ninkagai_blocked
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
     children: [ { id: c1, birth_date: "2024-06-01" } ]
-  expect: { subject: c1, status: decided, detail: "kubun(ninkagai_hojo)" }
-
-- name: adachi_ninkagai_ineligible
-  as_of: "2026-06-15"
-  facts:
-    claimant: { birth_date: "1990-01-01" }
-    children: [ { id: c1, birth_date: "2018-06-01" } ]
-  expect: { subject: c1, status: ineligible, detail: "not_target_age" }
+    askable: {}
+  expect: { subject: c1, status: blocked, detail: "[hikazei]" }

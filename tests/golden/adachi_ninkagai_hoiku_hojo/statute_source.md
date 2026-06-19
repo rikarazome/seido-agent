@@ -1,7 +1,23 @@
-# adachi unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: adachi ward official site (unlicensed daycare subsidy page)
+# 足立区認可外保育施設保育料補助（定期利用補助金）— 出典固定
+
+**状態: VERIFIED（2026-06-20, 公式ページ直接読み取り）**
+
+| 区分 | 本制度 | 施設等利用費 | 合計/月 |
+|---|---|---|---|
+| 0-2歳 課税世帯 | 80,000円 | 対象外 | 80,000円 |
+| 0-2歳 非課税世帯 | 38,000円 | 42,000円 | 80,000円 |
+| 3-5歳 | 40,000円 | 37,000円 | 77,000円 |
+
+出典（公式ページ直接読み取り）:
+- 足立区公式: https://www.city.adachi.tokyo.jp/kodomo-nyuuen/ninnkagai_teikiriyou.html
+- 「０から２歳児クラス 住民税課税世帯 80,000円」
+- 「３から５歳児クラス 住民税問わず 40,000円 37,000円 77,000円」
+
+ルールの条文対応:
+- age 0-2: monthly(80000) — 合計額（本制度+施設等利用費）✓
+- age 3-5: monthly(77000) — 合計額 ✓
+- age > 5: ineligible ✓
+- v1簡略化: 課税/非課税の内訳は異なるが合計額は同じ(80000)のため分岐不要
 
 source_url: https://www.city.adachi.tokyo.jp/kodomo-nyuuen/ninnkagai_teikiriyou.html
-source_quote: "認可外保育施設の保育料補助について（定期利用補助金）（WebSearch確認。足立区サイト翻訳ゲートウェイによりPlaywright不可）"
+source_quote: "認可外保育施設の保育料補助について 0-2歳80,000円 3-5歳77,000円"
