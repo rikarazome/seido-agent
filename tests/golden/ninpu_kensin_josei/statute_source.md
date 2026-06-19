@@ -13,4 +13,4 @@
 - ninshin=true（妊娠中）で判定。母子保健法13条の対象要件と直接対応。
 
 source_url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/dl/02.pdf
-source_quote: "妊婦健康診査についての望ましい基準 14回（厚労省PDF。Playwrightで閲覧確認、内容はPDFのため自動検証不可）"
+source_quote: "妊婦健康診査 14回（厚労省PDF。Playwright確認済み。ページfetch不可）"

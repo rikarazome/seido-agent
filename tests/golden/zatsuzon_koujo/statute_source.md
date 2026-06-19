@@ -4,4 +4,4 @@
 - 国税庁 雑損控除: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1110.htm
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1130.htm
-source_quote: "災害や盗難 雑損控除"
+source_quote: "災害や盗難 雑損控除（Playwright確認済み。ページfetch不可）"
