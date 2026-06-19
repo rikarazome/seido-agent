@@ -46,7 +46,7 @@ kettei_status(P, C, ineligible(income_over)) :-
     val(shogai_techo_child(C), shintai_1),
     val(income(P), V), val(fuyou_ninzu(P), N),
     shofuku_limit(N, L), v_geq(V, L), !.
-kettei_status(P, C, decided(monthly(15690))) :-
+kettei_status(P, C, decided(monthly(16560))) :-
     claimant(P), kango_by(C, P), child(C),
     val(shogai_techo_child(C), shintai_1),
     val(income(P), V), val(fuyou_ninzu(P), N),

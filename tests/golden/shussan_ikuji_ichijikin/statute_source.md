@@ -20,3 +20,6 @@
 
 注: 妊娠4か月以上という詳細条件はv1では省略（妊娠中=trueで受給資格ありとする安全側判定）。
 産科医療補償制度の加入/未加入による金額差（500,000 vs 488,000）もv1では500,000固定。
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/index.html
+source_quote: "お子さん１人につき原則50万円がご加入の保険者から支給される制度です"

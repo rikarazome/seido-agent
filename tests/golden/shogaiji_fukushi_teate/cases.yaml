@@ -10,7 +10,7 @@
     children:
       - { id: c1, birth_date: "2015-01-01", askable: { shogai_techo_child: "shintai_1" } }
     askable: { fuyou_ninzu: 1, shotoku_exact: 4000000 }
-  expect: { subject: c1, status: decided, detail: "monthly(15690)" }
+  expect: { subject: c1, status: decided, detail: "monthly(16560)" }
 
 - name: shofuku_ineligible_shintai2
   as_of: "2026-06-15"
