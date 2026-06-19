@@ -2,5 +2,5 @@
 
 - 東京都シルバーパス条例: https://www.fukushi.metro.tokyo.lg.jp/kourei/shisaku/silverpass.html
 
-source_url: https://www.seikatubunka.metro.tokyo.lg.jp/chiiki_tabunka/chiiki_katsudo/tabunkakyosei/0000000651/
+source_url: https://www.kotsu.metro.tokyo.jp/bus/fare/silver.html
 source_quote: "シルバーパス"
