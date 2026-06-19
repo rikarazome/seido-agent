@@ -19,7 +19,10 @@
 
 ## 開発ループ（厳守）
 
-1. **新制度の追加手順**: statute_source.md（出典固定）→ cases.yaml（golden先行・8件目安）→ ルール実装 → pytest緑 → programs.yaml の status を supported に昇格 → commit
+1. **新制度の追加手順**: statute_source.md（出典固定、source_url + source_quote必須）→ cases.yaml（golden先行・8件目安）→ ルール実装 → pytest緑 → programs.yaml の status を supported に昇格 → commit
+   - source_quoteは公式ページから直接読み取ったテキスト（テンプレート文禁止）
+   - ページfetch不可の場合は「（ページfetch不可のためWebSearch確認）」と明記
+   - `pytest -m verify_sources` で全URLのquote存在を自動検証
 2. **既存テストを書き換えて通すことを禁止**。期待値の変更は条文出典の変更とセットでのみ可（コミットメッセージに理由必須）
 3. ルールの意味論に触る変更は prolog-reasoner で先に検証し、rule-schema.md の検証済みパターン表を更新
 4. プレースホルダ数値は `PLACEHOLDER - VERIFY` 併記必須。公式数値確定時は cases / rules / factgen を**同一コミット**で更新

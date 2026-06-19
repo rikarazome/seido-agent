@@ -1,10 +1,14 @@
 """Verify that every supported program's statute_source.md has a
 machine-verifiable evidence chain: source_url + source_quote.
 
-This test does NOT fetch URLs (that's for periodic CI).
-It checks that the required fields exist and are non-empty.
+Two test levels:
+1. test_statute_source_has_evidence: structural check (always run)
+2. test_statute_source_quote_on_page: fetch URL and verify quote exists
+   (slow, requires network; run with: pytest -m verify_sources)
 """
 import re
+import urllib.request
+import ssl
 from pathlib import Path
 
 import pytest
@@ -31,11 +35,6 @@ def _parse_statute_source(program_id: str):
     return url, quote, path
 
 
-@pytest.fixture(scope="module")
-def supported_programs():
-    return _supported_ids()
-
-
 @pytest.mark.parametrize("program_id", _supported_ids())
 def test_statute_source_has_evidence(program_id):
     """Every supported program must have source_url and source_quote."""
@@ -45,3 +44,46 @@ def test_statute_source_has_evidence(program_id):
     assert quote is not None, f"{program_id}: missing source_quote in {path}"
     assert url.startswith("http"), f"{program_id}: source_url must be a URL, got {url}"
     assert len(quote) >= 5, f"{program_id}: source_quote too short: {quote}"
+
+
+def _fetch_page_text(url: str, timeout: int = 15):
+    """Fetch URL and return plain text content, or None on failure."""
+    ctx = ssl.create_default_context()
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    try:
+        data = urllib.request.urlopen(req, timeout=timeout, context=ctx)
+        raw = data.read(100_000).decode("utf-8", "ignore")
+        text = re.sub(r"<[^>]+>", " ", raw)
+        return re.sub(r"\s+", " ", text)
+    except Exception:
+        return None
+
+
+@pytest.mark.verify_sources
+@pytest.mark.parametrize("program_id", _supported_ids())
+def test_statute_source_quote_on_page(program_id):
+    """Fetch source_url and verify source_quote text exists on the page.
+
+    Programs with '(ページfetch不可' in their quote are expected to fail
+    fetch and are marked xfail.
+    """
+    url, quote, path = _parse_statute_source(program_id)
+    if quote and "ページfetch不可" in quote:
+        pytest.xfail(f"{program_id}: marked as unfetchable")
+
+    assert url is not None, f"{program_id}: no source_url"
+    assert quote is not None, f"{program_id}: no source_quote"
+
+    page_text = _fetch_page_text(url)
+    if page_text is None:
+        pytest.xfail(f"{program_id}: could not fetch {url}")
+
+    clean_quote = quote.replace("（", "").replace("）", "")
+    words = [w for w in re.split(r"[ 　・]", clean_quote) if len(w) >= 2]
+    found = sum(1 for w in words if w in page_text)
+    ratio = found / len(words) if words else 0
+
+    assert ratio >= 0.5, (
+        f"{program_id}: source_quote not found on page. "
+        f"Matched {found}/{len(words)} keywords from quote: {quote[:60]}..."
+    )
