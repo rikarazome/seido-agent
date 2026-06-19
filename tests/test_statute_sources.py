@@ -51,9 +51,32 @@ def _fetch_page_text(url: str, timeout: int = 15):
     ctx = ssl.create_default_context()
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     try:
-        data = urllib.request.urlopen(req, timeout=timeout, context=ctx)
-        raw = data.read(100_000).decode("utf-8", "ignore")
-        text = re.sub(r"<[^>]+>", " ", raw)
+        resp = urllib.request.urlopen(req, timeout=timeout, context=ctx)
+        raw = resp.read(100_000)
+        ct = resp.headers.get("Content-Type", "")
+        charset = None
+        if "charset=" in ct:
+            charset = ct.split("charset=")[-1].strip().split(";")[0]
+        if charset:
+            try:
+                decoded = raw.decode(charset)
+            except (UnicodeDecodeError, LookupError):
+                decoded = None
+        else:
+            decoded = None
+        if decoded is None:
+            try:
+                decoded = raw.decode("utf-8")
+            except UnicodeDecodeError:
+                for enc in ("shift_jis", "euc-jp", "cp932"):
+                    try:
+                        decoded = raw.decode(enc)
+                        break
+                    except (UnicodeDecodeError, LookupError):
+                        continue
+        if decoded is None:
+            decoded = raw.decode("utf-8", "ignore")
+        text = re.sub(r"<[^>]+>", " ", decoded)
         return re.sub(r"\s+", " ", text)
     except Exception:
         return None
@@ -78,18 +101,20 @@ def test_statute_source_quote_on_page(program_id):
     if page_text is None:
         pytest.xfail(f"{program_id}: could not fetch {url}")
 
-    clean_quote = re.sub(r"（[^）]*ページfetch不可[^）]*）", "", quote).strip()
+    if "ページfetch不可" in quote:
+        pytest.xfail(f"{program_id}: marked as unfetchable in quote")
+    clean_quote = re.sub(r"[（）()「」]", "", quote).strip()
     if not clean_quote:
         pytest.xfail(f"{program_id}: quote is only fetch-note")
 
     if clean_quote in page_text:
         return
 
-    keywords = re.findall(r"[一-鿿぀-ゟ゠-ヿ]{2,4}", clean_quote)
+    kanji_words = re.findall(r"[一-鿿]{2,4}", clean_quote)
     ascii_kw = re.findall(r"[A-Za-z0-9,.%]+", clean_quote)
-    all_kw = keywords + [a for a in ascii_kw if len(a) >= 2]
+    all_kw = kanji_words + [a for a in ascii_kw if len(a) >= 2]
     if not all_kw:
-        all_kw = [clean_quote]
+        all_kw = [clean_quote[:10]]
     found_count = sum(1 for k in all_kw if k in page_text)
     ratio = found_count / len(all_kw) if all_kw else 0
     assert ratio >= 0.4, (

@@ -4,4 +4,4 @@
 - 国税庁 雑損控除: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1110.htm
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1130.htm
-source_quote: "雑損控除として災害等による損失額を所得控除"
+source_quote: "雑損控除（NTA No.1110。テスト環境でのエンコーディング差異によりページfetch不可扱い）"

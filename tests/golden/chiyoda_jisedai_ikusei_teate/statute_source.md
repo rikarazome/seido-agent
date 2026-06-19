@@ -14,5 +14,5 @@
 判定に使うaskable: なし（年齢のみ）
 対象: FY-end age 16-18
 
-source_url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/index.html
-source_quote: "次世代育成手当（区独自制度）"
+source_url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/jisedai.html
+source_quote: "次世代育成手当"

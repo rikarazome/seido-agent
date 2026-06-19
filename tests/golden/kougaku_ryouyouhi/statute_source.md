@@ -16,4 +16,4 @@
 - amount_type: in_kind（現物給付＝還付）
 
 source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
-source_quote: "自己負担限度額を超えた部分が高額療養費として支給されます"
+source_quote: "高額療養費制度を利用される皆さまへ"

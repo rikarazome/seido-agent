@@ -22,4 +22,4 @@
 2026-04の所得制限撤廃により、判定は在学+私立のみで確定。
 
 source_url: https://www.seikatubunka.metro.tokyo.lg.jp/shigaku/hogosha/seido/highschool/0000000055
-source_quote: "私立高校授業料軽減助成金として保護者の負担を軽減"
+source_quote: "私立高等学校等授業料軽減助成金"

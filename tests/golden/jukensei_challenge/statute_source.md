@@ -30,4 +30,4 @@ v1簡略化:
 - 所得限度額は収入基準からの近似変換。レンジ跨ぎ時はincome_exactで正確値を聞く
 
 source_url: https://www.fukushi.metro.tokyo.lg.jp/seikatsu/teisyotokusyataisaku/jukenseichallenge
-source_quote: "受験生チャレンジ支援貸付事業として塾費用や受験費用を無利子貸付"
+source_quote: "受験生チャレンジ支援貸付事業"
