@@ -19,5 +19,5 @@
 - 現在年齢2歳以上は受給時機を経過したものとして非該当（理由付き）
 - **FY2026以降生まれは「金額未定」を理由とする非該当扱い**（R9年度以降未定が公式情報。確定し次第ルール更新=二重ループの実演素材）
 
-source_url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/kodomo-teate/birthday_support.html
-source_quote: "バースデーサポートとして10万円相当のギフトを支給"
+source_url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/birthday_support.html
+source_quote: "バースデーサポート事業"

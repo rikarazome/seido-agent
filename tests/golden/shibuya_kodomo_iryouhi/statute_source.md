@@ -16,5 +16,5 @@
 公式ページの記載に所得要件が現れない事実に基づき「制限なし」で形式化している。
 区内在住はフォームの居住自治体選択から暗黙に充足。
 
-source_url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/kodomo-iryo-josei/kodomo_iryo.html
-source_quote: "子ども医療費助成として医療費の自己負担を助成"
+source_url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/iryo-josei/kodomo_ij.html
+source_quote: "子ども医療費助成"

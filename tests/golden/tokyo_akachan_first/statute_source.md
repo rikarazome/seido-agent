@@ -20,5 +20,5 @@
 面談要件は判定対象外（申請手続きの案内で補足）。
 v1では年度末年齢0歳（=出生年度内）の子を対象とする。
 
-source_url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/tomin-ouen.html
-source_quote: "赤ちゃんファーストとして10万円相当のギフトを支給"
+source_url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/shussan/tokyo_shussankosodateouen
+source_quote: "東京都出産・子育て応援事業 赤ちゃんファースト"
