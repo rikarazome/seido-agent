@@ -15,4 +15,4 @@
 - 配偶者・本人の所得要件は現askableでは詳細チェック不可（窓口確認を案内）。
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1191.htm
-source_quote: "配偶者控除として一定の金額の所得控除を受けることができる"
+source_quote: "No.1191 配偶者控除 納税者に所得税法上の控除対象配偶者がいる場合"

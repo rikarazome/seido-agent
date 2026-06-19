@@ -12,4 +12,4 @@
 - jishin_hoken=true（地震保険加入）で判定。所得税法77条の要件と直接対応。
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1145.htm
-source_quote: "地震保険料控除として一定の金額の所得控除を受けることができる"
+source_quote: "No.1145 地震保険料控除 納税者が特定の損害保険契約等に係る地震等損害部分の保険料を支払った場合"

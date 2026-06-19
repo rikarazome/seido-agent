@@ -4,4 +4,4 @@
 - 国税庁 ひとり親控除: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1171.htm
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1171.htm
-source_quote: "ひとり親控除として35万円の所得控除を受けることができる"
+source_quote: "No.1171 ひとり親控除 納税者がひとり親であるとき"

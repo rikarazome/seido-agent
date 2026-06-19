@@ -15,4 +15,4 @@
 - 医療費控除と排他的に判定（条文の選択適用規定に対応）
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1129.htm
-source_quote: "特定一般用医薬品等購入費を支払った場合に所得控除を受けることができる"
+source_quote: "No.1129 特定一般用医薬品等購入費を支払ったとき 12,000円を差し引いた金額（最高88,000円）"

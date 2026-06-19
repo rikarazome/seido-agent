@@ -14,4 +14,4 @@
 - 地方税法37条の2の「納税者」要件に対応
 
 source_url: https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html
-source_quote: "ふるさと納税を行い確定申告をすると所得税と住民税から控除される"
+source_quote: "寄附額のうち2,000円を越える部分について所得税と住民税から原則として全額が控除される制度"

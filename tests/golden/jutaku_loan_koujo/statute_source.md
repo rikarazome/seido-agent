@@ -16,4 +16,4 @@
 - 所得・床面積の詳細要件は窓口確認を案内。
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm
-source_quote: "住宅借入金等特別控除として所得税額から控除される"
+source_quote: "No.1211-1 住宅の新築等をし令和4年以降に居住の用に供した場合（住宅借入金等特別控除）"

@@ -12,4 +12,4 @@
 - seimei_hoken=true（生命保険加入）で判定。所得税法76条の要件と直接対応。
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm
-source_quote: "生命保険料控除として一定の金額の所得控除を受けることができる"
+source_quote: "No.1140 生命保険料控除 納税者が生命保険料、介護医療保険料及び個人年金保険料を支払った場合"
