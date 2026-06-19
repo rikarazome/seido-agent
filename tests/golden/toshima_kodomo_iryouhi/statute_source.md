@@ -18,3 +18,6 @@
 このファイルと cases.yaml・ルールは scripts/gen_ward_iryouhi.py が
 data/ward_iryouhi_sources.yaml から生成する（手編集しない）。
 区内在住はフォームの居住自治体選択から暗黙に充足。
+
+source_url: https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/015729.html
+source_quote: "こどもの医療費の自己負担分を助成"

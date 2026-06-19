@@ -14,3 +14,6 @@
 - child, age_nendo_matsu <= 1 で判定（概ね正確）
 - 生活保護・保育園入所のチェックは現ルールでは省略
 - 金額: monthly(13000) は条文通り
+
+source_url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/youiku.html
+source_quote: "乳児養育手当を支給"

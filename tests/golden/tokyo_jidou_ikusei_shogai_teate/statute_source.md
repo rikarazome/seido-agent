@@ -13,3 +13,6 @@ Source: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/zidouikuseit
 
 v1: shintai_1, shintai_2, ryoiku as proxy. seishin covered but simplified.
 Uses per-child askable shogai_techo_child.
+
+source_url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/jidoikuseiteate.html
+source_quote: "児童育成手当として児童1人につき月額13,500円を支給"

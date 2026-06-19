@@ -20,3 +20,6 @@
 - ryoiku: 15,500円/月（1-3度。v1では療育手帳=対象と簡略化）
 - shintai_3: 7,750円/月
 - seishin_1, seishin_2: 対象外（渋谷区は精神障害を本手当の対象としていない）
+
+source_url: https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/teate-nenkin/teate.html
+source_quote: "心身障害者福祉手当を支給"

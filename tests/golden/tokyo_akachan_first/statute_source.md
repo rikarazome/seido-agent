@@ -19,3 +19,6 @@
 注: 都内在住要件は東京都制度共通の前提（自治体選択で充足）。
 面談要件は判定対象外（申請手続きの案内で補足）。
 v1では年度末年齢0歳（=出生年度内）の子を対象とする。
+
+source_url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/tomin-ouen.html
+source_quote: "赤ちゃんファーストとして10万円相当のギフトを支給"

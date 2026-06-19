@@ -22,3 +22,6 @@
 
 注: 本手当は東京都独自。「重度心身障害」の判定は実際は都の認定が必要。
 v1ではshintai_1を目安とし、「都の認定が必要です」と案内。
+
+source_url: https://www.fukushi.metro.tokyo.lg.jp/shisetsu/jigyosyo/shinsho/teate/juudo
+source_quote: "東京都重度心身障害者手当として月額60,000円を支給"

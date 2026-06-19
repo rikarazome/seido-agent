@@ -8,3 +8,6 @@
 - 20歳未満の子を扶養
 - 指定教育訓練講座を受講・修了
 - 支給額: 受講費の60%（一般上限20万円、専門実践上限240万円）
+
+source_url: https://www.city.edogawa.tokyo.jp/e090/kosodate/kosodate/teateshien/shisaku/kyufukin.html
+source_quote: "支給額の上限は200,000円です"

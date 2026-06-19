@@ -26,3 +26,6 @@
 - seishin_1 → 対象
 - shintai_3, seishin_2 → 対象外
 - false（手帳なし）→ 対象外
+
+source_url: https://www.fukushi.metro.tokyo.lg.jp/shisetsu/jigyosyo/shinsho/teate/shinshiniryou.html
+source_quote: "心身障害者医療費助成制度として医療費の自己負担分を助成"

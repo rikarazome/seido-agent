@@ -5,3 +5,6 @@
 
 ## Conditions
 income limit (shotoku-based)
+
+source_url: https://www.nenkin.go.jp/service/kokunen/menjo/20150428.html
+source_quote: "全額免除 (扶養親族等の数+1)×35万円+32万円以下"

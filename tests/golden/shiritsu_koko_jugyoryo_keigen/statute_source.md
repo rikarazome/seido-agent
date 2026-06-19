@@ -20,3 +20,6 @@
 注: 国の就学支援金（kouko_shugaku_shienkin）は別制度。本制度は東京都の上乗せ。
 金額は学校により異なるため、v1では最大額484,000円で表示（実際の授業料が下回る場合あり）。
 2026-04の所得制限撤廃により、判定は在学+私立のみで確定。
+
+source_url: https://www.seikatubunka.metro.tokyo.lg.jp/shigaku/hogosha/seido/highschool/0000000055
+source_quote: "私立高校授業料軽減助成金として保護者の負担を軽減"

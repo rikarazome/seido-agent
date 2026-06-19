@@ -18,3 +18,6 @@ v1スコープの簡略化:
 - 老人扶養（+480,000円）・特定扶養（+630,000円）の加算特例は未モデル化（goldenは該当しない世帯のみ。
   形式化時の既知の縮小として明記）
 - 所得は児童扶養手当と同じ `income(P)` を流用（養育費algorithm差は所得変換実装時に分離する）
+
+source_url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/jidoikuseiteate.html
+source_quote: "児童1人につき月額13,500円を支給"

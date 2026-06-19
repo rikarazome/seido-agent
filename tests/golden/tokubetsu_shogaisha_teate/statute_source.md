@@ -23,3 +23,6 @@
 - `seikatsu_hogo`: 生活保護受給中
 
 限度額式: L = 3,661,000 + 380,000 * N（本人所得）
+
+source_url: https://www.city.katsushika.lg.jp/kenkou/1000053/1002245/1039928/1039704.html
+source_quote: "月額 30,450円（令和8年4月1日現在）"

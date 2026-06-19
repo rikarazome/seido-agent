@@ -21,3 +21,6 @@
 
 限度額式: L = 4,596,000 + 380,000 * N（本人所得）
 v1対象手帳: shintai_1→1級(58,450), shintai_2→2級(38,930), ryoiku→1級(58,450)
+
+source_url: https://www.pref.saitama.lg.jp/a0607/teatetokubetsujidouhuyou.html
+source_quote: "支給額（令和8年4月分から）1級 58,450円 2級 38,930円"

@@ -5,3 +5,6 @@
 
 ## Conditions
 hoken_shubetsu=kokuho, income limit
+
+source_url: https://www.city.kita.lg.jp/living/insurance-pension/1001703/1001723/1001724.html
+source_quote: "7割軽減 43万円以下 5割軽減 43万+29.5万×被保険者数 2割軽減 43万+54.5万×被保険者数"

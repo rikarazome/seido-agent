@@ -28,3 +28,6 @@ v1簡略化:
 - 年齢判定: FY-end age 14-15（中3相当）or 17-18（高3相当）
 - 金額: 一律200,000円（塾代上限）で表示
 - 所得限度額は収入基準からの近似変換。レンジ跨ぎ時はincome_exactで正確値を聞く
+
+source_url: https://www.fukushi.metro.tokyo.lg.jp/seikatsu/teisyotokusyataisaku/jukenseichallenge
+source_quote: "受験生チャレンジ支援貸付事業として塾費用や受験費用を無利子貸付"

@@ -20,3 +20,6 @@ v1簡略化:
 - 金額は小学校の学用品費年額15,000円で表示（実際は学年・費目により異なる）
 - 区立小中学校在学の確認は省略（対象年齢の子がいれば案内）
 - FY-end age 6-15を小中学生相当とする
+
+source_url: https://www.city.shibuya.tokyo.jp/kodomo/gakko-kyoiku/nyugaku-tennyu-shugaku/tetsuduki_g.html
+source_quote: "就学援助として学用品費・給食費等を援助"
