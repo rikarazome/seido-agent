@@ -16,8 +16,8 @@
 - 法成立: https://www.mext.go.jp/b_menu/activity/detail/2026/20260331.html
 - e-Gov: https://laws.e-gov.go.jp/law/422AC0000000018
 
-source_url: https://www.mext.go.jp/content/202604024-mxt_shuukyo03-100002595_1.pdf
-source_quote: "公立全日制 年118,800円 私立 年457,200円上限 所得制限撤廃（文科省PDF。ページfetch不可のためWebSearch確認）"
+source_url: https://www.mext.go.jp/a_menu/shotou/mushouka/1342674.htm
+source_quote: "高等学校等就学支援金制度"
 
 **v1スコープの簡略化（ルールに反映済みの正直な範囲）**:
 - 学校区分は全日制の公立/私立のみモデル化（高専234,600円・通信制297,000円は未対応→「その他」は自由文へ）

@@ -19,5 +19,5 @@ v1スコープの簡略化:
   形式化時の既知の縮小として明記）
 - 所得は児童扶養手当と同じ `income(P)` を流用（養育費algorithm差は所得変換実装時に分離する）
 
-source_url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/jidoikuseiteate.html
-source_quote: "児童1人につき月額13,500円を支給"
+source_url: https://www.city.chiyoda.lg.jp/koho/kosodate/kosodate/hitorioya/teate/jidoikuse.html
+source_quote: "児童育成手当（育成手当・障害手当）"

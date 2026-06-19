@@ -23,5 +23,5 @@
 
 注: subject=claimant（親本人への医療費助成）。子の医療費は子ども医療費助成でカバー。
 
-source_url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/hitorioya/iryouhi.html
-source_quote: "ひとり親家庭等医療費助成制度として医療費の自己負担分を助成"
+source_url: https://www.fukushi.metro.tokyo.lg.jp/seikatsu/josei/maruoya
+source_quote: "ひとり親家庭等医療費助成制度（マル親）"
