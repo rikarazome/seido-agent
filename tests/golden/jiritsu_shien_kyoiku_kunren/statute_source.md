@@ -19,3 +19,6 @@
 
 v1簡略化: 受講中の判定なし。ひとり親+所得制限内なら「対象の可能性あり（指定講座受講が条件）」として案内。
 金額は上限200,000円（一般教育訓練）で表示。
+
+source_url: https://www.city.edogawa.tokyo.jp/e090/kosodate/kosodate/teateshien/shisaku/kyufukin.html
+source_quote: "支給額の上限は200,000円です"

@@ -16,3 +16,6 @@
 - `shogai_techo_child` (per_child): 子の障害者手帳（shintai_1, shintai_2, shintai_3 -> 対象）
 
 v1簡略化: 身体障害者手帳保持を対象の目安とする。実際は手帳なしでも医師の判断で対象になりうる。
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/index.html
+source_quote: "自立支援医療費の支給対象 育成医療 利用者負担 自己負担を軽減する制度"

@@ -19,3 +19,6 @@
 
 注: 実際は手帳がなくても精神科医の診断書で申請可能。v1では手帳保持（seishin_1 or seishin_2）を
 対象の目安とし、「手帳がなくても通院中であれば申請可能です」と注記。
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/index.html
+source_quote: "精神疾患で通院による精神医療を続ける必要がある病状の方に、通院のための医療費の自己負担を軽減する制度"
