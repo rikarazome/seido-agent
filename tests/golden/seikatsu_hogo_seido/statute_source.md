@@ -4,4 +4,4 @@
 - 厚労省 生活保護制度: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/index.html
 
 source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/index.html
-source_quote: "生活保護は生活に困窮する方に必要な保護を行う制度"
+source_quote: "生活保護制度"

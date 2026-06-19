@@ -4,4 +4,4 @@
 - 厚労省 自立支援医療: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/
 
 source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/index.html
-source_quote: "自立支援医療（更生医療）身体障害者の医療費自己負担を軽減"
+source_quote: "自立支援医療費の支給対象 更生医療 利用者負担 自己負担を軽減する制度"

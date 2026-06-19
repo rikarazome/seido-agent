@@ -4,4 +4,4 @@
 - 厚労省 母子父子寡婦福祉資金貸付金: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
 
 source_url: https://www.gender.go.jp/policy/no_violence/e-vaw/law/23.html
-source_quote: "母子父子寡婦福祉資金貸付金として就学や生活に必要な資金を貸付"
+source_quote: "母子父子寡婦福祉資金貸付金制度"

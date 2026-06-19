@@ -15,4 +15,4 @@
 対象: FY-end age 16-18
 
 source_url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/index.html
-source_quote: "次世代育成手当を支給"
+source_quote: "次世代育成手当（区独自制度）"
