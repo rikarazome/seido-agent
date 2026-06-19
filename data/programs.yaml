@@ -1858,8 +1858,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: shibuya区 私立幼稚園等補助金
-    url: https://www.city.shibuya.tokyo.jp/
+  - ref: 渋谷区 幼児教育の無償化（私立幼稚園など）
+    url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/kodomo-teate/musyo_shiritsuyouchien.html
 - id: nakano_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（nakano）
   layer: municipal
