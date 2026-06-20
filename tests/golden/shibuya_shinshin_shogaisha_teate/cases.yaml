@@ -1,5 +1,6 @@
-# 渋谷区心身障害者福祉手当 golden cases（statute_source.md）
-# subject: claimant (self)
+# 渋谷区心身障害者福祉手当 golden cases
+# 条文: grade_a=15,500円、grade_b=8,000円（7,750→8,000修正）
+# 精神1級: スナップショット文字化けで対象有無不明。要Playwright確認
 
 - name: shibuya_shinshin_decided_shintai1
   as_of: "2026-06-15"
@@ -31,7 +32,7 @@
     claimant: { birth_date: "1970-01-01" }
     children: []
     askable: { shogai_techo: "shintai_3" }
-  expect: { subject: self, status: decided, detail: "monthly(7750)" }
+  expect: { subject: self, status: decided, detail: "monthly(8000)" }
 
 - name: shibuya_shinshin_ineligible_seishin
   as_of: "2026-06-15"

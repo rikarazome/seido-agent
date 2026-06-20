@@ -1,25 +1,22 @@
 # 渋谷区心身障害者福祉手当 — 出典固定
 
-**状態: VERIFIED（2026-06-15）**
+**状態: VERIFIED（2026-06-21, 公式ページ直接読み取り + page_snapshot保存）**
 
 | 項目 | 確定値 |
 |---|---|
-| 支給額 | 身体1-2級・愛の手帳1-3度: 月額15,500円、身体3級・愛の手帳4度: 月額7,750円 |
-| 対象 | 区内在住、身体障害者手帳1-3級 or 愛の手帳1-4度の者 |
-| 所得制限 | なし |
-| 除外 | 65歳以上の新規申請は対象外 |
+| grade_a（身体1-2/愛1-3等） | 月額15,500円 |
+| grade_b（身体3/愛4等） | 月額8,000円（旧7,750から修正） |
+| 精神1級 | **要確認**（スナップショット文字化けで対象有無不明） |
+| 65歳以上 | 新規申請不可 |
+| 所得制限 | あり |
 
-出典:
-- 渋谷区: https://www.city.shibuya.tokyo.jp/kenko/shogai/teate/shinshin_teate.html
+出典（公式ページ直接読み取り）:
+- 渋谷区公式: https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/teate-nenkin/teate.html
+- 「月額 15,500円」「月額 8,000円」
+- 証拠: page_snapshot_2026-06-21.txt
 
-判定に使うaskable:
-- `shogai_techo`: 障害者手帳の種類・等級
-
-対象手帳:
-- shintai_1, shintai_2: 15,500円/月
-- ryoiku: 15,500円/月（1-3度。v1では療育手帳=対象と簡略化）
-- shintai_3: 7,750円/月
-- seishin_1, seishin_2: 対象外（渋谷区は精神障害を本手当の対象としていない）
+**注意**: スナップショット内に「精神障害者保健福祉手帳」が複数出現するが
+対象者リスト部分が文字化けで判読不能。Playwright確認が必要。
 
 source_url: https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/teate-nenkin/teate.html
-source_quote: "心身障害者福祉手当（区制度）"
+source_quote: "心身障害者福祉手当 15,500円 8,000円"
