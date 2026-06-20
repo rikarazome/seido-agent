@@ -1738,8 +1738,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: minato区 私立幼稚園等補助金
-    url: https://www.city.minato.tokyo.jp/
+  - ref: 港区 私立幼稚園等園児保護者補助金
+    url: https://www.city.minato.tokyo.jp/kyouikushomu/kodomo/gakko/yochien/shiritsu/s-youchien-title.html
 - id: shinjuku_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shinjuku）
   layer: municipal

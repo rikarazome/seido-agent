@@ -1,4 +1,5 @@
-# minato private kindergarten subsidy golden cases
+# 港区私立幼稚園等園児保護者補助金 golden cases
+# 条文: 3-5歳、施設等利用費+保護者補助金
 
 - name: minato_youchien_decided
   as_of: "2026-06-15"
@@ -7,9 +8,16 @@
     children: [ { id: c1, birth_date: "2022-06-01" } ]
   expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
 
-- name: minato_youchien_ineligible
+- name: minato_youchien_ineligible_too_old
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
     children: [ { id: c1, birth_date: "2018-06-01" } ]
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }
+
+- name: minato_youchien_ineligible_too_young
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2024-06-01" } ]
   expect: { subject: c1, status: ineligible, detail: "not_target_age" }
