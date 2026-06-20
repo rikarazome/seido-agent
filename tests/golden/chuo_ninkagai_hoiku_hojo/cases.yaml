@@ -1,10 +1,18 @@
-# chuo unlicensed daycare subsidy golden cases
+# 中央区認可外保育施設保育料補助 golden cases
+# 条文: 0-5歳、金額は年齢/課税状況で変動
 
-- name: chuo_ninkagai_decided
+- name: chuo_ninkagai_decided_age1
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
-    children: [ { id: c1, birth_date: "2024-06-01" } ]
+    children: [ { id: c1, birth_date: "2025-06-01" } ]
+  expect: { subject: c1, status: decided, detail: "kubun(ninkagai_hojo)" }
+
+- name: chuo_ninkagai_decided_age4
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2022-06-01" } ]
   expect: { subject: c1, status: decided, detail: "kubun(ninkagai_hojo)" }
 
 - name: chuo_ninkagai_ineligible
