@@ -1810,8 +1810,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: shinagawa区 私立幼稚園等補助金
-    url: https://www.city.shinagawa.tokyo.jp/
+  - ref: 品川区 私立幼稚園等補助金
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-youchien/siritsuyouchien/20190708120433.html
 - id: meguro_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（meguro）
   layer: municipal

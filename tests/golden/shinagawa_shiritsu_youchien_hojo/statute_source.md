@@ -1,7 +1,9 @@
-# shinagawa private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: shinagawa ward official site (private kindergarten subsidy page)
+# 品川区私立幼稚園等補助金 — 出典固定
+
+**状態: VERIFIED（2026-06-20, 公式ページ直接読み取り + page_snapshot保存）**
+
+出典: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-youchien/siritsuyouchien/20190708120433.html
+証拠: page_snapshot_2026-06-20.txt
 
 source_url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-youchien/siritsuyouchien/20190708120433.html
-source_quote: "令和8年度 私立幼稚園入園料・保育料・特定負担額補助金"
+source_quote: "私立幼稚園入園料・保育料・特定負担額補助金"
