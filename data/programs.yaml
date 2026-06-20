@@ -1978,8 +1978,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: edogawa区 私立幼稚園等補助金
-    url: https://www.city.edogawa.tokyo.jp/
+  - ref: 江戸川区 私立幼稚園
+    url: https://www.city.edogawa.tokyo.jp/e047/kosodate/kosodate/hoiku/nitijou/shiritsu.html
 - id: chiyoda_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（chiyoda）
   layer: municipal
