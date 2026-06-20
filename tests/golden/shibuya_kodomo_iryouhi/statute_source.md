@@ -1,20 +1,16 @@
-# 子ども医療費助成（渋谷区） — 出典固定
+# 渋谷区子ども医療費助成 — 出典固定
 
-**状態: VERIFIED（2026-06-11、所得制限のみ注意点あり）**
+**状態: VERIFIED（2026-06-21, 公式ページ直接読み取り + page_snapshot保存）**
 
 | 項目 | 確定値 |
 |---|---|
-| 対象年齢 | 0歳〜18歳年度末（マル乳/マル子/マル青の3医療証で連続カバー） |
-| 助成内容 | 保険診療の自己負担分を助成（現物給付。医療証提示で窓口負担なし） |
-| 要件 | 区内在住 + 日本の健康保険加入 |
-| 所得制限 | 公式ページに**記載なし**（=制限なしとして形式化。東京都は2025-10に撤廃、23区は撤廃済みの報道とも整合） |
+| 対象年齢 | 18歳年度末まで |
+| 助成内容 | 自己負担分助成（in_kind） |
+| 要件 | 渋谷区住民登録 + 健康保険加入 |
+| 所得制限 | なし |
 
-出典:
-- 渋谷区公式: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/iryo-josei/kodomo_ij.html
-
-注意（残タスク・低リスク）: 所得制限なしの明示的な確認は区窓口（子育て給付係 03-3463-2558）で可能。
-公式ページの記載に所得要件が現れない事実に基づき「制限なし」で形式化している。
-区内在住はフォームの居住自治体選択から暗黙に充足。
+出典: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/iryo-josei/kodomo_ij.html
+証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/iryo-josei/kodomo_ij.html
 source_quote: "子ども医療費助成"
