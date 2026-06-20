@@ -14,6 +14,7 @@ grade_a(shintai_1).
 grade_a(shintai_2).
 grade_a(ryoiku).
 grade_b(shintai_3).
+grade_c(seishin_1).
 
 required_fact(P, shogai_techo, "disability certificate") :-
     claimant(P), unknown(shogai_techo(P)).
@@ -24,7 +25,7 @@ kettei_status(P, self, ineligible(age_65_or_over)) :-
     claimant(P), age(P, A), A >= 65, !.
 kettei_status(P, self, ineligible(grade_not_covered)) :-
     claimant(P), val(shogai_techo(P), G),
-    \+ grade_a(G), \+ grade_b(G), !.
+    \+ grade_a(G), \+ grade_b(G), \+ grade_c(G), !.
 kettei_status(P, self, blocked(Missing)) :-
     claimant(P),
     findall(F, required_fact(P, F, _), Ms), sort(Ms, Missing),
@@ -33,4 +34,6 @@ kettei_status(P, self, decided(monthly(16500))) :-
     claimant(P), val(shogai_techo(P), G), grade_a(G), !.
 kettei_status(P, self, decided(monthly(9000))) :-
     claimant(P), val(shogai_techo(P), G), grade_b(G), !.
+kettei_status(P, self, decided(monthly(10000))) :-
+    claimant(P), val(shogai_techo(P), G), grade_c(G), !.
 kettei_status(_, _, error(no_rule_matched)).
