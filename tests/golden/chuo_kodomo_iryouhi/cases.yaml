@@ -1,6 +1,5 @@
-# 子ども医療費助成（中央区） golden cases（statute_source.md）
-# scripts/gen_ward_iryouhi.py が生成（渋谷区テンプレートと同一意味論）
-# 区内在住は居住自治体選択から暗黙充足。健康保険加入は世帯レベルaskable
+# 中央区子ども医療費助成 golden cases
+# 条文: 18歳年度末まで、保険加入必須、所得制限なし、自己負担分助成
 
 - name: chuo_ki_insured_decided
   as_of: "2026-06-12"
@@ -26,6 +25,14 @@
     askable: { kenkou_hoken: false }
   expect: { subject: c1, status: ineligible,
             detail: "'not covered by public health insurance'" }
+
+- name: chuo_ki_boundary_age18
+  as_of: "2026-06-12"
+  facts:
+    claimant: { birth_date: "1980-01-01" }
+    children: [ { id: c1, birth_date: "2008-06-01" } ]   # FY-end age 18
+    askable: { kenkou_hoken: true }
+  expect: { subject: c1, status: decided, detail: "in_kind(jiko_futan_josei)" }
 
 - name: chuo_ki_overage_ineligible
   as_of: "2026-06-12"
