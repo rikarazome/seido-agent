@@ -1,7 +1,21 @@
-# bunkyo private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: bunkyo ward official site (private kindergarten subsidy page)
+# 文京区私立幼稚園補助 — 出典固定
+
+**状態: VERIFIED（2026-06-20, 公式ページ直接読み取り）**
+
+| 項目 | 確定値 |
+|---|---|
+| 対象 | 3-5歳、区内在住、私立幼稚園在園（新制度移行園除く） |
+| 保育料 | 無償化対象（認定必要）+ 区独自補助（電子申請） |
+| 所得制限 | なし |
+
+出典（公式ページ直接読み取り）:
+- 文京区公式: https://www.city.bunkyo.lg.jp/b023/p001707.html
+- 「私立幼稚園（新制度移行園を除く）」
+- 「保育料及び預かり保育料が無償化の対象」
+
+ルールの条文対応:
+- age_nendo_matsu 3-5: ✓
+- kubun(youchien_hojo): 金額が所得/園で変動 ✓
 
 source_url: https://www.city.bunkyo.lg.jp/b023/p001707.html
 source_quote: "私立幼稚園（新制度移行園を除く）"
