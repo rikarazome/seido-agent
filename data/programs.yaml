@@ -1822,8 +1822,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: meguro区 私立幼稚園等補助金
-    url: https://www.city.meguro.tokyo.jp/
+  - ref: 目黒区 私立幼稚園児の補助金
+    url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/hoikuennado/hojokin.html
 - id: ota_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（ota）
   layer: municipal
