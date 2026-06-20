@@ -14,6 +14,7 @@ grade_a(shintai_1).
 grade_a(shintai_2).
 grade_a(ryoiku).
 grade_b(shintai_3).
+grade_b(seishin_1).
 
 required_fact(P, shogai_techo, "disability certificate") :-
     claimant(P), unknown(shogai_techo(P)).
