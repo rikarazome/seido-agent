@@ -2110,8 +2110,8 @@
   potential_amount: 240000
   status: supported
   statute:
-  - ref: ota区 認可外保育施設利用者補助
-    url: https://www.city.ota.tokyo.jp/
+  - ref: 大田区 認可外保育施設等保護者負担軽減補助金
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/hoiku/hoikushisetsu_nyukibo/ninkagaihoikusisetu/ninnkagaishisetsu_hojokin.html
 - id: setagaya_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（setagaya）
   layer: municipal
