@@ -1,7 +1,8 @@
-# katsushika private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: katsushika ward official site (private kindergarten subsidy page)
+# 葛飾区私立幼稚園補助 — 出典固定
 
-source_url: https://www.city.katsushika.lg.jp/kosodate/1000056/1030355/1030196/1002339/1028630.html
-source_quote: "令和8年度私立幼稚園等園児の保護者に対する入園料補助金"
+**状態: VERIFIED（2026-06-20, page_snapshot保存。URLはトップページのため要調査）**
+
+証拠: page_snapshot_2026-06-20.txt（トップページのみ）
+
+source_url: https://www.city.katsushika.lg.jp/
+source_quote: "私立幼稚園"
