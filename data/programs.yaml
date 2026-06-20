@@ -2134,8 +2134,8 @@
   potential_amount: 240000
   status: supported
   statute:
-  - ref: shibuya区 認可外保育施設利用者補助
-    url: https://www.city.shibuya.tokyo.jp/
+  - ref: 渋谷区 保育利用料の軽減制度
+    url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hoiku-josei/hoikuryo_keigen.html
 - id: nakano_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（nakano）
   layer: municipal

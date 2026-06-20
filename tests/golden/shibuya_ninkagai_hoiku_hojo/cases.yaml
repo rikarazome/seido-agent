@@ -1,4 +1,5 @@
-# shibuya unlicensed daycare subsidy golden cases
+# 渋谷区認可外保育施設保育料軽減制度 golden cases
+# 条文: 0-5歳
 
 - name: shibuya_ninkagai_decided
   as_of: "2026-06-15"

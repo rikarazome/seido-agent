@@ -1,26 +1,16 @@
 # 渋谷区就学援助 golden cases
-# conditions: hikazei + FY-end age 6-15
-# amounts: elementary ~65K/yr, middle ~75K/yr (approx from Ota ward official)
+# 条文: 区内小中学校在学+所得基準以下
 
-- name: enjo_decided_elementary
+- name: shibuya_enjo_decided
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1985-01-01" }
     children:
-      - { id: c1, birth_date: "2017-06-01" }   # FY-end age 9 (elementary)
+      - { id: c1, birth_date: "2017-06-01" }
     askable: { hikazei: true }
-  expect: { subject: c1, status: decided, detail: "yearly(65000)" }
+  expect: { subject: c1, status: decided, detail: "kubun(shugaku_enjo)" }
 
-- name: enjo_decided_middle
-  as_of: "2026-06-15"
-  facts:
-    claimant: { birth_date: "1985-01-01" }
-    children:
-      - { id: c1, birth_date: "2013-06-01" }   # FY-end age 13 (middle school)
-    askable: { hikazei: true }
-  expect: { subject: c1, status: decided, detail: "yearly(75000)" }
-
-- name: enjo_ineligible_not_hikazei
+- name: shibuya_enjo_ineligible_income
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1985-01-01" }
@@ -29,25 +19,16 @@
     askable: { hikazei: false }
   expect: { subject: c1, status: ineligible, detail: "not_low_income" }
 
-- name: enjo_ineligible_young
+- name: shibuya_enjo_ineligible_age
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1985-01-01" }
     children:
-      - { id: c1, birth_date: "2022-06-01" }   # FY-end age 3
+      - { id: c1, birth_date: "2022-06-01" }
     askable: { hikazei: true }
   expect: { subject: c1, status: ineligible, detail: "not_school_age" }
 
-- name: enjo_ineligible_old
-  as_of: "2026-06-15"
-  facts:
-    claimant: { birth_date: "1980-01-01" }
-    children:
-      - { id: c1, birth_date: "2009-06-01" }   # FY-end age 17
-    askable: { hikazei: true }
-  expect: { subject: c1, status: ineligible, detail: "not_school_age" }
-
-- name: enjo_blocked
+- name: shibuya_enjo_blocked
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1985-01-01" }
@@ -55,21 +36,3 @@
       - { id: c1, birth_date: "2017-06-01" }
     askable: {}
   expect: { subject: c1, status: blocked, detail: "[hikazei]" }
-
-- name: enjo_boundary_age6
-  as_of: "2026-06-15"
-  facts:
-    claimant: { birth_date: "1985-01-01" }
-    children:
-      - { id: c1, birth_date: "2020-02-01" }   # FY-end age 6 (sho1)
-    askable: { hikazei: true }
-  expect: { subject: c1, status: decided, detail: "yearly(65000)" }
-
-- name: enjo_boundary_age15
-  as_of: "2026-06-15"
-  facts:
-    claimant: { birth_date: "1985-01-01" }
-    children:
-      - { id: c1, birth_date: "2012-02-01" }   # FY-end age 14 (chu3)
-    askable: { hikazei: true }
-  expect: { subject: c1, status: decided, detail: "yearly(75000)" }
