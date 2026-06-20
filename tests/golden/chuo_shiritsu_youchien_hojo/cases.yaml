@@ -1,15 +1,23 @@
-# chuo private kindergarten subsidy golden cases
+# 中央区幼稚園等の保護者向け補助金 golden cases
+# 条文: 3-5歳、保育料無償化25,700円+区独自補助、所得で変動→kubun
 
-- name: chuo_youchien_decided
+- name: chuo_youchien_decided_age4
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
     children: [ { id: c1, birth_date: "2022-06-01" } ]
   expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
 
-- name: chuo_youchien_ineligible
+- name: chuo_youchien_ineligible_too_old
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
     children: [ { id: c1, birth_date: "2018-06-01" } ]
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }
+
+- name: chuo_youchien_ineligible_too_young
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2024-06-01" } ]
   expect: { subject: c1, status: ineligible, detail: "not_target_age" }
