@@ -1834,8 +1834,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: ota区 私立幼稚園等補助金
-    url: https://www.city.ota.tokyo.jp/
+  - ref: 大田区 私立幼稚園等保護者補助金
+    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/kyouiku/kuyochien/mushouka.html
 - id: setagaya_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（setagaya）
   layer: municipal
