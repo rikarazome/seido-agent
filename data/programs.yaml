@@ -2098,8 +2098,8 @@
   potential_amount: 240000
   status: supported
   statute:
-  - ref: meguro区 認可外保育施設利用者補助
-    url: https://www.city.meguro.tokyo.jp/
+  - ref: 目黒区 認可外保育施設保育料助成制度
+    url: https://www.city.meguro.tokyo.jp/smph/kurashi/kosodate/josei/ninkagaihoikusisetujosei.html
 - id: ota_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（ota）
   layer: municipal
