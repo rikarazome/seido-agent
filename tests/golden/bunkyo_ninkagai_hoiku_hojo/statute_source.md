@@ -1,7 +1,20 @@
-# bunkyo unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: bunkyo ward official site (unlicensed daycare subsidy page)
+# 文京区認可外保育施設保育料補助 — 出典固定
+
+**状態: VERIFIED（2026-06-20, 公式ページ直接読み取り）**
+
+| 項目 | 確定値 |
+|---|---|
+| 対象 | 認可外保育施設利用の0-5歳保護者 |
+| 金額 | 年齢/課税状況で変動（詳細はPDF） |
+| 申請 | 年度に1回必要 |
+
+出典（公式ページ直接読み取り）:
+- 文京区公式: https://www.city.bunkyo.lg.jp/b023/p001712.html
+- 「認可外保育施設を利用する保護者の方を対象として、保育料補助制度を実施」
+
+ルールの条文対応:
+- age 0-5: ✓
+- kubun: 金額がPDFで年齢/課税に応じて変動 ✓
 
 source_url: https://www.city.bunkyo.lg.jp/b023/p001712.html
 source_quote: "認可外保育施設"
