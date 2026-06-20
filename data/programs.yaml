@@ -1882,8 +1882,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: suginami区 私立幼稚園等補助金
-    url: https://www.city.suginami.tokyo.jp/
+  - ref: 杉並区 私立幼稚園等保護者補助金
+    url: https://www.city.suginami.tokyo.jp/s058/1070.html
 - id: toshima_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（toshima）
   layer: municipal
@@ -2158,8 +2158,8 @@
   potential_amount: 240000
   status: supported
   statute:
-  - ref: suginami区 認可外保育施設利用者補助
-    url: https://www.city.suginami.tokyo.jp/
+  - ref: 杉並区 認証保育所等保育料補助金
+    url: https://www.city.suginami.tokyo.jp/s058/shinseisho/19941.html
 - id: toshima_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（toshima）
   layer: municipal

@@ -1,4 +1,5 @@
-# suginami unlicensed daycare subsidy golden cases
+# 杉並区認証保育所等保育料補助金 golden cases
+# 条文: 0-5歳
 
 - name: suginami_ninkagai_decided
   as_of: "2026-06-15"
