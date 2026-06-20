@@ -1714,8 +1714,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: chiyoda区 私立幼稚園等補助金
-    url: https://www.city.chiyoda.lg.jp/
+  - ref: 千代田区 私立幼稚園・国立大学附属幼稚園等
+    url: https://www.city.chiyoda.lg.jp/koho/kosodate/yochien/shiritsu-kokuritsu.html
 - id: chuo_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（chuo）
   layer: municipal

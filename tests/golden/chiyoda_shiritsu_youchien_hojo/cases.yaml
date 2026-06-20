@@ -1,15 +1,30 @@
-# chiyoda private kindergarten subsidy golden cases
+# 千代田区私立幼稚園等補助 golden cases
+# 条文: 3-5歳、未移行園=月25,700+7,200+4,800=最大37,700円、所得で変動→kubun
 
-- name: chiyoda_youchien_decided
+- name: chiyoda_youchien_decided_age4
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
-    children: [ { id: c1, birth_date: "2022-06-01" } ]
+    children: [ { id: c1, birth_date: "2022-06-01" } ]   # FY-end age 4
   expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
 
-- name: chiyoda_youchien_ineligible
+- name: chiyoda_youchien_decided_age3
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }
-    children: [ { id: c1, birth_date: "2018-06-01" } ]
+    children: [ { id: c1, birth_date: "2023-06-01" } ]   # FY-end age 3
+  expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
+
+- name: chiyoda_youchien_ineligible_too_old
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2018-06-01" } ]   # FY-end age 8
+  expect: { subject: c1, status: ineligible, detail: "not_target_age" }
+
+- name: chiyoda_youchien_ineligible_too_young
+  as_of: "2026-06-15"
+  facts:
+    claimant: { birth_date: "1990-01-01" }
+    children: [ { id: c1, birth_date: "2024-06-01" } ]   # FY-end age 2
   expect: { subject: c1, status: ineligible, detail: "not_target_age" }
