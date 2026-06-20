@@ -1846,8 +1846,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: setagaya区 私立幼稚園等補助金
-    url: https://www.city.setagaya.lg.jp/
+  - ref: 世田谷区 私立幼稚園等保護者補助金
+    url: https://www.city.setagaya.lg.jp/02236/1653.html
 - id: shibuya_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（shibuya）
   layer: municipal
@@ -2122,8 +2122,8 @@
   potential_amount: 240000
   status: supported
   statute:
-  - ref: setagaya区 認可外保育施設利用者補助
-    url: https://www.city.setagaya.lg.jp/
+  - ref: 世田谷区 認可外保育施設保育料補助
+    url: https://www.city.setagaya.lg.jp/01044/1511.html
 - id: shibuya_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（shibuya）
   layer: municipal
