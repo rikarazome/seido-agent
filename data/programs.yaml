@@ -1750,8 +1750,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: shinjuku区 私立幼稚園等補助金
-    url: https://www.city.shinjuku.lg.jp/
+  - ref: 新宿区 私立幼稚園等補助金
+    url: https://www.city.shinjuku.lg.jp/kodomo/gakko02_002057.html
 - id: bunkyo_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（bunkyo）
   layer: municipal
@@ -2026,8 +2026,8 @@
   potential_amount: 240000
   status: supported
   statute:
-  - ref: shinjuku区 認可外保育施設利用者補助
-    url: https://www.city.shinjuku.lg.jp/
+  - ref: 新宿区 認証保育所等保育料助成
+    url: https://www.city.shinjuku.lg.jp/kodomo/file03_04_00011.html
 - id: bunkyo_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（bunkyo）
   layer: municipal
