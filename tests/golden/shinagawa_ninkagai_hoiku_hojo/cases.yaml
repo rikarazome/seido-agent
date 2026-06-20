@@ -1,4 +1,5 @@
-# shinagawa unlicensed daycare subsidy golden cases
+# 品川区認可外保育施設保育料助成制度 golden cases
+# 条文: 0-5歳、年齢/課税で金額変動
 
 - name: shinagawa_ninkagai_decided
   as_of: "2026-06-15"

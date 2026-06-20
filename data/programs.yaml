@@ -2086,8 +2086,8 @@
   potential_amount: 240000
   status: supported
   statute:
-  - ref: shinagawa区 認可外保育施設利用者補助
-    url: https://www.city.shinagawa.tokyo.jp/
+  - ref: 品川区 認可外保育施設保育料助成制度
+    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-hoikuen/hpg000033493.html
 - id: meguro_ninkagai_hoiku_hojo
   name: 認可外保育施設利用者補助（meguro）
   layer: municipal
