@@ -1,4 +1,4 @@
-# sumida private kindergarten subsidy golden cases
+# 墨田区私立幼稚園等補助金 golden cases
 
 - name: sumida_youchien_decided
   as_of: "2026-06-15"
@@ -7,7 +7,7 @@
     children: [ { id: c1, birth_date: "2022-06-01" } ]
   expect: { subject: c1, status: decided, detail: "kubun(youchien_hojo)" }
 
-- name: sumida_youchien_ineligible
+- name: sumida_youchien_ineligible_too_old
   as_of: "2026-06-15"
   facts:
     claimant: { birth_date: "1990-01-01" }

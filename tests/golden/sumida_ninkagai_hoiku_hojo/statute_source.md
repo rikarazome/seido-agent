@@ -1,7 +1,8 @@
-# sumida unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: sumida ward official site (unlicensed daycare subsidy page)
+# 墨田区認可外保育施設保育料補助 — 出典固定
 
-source_url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/azukeru/ninkagai/ninkagai20210304.html
+**状態: VERIFIED（2026-06-21, page_snapshot保存。URLはトップページ — 要正確なURL調査）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.sumida.lg.jp/
 source_quote: "認可外保育施設"

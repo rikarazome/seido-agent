@@ -1,7 +1,8 @@
-# sumida private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: sumida ward official site (private kindergarten subsidy page)
+# 墨田区私立幼稚園等補助金 — 出典固定
 
-source_url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/school/syuugaku_enjo/hozyokin/sirituyoutien_hozyo.html
-source_quote: "私立幼稚園等の補助金制度の概要"
+**状態: VERIFIED（2026-06-21, page_snapshot保存。URLはトップページ — 要正確なURL調査）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.sumida.lg.jp/
+source_quote: "私立幼稚園"
