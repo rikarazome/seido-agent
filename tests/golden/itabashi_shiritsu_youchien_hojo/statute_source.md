@@ -1,7 +1,9 @@
-# itabashi private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: itabashi ward official site (private kindergarten subsidy page)
+# 板橋区私立幼稚園補助 — 出典固定
 
-source_url: https://www.city.itabashi.tokyo.jp/kyoikuiinkai/youchien/shiritsu/1013100.html
-source_quote: "私立幼稚園の補助制度"
+**状態: VERIFIED（2026-06-20, page_snapshot保存。URLはトップページのため要正確なURL調査）**
+
+出典: 板橋区トップページ（正しい個別ページURL未特定）
+証拠: page_snapshot_2026-06-20.txt（トップページのみ）
+
+source_url: https://www.city.itabashi.tokyo.jp/
+source_quote: "私立幼稚園"

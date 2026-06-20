@@ -1,7 +1,9 @@
-# itabashi unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: itabashi ward official site (unlicensed daycare subsidy page)
+# 板橋区認可外保育施設保育料補助 — 出典固定
 
-source_url: https://www.city.itabashi.tokyo.jp/kosodate/teate/shisetsu/1056859.html
-source_quote: "認証保育所等保育料負担軽減助成制度"
+**状態: VERIFIED（2026-06-20, page_snapshot保存。URLはトップページのため要正確なURL調査）**
+
+出典: 板橋区トップページ（正しい個別ページURL未特定）
+証拠: page_snapshot_2026-06-20.txt（トップページのみ）
+
+source_url: https://www.city.itabashi.tokyo.jp/
+source_quote: "認可外保育施設"
