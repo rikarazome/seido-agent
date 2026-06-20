@@ -32,7 +32,7 @@
   municipality: null
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 457200
   status: supported
   statute:
@@ -284,7 +284,7 @@
   municipality: tokyo
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 484000
   status: supported
   statute:
@@ -344,7 +344,7 @@
   municipality: shibuya
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -906,7 +906,7 @@
   municipality: chiyoda
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -918,7 +918,7 @@
   municipality: chuo
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -930,7 +930,7 @@
   municipality: minato
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -942,7 +942,7 @@
   municipality: shinjuku
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -954,7 +954,7 @@
   municipality: bunkyo
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -966,7 +966,7 @@
   municipality: taito
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -978,7 +978,7 @@
   municipality: sumida
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -990,7 +990,7 @@
   municipality: koto
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1002,7 +1002,7 @@
   municipality: shinagawa
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1014,7 +1014,7 @@
   municipality: meguro
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1026,7 +1026,7 @@
   municipality: ota
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1038,7 +1038,7 @@
   municipality: setagaya
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1050,7 +1050,7 @@
   municipality: nakano
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1062,7 +1062,7 @@
   municipality: suginami
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1074,7 +1074,7 @@
   municipality: toshima
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1086,7 +1086,7 @@
   municipality: kita
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1110,7 +1110,7 @@
   municipality: itabashi
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1122,7 +1122,7 @@
   municipality: nerima
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1146,7 +1146,7 @@
   municipality: katsushika
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1158,7 +1158,7 @@
   municipality: edogawa
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 75000
   status: supported
   statute:
@@ -1206,7 +1206,7 @@
   municipality: bunkyo
   subject: child
   unit: per_child
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 50000
   status: unsupported
   statute:
@@ -2326,7 +2326,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 200000
   status: supported
   statute:
@@ -2626,7 +2626,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 50000
   status: supported
   statute:
@@ -2652,7 +2652,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 50000
   status: supported
   statute:
@@ -2666,7 +2666,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 20000
   status: supported
   statute:
@@ -2680,7 +2680,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 100000
   status: supported
   statute:
@@ -2694,7 +2694,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 276000
   status: supported
   statute:
@@ -2708,7 +2708,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 120000
   status: supported
   statute:
@@ -2722,7 +2722,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 50000
   status: supported
   statute:
@@ -2736,7 +2736,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 400000
   status: supported
   statute:
@@ -2750,7 +2750,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 380000
   status: supported
   statute:
@@ -2764,7 +2764,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 270000
   status: supported
   statute:
@@ -2778,7 +2778,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 350000
   status: supported
   statute:
@@ -2872,7 +2872,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 270000
   status: supported
   statute:
@@ -2886,7 +2886,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 840000
   status: supported
   statute:
@@ -2900,7 +2900,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 650000
   status: supported
   statute:
@@ -2928,7 +2928,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 500000
   status: supported
   statute:
@@ -2942,7 +2942,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 250000
   status: supported
   statute:
@@ -2956,7 +2956,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 500000
   status: supported
   statute:
@@ -3092,7 +3092,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 500000
   status: supported
   statute:
@@ -3106,7 +3106,7 @@
   municipality: null
   subject: claimant
   unit: per_household
-  amount_type: yearly
+  amount_type: in_kind
   potential_amount: 0
   status: unsupported
   statute:
