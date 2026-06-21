@@ -1,19 +1,25 @@
-# 育児休業給付金
+# 育児休業給付金 — 出典固定
 
-- 雇用保険法61条の7: https://laws.e-gov.go.jp/law/349AC0000000116/
-- ハローワーク 育児休業給付金: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+**状態: VERIFIED（2026-06-21, 厚労省Q&Aページ全文読み取り + page_snapshot保存）**
 
-## 支給要件（雇用保険法61条の7・ハローワーク公式より）
-- 雇用保険被保険者であること
-- 育休開始前2年間に被保険者期間12か月以上
-- 1歳未満の子を養育するための育児休業を取得
-- 育休中の就労が月80時間以内
-- 支給額: 休業開始時賃金日額の67%（6か月経過後50%）
-- 2025年4月から出生後休業支援給付金と合わせて実質手取り10割
+| 項目 | 確定値 |
+|---|---|
+| 支給額 | 休業開始時賃金日額×支給日数×67%（181日目以降は50%） |
+| 対象 | 雇用保険被保険者で育児休業取得 |
+| 期間 | 原則1歳まで（保育所不可で最大2歳） |
+| 出生後休業支援給付金 | R7.4新設、14日以上取得で追加給付 |
+| 育児時短就業給付金 | R7.4新設 |
+| 要件 | 休業開始前2年間に賃金支払基礎日数11日以上の月が12か月以上 |
 
-## 現ルールでの判定
-- koyou_hoken=true（雇用保険加入）を必要条件として判定
-- 被保険者期間の年数は現askableでは不可能（窓口確認を案内）
+出典（厚労省Q&Aページ全文読み取り）:
+- 厚生労働省: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158500.html
+- Q12「休業開始時賃金日額×支給日数×67％（181日目以降は50％）」
+- Q14「原則、養育している子が１歳になった日の前日まで」
+- 証拠: page_snapshot_2026-06-21.txt
 
-source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
-source_quote: "育児休業給付金は1歳未満の子を養育するために育児休業を取得した場合に支給"
+ルールの条文対応:
+- koyou_hoken + ikuji_kyuugyou → decided(kubun) ✓
+- 金額が賃金の67%/50%で個人差大 → kubun正しい
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158500.html
+source_quote: "育児休業給付金 賃金日額×67% 181日目以降50%"
