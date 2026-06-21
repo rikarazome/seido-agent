@@ -1,9 +1,20 @@
 # 豊島区子ども医療費助成 — 出典固定
 
-**状態: VERIFIED（2026-06-21, 公式ページ直接読み取り + page_snapshot保存）**
+**状態: VERIFIED（2026-06-21, 公式ページ全文読み取り + page_snapshot保存）**
 
-出典: https://www.city.toshima.lg.jp/215/kosodate/teate/1912101542.html
-証拠: page_snapshot_2026-06-21.txt
+| 項目 | 確定値 |
+|---|---|
+| 対象年齢 | 18歳到達後最初の3月31日まで |
+| 助成内容 | 保険診療の自己負担分を助成（in_kind） |
+| 要件 | 豊島区住民登録 + 健康保険加入 |
+| 所得制限 | なし（「保護者の所得制限はありません」と明記） |
+| 注意 | 食事代の対象/対象外はこのページからは判断不能 |
+
+出典（公式ページ全文読み取り）:
+- 豊島区公式: https://www.city.toshima.lg.jp/215/kosodate/teate/1912101542.html
+- 「保険診療を受けたときに支払う自己負担分を助成」
+- 「保護者の所得制限はありません」
+- 証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.city.toshima.lg.jp/215/kosodate/teate/1912101542.html
-source_quote: "子ども医療費助成"
+source_quote: "保護者の所得制限はありません 自己負担分を助成"
