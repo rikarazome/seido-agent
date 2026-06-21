@@ -1,7 +1,8 @@
-# nerima unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: nerima ward official site (unlicensed daycare subsidy page)
+# 練馬区認可外保育施設保育料補助 — 出典固定
 
-source_url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/shinshien/youhomusyou/mushoka_ninkagai.html
-source_quote: "認可外保育施設（認証保育所・企業主導型含む）の保育料への各種助成"
+**状態: 未検証（スナップショットがトップページ。正しいURLの特定と再取得が必要）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.nerima.tokyo.jp/
+source_quote: "未検証"

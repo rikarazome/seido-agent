@@ -1,7 +1,8 @@
-# taito unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: taito ward official site (unlicensed daycare subsidy page)
+# 台東区認可外保育施設保育料補助 — 出典固定
 
-source_url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/hoiku_youjikyouiku/hoikutakuji/ninshohoikusho/hoikuryoujyosei.html
-source_quote: "認証保育所等保育料助成制度"
+**状態: 未検証（スナップショットがトップページ。正しいURLの特定と再取得が必要）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.taito.lg.jp/
+source_quote: "未検証"

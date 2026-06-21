@@ -1,7 +1,8 @@
-# nakano unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: nakano ward official site (unlicensed daycare subsidy page)
+# 中野区認可外保育施設保育料補助 — 出典固定
 
-source_url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/hoikuen/ninkagai/ninsyohoikujyo-hojyo.html
-source_quote: "認証保育所などの保護者補助金"
+**状態: 未検証（スナップショットがトップページ。正しいURLの特定と再取得が必要）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.tokyo-nakano.lg.jp/
+source_quote: "未検証"
