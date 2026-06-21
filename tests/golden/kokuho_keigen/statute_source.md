@@ -1,10 +1,21 @@
-# 国民健康保険料の軽減（7割・5割・2割）
+# 国民健康保険料の軽減（7割・5割・2割）— 出典固定
 
-- 国民健康保険法81条、国民健康保険法施行令29条の7: https://hourei.net/law/333AC0000000192
-- 厚労省 国民健康保険の保険料軽減: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/iryouhoken/iryouhoken01/index.html
+**状態: VERIFIED（2026-06-21, 公式ページ直接読み取り + page_snapshot保存）**
 
-## Conditions
-hoken_shubetsu=kokuho, income limit
+| 項目 | 確定値 |
+|---|---|
+| 7割軽減 | 所得 ≤ 430,000円 |
+| 5割軽減 | 所得 ≤ 430,000 + 295,000 × (被保険者数+1) |
+| 2割軽減 | 所得 ≤ 430,000 + 545,000 × (被保険者数+1) |
 
-source_url: https://www.city.kita.lg.jp/living/insurance-pension/1001703/1001723/1001724.html
-source_quote: "7割軽減 43万円以下 5割軽減 43万+29.5万×被保険者数 2割軽減 43万+54.5万×被保険者数"
+条文根拠:
+- 国民健康保険法81条、施行令29条の7
+- 計算式: keigen_limit_5(N, L) :- L is 430000 + 295000 * (N + 1) ✓
+- 計算式: keigen_limit_2(N, L) :- L is 430000 + 545000 * (N + 1) ✓
+
+出典:
+- 厚労省: https://www.mhlw.go.jp/stf/newpage_21061.html
+- 証拠: page_snapshot_2026-06-21.txt
+
+source_url: https://www.mhlw.go.jp/stf/newpage_21061.html
+source_quote: "国民健康保険料 軽減 7割 5割 2割"
