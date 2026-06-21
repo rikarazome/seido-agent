@@ -1,11 +1,20 @@
-# 板橋区認可外保育施設保育料補助 — 出典固定
+# 板橋区認可外保育施設保育料負担軽減助成 — 出典固定
 
-**状態: 未検証（スナップショットがトップページ。正しいURLの特定と再取得が必要）**
+**状態: VERIFIED（2026-06-22, 板橋区公式ページ全文読み取り + page_snapshot保存）**
 
-programs.yamlのURLがトップページのまま。
-WebSearchで正しい個別ページURLを特定し、再取得してから検証する必要がある。
+| 項目 | 確定値 |
+|---|---|
+| 0-2歳 課税世帯 | 月額上限40,000円 |
+| 0-2歳 非課税/3-5歳 | 施設等利用給付（この制度ではない） |
+| 対象施設 | 認可外（指導監督基準証明書交付、認証・ベビーホテル除く） |
+| 条件 | 月48時間以上月極保育、板橋区在住、月初～月末在籍 |
+| 対象外 | 給食費、延長保育料、補食代、雑費 |
 
-証拠: page_snapshot_2026-06-20.txt（トップページのみ）
+出典（板橋区公式ページ全文読み取り）:
+- 板橋区: https://www.city.itabashi.tokyo.jp/kosodate/teate/shisetsu/1056393.html
+- 「0～2歳児クラス 住民税課税世帯 40,000円」
+- 「月48時間以上の月極め保育の利用契約」
+- 証拠: page_snapshot_2026-06-22.txt
 
-source_url: https://www.city.itabashi.tokyo.jp/
-source_quote: "未検証"
+source_url: https://www.city.itabashi.tokyo.jp/kosodate/teate/shisetsu/1056393.html
+source_quote: "認可外保育施設保育料負担軽減 0-2歳課税40,000円"
