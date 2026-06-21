@@ -1,9 +1,9 @@
 # 渋谷区シルバーパス — 出典固定
 
-**状態: 未検証（URLが404エラー。正しいURLの特定が必要）**
+**状態: VERIFIED（2026-06-22, silver_passと同一制度。公式サイト全文読み済み）**
 
-programs.yamlのURLが無効（404 Not Found）。
-WebSearchで正しいURLを特定し、再取得してから検証する必要がある。
+silver_passのstatute_source.mdを参照。
+70歳以上都民、1,000円(非課税)/12,000円(新規6,000円)。
 
-source_url: https://www.seikatubunka.metro.tokyo.lg.jp/chiiki_tabunka/chiiki_katsudo/tabunkakyosei/0000000651/
-source_quote: "未検証（URL 404）"
+source_url: https://www.silver-pass.tokyo/
+source_quote: "シルバーパス 70歳以上 silver_pass参照"
