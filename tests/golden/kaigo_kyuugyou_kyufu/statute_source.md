@@ -1,18 +1,9 @@
-# 介護休業給付金
+# 介護休業給付金 — 出典固定
 
-- 雇用保険法61条の4: https://laws.e-gov.go.jp/law/349AC0000000116/
-- ハローワーク 介護休業給付金: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+**状態: 未検証（スナップショットが育児休業等給付Q&Aページ。介護休業給付の情報ではない）**
 
-## 支給要件（雇用保険法61条の4・ハローワーク公式より）
-- 雇用保険被保険者であること
-- 対象家族（配偶者、父母、子、配偶者の父母等）を介護するための休業
-- 介護休業開始前2年間に被保険者期間12か月以上
-- 支給額: 賃金日額の67%
-- 支給期間: 対象家族1人につき通算93日まで（3回分割可）
-
-## 現ルールでの判定
-- koyou_hoken=true + kaigo_family=true（介護休業中）を判定条件として使用
-- 両条件とも雇用保険法61条の4の要件に直接対応
+page_snapshot_2026-06-21.txtの内容は「Q＆A～育児休業等給付～」であり、
+介護休業給付金の情報ではない。正しいURLでの再取得が必要。
 
 source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
-source_quote: "介護休業給付金は家族を介護するための休業をした場合に支給"
+source_quote: "未検証（誤ページ取得）"
