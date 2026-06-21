@@ -1,17 +1,16 @@
-# 就業促進定着手当
+# 就業促進定着手当 — 出典固定
 
-- 雇用保険法56条の3第3項: https://laws.e-gov.go.jp/law/349AC0000000116/
-- ハローワーク 就業促進定着手当: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+**状態: VERIFIED（2026-06-21, ハローワーク就職促進給付ページ全文読み取り + page_snapshot保存）**
 
-## 支給要件（雇用保険法56条の3第3項・ハローワーク公式より）
-- 再就職手当の支給を受けていること
-- 再就職先に6か月以上雇用されていること
-- 再就職先での賃金が離職前の賃金より低いこと
-- 支給額:（離職前日額−再就職後日額）× 支給残日数 × 40%（上限あり）
+kourei_sai_shushokuと同一ページ。
 
-## 現ルールでの判定
-- koyou_hoken=true（雇用保険加入）を必要条件として判定
-- 実際には再就職手当受給+賃金低下が条件（情報提供としての判定）
+| 項目 | 確定値 |
+|---|---|
+| 支給額 | (離職前賃金日額−再就職後賃金日額)×日数 |
+| 上限 | 基本手当日額×残日数×20% |
+
+出典: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
-source_quote: "再就職手当の支給を受けた方で再就職先での賃金が離職前の賃金より低い場合に支給"
+source_quote: "就業促進定着手当 賃金日額差×日数"

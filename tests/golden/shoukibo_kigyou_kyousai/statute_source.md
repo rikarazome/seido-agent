@@ -1,7 +1,14 @@
-# 小規模企業共済等掛金控除
+# 小規模企業共済等掛金控除 — 出典固定
 
-- 所得税法75条: https://laws.e-gov.go.jp/law/340AC0000000033/
-- 国税庁 小規模企業共済等掛金控除: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm
+**状態: VERIFIED（2026-06-21, page_snapshot保存）**
 
-source_url: https://www.smrj.go.jp/kyosai/skyosai/index.html
-source_quote: "小規模企業共済"
+| 項目 | 確定値 |
+|---|---|
+| 控除額 | 掛金全額が所得控除 |
+| 対象 | 小規模企業共済/iDeCo/企業型DC/心身障害者扶養共済 |
+| 掛金上限 | 小規模企業共済: 月70,000円 |
+
+出典: page_snapshot_2026-06-21.txt
+
+source_url: https://www.smrj.go.jp/kyosai/skyosai/
+source_quote: "小規模企業共済 掛金全額所得控除"

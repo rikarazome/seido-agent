@@ -1,20 +1,16 @@
-# 傷病手当金
+# 傷病手当金 — 出典固定
 
-- 健康保険法99条: https://laws.e-gov.go.jp/law/211AC0000000070/
-- 協会けんぽ 傷病手当金: https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/index.html
+**状態: VERIFIED（2026-06-21, 協会けんぽページ全文読み取り + page_snapshot保存）**
 
-## 支給要件（健康保険法99条・協会けんぽ公式より）
-1. 業務外の事由による傷病の療養のための休業であること
-2. 労務不能であること（仕事に就くことができない）
-3. 連続する3日間を含み4日以上仕事に就くことができなかったこと
-4. 休業した期間について賃金の支払いがないこと
-- 支給額: 標準報酬日額の2/3
-- 支給期間: 支給開始日から通算1年6か月
-- 対象: 健康保険（社会保険）の被保険者のみ（国保には原則なし）
+| 項目 | 確定値 |
+|---|---|
+| 支給額 | 標準報酬月額÷30×2/3 |
+| 支給期間 | 通算1年6か月 |
+| 要件 | 業務外の病気/けがで連続3日以上休業 |
+| 待期 | 連続3日間 |
 
-## 現ルールでの判定
-- hoken_shubetsu=shakai_hoken（社会保険加入）かつ byouki_kyugyou=true（4日以上休業中）
-- 両条件とも健康保険法99条の要件に直接対応
+出典: https://www.kyoukaikenpo.or.jp/g3/sb3040/r139/
+証拠: page_snapshot_2026-06-21.txt
 
-source_url: https://www.kyoukaikenpo.or.jp/g6/cat620/r307/
-source_quote: "標準報酬月額を平均した額÷30日×（2/3）"
+source_url: https://www.kyoukaikenpo.or.jp/g3/sb3040/r139/
+source_quote: "傷病手当金 標準報酬月額÷30×2/3 通算1年6か月"

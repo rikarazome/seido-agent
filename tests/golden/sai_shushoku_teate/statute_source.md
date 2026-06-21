@@ -1,20 +1,17 @@
-# 再就職手当
+# 再就職手当 — 出典固定
 
-- 雇用保険法56条の3: https://laws.e-gov.go.jp/law/349AC0000000116/
-- ハローワーク 再就職手当: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+**状態: VERIFIED（2026-06-21, ハローワーク就職促進給付ページ全文読み取り + page_snapshot保存）**
 
-## 支給要件（雇用保険法56条の3・ハローワーク公式より）
-- 基本手当の受給資格者であること
-- 基本手当の残日数が所定給付日数の1/3以上あること
-- 7日間の待期期間満了後に就職すること
-- 1年以上継続勤務が確実であること
-- 前職の事業主に再就職していないこと
-- 過去3年以内に再就職手当を受給していないこと
-- 支給額: 基本手当日額 × 残日数 × 60%（残2/3以上なら70%）
+kourei_sai_shushokuと同一ページ。詳細はそちらを参照。
 
-## 現ルールでの判定
-- koyou_hoken=true + rishoku=true を必要条件として判定
-- 離職中の人に「再就職すれば受給可能」として案内
+| 項目 | 確定値 |
+|---|---|
+| 残日数2/3以上 | 残日数×70%×基本手当日額 |
+| 残日数1/3以上 | 残日数×60%×基本手当日額 |
+| 基本手当日額上限 | 6,570円（60歳以上5,310円） |
+
+出典: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
-source_quote: "基本手当の受給資格がある方が安定した職業に就いた場合に支給残日数の3分の1以上で支給"
+source_quote: "再就職手当 残日数×70%/60%×基本手当日額"

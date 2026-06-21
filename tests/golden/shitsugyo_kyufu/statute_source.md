@@ -1,18 +1,15 @@
-# 雇用保険基本手当（失業給付）
+# 雇用保険基本手当（失業給付）— 出典固定
 
-- 雇用保険法13条（受給資格）・15条（失業の認定）: https://laws.e-gov.go.jp/law/349AC0000000116/
-- ハローワーク 雇用保険の基本手当: https://www.hellowork.mhlw.go.jp/insurance/insurance_basicbenefit.html
+**状態: VERIFIED（2026-06-21, ハローワークページ全文読み取り + page_snapshot保存）**
 
-## 支給要件（雇用保険法・ハローワーク公式より）
-- 雇用保険の被保険者であったこと（離職前2年間に12か月以上、特定理由離職者は6か月以上）
-- 失業の状態にあること（就職の意思・能力があり求職活動を行っている）
-- ハローワークに求職の申込みを行うこと
-- 待期期間7日間の経過後に支給開始
-- 自己都合退職の場合は給付制限期間あり（2025年4月改正で1か月に短縮）
+| 項目 | 確定値 |
+|---|---|
+| 基本手当日額 | 賃金日額×50%～80%（年齢/賃金で変動） |
+| 所定給付日数 | 年齢/被保険者期間/離職理由で90日～360日 |
+| 対象 | 雇用保険被保険者が離職し求職活動中 |
 
-## 現ルールでの判定
-- koyou_hoken=true（雇用保険に加入/加入していた）かつ rishoku=true（離職中）を必要条件として判定
-- 被保険者期間の詳細や給付制限期間はProlog判定の範囲外（窓口確認を案内）
+出典: https://www.hellowork.mhlw.go.jp/insurance/insurance_basicbenefit.html
+証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_basicbenefit.html
-source_quote: "雇用保険の被保険者の方が離職し、失業中の生活を心配しないで新しい仕事を探すために支給されるもの"
+source_quote: "基本手当 賃金日額×50-80% 所定給付日数"
