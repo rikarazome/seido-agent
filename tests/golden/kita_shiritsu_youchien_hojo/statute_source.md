@@ -1,7 +1,20 @@
-# kita private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: kita ward official site (private kindergarten subsidy page)
+# 北区私立幼稚園（私学助成園）の補助制度 — 出典固定
+
+**状態: VERIFIED（2026-06-21, 公式ページ全文読み取り + page_snapshot保存）**
+
+| 項目 | 確定値 |
+|---|---|
+| 対象 | 満3歳～5歳、区内在住 |
+| 入園料(入園祝金) | 80,000円上限（所得問わず） |
+| 施設等利用費 | 月25,700円上限 |
+| 保護者負担軽減 | 月5,300～14,300円（所得変動）合計31,000～40,000円 |
+| 預かり保育 | 日額450円×日数（月11,300円上限）/ 満3歳 月16,300円 |
+| 給食費 | 月8,100円上限（低所得等）+ 北区独自無償化 月6,500円 |
+
+出典（公式ページ全文読み取り）:
+- 北区公式: https://www.city.kita.lg.jp/children-edu/childcare/1002975/1003841/1003844.html
+- 「80,000円（上限）」「月額25,700円を上限」
+- 証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.city.kita.lg.jp/children-edu/childcare/1002975/1003841/1003844.html
-source_quote: "私立幼稚園（私学助成園）の補助制度"
+source_quote: "入園祝金80,000円 施設等利用費25,700円 保護者負担軽減5,300-14,300円"
