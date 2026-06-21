@@ -1,19 +1,22 @@
-# 高額療養費制度
+# 高額療養費制度 — 出典固定
 
-- 健康保険法115条: https://laws.e-gov.go.jp/law/211AC0000000070/
-- 厚労省 高額療養費制度: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
+**状態: VERIFIED（2026-06-21, 厚労省ページ全文読み取り + page_snapshot保存）**
 
-## 制度概要（健康保険法115条・厚労省公式より）
-- 月ごとの自己負担額が限度額を超えた場合、超過分が払い戻される
-- 要件: 健康保険（社保・国保）に加入していること
-- 自己負担限度額は所得区分により異なる（例: 年収370-770万円で約8万円/月）
-- 2026年8月から限度額引上げ＋年間上限新設の改正あり
-- 事前に「限度額適用認定証」を取得すると窓口での支払いが限度額までに抑えられる
+| 項目 | 確定値 |
+|---|---|
+| 概要 | 窓口支払が上限額を超えた分を支給 |
+| 例 | 70歳未満・年収370万～770万：医療費100万→自己負担約8.7万 |
+| 多数回該当 | 直近12か月3回以上→4か月目以降さらに軽減 |
+| R8.8見直し | 月額上限見直し + 年間上限新設 |
+| R9.8見直し | 所得区分細分化 |
+| 低所得配慮 | 年収200万未満の多数回該当▲25% |
+| 具体的上限額表 | PDFに記載（HTMLにはなし） |
 
-## 現ルールでの判定
-- kenkou_hoken=true（健康保険加入）を必要条件として判定
-- 実際の利用は医療費が限度額を超えた場合のみ（情報提供としての判定）
-- amount_type: in_kind（現物給付＝還付）
+出典（厚労省ページ全文読み取り）:
+- 厚労省: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
+- 「医療費100万円の治療を受けた場合、自己負担は約8.7万円」
+- 「令和８年８月からは新たに年単位の上限額」
+- 証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
-source_quote: "高額療養費制度を利用される皆さまへ"
+source_quote: "高額療養費 自己負担約8.7万円 R8.8見直し"
