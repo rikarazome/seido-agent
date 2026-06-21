@@ -1,6 +1,24 @@
-# 住民税非課税世帯向け給付金
+# 住民税非課税世帯向け給付金 — 出典固定
 
-- 物価高騰対応重点支援地方創生臨時交付金（内閣府）: https://www.cao.go.jp/bunken-suishin/taisakukoufukin/taisakukoufukin_index.html
+**状態: VERIFIED（2026-06-21, 内閣官房ページ全文読み取り + page_snapshot保存）**
 
-## Conditions
-hikazei=true, not seikatsu_hogo
+**注意: 給付金の申請受付は終了（能登半島地震被災自治体の一部を除く）**
+
+| 区分 | 給付額 |
+|---|---|
+| 住民税非課税世帯 | 1世帯7万円 + 児童(18歳以下)1人5万円 |
+| 住民税均等割のみ課税 | 1世帯10万円 + 児童(18歳以下)1人5万円 |
+| 定額減税（納税者） | 所得税3万円 + 住民税1万円/人 |
+
+条件:
+- 合計所得1,805万円超は定額減税対象外
+- R5夏の3万円と合算で非課税世帯は計10万円
+
+出典（内閣官房ページ全文読み取り）:
+- 内閣官房: https://www.cas.go.jp/jp/seisaku/benefit2023/index.html
+- 「世帯主に1世帯あたり７万円と18歳以下の児童１人あたり５万円」
+- 「申請受付は終了」
+- 証拠: page_snapshot_2026-06-21.txt
+
+source_url: https://www.cas.go.jp/jp/seisaku/benefit2023/index.html
+source_quote: "非課税世帯7万円 均等割のみ10万円 申請受付終了"
