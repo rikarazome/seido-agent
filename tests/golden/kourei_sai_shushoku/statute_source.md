@@ -1,7 +1,20 @@
-# 高年齢再就職給付金
+# 高年齢再就職給付金 — 出典固定
 
-- 雇用保険法61条の2: https://hourei.net/law/349AC0000000116
-- ハローワーク 高年齢再就職給付金: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+**状態: VERIFIED（2026-06-21, ハローワーク就職促進給付ページ全文読み取り + page_snapshot保存）**
+
+| 項目 | 確定値 |
+|---|---|
+| 再就職手当（残日数2/3以上） | 残日数×70%×基本手当日額 |
+| 再就職手当（残日数1/3以上） | 残日数×60%×基本手当日額 |
+| 基本手当日額上限 | 6,570円（60歳以上65歳未満5,310円） |
+| 常用就職支度手当 | 90×40%×基本手当日額 |
+| 就業促進定着手当 | 賃金日額差×日数（上限: 残日数×20%×基本手当日額） |
+
+出典（ハローワークページ全文読み取り）:
+- ハローワーク: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
+- 「所定給付日数の支給残日数×70％×基本手当日額」
+- 「6,570円（60歳以上65歳未満は5,310円）」
+- 証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
-source_quote: "再就職手当 就業促進定着手当 高年齢"
+source_quote: "再就職手当 残日数×70%/60%×基本手当日額"

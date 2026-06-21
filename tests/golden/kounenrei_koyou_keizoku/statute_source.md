@@ -1,7 +1,10 @@
-# 高年齢雇用継続給付金
+# 高年齢雇用継続給付金 — 出典固定
 
-- 雇用保険法61条: https://hourei.net/law/349AC0000000116
-- ハローワーク 高年齢雇用継続給付: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
+**状態: 未検証（スナップショットは雇用保険制度改正ページ。高年齢雇用継続給付の具体額は記載なし）**
 
-source_url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
-source_quote: "60歳以降の賃金が60歳時点に比べて75％未満に低下した状態で働き続ける場合に支給されます"
+page_snapshot_2026-06-21.txtは「雇用保険制度の改正内容について」で、
+高年齢雇用継続給付の具体的な支給額・要件の詳細は記載なし。
+ハローワークの個別ページでの再取得が必要。
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158464.html
+source_quote: "未検証（改正概要ページのみ）"
