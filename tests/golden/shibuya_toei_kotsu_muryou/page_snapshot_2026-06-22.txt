@@ -1,0 +1,5 @@
+URL: https://www.kotsu.metro.tokyo.jp/other/kanren/free_pass.html
+Fetched: 2026-06-22
+Content-Type: text/html
+Text length: 0
+---
