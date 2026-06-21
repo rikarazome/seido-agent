@@ -1,14 +1,19 @@
 # 小規模企業共済等掛金控除 — 出典固定
 
-**状態: VERIFIED（2026-06-21, page_snapshot保存）**
+**状態: VERIFIED（2026-06-22, 中小機構ページ全文読み取り + page_snapshot保存）**
+
+**注意: このスナップショットは「小規模企業共済とは」のトップページ。具体的な掛金額・控除額は「制度の概要」「掛金について」の個別ページに記載。このページにはリンクのみ。**
 
 | 項目 | 確定値 |
 |---|---|
-| 控除額 | 掛金全額が所得控除 |
-| 対象 | 小規模企業共済/iDeCo/企業型DC/心身障害者扶養共済 |
-| 掛金上限 | 小規模企業共済: 月70,000円 |
+| ページ内容 | 制度の概要/掛金/共済金/貸付制度へのリンク集 |
+| 具体的な掛金額 | このページに記載なし |
+| 控除の詳細 | このページに記載なし |
 
-出典: page_snapshot_2026-06-21.txt
+出典（中小機構ページ全文読み取り）:
+- 中小機構: https://www.smrj.go.jp/kyosai/skyosai/about/index.html
+- 「小規模企業共済とは」のトップページ（リンク集のみ）
+- 証拠: page_snapshot_2026-06-21.txt
 
-source_url: https://www.smrj.go.jp/kyosai/skyosai/
-source_quote: "小規模企業共済 掛金全額所得控除"
+source_url: https://www.smrj.go.jp/kyosai/skyosai/about/index.html
+source_quote: "小規模企業共済 詳細は個別ページ（このページにはリンクのみ）"
