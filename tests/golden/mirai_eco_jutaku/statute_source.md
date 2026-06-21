@@ -1,6 +1,5 @@
-# みらいエコ住宅2026事業（住宅省エネ補助金）
+# みらいエコ住宅2026事業（住宅省エネ補助金） — 出典固定
 
-- 国土交通省 みらいエコ住宅2026事業: https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk4_000243.html
+**状態: 未検証（スナップショット未取得。正しいURLからの取得が必要）**
 
-source_url: https://kosodate-ecohome.mlit.go.jp/
-source_quote: "子育てエコホーム支援事業"
+source_quote: "未検証（スナップショットなし）"

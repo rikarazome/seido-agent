@@ -1,4 +1,5 @@
-# NISA（少額投資非課税制度）
+# NISA（少額投資非課税制度） — 出典固定
 
-- 租税特別措置法37条の14: https://laws.e-gov.go.jp/law/332AC0000000026/
-- 金融庁 NISA特設サイト: https://www.fsa.go.jp/policy/nisa2/index.html
+**状態: 未検証（スナップショット未取得。正しいURLからの取得が必要）**
+
+source_quote: "未検証（スナップショットなし）"

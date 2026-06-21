@@ -1,6 +1,5 @@
-# 東京都シルバーパス
+# 東京都シルバーパス — 出典固定
 
-- 東京都シルバーパス条例: https://www.fukushi.metro.tokyo.lg.jp/kourei/shisaku/silverpass.html
+**状態: 未検証（スナップショット未取得。正しいURLからの取得が必要）**
 
-source_url: https://www.kotsu.metro.tokyo.jp/bus/fare/silver.html
-source_quote: "シルバーパス（Playwright確認済み。ページfetch不可）"
+source_quote: "未検証（スナップショットなし）"

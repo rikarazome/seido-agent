@@ -1,6 +1,5 @@
-# 都営交通無料乗車券
+# 都営交通無料乗車券 — 出典固定
 
-- 東京都福祉保健局 都営交通無料乗車券: https://www.fukushi.metro.tokyo.lg.jp/shinsho/nichijo/muryou.html
+**状態: 未検証（スナップショット未取得。正しいURLからの取得が必要）**
 
-source_url: https://www.kotsu.metro.tokyo.jp/other/kanren/fare/free.html
-source_quote: "都営交通無料乗車券（Playwright確認済み。ページfetch不可）"
+source_quote: "未検証（スナップショットなし）"

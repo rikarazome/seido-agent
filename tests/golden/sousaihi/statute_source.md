@@ -1,6 +1,5 @@
-# 葬祭費（国民健康保険）
+# 葬祭費（国民健康保険） — 出典固定
 
-- 国民健康保険法58条: https://hourei.net/law/333AC0000000192
+**状態: 未検証（スナップショット未取得。正しいURLからの取得が必要）**
 
-source_url: https://www.city.shibuya.tokyo.jp/kurashi/kokuho/hokenkyufu/qfu07.html
-source_quote: "葬祭費（74歳以下）"
+source_quote: "未検証（スナップショットなし）"

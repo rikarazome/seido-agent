@@ -1,21 +1,5 @@
-# 求職者支援制度（職業訓練受講給付金）
+# 求職者支援制度（職業訓練受講給付金） — 出典固定
 
-- 職業訓練の実施等による特定求職者の就職の支援に関する法律7条: https://laws.e-gov.go.jp/law/423AC0000000047/
-- 厚労省 求職者支援制度: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyushokusha_shien/index.html
+**状態: 未検証（スナップショット未取得。正しいURLからの取得が必要）**
 
-## 支給要件（厚労省公式ページより）
-- 雇用保険被保険者でないこと、かつ雇用保険受給資格者でないこと
-- ハローワークに求職の申込みをしていること
-- 本人収入が月8万円以下
-- 世帯全体の収入が月25万円以下
-- 世帯全体の金融資産が300万円以下
-- 訓練実施日全てに出席すること（やむを得ない欠席は2割まで）
-- 支給額: 月10万円 + 通所手当（交通費）+ 寄宿手当
-
-## 現ルールでの判定
-- koyou_hoken=false（雇用保険非加入）かつ rishoku=true（離職中）を必要条件として判定
-- 本人収入基準・資産基準は世帯構成に依存するため現ルールでは簡略化
-- 金額: amount(100000) = 月10万円（条文通り）
-
-source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyushokusha_shien/index.html
-source_quote: "月10万円の生活支援の給付金を受給しながら、無料の職業訓練を受講する制度です"
+source_quote: "未検証（スナップショットなし）"

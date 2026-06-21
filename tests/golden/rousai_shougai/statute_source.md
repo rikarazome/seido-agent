@@ -1,5 +1,5 @@
-# rousai_shougai
-- 労働者災害補償保険法: https://laws.e-gov.go.jp/law/322AC0000000050/
+# rousai_shougai — 出典固定
 
-source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/index.html
-source_quote: "障害補償 障害等級"
+**状態: 未検証（スナップショットが別制度のページ。正しいURLからの再取得が必要）**
+
+source_quote: "未検証（誤ページ取得）"

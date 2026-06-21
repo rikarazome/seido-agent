@@ -1,6 +1,5 @@
-# 入院時食事療養費の標準負担額減額
+# 入院時食事療養費の標準負担額減額 — 出典固定
 
-- 健康保険法85条: https://hourei.net/law/211AC0000000070
+**状態: 未検証（スナップショットが別制度のページ。正しいURLからの再取得が必要）**
 
-source_url: https://www.kyoukaikenpo.or.jp/benefit/mynumber_insurance_card/002/index.html
-source_quote: "住民税非課税世帯は入院時食事療養費の標準負担額が減額される"
+source_quote: "未検証（誤ページ取得）"
