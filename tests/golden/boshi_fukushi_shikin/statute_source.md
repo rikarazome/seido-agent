@@ -1,7 +1,12 @@
-# 母子父子寡婦福祉資金貸付金
+# 母子父子寡婦福祉資金貸付金 — 出典固定
 
-- 母子及び父子並びに寡婦福祉法13条: https://laws.e-gov.go.jp/law/339AC0000000129/
-- 厚労省 母子父子寡婦福祉資金貸付金: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
+**状態: 未検証（スナップショットが誤ページ — 高齢者虐待防止マニュアルが取得されている）**
 
-source_url: https://www.gender.go.jp/policy/no_violence/e-vaw/law/23.html
-source_quote: "母子父子寡婦福祉資金貸付金制度"
+page_snapshot_2026-06-21.txtの内容は「市町村・都道府県における高齢者虐待への対応と養護者支援について」であり、
+母子福祉資金の情報ではない。正しいURLでの再取得が必要。
+
+正しいURL候補:
+- https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000062986.html
+source_quote: "未検証（誤ページ取得）"
