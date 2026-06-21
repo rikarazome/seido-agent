@@ -1,7 +1,24 @@
-# 遺族基礎年金
+# 遺族基礎年金 — 出典固定
 
-- 国民年金法37条: https://laws.e-gov.go.jp/law/334AC0000000141
-- 日本年金機構 遺族基礎年金: https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150401-04.html
+**状態: VERIFIED（2026-06-21, 日本年金機構ページ全文読み取り + page_snapshot保存）**
+
+| 項目 | 確定値（R8.4分から） |
+|---|---|
+| 基本額（S31.4.2以後生） | 847,300円/年 |
+| 基本額（S31.4.1以前生） | 844,900円/年 |
+| 子の加算（1-2人目） | 各243,800円/年 |
+| 子の加算（3人目以降） | 各81,300円/年 |
+| 受給対象 | 子のある配偶者、または子 |
+
+条件:
+- 被保険者の死亡（保険料納付期間2/3以上 or 直近1年間未納なし）
+- 子: 18歳年度末まで or 20歳未満で障害等級1-2級
+
+出典（日本年金機構ページ全文読み取り）:
+- 日本年金機構: https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150401-04.html
+- 「847,300円 ＋ 子の加算額」
+- 「1人目および2人目の子の加算額 各243,800円」
+- 証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150401-04.html
-source_quote: "遺族基礎年金（受給要件・対象者・年金額）"
+source_quote: "遺族基礎年金 847,300円 子の加算243,800円"
