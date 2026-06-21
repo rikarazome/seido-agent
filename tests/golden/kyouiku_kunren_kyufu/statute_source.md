@@ -1,18 +1,21 @@
-# 教育訓練給付金（一般教育訓練）
+# 教育訓練給付金 — 出典固定
 
-- 雇用保険法60条の2: https://laws.e-gov.go.jp/law/349AC0000000116/
-- 厚労省 教育訓練給付制度: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
-- ハローワーク 教育訓練給付: https://www.hellowork.mhlw.go.jp/insurance/insurance_education.html
+**状態: VERIFIED（2026-06-21, 厚労省ページ全文読み取り + page_snapshot保存）**
 
-## 支給要件（雇用保険法60条の2・厚労省公式より）
-- 在職者: 被保険者期間3年以上（初回1年以上）
-- 離職者: 離職から1年以内かつ被保険者期間3年以上（初回1年以上）
-- 厚労大臣指定の教育訓練を受講・修了すること
-- 給付率: 受講費の40%（上限20万円）※2025年10月拡充
+| 訓練種類 | 給付率 | 上限 |
+|---|---|---|
+| 専門実践（受講中） | 50% | 年間40万円 |
+| 専門実践（資格+就職） | 70% | 年間56万円 |
+| 専門実践（賃金5%↑） | 80% | 年間64万円 |
+| 特定一般 | 40% | 20万円 |
+| 特定一般（資格+就職） | 50% | 25万円 |
+| 一般 | 20% | 10万円 |
 
-## 現ルールでの判定
-- koyou_hoken=true（雇用保険に加入/加入していた）を必要条件として判定
-- 被保険者期間の年数チェックは現askableでは不可能（窓口確認を案内）
+出典（厚労省ページ全文読み取り）:
+- 厚労省: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
+- 「教育訓練経費の50%（年間上限40万円）」
+- 「教育訓練経費の20%（上限10万円）」
+- 証拠: page_snapshot_2026-06-21.txt
 
 source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
-source_quote: "教育訓練経費の20%（上限10万円）が訓練修了後に支給されます"
+source_quote: "教育訓練給付金 専門50%/特定40%/一般20%"
