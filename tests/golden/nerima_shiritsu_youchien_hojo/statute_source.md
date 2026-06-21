@@ -1,7 +1,8 @@
-# nerima private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: nerima ward official site (private kindergarten subsidy page)
+# 練馬区私立幼稚園等補助金 — 出典固定
 
-source_url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kyoiku/enjo/R4shirituyou_hojyo.html
-source_quote: "令和8年度私立幼稚園補助金"
+**状態: 未検証（スナップショットがトップページ。正しいURLの特定と再取得が必要）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.nerima.tokyo.jp/
+source_quote: "未検証"

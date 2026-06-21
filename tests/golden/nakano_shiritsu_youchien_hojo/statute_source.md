@@ -1,7 +1,8 @@
-# nakano private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: nakano ward official site (private kindergarten subsidy page)
+# 中野区私立幼稚園等補助金 — 出典固定
 
-source_url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/hoikuen/youchien/hoikuryohojyo/youchienhojokin.html
-source_quote: "2026年度 私立幼稚園等保護者向け補助金のご案内"
+**状態: 未検証（スナップショットがトップページ。正しいURLの特定と再取得が必要）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.tokyo-nakano.lg.jp/
+source_quote: "未検証"

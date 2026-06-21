@@ -1,7 +1,11 @@
-# taito private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: taito ward official site (private kindergarten subsidy page)
+# 台東区私立幼稚園等補助金 — 出典固定
 
-source_url: https://www.city.taito.lg.jp/kosodatekyouiku/yochien/shiritsuyochien/mushouka1.html
-source_quote: "幼児教育・保育の無償化（私立幼稚園に関する概要）"
+**状態: 未検証（スナップショットがトップページ。正しいURLの特定と再取得が必要）**
+
+programs.yamlのURLがトップページのまま。
+WebSearchで正しい個別ページURLを特定し、再取得してから検証する必要がある。
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.taito.lg.jp/
+source_quote: "未検証"
