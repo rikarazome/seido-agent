@@ -1,7 +1,8 @@
-# kita unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: kita ward official site (unlicensed daycare subsidy page)
+# 北区認可外保育施設保育料補助 — 出典固定
 
-source_url: https://www.city.kita.lg.jp/children-edu/childcare/1002975/1002976/1003736/1025508.html
-source_quote: "令和8年度 認証保育所及び認可外保育施設保育料負担軽減補助金（WebSearch確認。北区サイトBot対策によりPlaywright/curl不可）"
+**状態: 未検証（スナップショットがトップページ。正しいURLの特定と再取得が必要）**
+
+証拠: page_snapshot_2026-06-20.txt（トップページのみ）
+
+source_url: https://www.city.kita.lg.jp/
+source_quote: "未検証"
