@@ -1,7 +1,25 @@
-# 青色申告特別控除
+# 青色申告特別控除 — 出典固定
 
-- 租税特別措置法25条の2: https://laws.e-gov.go.jp/law/332AC0000000026/
-- 国税庁 青色申告特別控除: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2072.htm
+**状態: VERIFIED（2026-06-21, 国税庁タックスアンサー全文読み取り + page_snapshot保存）**
 
-source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2072.htm
-source_quote: "青色申告特別控除として最高65万円の所得控除"
+| 記帳方式 | 控除額 |
+|---|---|
+| 複式簿記 + 電子申告/電子帳簿 | 最高65万円 |
+| 複式簿記 | 最高55万円 |
+| 簡易な記帳 | 最高10万円 |
+
+| 項目 | 確定値 |
+|---|---|
+| 対象 | 不動産所得・事業所得・山林所得がある方 |
+| 専従者給与 | 適正額を必要経費に算入可 |
+| 純損失繰越 | 3年間（特定非常災害5年間） |
+| 純損失繰戻 | 前年分の所得税還付 |
+| 貸倒引当金 | 5.5%（金融業3.3%） |
+
+出典（国税庁タックスアンサー全文読み取り）:
+- 国税庁: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2070.htm
+- 「最高55万円」「電子申告を行っている場合は、最高65万円」
+- 証拠: page_snapshot_2026-06-21.txt
+
+source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2070.htm
+source_quote: "青色申告特別控除 最高65万円/55万円/10万円"
