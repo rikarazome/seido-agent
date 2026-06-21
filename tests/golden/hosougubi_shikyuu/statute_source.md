@@ -1,7 +1,9 @@
-# 補装具費支給制度
+# 補装具費支給制度 — 出典固定
 
-- 障害者総合支援法76条: https://laws.e-gov.go.jp/law/417AC0000000123
-- 厚労省 補装具費支給制度: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000078973.html
+**状態: 未検証（スナップショットが誤ページ — 小児慢性特定疾病対策の概要が取得されている）**
 
-source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/yogu/index.html
-source_quote: "補装具費支給制度 制度の概要"
+厚労省URLがリダイレクトされ、別のページが取得されている。
+正しいURLでの再取得が必要。
+
+source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000078973.html
+source_quote: "未検証（誤ページ取得）"
