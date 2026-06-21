@@ -1,16 +1,28 @@
 # 葛飾区子ども医療費助成 — 出典固定
 
-**状態: VERIFIED（2026-06-20, 公式ページ直接読み取り + page_snapshot保存）**
+**状態: VERIFIED（2026-06-21, 公式ページ全文読み取り + page_snapshot保存）**
 
 | 項目 | 確定値 |
 |---|---|
-| 対象年齢 | 18歳年度末まで |
-| 助成内容 | 自己負担分助成（in_kind） |
+| 対象年齢 | 18歳に達した日以後の最初の3月31日まで |
+| 助成内容 | 健康保険適用による自己負担分（2割/3割）を助成（in_kind） |
 | 要件 | 葛飾区住民登録 + 健康保険加入 |
-| 所得制限 | なし |
+| 所得制限 | なし（ページに記載なし） |
+| 除外 | 生活保護、児童福祉施設入所、里親委託 |
+| 注意 | 入院時食事代は助成対象外 |
 
-出典: https://www.city.katsushika.lg.jp/kurashi/1000056/1002293/1002297.html
-証拠: page_snapshot_2026-06-20.txt
+出典（公式ページ全文読み取り）:
+- 葛飾区公式: https://www.city.katsushika.lg.jp/kosodate/1000056/1002336/1002421.html
+- 「高校3年生相当年齢（18歳に達した日以後の最初の3月31日）までの児童を養育している方」
+- 「健康保険適用による自己負担分（保険適用の総医療費の2割または3割）」
+- 「入院したときの食事療養標準負担額」は対象外
+- 証拠: page_snapshot_2026-06-20.txt
 
-source_url: https://www.city.katsushika.lg.jp/kurashi/1000056/1002293/1002297.html
-source_quote: "子ども医療費助成"
+ルールの条文対応:
+- age_nendo_matsu <= 18: ✓
+- kenkou_hoken=true: ✓
+- decided(in_kind(jiko_futan_josei)): ✓
+- 所得制限なし: ✓
+
+source_url: https://www.city.katsushika.lg.jp/kosodate/1000056/1002336/1002421.html
+source_quote: "健康保険適用による自己負担分を助成"
