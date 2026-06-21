@@ -1,9 +1,21 @@
 # 板橋区私立幼稚園補助 — 出典固定
 
-**状態: VERIFIED（2026-06-20, page_snapshot保存。URLはトップページのため要正確なURL調査）**
+**状態: VERIFIED（2026-06-21, 公式ページ全文読み取り + page_snapshot保存）**
 
-出典: 板橋区トップページ（正しい個別ページURL未特定）
-証拠: page_snapshot_2026-06-20.txt（トップページのみ）
+| 項目 | 確定値 |
+|---|---|
+| 対象 | 満3歳～5歳、区内在住、私立幼稚園在園 |
+| 入園料 | 一律75,000円 |
+| 施設等利用費 | 月25,700円上限（国制度） |
+| 保護者負担軽減 | 月8,800～13,200円（所得で変動） |
+| 預かり保育 | 2号 日額450円×日数（月11,300円上限）/ 3号 月16,300円 |
+| 副食費補足 | 月4,900円上限（所得割77,101円未満 or 第3子以降） |
 
-source_url: https://www.city.itabashi.tokyo.jp/
-source_quote: "私立幼稚園"
+出典（公式ページ全文読み取り）:
+- 板橋区公式: https://www.city.itabashi.tokyo.jp/kyoikuiinkai/youchien/shiritsu/1013100.html
+- 「入園した年度に、一律75,000円を交付」
+- 「月額25,700円を上限」「月額8,800円から13,200円（上限）」
+- 証拠: page_snapshot_2026-06-21.txt
+
+source_url: https://www.city.itabashi.tokyo.jp/kyoikuiinkai/youchien/shiritsu/1013100.html
+source_quote: "入園料一律75,000円 施設等利用費25,700円 保護者負担軽減8,800-13,200円"

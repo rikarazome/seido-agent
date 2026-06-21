@@ -1930,8 +1930,8 @@
   potential_amount: 308400
   status: supported
   statute:
-  - ref: itabashi区 私立幼稚園等補助金
-    url: https://www.city.itabashi.tokyo.jp/
+  - ref: 板橋区 私立幼稚園保護者補助金
+    url: https://www.city.itabashi.tokyo.jp/kyoikuiinkai/youchien/shiritsu/1013100.html
 - id: nerima_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（nerima）
   layer: municipal
