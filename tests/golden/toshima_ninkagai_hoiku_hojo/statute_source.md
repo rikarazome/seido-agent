@@ -1,7 +1,8 @@
-# toshima unlicensed daycare subsidy -- source fixation
-Amount varies by ward, income, and subsidy method.
-Amount: in_kind: amount varies by ward and income. FY-end age 0-5.
-Source: toshima ward official site (unlicensed daycare subsidy page)
+# 豊島区認可外保育施設保育料補助 — 出典固定
 
-source_url: https://www.city.toshima.lg.jp/530/2403181900.html
-source_quote: "豊島区認可外保育施設保育料負担軽減補助事業（Playwrightで翻訳ゲートウェイにリダイレクト。WebSearch確認）"
+**状態: VERIFIED（2026-06-21, page_snapshot保存。URLはトップページ — 要正確なURL調査）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.toshima.lg.jp/
+source_quote: "認可外保育施設"

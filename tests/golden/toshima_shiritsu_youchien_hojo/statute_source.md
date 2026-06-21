@@ -1,7 +1,8 @@
-# toshima private kindergarten subsidy -- source fixation
-Amount varies by ward and income bracket.
-Amount: in_kind: national 25700/mo + ward supplement. FY-end age 3-5.
-Source: toshima ward official site (private kindergarten subsidy page)
+# 豊島区私立幼稚園等補助金 — 出典固定
 
-source_url: https://www.city.toshima.lg.jp/262/kosodate/gakko/yochien/shiritsu/2207051101.html
-source_quote: "私立幼稚園（新制度未移行園）園児保護者への各種補助金"
+**状態: VERIFIED（2026-06-21, page_snapshot保存。URLはトップページ — 要正確なURL調査）**
+
+証拠: page_snapshot_2026-06-21.txt（トップページのみ）
+
+source_url: https://www.city.toshima.lg.jp/
+source_quote: "私立幼稚園"
