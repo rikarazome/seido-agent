@@ -1212,30 +1212,6 @@
   statute:
   - ref: Bunkyo区 高校生世代育成支援金
     url: https://www.city.bunkyo.lg.jp/kosodatekyouiku/kosodate/teate/index.html
-- id: koto_shussan_oiwaikin
-  name: 江東区出産祝い金
-  layer: municipal
-  municipality: koto
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 50000
-  status: unsupported
-  statute:
-  - ref: Koto区 出産祝い金
-    url: https://www.city.koto.lg.jp/260501/kodomo/ninshinshussan/ninshin/97552.html
-- id: shinagawa_kosodate_ouen
-  name: 品川区子育て応援券
-  layer: municipal
-  municipality: shinagawa
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 10000
-  status: unsupported
-  statute:
-  - ref: Shinagawa区 子育て応援券
-    url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
 - id: toshima_shussan_oiwaikin
   name: 豊島区出産祝い金
   layer: municipal
@@ -1248,18 +1224,6 @@
   statute:
   - ref: Toshima区 出産祝い金
     url: https://www.city.toshima.lg.jp/258/2406201637.html
-- id: adachi_kosodate_ouen
-  name: 足立区子育て応援金
-  layer: municipal
-  municipality: adachi
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 30000
-  status: unsupported
-  statute:
-  - ref: Adachi区 子育て応援手当
-    url: https://www.city.adachi.tokyo.jp/oyako/bukkadakataiou_kosodateouenteate.html
 - id: edogawa_nyuyoji_teate
   name: 江戸川区乳児養育手当
   layer: municipal
@@ -1308,54 +1272,6 @@
   statute:
   - ref: 練馬区 第3子誕生祝金
     url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/shussan/iwaikin.html
-- id: shinjuku_shussan_oiwaikin
-  name: 新宿区誕生祝い金
-  layer: municipal
-  municipality: shinjuku
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 20000
-  status: unsupported
-  statute:
-  - ref: Shinjuku区 出産祝い金
-    url: https://www.city.shinjuku.lg.jp/fukushi/syussan_kosodate_gift.html
-- id: meguro_shussan_josei
-  name: 目黒区出産費用助成
-  layer: municipal
-  municipality: meguro
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 50000
-  status: unsupported
-  statute:
-  - ref: Meguro区 出産費用助成
-    url: https://www.city.meguro.tokyo.jp/kosodatekyouiku/ninshin/shussanshien/josei/index.html
-- id: ota_shussan_oiwaikin
-  name: 大田区出産応援金
-  layer: municipal
-  municipality: ota
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 20000
-  status: unsupported
-  statute:
-  - ref: Ota区 出産応援事業
-    url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/index.html
-- id: sumida_shussan_oiwaikin
-  name: 墨田区出産祝い金
-  layer: municipal
-  municipality: sumida
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 20000
-  status: unsupported
-  statute:
-  - ref: Sumida区 出産祝い金
-    url: https://www.city.sumida.lg.jp/kenko_fukushi/kenko/oyako_kenko/syussan_junbi_class/skogift.html
 - id: taito_shussan_oiwaikin
   name: 台東区出産祝い金
   layer: municipal
@@ -1392,42 +1308,6 @@
   statute:
   - ref: Suginami区 出産応援事業
     url: https://www.city.suginami.tokyo.jp/s054/19751.html
-- id: arakawa_shussan_oiwaikin
-  name: 荒川区出産祝い金
-  layer: municipal
-  municipality: arakawa
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 30000
-  status: unsupported
-  statute:
-  - ref: Arakawa区 出産祝い金
-    url: https://www.city.arakawa.tokyo.jp/a033/kosodate/shussankosodate/shussankosodate.html
-- id: itabashi_shussan_ouen
-  name: 板橋区出産応援金
-  layer: municipal
-  municipality: itabashi
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 20000
-  status: unsupported
-  statute:
-  - ref: 板橋区 妊婦のための支援給付
-    url: https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1056054.html
-- id: katsushika_shussan_ouen
-  name: 葛飾区出産祝い金
-  layer: municipal
-  municipality: katsushika
-  subject: child
-  unit: per_child
-  amount_type: oneoff
-  potential_amount: 25000
-  status: unsupported
-  statute:
-  - ref: Katsushika区 出産祝い金
-    url: https://www.city.katsushika.lg.jp/kenkou/1000050/1001803/1030902.html
 - id: chiyoda_shiritsu_youchien_hojo
   name: 私立幼稚園等補助金（chiyoda）
   layer: municipal
