@@ -1,0 +1,48 @@
+# 足立区出産費助成事業 golden cases
+# Derived from statute: https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/syussanhi-josei.html
+# Up to 100,000 JPY per child (self-pay portion). Not for seikatsu_hogo.
+
+- name: eligible
+  as_of: '2026-06-22'
+  municipality: adachi
+  facts:
+    askable:
+      ninshin: true
+      seikatsu_hogo: false
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(adachi_shussan_hiyou)
+
+- name: not_pregnant
+  as_of: '2026-06-22'
+  municipality: adachi
+  facts:
+    askable:
+      ninshin: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_pregnant
+
+- name: seikatsu_hogo
+  as_of: '2026-06-22'
+  municipality: adachi
+  facts:
+    askable:
+      ninshin: true
+      seikatsu_hogo: true
+  expect:
+    subject: self
+    status: ineligible
+    detail: receiving_seikatsu_hogo
+
+- name: blocked
+  as_of: '2026-06-22'
+  municipality: adachi
+  facts:
+    askable: {}
+  expect:
+    subject: self
+    status: blocked
+    detail: '[ninshin,seikatsu_hogo]'

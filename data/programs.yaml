@@ -2746,3 +2746,15 @@
   statute:
   - ref: 労働者災害補償保険法15条
     url: https://laws.e-gov.go.jp/law/322AC0000000050/
+- id: adachi_shussan_hiyou_josei
+  name: 足立区出産費助成事業
+  layer: municipal
+  municipality: adachi
+  subject: claimant
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 足立区出産費助成事業
+    url: https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/syussanhi-josei.html
