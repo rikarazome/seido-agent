@@ -2794,3 +2794,15 @@
   statute:
   - ref: 台東区出産費用助成制度
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/syussanhiyoujyosei.html
+- id: chiyoda_shussan_hiyou_josei
+  name: 千代田区出産費用助成（区独自制度）
+  layer: municipal
+  municipality: chiyoda
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 310000
+  status: supported
+  statute:
+  - ref: 千代田区出産費用助成（区独自制度）
+    url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/shussanhiyojosei.html
