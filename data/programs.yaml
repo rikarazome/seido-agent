@@ -2770,3 +2770,15 @@
   statute:
   - ref: 渋谷区ハッピーマザー出産助成金
     url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/happy_josei.html
+- id: setagaya_shussan_hiyou_josei
+  name: 世田谷区出産費助成制度
+  layer: municipal
+  municipality: setagaya
+  subject: claimant
+  unit: per_child
+  amount_type: oneoff
+  potential_amount: 50000
+  status: supported
+  statute:
+  - ref: 世田谷区出産費助成制度
+    url: https://www.city.setagaya.lg.jp/02413/1206.html
