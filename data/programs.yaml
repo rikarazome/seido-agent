@@ -350,16 +350,6 @@
   statute:
   - ref: 渋谷区 就学援助
     url: https://www.city.shibuya.tokyo.jp/kodomo/gakko-kyoiku/nyugaku-tennyu-shugaku/tetsuduki_g.html
-- id: shibuya_housing_tbd
-  name: 住み替え家賃補助（住宅系・対応制度を選定中）
-  layer: municipal
-  municipality: shibuya
-  subject: claimant
-  unit: per_household
-  amount_type: monthly
-  potential_amount: null
-  status: unsupported
-  statute: []
 - id: minato_kodomo_iryouhi
   name: 子ども医療費助成
   layer: municipal
@@ -1200,18 +1190,6 @@
   statute:
   - ref: Chuo区 出産祝い品
     url: https://www.city.chuo.lg.jp/a0020/kosodate/shussan/shussanshien/kaimonokenn.html
-- id: bunkyo_koukousei_ikusei_shienkin
-  name: 文京区高校生世代育成支援金
-  layer: municipal
-  municipality: bunkyo
-  subject: child
-  unit: per_child
-  amount_type: in_kind
-  potential_amount: 50000
-  status: unsupported
-  statute:
-  - ref: Bunkyo区 高校生世代育成支援金
-    url: https://www.city.bunkyo.lg.jp/kosodatekyouiku/kosodate/teate/index.html
 - id: toshima_shussan_oiwaikin
   name: 豊島区出産祝い金
   layer: municipal
@@ -1236,18 +1214,6 @@
   statute:
   - ref: 江戸川区 乳児養育手当（ゼロ歳児）
     url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/youiku.html
-- id: kita_nyuyoji_teate
-  name: 北区乳幼児養育手当
-  layer: municipal
-  municipality: kita
-  subject: child
-  unit: per_child
-  amount_type: monthly
-  potential_amount: 5000
-  status: unsupported
-  statute:
-  - ref: Kita区 乳幼児医療費助成
-    url: https://www.city.kita.lg.jp/children-edu/childcare/1002909/1002913/1002914.html
 - id: setagaya_shussan_oiwaikin
   name: 世田谷区出生祝い金
   layer: municipal
