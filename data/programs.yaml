@@ -2806,3 +2806,15 @@
   statute:
   - ref: 千代田区出産費用助成（区独自制度）
     url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/shussanhiyojosei.html
+- id: chiyoda_chuukousei_ouen
+  name: 千代田区中高生世代応援手当（区独自制度）
+  layer: municipal
+  municipality: chiyoda
+  subject: child
+  unit: per_child
+  amount_type: monthly
+  potential_amount: 15000
+  status: supported
+  statute:
+  - ref: 千代田区中高生世代応援手当（区独自制度）
+    url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/chukosei-oenteate.html
