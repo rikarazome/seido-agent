@@ -2782,3 +2782,15 @@
   statute:
   - ref: 世田谷区出産費助成制度
     url: https://www.city.setagaya.lg.jp/02413/1206.html
+- id: taito_shussan_hiyou_josei
+  name: 台東区出産費用助成制度
+  layer: municipal
+  municipality: taito
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 50000
+  status: supported
+  statute:
+  - ref: 台東区出産費用助成制度
+    url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/syussanhiyoujyosei.html
