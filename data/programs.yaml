@@ -358,7 +358,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: null
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute: []
 - id: minato_kodomo_iryouhi
   name: 子ども医療費助成
@@ -1208,7 +1208,7 @@
   unit: per_child
   amount_type: in_kind
   potential_amount: 50000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Bunkyo区 高校生世代育成支援金
     url: https://www.city.bunkyo.lg.jp/kosodatekyouiku/kosodate/teate/index.html
@@ -1220,7 +1220,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 50000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Koto区 出産祝い金
     url: https://www.city.koto.lg.jp/260501/kodomo/ninshinshussan/ninshin/97552.html
@@ -1232,7 +1232,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 10000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Shinagawa区 子育て応援券
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
@@ -1256,7 +1256,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 30000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Adachi区 子育て応援手当
     url: https://www.city.adachi.tokyo.jp/oyako/bukkadakataiou_kosodateouenteate.html
@@ -1280,7 +1280,7 @@
   unit: per_child
   amount_type: monthly
   potential_amount: 5000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Kita区 乳幼児医療費助成
     url: https://www.city.kita.lg.jp/children-edu/childcare/1002909/1002913/1002914.html
@@ -1316,7 +1316,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Shinjuku区 出産祝い金
     url: https://www.city.shinjuku.lg.jp/fukushi/syussan_kosodate_gift.html
@@ -1328,7 +1328,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 50000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Meguro区 出産費用助成
     url: https://www.city.meguro.tokyo.jp/kosodatekyouiku/ninshin/shussanshien/josei/index.html
@@ -1340,7 +1340,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Ota区 出産応援事業
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/index.html
@@ -1352,7 +1352,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Sumida区 出産祝い金
     url: https://www.city.sumida.lg.jp/kenko_fukushi/kenko/oyako_kenko/syussan_junbi_class/skogift.html
@@ -1400,7 +1400,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 30000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Arakawa区 出産祝い金
     url: https://www.city.arakawa.tokyo.jp/a033/kosodate/shussankosodate/shussankosodate.html
@@ -1412,7 +1412,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 20000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: 板橋区 妊婦のための支援給付
     url: https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1056054.html
@@ -1424,7 +1424,7 @@
   unit: per_child
   amount_type: oneoff
   potential_amount: 25000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Katsushika区 出産祝い金
     url: https://www.city.katsushika.lg.jp/kenkou/1000050/1001803/1030902.html
@@ -1436,7 +1436,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Shibuya区 ひとり親家庭住宅支援
     url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_sumai.html
@@ -1448,7 +1448,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Chiyoda区 ひとり親家庭住宅支援
     url: https://www.city.chiyoda.lg.jp/koho/machizukuri/sumai/jose/yachinjose.html
@@ -1460,7 +1460,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Shinjuku区 ひとり親家庭住宅支援
     url: https://www.city.shinjuku.lg.jp/seikatsu/file07_02_00001.html
@@ -1472,7 +1472,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Bunkyo区 ひとり親家庭住宅支援
     url: https://www.city.bunkyo.lg.jp/tetsuzuki/jutaku/sumairujyutaku/nyuukyosya.html
@@ -1484,7 +1484,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Koto区 ひとり親家庭住宅支援
     url: https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/96043.html
@@ -1496,7 +1496,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Meguro区 ひとり親家庭住宅支援
     url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/jidofuyoteate.html
@@ -1508,7 +1508,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Setagaya区 ひとり親家庭住宅支援
     url: https://www.city.setagaya.lg.jp/03665/3722.html
@@ -1520,7 +1520,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Nakano区 ひとり親家庭住宅支援
     url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/hitorioya/sumai/hitorioyazyuutakushien.html
@@ -1532,7 +1532,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Toshima区 ひとり親家庭住宅支援
     url: https://www.city.toshima.lg.jp/kosodate/kosodate/hitorioya/index.html
@@ -1544,7 +1544,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Kita区 ひとり親家庭住宅支援
     url: https://www.city.kita.lg.jp/children-edu/childcare/1002833/1002848/1016855.html
@@ -1556,7 +1556,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Ota区 ひとり親家庭住宅支援
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/shien/index.html
@@ -1568,7 +1568,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Suginami区 ひとり親家庭住宅支援
     url: https://www.city.suginami.tokyo.jp/s053/12441.html
@@ -1580,7 +1580,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Arakawa区 ひとり親家庭住宅支援
     url: https://www.city.arakawa.tokyo.jp/a035/kosodate/hitorioyakatei/hitorioyatenkyoshien.html
@@ -1592,7 +1592,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Itabashi区 ひとり親家庭住宅支援
     url: https://www.city.itabashi.tokyo.jp/kosodate/hitorioya/index.html
@@ -1604,7 +1604,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Nerima区 ひとり親家庭住宅支援
     url: https://www.city.nerima.tokyo.jp/kurashi/jinken/hitorioya/tentakushien.html
@@ -1616,7 +1616,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Adachi区 ひとり親家庭住宅支援
     url: https://www.city.adachi.tokyo.jp/k-kyoiku/kosodate/hitorioya/index.html
@@ -1628,7 +1628,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Edogawa区 ひとり親家庭住宅支援
     url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/iryohijose.html
@@ -1640,7 +1640,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Katsushika区 ひとり親家庭住宅支援
     url: https://www.city.katsushika.lg.jp/kosodate/1000056/1002341/index.html
@@ -1652,7 +1652,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Taito区 ひとり親家庭住宅支援
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/hitorioya/index.html
@@ -1664,7 +1664,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Sumida区 ひとり親家庭住宅支援
     url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/index.html
@@ -1676,7 +1676,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Shinagawa区 ひとり親家庭住宅支援
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/index.html
@@ -1688,7 +1688,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Minato区 ひとり親家庭住宅支援
     url: https://www.city.minato.tokyo.jp/kodomo/kodomo/hitorioya/
@@ -1700,7 +1700,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 15000
-  status: unsupported
+  status: unsupported  # スクリプト一括生成。条文との金額照合未実施
   statute:
   - ref: Chuo区 ひとり親家庭住宅支援
     url: https://www.city.chuo.lg.jp/a0042/kurashi/sumai/koutekijuutaku/hitorioyajyutaku.html
@@ -2288,7 +2288,7 @@
   unit: per_household
   amount_type: oneoff
   potential_amount: 30000
-  status: unsupported
+  status: unsupported  # 金額不整合(ルール3万/条文7万)+申請受付終了
   statute:
   - ref: 物価高騰対応重点支援地方創生臨時交付金（内閣府）
     url: https://www.chisou.go.jp/tiiki/rinjikoufukin/index.html
@@ -2450,7 +2450,7 @@
   unit: per_household
   amount_type: monthly
   potential_amount: 100000
-  status: unsupported
+  status: unsupported  # ルールが非課税10万のみ。条文は課税70,500円もあり金額分岐が未実装
   statute:
   - ref: 母子及び父子並びに寡婦福祉法31条の2
     url: https://hourei.net/law/339AC0000000129
@@ -3108,7 +3108,7 @@
   unit: per_household
   amount_type: in_kind
   potential_amount: 0
-  status: unsupported
+  status: unsupported  # 年齢要件(18歳以上)未実装+給付制度ではなく判定対象として不適切
   statute:
   - ref: 租税特別措置法37条の14
     url: https://laws.e-gov.go.jp/law/332AC0000000026/
