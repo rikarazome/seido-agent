@@ -2758,3 +2758,15 @@
   statute:
   - ref: 足立区出産費助成事業
     url: https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/syussanhi-josei.html
+- id: shibuya_happy_mother
+  name: 渋谷区ハッピーマザー出産助成金
+  layer: municipal
+  municipality: shibuya
+  subject: claimant
+  unit: per_household
+  amount_type: oneoff
+  potential_amount: 100000
+  status: supported
+  statute:
+  - ref: 渋谷区ハッピーマザー出産助成金
+    url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/happy_josei.html

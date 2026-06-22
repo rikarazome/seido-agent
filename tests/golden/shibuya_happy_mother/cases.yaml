@@ -1,0 +1,35 @@
+# 渋谷区ハッピーマザー出産助成金 golden cases
+# Source: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/happy_josei.html
+# Up to 100,000 JPY per birth
+
+- name: shibuya_happy_eligible
+  as_of: '2026-06-22'
+  municipality: shibuya
+  facts:
+    askable:
+      ninshin: true
+  expect:
+    subject: self
+    status: decided
+    detail: kubun(shibuya_happy_mother)
+
+- name: shibuya_happy_not_pregnant
+  as_of: '2026-06-22'
+  municipality: shibuya
+  facts:
+    askable:
+      ninshin: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: not_pregnant
+
+- name: shibuya_happy_blocked
+  as_of: '2026-06-22'
+  municipality: shibuya
+  facts:
+    askable: {}
+  expect:
+    subject: self
+    status: blocked
+    detail: '[ninshin]'
