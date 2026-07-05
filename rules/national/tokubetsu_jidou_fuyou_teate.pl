@@ -1,6 +1,6 @@
 % ============================================================
 % tokubetsu_jidou_fuyou_teate.pl - Special Child Dependency Allowance
-% VERIFIED 2026-06-22: Grade 1: 58,450 JPY/month, Grade 2: 38,930 (R8年度).
+% VERIFIED 2026-06-22: Grade 1: 58,450 JPY/month, Grade 2: 38,930 (R8 fiscal year).
 % Child under 20 with disability. Income limit: 4,596,000 + 380,000*N.
 % v1: shintai_1/ryoiku -> 1kyu, shintai_2 -> 2kyu.
 % Subject: child. Uses per-child askable shogai_techo_child.
