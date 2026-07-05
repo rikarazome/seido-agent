@@ -288,12 +288,30 @@ function startChat(){
   askBirthDate();
 }
 
+function bdSelectHtml(prefix){
+  const thisY=new Date().getFullYear();
+  let yOpts='<option value="">年</option>';
+  for(let y=thisY;y>=1930;y--)yOpts+=`<option value="${y}">${y}</option>`;
+  let mOpts='<option value="">月</option>';
+  for(let m=1;m<=12;m++)mOpts+=`<option value="${m}">${m}</option>`;
+  let dOpts='<option value="">日</option>';
+  for(let d=1;d<=31;d++)dOpts+=`<option value="${d}">${d}</option>`;
+  const s='border-radius:var(--r-pill);padding:9px 10px;border:1px solid var(--ink-faint);font-size:.92rem;font-family:inherit;background:#fff';
+  return`<select id="${prefix}-y" style="${s}">${yOpts}</select><select id="${prefix}-m" style="${s}">${mOpts}</select><select id="${prefix}-d" style="${s}">${dOpts}</select>`;
+}
+function bdSelectValue(prefix){
+  const y=document.getElementById(prefix+"-y").value;
+  const m=document.getElementById(prefix+"-m").value;
+  const d=document.getElementById(prefix+"-d").value;
+  if(!y||!m||!d)return null;
+  return`${y}-${String(m).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+}
 function askBirthDate(){
   addAgent("<b>あなたの生年月日を教えてください。</b><br><span style='font-size:.82rem;color:var(--ink-sub)'>年齢に応じた制度の判定に使います。</span>");
-  addChips(`<div class="chips live-chips"><input type="date" id="bd-input" max="2026-12-31" style="border-radius:var(--r-pill);padding:9px 14px;border:1px solid var(--ink-faint);font-size:.92rem;font-family:inherit;width:200px"><button class="chip" onclick="submitBirthDate()">決定</button><button class="chip dim" onclick="skipBirthDate()">スキップ</button></div>`);
+  addChips(`<div class="chips live-chips" style="flex-wrap:wrap;gap:6px">${bdSelectHtml("bd")}<button class="chip" onclick="submitBirthDate()">決定</button><button class="chip dim" onclick="skipBirthDate()">スキップ</button></div>`);
 }
 function submitBirthDate(){
-  const v=document.getElementById("bd-input").value;
+  const v=bdSelectValue("bd");
   if(!v){skipBirthDate();return;}
   addUser(v);
   removeOldChips();
@@ -326,16 +344,16 @@ function askChildBirthDates(){
 function showChildInput(){
   const n=tempChildren.length+1;
   addChips(`<div class="chips live-chips" style="flex-direction:column;gap:6px">
-    <div style="display:flex;gap:8px;align-items:center">
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
       <span style="font-size:.82rem;font-weight:700;color:var(--ink-sub)">${n}人目</span>
-      <input type="date" id="child-bd" max="2026-12-31" style="border-radius:var(--r-pill);padding:9px 14px;border:1px solid var(--ink-faint);font-size:.92rem;font-family:inherit;width:200px">
+      ${bdSelectHtml("child-bd")}
       <button class="chip" onclick="addChildDate()">追加</button>
     </div>
     ${tempChildren.length>0?'<button class="chip dim" onclick="doneChildren()">これで全員です</button>':''}
   </div>`);
 }
 function addChildDate(){
-  const v=document.getElementById("child-bd").value;
+  const v=bdSelectValue("child-bd");
   if(!v)return;
   tempChildren.push(v);
   addUser(`${tempChildren.length}人目: ${v}`);
@@ -382,14 +400,19 @@ function amountText(a){
   return`${unit}${yen(a.yen)}`;
 }
 
+let judging=false;
 async function doJudge(){
-  const r=await fetch("/api/judge",{method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({facts,municipality})});
-  if(!r.ok){addAgent("判定中にエラーが発生しました。");return;}
-  lastResp=await r.json();
-  renderResult();
-  renderNextQuestion();
+  if(judging)return;
+  judging=true;
+  try{
+    const r=await fetch("/api/judge",{method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({facts,municipality})});
+    if(!r.ok){addAgent("判定中にエラーが発生しました。");return;}
+    lastResp=await r.json();
+    renderResult();
+    renderNextQuestion();
+  }finally{judging=false;}
 }
 
 function renderResult(){
@@ -421,9 +444,11 @@ function renderResult(){
     rows+=decided.map((r,i)=>{
       const statLinks=(r.statute||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.ref)}</a>`).join("<br>");
       const reasonJa=buildReasonJa(r);
+      const descHtml=r.description?`<div style="font-size:.84rem;line-height:1.6;margin-bottom:10px;color:var(--ink)">${esc(r.description)}</div>`:"";
       return`<div class="prow-detail">
-        <div class="prow"><span class="pname">${esc(r.name)}</span><span class="pamount">${amountText(r.amount)}</span><span class="badge decided">受給見込み</span><button class="proof-btn" onclick="toggleReason(${i})">根拠を見る</button></div>
+        <div class="prow"><span class="pname">${esc(r.name)}</span><span class="pamount">${amountText(r.amount)}</span><span class="badge decided">受給見込み</span><button class="proof-btn" onclick="toggleReason(${i})">詳細を見る</button></div>
         <div class="reason-box hidden" id="reason-${i}">
+          ${descHtml}
           <div class="reason-ja">${reasonJa}</div>
           ${statLinks?`<div class="reason-statute"><span style="font-weight:700;font-size:.78rem">条文・出典:</span><br>${statLinks}</div>`:""}
           <button class="proof-btn" style="margin-top:8px" onclick="showProofTree(${i},'${esc(r.program)}')">Prolog推論ツリーを表示</button>
@@ -515,7 +540,7 @@ const ASKABLE_JA={
   nenshu:"年収",shotoku_exact:"所得（控除後）",hitorioya:"ひとり親である",
   hitorioya_jiyuu:"ひとり親の事由",seikei_douitsu_partner:"事実婚でない",
   fuyou_ninzu:"扶養親族の人数",kenkou_hoken:"健康保険に加入している",
-  ninshin:"妊娠中である",seikatsu_hogo:"生活保護を受給していない",
+  ninshin:"妊娠中である",seikatsu_hogo:"生活保護を受給中である",
   hikazei:"住民税非課税世帯である",shogai_techo:"障害者手帳",
   koyou_hoken:"雇用保険に加入している",rishoku:"離職中である",
   nanbyo_nintei:"難病認定を受けている",hoken_shubetsu:"健康保険の種類",
@@ -541,101 +566,28 @@ function fmtVal(key,v){
   return VAL_JA[v]||String(v);
 }
 function buildReasonJa(r){
-  let items=[];
-  // Extract which facts the user answered that led to this decision
+  const items=[];
+  const uf=r.used_facts||[];
   const ak=facts.askable||{};
-  // Map program's required conditions from the Prolog detail
-  const detail=(r.children||[]).find(s=>s.kind==="decided")?.detail||"";
-
-  // Build "your answers that matched" from the askable facts
-  // We check which askable keys are relevant by looking at questions that
-  // this program's rules would check. Since we don't have that mapping client-side,
-  // we use a heuristic: show all non-null, non-declined askable values that
-  // differ from the "universal" default (everyone has them).
-  // Better: use the program's "missing" from when it was blocked.
-  // The result card has "children" with subject results - each has the raw Prolog term.
-  // We parse the decided detail to understand what was checked.
-
-  // Strategy: show answered facts as "conditions met"
-  const relevantKeys=guessRelevantKeys(r.program, detail);
-  for(const key of relevantKeys){
-    const v=ak[key];
-    if(v===undefined||v===null||v==="declined")continue;
-    const label=ASKABLE_JA[key]||FACT_JA[key]||key;
-    const valStr=fmtVal(key,v);
-    if(v===true) items.push(label);
-    else if(valStr) items.push(`${label}: ${valStr}`);
+  for(const f of uf){
+    if(f.fact==="age"||f.fact==="age_nendo_matsu"){
+      const who=f.subject==="p1"?"あなた":`お子さん(${f.subject})`;
+      items.push(`${who}の年齢: ${f.value}歳`);
+    }else{
+      const label=ASKABLE_JA[f.fact]||f.fact;
+      const rawVal=ak[f.fact];
+      if(rawVal===undefined||rawVal===null||rawVal==="declined"){
+        items.push(label);
+      }else{
+        const valStr=fmtVal(f.fact,rawVal);
+        if(rawVal===true) items.push(label);
+        else if(valStr) items.push(`${label}: ${valStr}`);
+        else items.push(label);
+      }
+    }
   }
-
-  // Amount info
-  const numMatch=detail.match(/(?:amount|monthly|yearly|oneoff)\((\d+)\)/);
-  if(numMatch){
-    const v=parseInt(numMatch[1]);
-    const unitMap={monthly:"月額",yearly:"年額",oneoff:"一時金"};
-    const u=Object.keys(unitMap).find(k=>detail.startsWith(k+"("));
-    items.push(`→ ${u?unitMap[u]:""}${v.toLocaleString("ja-JP")}円`);
-  }
-  if(detail.startsWith("in_kind")) items.push("→ 現物給付（自己負担分を助成）");
-  if(detail==="zenbu") items.push("→ 全部支給");
-  if(detail==="ichibu") items.push("→ 一部支給（所得に応じた減額）");
-  if(detail.match(/amount_yearly\((\d+)\)/)){
-    const ym=detail.match(/amount_yearly\((\d+)\)/);
-    items.push(`→ 年額${parseInt(ym[1]).toLocaleString("ja-JP")}円`);
-  }
-
   if(!items.length) items.push("判定条件を満たしています");
   return'<div style="font-size:.8rem;font-weight:700;color:var(--ink-sub);margin-bottom:4px">あなたが該当する理由:</div><ul>'+items.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>";
-}
-
-function guessRelevantKeys(program, detail){
-  // Map program IDs to the askable keys their rules check
-  const PROG_KEYS={
-    shitsugyo_kyufu:["koyou_hoken","rishoku"],
-    sai_shushoku_teate:["koyou_hoken","rishoku"],
-    kyushokusha_shien_kunren:["koyou_hoken","rishoku"],
-    kyouiku_kunren_kyufu:["koyou_hoken"],
-    shuugyou_sokushin_teate:["sai_shushoku_teate_jukyuu"],
-    tokutei_shishutsu_koujo:["koyou_hoken","tokutei_shishutsu_ari"],
-    ikuji_kyuugyou_kyufu:["koyou_hoken","ikuji_kyuugyou"],
-    kaigo_kyuugyou_kyufu:["koyou_hoken","kaigo_family"],
-    kougaku_ryouyouhi:["kenkou_hoken"],
-    shoubyou_teatekin:["hoken_shubetsu","byouki_kyugyou"],
-    hikazei_setai_kyufukin:["hikazei","seikatsu_hogo"],
-    nyuuin_shokuji_gengaku:["hikazei"],
-    kokuho_keigen:["hoken_shubetsu","nenshu"],
-    kokumin_nenkin_menjo:["nenshu","seikatsu_hogo"],
-    jukyo_kakuho_kyufukin:["rishoku","seikatsu_hogo"],
-    nhk_menjo:["seikatsu_hogo","shogai_techo","hikazei"],
-    shougai_kiso_nenkin:["shogai_techo"],
-    tokubetsu_shogaisha_teate:["shogai_techo","nenshu","fuyou_ninzu"],
-    toei_kotsu_muryou:["shogai_techo"],
-    tokyo_suidou_genmen:["seikatsu_hogo","shogai_techo","hitorioya"],
-    silver_pass:[],
-    kaigo_hokenryo_genmen:["hikazei"],
-    kougaku_kaigo_service:["kaigo_nintei"],
-    ninpu_kensin_josei:["ninshin"],
-    sanzen_sango_nenkin_menjo:["ninshin"],
-    shussan_teatekin:["ninshin","hoken_shubetsu"],
-    shussan_ikuji_ichijikin:["ninshin","kenkou_hoken"],
-    boshi_jiritsu_kyouiku:["hitorioya"],
-    boshi_koutou_kunren:["hitorioya"],
-    koutou_kyouiku_shien:["hikazei","daigaku_zaigaku"],
-    kyufu_shougakukin:["hikazei","daigaku_zaigaku"],
-    iryouhi_koujo:["iryouhi_10man"],
-    self_medication:["iryouhi_10man"],
-    furusato_nouzei:["seikatsu_hogo"],
-    ideco_koujo:[],
-    seimei_hoken_koujo:["seimei_hoken"],
-    jishin_hoken_koujo:["jishin_hoken"],
-    jutaku_loan_koujo:["jutaku_loan"],
-    haiguusha_koujo:["haiguusha"],
-    hitorioya_iryo_josei:["hitorioya","kenkou_hoken","nenshu","fuyou_ninzu"],
-    jidou_fuyou_teate:["hitorioya","hitorioya_jiyuu","seikei_douitsu_partner","nenshu","fuyou_ninzu"],
-    jidou_teate:[],
-    tokyo_018_support:[],
-    tokyo_jidou_ikusei_teate:["hitorioya","nenshu","fuyou_ninzu"],
-  };
-  return PROG_KEYS[program]||Object.keys(ASKABLE_JA);
 }
 function toggleReason(idx){
   const box=document.getElementById("reason-"+idx);

@@ -1,10 +1,15 @@
-"""FastAPI app: stateless judgment API (docs/specs/architecture.md).
+"""FastAPI app: stateless judgment API + Gemini chat (docs/specs/architecture.md).
 
-LLM-free endpoints only; /api/chat (Gemini free-text extraction) is added
-with the ADK integration. No facts are logged anywhere in this module.
+/api/judge: deterministic Prolog judgment (no LLM, 0 yen)
+/api/chat:  Gemini fact extraction + Prolog judgment + Gemini response
+No facts or user text are logged anywhere in this module.
 """
 from __future__ import annotations
 
+from dotenv import load_dotenv
+load_dotenv()
+
+import logging
 from datetime import date, datetime, timedelta, timezone
 from typing import Optional
 
@@ -17,6 +22,8 @@ from pydantic import BaseModel
 from .factgen import facts_to_prolog
 from .prolog import judge, query_proof
 from .runner import judge_request, municipalities, programs, rule_file
+
+log = logging.getLogger(__name__)
 
 JST = timezone(timedelta(hours=9))
 MAX_FACTS_BYTES = 10_000
@@ -99,6 +106,44 @@ def api_proof(req: ProofRequest):
     proof = query_proof(facts_pl, req.program, rf, req.subject, status)
     return {"program": req.program, "subject": req.subject,
             "status": status, "proof": proof}
+
+
+class ChatRequest(BaseModel):
+    message: str
+    facts: dict
+    history: list = []
+    municipality: str = "shibuya"
+    as_of: Optional[str] = None
+
+
+MAX_CHAT_MESSAGE = 500
+MAX_CHAT_HISTORY = 8
+
+
+@app.post("/api/chat")
+def api_chat(req: ChatRequest):
+    """One chat turn: Gemini extraction → Prolog judgment → Gemini response."""
+    if len(req.message) > MAX_CHAT_MESSAGE:
+        raise HTTPException(413, "message too long")
+    if len(req.history) > MAX_CHAT_HISTORY * 2:
+        req.history = req.history[-(MAX_CHAT_HISTORY * 2):]
+    if req.municipality not in municipalities():
+        raise HTTPException(400, "unknown municipality")
+    _guard_size(req)
+    try:
+        from .chat import chat_turn
+        return chat_turn(
+            message=req.message,
+            facts=req.facts,
+            history=req.history,
+            municipality=req.municipality,
+            as_of=_parse_as_of(req.as_of),
+        )
+    except RuntimeError as e:
+        raise HTTPException(503, str(e))
+    except Exception:
+        log.exception("chat_turn failed")
+        raise HTTPException(500, "internal error in chat engine")
 
 
 # static frontend, same origin (no CORS needed) -- mounted last so the

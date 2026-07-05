@@ -15,12 +15,13 @@ from pathlib import Path
 import yaml
 
 from .factgen import CHILD_ASKABLE_PREDS, CLAIMANT, facts_to_prolog, salary_to_shotoku
-from .prolog import PrologError, judge, query_value
+from .prolog import PrologError, judge, judge_batch, query_proof, query_value
 
 REPO = Path(__file__).resolve().parents[2]
 
 _STATUS_RE = re.compile(r"^(decided|blocked|ineligible|error)\((.*)\)$")
 _DETAIL_RE = re.compile(r"^(\w+)\((\w+)\)$")
+_KNOWN_RE = re.compile(r"known\((\w+)\((\w+)\),\s*([^)]+)\)")
 
 
 @lru_cache(maxsize=1)
@@ -83,6 +84,29 @@ def _parse_status(raw: str) -> dict:
     return {"kind": kind, "detail": inner, "func": inner, "yen": None}
 
 
+_AGE_RE = re.compile(r"node\((age_nendo_matsu|age)\((\w+),(\d+)\),true\)")
+
+def _extract_used_facts(proof_str: str) -> list[dict]:
+    """Extract facts actually used in proof tree."""
+    results = []
+    seen = set()
+    for m in _KNOWN_RE.finditer(proof_str):
+        pred, subj, val = m.group(1), m.group(2), m.group(3)
+        key = f"known:{pred}"
+        if key in seen:
+            continue
+        seen.add(key)
+        results.append({"fact": pred, "subject": subj, "value": val.strip()})
+    for m in _AGE_RE.finditer(proof_str):
+        pred, subj, val = m.group(1), m.group(2), m.group(3)
+        key = f"age:{pred}:{subj}"
+        if key in seen:
+            continue
+        seen.add(key)
+        results.append({"fact": pred, "subject": subj, "value": val})
+    return results
+
+
 def _household_amount(meta, facts, facts_pl, as_of):
     """per_household amount via teate_amount/2; two-point taper evaluation
     when income is only known as a range (architecture.md)."""
@@ -112,6 +136,7 @@ def _household_amount(meta, facts, facts_pl, as_of):
 
 def _aggregate(meta, subj_results, facts, facts_pl, as_of):
     card = {"program": meta["id"], "name": meta["name"],
+            "description": meta.get("description") or "",
             "children": subj_results,
             "statute": meta.get("statute") or []}
     kinds = [s["kind"] for s in subj_results]
@@ -143,6 +168,17 @@ def _aggregate(meta, subj_results, facts, facts_pl, as_of):
                                                    as_of)
         else:
             card["amount"] = {"type": meta["amount_type"], "yen": decided_yen}
+        first_decided = next(s for s in subj_results if s["kind"] == "decided")
+        proof = first_decided.get("_proof", "")
+        if proof and proof not in ("none", "no_proof"):
+            card["used_facts"] = _extract_used_facts(proof)
+        else:
+            try:
+                proof = query_proof(facts_pl, meta["id"], rule_file(meta),
+                                    first_decided["subject"], first_decided["raw"])
+                card["used_facts"] = _extract_used_facts(proof)
+            except PrologError:
+                card["used_facts"] = []
     else:
         card["status"] = "ineligible"
         card["reason"] = next(s["reason"] for s in subj_results
@@ -250,7 +286,11 @@ def judge_request(facts: dict, as_of: date,
     facts_pl = facts_to_prolog(facts, as_of)
     children = [c.get("id") or f"c{i}"
                 for i, c in enumerate(facts.get("children") or [], start=1)]
+
+    # Build query list and track non-queryable programs
     results = []
+    batch_queries = []  # (program_id, rule_file, subject)
+    batch_meta = []     # (meta, subject) parallel to batch_queries
     for meta in programs():
         if not _applicable(meta, municipality):
             continue
@@ -264,13 +304,33 @@ def judge_request(facts: dict, as_of: date,
                             "status": "ineligible",
                             "reason": "no_eligible_subject"})
             continue
-        subj_results = []
         for s in subjects:
-            raw = judge(facts_pl, meta["id"], rule_file(meta), s)
-            parsed = _parse_status(raw)
-            parsed["subject"] = s
-            parsed["raw"] = raw
-            subj_results.append(parsed)
-        results.append(_aggregate(meta, subj_results, facts, facts_pl, as_of))
+            batch_queries.append((meta["id"], rule_file(meta), s))
+            batch_meta.append((meta, s))
+
+    # Single swipl process for all judgments + proof trees
+    if batch_queries:
+        batch_results = judge_batch(facts_pl, batch_queries)
+        br_lookup = {}
+        for br in batch_results:
+            br_lookup.setdefault(br["program"], []).append(br)
+
+        seen_programs = set()
+        for meta, _s in batch_meta:
+            if meta["id"] in seen_programs:
+                continue
+            seen_programs.add(meta["id"])
+            raw_list = br_lookup.get(meta["id"], [])
+            subj_results = []
+            for br in raw_list:
+                parsed = _parse_status(br["status"])
+                parsed["subject"] = br["subject"]
+                parsed["raw"] = br["status"]
+                parsed["_proof"] = br.get("proof", "none")
+                subj_results.append(parsed)
+            if subj_results:
+                results.append(_aggregate(meta, subj_results, facts,
+                                          facts_pl, as_of))
+
     return {"headline": _headline(results), "results": results,
             "next_question": _next_question(results, facts)}

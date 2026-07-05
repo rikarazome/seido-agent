@@ -1,5 +1,6 @@
 - id: jidou_teate
   name: 児童手当
+  description: 18歳年度末までの子どもを養育する方に支給される手当（2024年10月拡充）。
   layer: national
   municipality: null
   subject: child
@@ -14,6 +15,7 @@
     url: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
 - id: jidou_fuyou_teate
   name: 児童扶養手当
+  description: ひとり親家庭の児童（18歳年度末まで）を養育する方に支給される手当。
   layer: national
   municipality: null
   subject: child
@@ -28,6 +30,7 @@
     url: https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/71de338f-5ed2-4c95-9848-3fd387d0b4d7/fb86c8d8/20240731_policies_hitori-oya_fuyou-teate_17.pdf
 - id: kouko_shugaku_shienkin
   name: 高等学校等就学支援金
+  description: 高校等の授業料を国が支援する制度（2026年4月より所得制限撤廃、全世帯対象）。
   layer: national
   municipality: null
   subject: child
@@ -42,6 +45,7 @@
     url: https://www.mext.go.jp/content/202604024-mxt_shuukyo03-100002595_1.pdf
 - id: shussan_ikuji_ichijikin
   name: 出産育児一時金
+  description: 健康保険加入者が出産した際に支給される一時金。
   layer: national
   municipality: null
   subject: claimant
@@ -56,6 +60,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/shussan/
 - id: shogaiji_fukushi_teate
   name: 障害児福祉手当
+  description: 重度の障害を持つ児童に支給される福祉手当。
   layer: national
   municipality: null
   subject: child
@@ -70,6 +75,7 @@
     url: https://www.mhlw.go.jp/bunya/shougaihoken/jidou/huyou.html
 - id: jiritsu_shien_iryo_ikusei
   name: 自立支援医療（育成医療）
+  description: 身体に障害のある児童の医療費自己負担を軽減する制度。
   layer: national
   municipality: null
   subject: child
@@ -82,6 +88,7 @@
     url: https://laws.e-gov.go.jp/law/417AC0000000123
 - id: tokubetsu_jidou_fuyou_teate
   name: 特別児童扶養手当
+  description: 障害のある児童を養育する方に支給される手当。
   layer: national
   municipality: null
   subject: child
@@ -96,6 +103,7 @@
     url: https://www.mhlw.go.jp/bunya/shougaihoken/jidou/huyou.html
 - id: jiritsu_shien_iryo_seishin
   name: 自立支援医療（精神通院）
+  description: 精神疾患の通院医療費自己負担を軽減する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -110,6 +118,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/
 - id: jiritsu_shien_kyoiku_kunren
   name: 自立支援教育訓練給付金
+  description: ひとり親家庭の方が指定の教育訓練講座を受講した費用の一部を支給する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -124,6 +133,7 @@
     url: https://www.cfa.go.jp/policies/hitori-oya/jiritsu-shien-kyuufukin
 - id: koto_shokugyo_kunren
   name: 高等職業訓練促進給付金
+  description: ひとり親家庭が看護師・介護福祉士等の資格取得のため1年以上修業する際に月10万円が支給される制度。
   layer: national
   municipality: null
   subject: claimant
@@ -138,6 +148,7 @@
     url: https://www.cfa.go.jp/policies/hitori-oya/syokugyou-kunren
 - id: nanbyo_iryo_josei
   name: 難病医療費助成
+  description: 指定難病患者の医療費自己負担を軽減する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -152,6 +163,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/nanbyou/
 - id: tokubetsu_shogaisha_teate
   name: 特別障害者手当
+  description: 重度の障害により日常生活に常時介護を要する方に支給される手当。
   layer: national
   municipality: null
   subject: claimant
@@ -166,6 +178,7 @@
     url: https://www.mhlw.go.jp/bunya/shougaihoken/jidou/tokubetsu.html
 - id: shussan_kosodate_ouen
   name: 出産・子育て応援交付金
+  description: 妊娠届出時と出生届出時に支給される出産・子育て支援金。
   layer: national
   municipality: null
   subject: claimant
@@ -178,6 +191,7 @@
     url: https://www.cfa.go.jp/policies/shussan-kosodate/
 - id: jukyo_kakuho_kyufukin
   name: 住居確保給付金
+  description: 離職等で住居を失う恐れのある方に家賃相当額を支給する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -194,6 +208,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000073432.html
 - id: tokyo_018_support
   name: 018サポート
+  description: 東京都内在住の0歳から18歳までの子ども1人につき月5千円を支給する制度。
   layer: municipal
   municipality: tokyo
   subject: child
@@ -206,6 +221,7 @@
     url: https://018support.metro.tokyo.lg.jp/
 - id: tokyo_jidou_ikusei_teate
   name: 児童育成手当
+  description: 東京都のひとり親家庭に月13,500円を支給する手当。
   layer: municipal
   municipality: tokyo
   subject: child
@@ -220,6 +236,7 @@
     url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_teate.html
 - id: tokyo_jidou_ikusei_shogai_teate
   name: 児童育成手当（障害手当）
+  description: 東京都の障害のある児童を養育する方に支給される手当。
   layer: municipal
   municipality: tokyo
   subject: child
@@ -232,6 +249,7 @@
     url: https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/zidouikuseiteate.html
 - id: hitorioya_iryo_josei
   name: ひとり親家庭等医療費助成
+  description: 東京都のひとり親家庭等の医療費自己負担分を助成する制度（マル親）。
   layer: municipal
   municipality: tokyo
   subject: claimant
@@ -244,6 +262,7 @@
     url: https://www.fukushi.metro.tokyo.lg.jp/seikatsu/josei/maruoya
 - id: jukensei_challenge
   name: 受験生チャレンジ支援貸付
+  description: 東京都の一定所得以下世帯の受験生に学習塾代等を貸付ける制度。
   layer: municipal
   municipality: tokyo
   subject: child
@@ -256,6 +275,7 @@
     url: https://www.tcsw.tvac.or.jp/activity/documents/3challenge.pdf
 - id: tokyo_judo_shinshin_teate
   name: 東京都重度心身障害者手当
+  description: 東京都の重度の心身障害がある方に支給される手当。
   layer: municipal
   municipality: tokyo
   subject: claimant
@@ -268,6 +288,7 @@
     url: https://www.fukushi.metro.tokyo.lg.jp/shinsho/teate/juudo.html
 - id: shinshin_shogaisha_iryo_josei
   name: 心身障害者医療費助成
+  description: 東京都の心身障害者の医療費自己負担分を助成する制度（マル障）。
   layer: municipal
   municipality: tokyo
   subject: claimant
@@ -280,6 +301,7 @@
     url: https://www.fukushi.metro.tokyo.lg.jp/seikatsu/josei/marusyo
 - id: shiritsu_koko_jugyoryo_keigen
   name: 私立高校授業料軽減助成金
+  description: 東京都の私立高校生の授業料を軽減する助成金。
   layer: municipal
   municipality: tokyo
   subject: child
@@ -292,6 +314,7 @@
     url: https://www.shigaku-tokyo.or.jp/parents_index/pa_jugyoryo/
 - id: tokyo_akachan_first
   name: 赤ちゃんファースト
+  description: 東京都の出産世帯に10万円相当のポイントを付与する事業。
   layer: municipal
   municipality: tokyo
   subject: child
@@ -304,6 +327,7 @@
     url: https://tokyobabyfirst.metro.tokyo.lg.jp/
 - id: shibuya_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: shibuya
   subject: child
@@ -316,6 +340,7 @@
     url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/iryo-josei/kodomo_ij.html
 - id: shibuya_birthday_support
   name: バースデーサポート事業
+  description: 渋谷区で1歳を迎えた子の世帯にAmazonギフトカードを支給する事業。
   layer: municipal
   municipality: shibuya
   subject: child
@@ -328,6 +353,7 @@
     url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/birthday_support.html
 - id: shibuya_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（渋谷区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: shibuya
   subject: claimant
@@ -340,6 +366,7 @@
     url: https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/teate-nenkin/teate.html
 - id: shibuya_shugaku_enjo
   name: 就学援助（渋谷区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: shibuya
   subject: child
@@ -352,6 +379,7 @@
     url: https://www.city.shibuya.tokyo.jp/kodomo/gakko-kyoiku/nyugaku-tennyu-shugaku/tetsuduki_g.html
 - id: minato_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: minato
   subject: child
@@ -364,6 +392,7 @@
     url: https://www.city.minato.tokyo.jp/kosodatesien/kodomo/kate/kodomoiryo.html
 - id: bunkyo_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: bunkyo
   subject: child
@@ -376,6 +405,7 @@
     url: https://www.city.bunkyo.lg.jp/b022/p001459/index.html
 - id: taito_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: taito
   subject: child
@@ -388,6 +418,7 @@
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/iryohijosei/annai.html
 - id: toshima_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: toshima
   subject: child
@@ -400,6 +431,7 @@
     url: https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/015729.html
 - id: chiyoda_jisedai_ikusei_teate
   name: 次世代育成手当（千代田区）
+  description: 千代田区の16歳～18歳の子を養育する世帯に支給される手当。
   layer: municipal
   municipality: chiyoda
   subject: child
@@ -412,6 +444,7 @@
     url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/index.html
 - id: chiyoda_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: chiyoda
   subject: child
@@ -424,6 +457,7 @@
     url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/kodomoiryo.html
 - id: chuo_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: chuo
   subject: child
@@ -436,6 +470,7 @@
     url: https://www.city.chuo.lg.jp/a0020/kosodate/kosodate/teatejosei/iryouhijosei/akimoto.html
 - id: shinjuku_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: shinjuku
   subject: child
@@ -448,6 +483,7 @@
     url: https://www.city.shinjuku.lg.jp/kodomo/file03_04_00003.html
 - id: sumida_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: sumida
   subject: child
@@ -460,6 +496,7 @@
     url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kosodate_site/teate_jyosei_shien/teate_zyosei/jyosei/nyuuyouji_iryouhi.html
 - id: koto_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: koto
   subject: child
@@ -472,6 +509,7 @@
     url: https://www.city.koto.lg.jp/281011/kodomo/kosodate/teate/5844.html
 - id: shinagawa_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: shinagawa
   subject: child
@@ -484,6 +522,7 @@
     url: http://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-iryohizyosei/hpg000017744.html
 - id: meguro_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: meguro
   subject: child
@@ -496,6 +535,7 @@
     url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/toha.html
 - id: ota_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: ota
   subject: child
@@ -508,6 +548,7 @@
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/kodomonyuui.html
 - id: setagaya_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: setagaya
   subject: child
@@ -520,6 +561,7 @@
     url: https://www.city.setagaya.lg.jp/02413/1305.html
 - id: nakano_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: nakano
   subject: child
@@ -532,6 +574,7 @@
     url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/teate/iryohijyosei/kodomoiryojyosei.html
 - id: suginami_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: suginami
   subject: child
@@ -544,6 +587,7 @@
     url: https://www.city.suginami.tokyo.jp/s053/1043.html
 - id: kita_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: kita
   subject: child
@@ -556,6 +600,7 @@
     url: https://www.city.kita.tokyo.jp/k-mirai/kosodate/teate/kodomo/gaiyo.html
 - id: arakawa_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: arakawa
   subject: child
@@ -568,6 +613,7 @@
     url: https://www.city.arakawa.tokyo.jp/a035/kosodate/teate/iryohijyosei.html
 - id: itabashi_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: itabashi
   subject: child
@@ -580,6 +626,7 @@
     url: https://www.city.itabashi.tokyo.jp/kosodate/teate/iryohi/1053428/1053072.html
 - id: nerima_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: nerima
   subject: child
@@ -592,6 +639,7 @@
     url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/josei.html
 - id: adachi_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: adachi
   subject: child
@@ -604,6 +652,7 @@
     url: https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/teate-iryohijose.html
 - id: katsushika_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: katsushika
   subject: child
@@ -616,6 +665,7 @@
     url: https://www.city.katsushika.lg.jp/kosodate/1000056/1002336/1002421.html
 - id: edogawa_kodomo_iryouhi
   name: 子ども医療費助成
+  description: 子どもの医療費の自己負担分を助成する制度。
   layer: municipal
   municipality: edogawa
   subject: child
@@ -628,6 +678,7 @@
     url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/iryoujosei.html
 - id: chiyoda_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（千代田区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: chiyoda
   subject: claimant
@@ -640,6 +691,7 @@
     url: https://www.city.chiyoda.lg.jp/koho/kenko/shogaisha/techo/teate/shinshin.html
 - id: chuo_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（中央区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: chuo
   subject: claimant
@@ -652,6 +704,7 @@
     url: https://www.city.chuo.lg.jp/a0023/kenkouiryou/shougaishafukushi/teate/sinsin.html
 - id: minato_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（港区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: minato
   subject: claimant
@@ -664,6 +717,7 @@
     url: https://www.city.minato.tokyo.jp/kenko/fukushi/shogaisha/teate/shinshinshogai.html
 - id: shinjuku_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（新宿区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: shinjuku
   subject: claimant
@@ -676,6 +730,7 @@
     url: https://www.city.shinjuku.lg.jp/fukushi/file06_02_00003.html
 - id: bunkyo_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（文京区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: bunkyo
   subject: claimant
@@ -688,6 +743,7 @@
     url: https://www.city.bunkyo.lg.jp/b018/p003411.html
 - id: taito_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（台東区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: taito
   subject: claimant
@@ -700,6 +756,7 @@
     url: https://www.city.taito.lg.jp/kenkohukusi/shogai/teate/sha/syougaifukusiteate.html
 - id: sumida_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（墨田区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: sumida
   subject: claimant
@@ -712,6 +769,7 @@
     url: https://www.city.sumida.lg.jp/kenko_fukushi/syougai/teate_nenkin_iryou/kuteate_seido.html
 - id: koto_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（江東区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: koto
   subject: claimant
@@ -724,6 +782,7 @@
     url: https://www.city.koto.lg.jp/222015/fukushi/shogaisha/waribiki/teate/6774.html
 - id: shinagawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（品川区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: shinagawa
   subject: claimant
@@ -736,6 +795,7 @@
     url: http://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-teate/hpg000024970.html
 - id: meguro_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（目黒区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: meguro
   subject: claimant
@@ -748,6 +808,7 @@
     url: https://www.city.meguro.tokyo.jp/shougaishien/kenkoufukushi/shougaisha/ku_teate.html
 - id: ota_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（大田区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: ota
   subject: claimant
@@ -760,6 +821,7 @@
     url: https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/teate_nenkin/ootaku.html
 - id: setagaya_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（世田谷区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: setagaya
   subject: claimant
@@ -772,6 +834,7 @@
     url: https://www.city.setagaya.lg.jp/02083/2692.html
 - id: nakano_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（中野区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: nakano
   subject: claimant
@@ -784,6 +847,7 @@
     url: https://www.city.tokyo-nakano.lg.jp/kenko_hukushi/syogai/tecyo-teate-nenkin/syogaisyafukushi1.html
 - id: suginami_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（杉並区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: suginami
   subject: claimant
@@ -796,6 +860,7 @@
     url: https://www.city.suginami.tokyo.jp/s036/8058.html
 - id: toshima_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（豊島区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: toshima
   subject: claimant
@@ -808,6 +873,7 @@
     url: https://www.city.toshima.lg.jp/443/kenko/shogai/teate/013079.html
 - id: kita_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（北区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: kita
   subject: claimant
@@ -820,6 +886,7 @@
     url: https://www.city.kita.lg.jp/socialcare-health/disabilities/1008784/1008785/1008788.html
 - id: arakawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（荒川区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: arakawa
   subject: claimant
@@ -832,6 +899,7 @@
     url: https://www.city.arakawa.tokyo.jp/a030/shougaisha/teate/sinsinsyougaisyateat.html
 - id: itabashi_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（板橋区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: itabashi
   subject: claimant
@@ -844,6 +912,7 @@
     url: https://www.city.itabashi.tokyo.jp/kenko/shogai/teate/1003209.html
 - id: nerima_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（練馬区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: nerima
   subject: claimant
@@ -856,6 +925,7 @@
     url: https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/teate/shinshin_fukushi.html
 - id: adachi_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（足立区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: adachi
   subject: claimant
@@ -868,6 +938,7 @@
     url: https://www.city.adachi.tokyo.jp/shogai/fukushi-kenko/shinshin/teate-s-shogaisha.html
 - id: katsushika_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（葛飾区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: katsushika
   subject: claimant
@@ -880,6 +951,7 @@
     url: https://www.city.katsushika.lg.jp/kenkou/1000053/1002245/index.html
 - id: edogawa_shinshin_shogaisha_teate
   name: 心身障害者福祉手当（江戸川区）
+  description: 区内在住の心身障害者に月額で支給される福祉手当。
   layer: municipal
   municipality: edogawa
   subject: claimant
@@ -891,7 +963,8 @@
   - ref: 江戸川区心身障害者福祉手当
     url: https://www.city.edogawa.tokyo.jp/e041/kenko/fukushikaigo/shogaisha/teate/teate/shinshin.html
 - id: chiyoda_shugaku_enjo
-  name: 就学援助（chiyoda）
+  name: 就学援助（千代田区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: chiyoda
   subject: child
@@ -903,7 +976,8 @@
   - ref: 千代田区 就学援助
     url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/shugaku.html
 - id: chuo_shugaku_enjo
-  name: 就学援助（chuo）
+  name: 就学援助（中央区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: chuo
   subject: child
@@ -915,7 +989,8 @@
   - ref: 中央区 就学援助
     url: https://www.city.chuo.lg.jp/a0049/kosodate/gakkoukyouiku/shouchuugakkou/syugakuenzyo.html
 - id: minato_shugaku_enjo
-  name: 就学援助（minato）
+  name: 就学援助（港区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: minato
   subject: child
@@ -927,7 +1002,8 @@
   - ref: 港区 就学援助
     url: https://www.city.minato.tokyo.jp/gakkouuneishien/kodomo/gakko/shugakuenjo/
 - id: shinjuku_shugaku_enjo
-  name: 就学援助（shinjuku）
+  name: 就学援助（新宿区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: shinjuku
   subject: child
@@ -939,7 +1015,8 @@
   - ref: 新宿区 就学援助
     url: https://www.city.shinjuku.lg.jp/kodomo/file04_04_00005.html
 - id: bunkyo_shugaku_enjo
-  name: 就学援助（bunkyo）
+  name: 就学援助（文京区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: bunkyo
   subject: child
@@ -951,7 +1028,8 @@
   - ref: 文京区 就学援助
     url: https://www.city.bunkyo.lg.jp/b048/p002122.html
 - id: taito_shugaku_enjo
-  name: 就学援助（taito）
+  name: 就学援助（台東区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: taito
   subject: child
@@ -963,7 +1041,8 @@
   - ref: 台東区 就学援助
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kuritsushocyugakko/nyugakutugaku/syugakuenjo/enjo.html
 - id: sumida_shugaku_enjo
-  name: 就学援助（sumida）
+  name: 就学援助（墨田区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: sumida
   subject: child
@@ -975,7 +1054,8 @@
   - ref: 墨田区 就学援助
     url: https://www.city.sumida.lg.jp/kosodate_kyouiku/kyouiku/school/syuugaku_enjo/index.html
 - id: koto_shugaku_enjo
-  name: 就学援助（koto）
+  name: 就学援助（江東区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: koto
   subject: child
@@ -987,7 +1067,8 @@
   - ref: Koto区 就学援助
     url: https://www.city.koto.lg.jp/581101/kodomo/gakko/enjo/shugaku/6154.html
 - id: shinagawa_shugaku_enjo
-  name: 就学援助（shinagawa）
+  name: 就学援助（品川区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: shinagawa
   subject: child
@@ -999,7 +1080,8 @@
   - ref: Shinagawa区 就学援助
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/hpg000000893.html
 - id: meguro_shugaku_enjo
-  name: 就学援助（meguro）
+  name: 就学援助（目黒区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: meguro
   subject: child
@@ -1011,7 +1093,8 @@
   - ref: 目黒区 就学援助制度
     url: https://www.city.meguro.tokyo.jp/gakkouunei/kosodatekyouiku/gakkoukyouiku/gimu.html
 - id: ota_shugaku_enjo
-  name: 就学援助（ota）
+  name: 就学援助（大田区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: ota
   subject: child
@@ -1023,7 +1106,8 @@
   - ref: Ota区 就学援助
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/kyouiku/gakko/syugaku_enjo/enjo_taishosha.html
 - id: setagaya_shugaku_enjo
-  name: 就学援助（setagaya）
+  name: 就学援助（世田谷区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: setagaya
   subject: child
@@ -1035,7 +1119,8 @@
   - ref: Setagaya区 就学援助
     url: https://www.city.setagaya.lg.jp/02046/3112.html
 - id: nakano_shugaku_enjo
-  name: 就学援助（nakano）
+  name: 就学援助（中野区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: nakano
   subject: child
@@ -1047,7 +1132,8 @@
   - ref: Nakano区 就学援助
     url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/gakko/jyosei/syugakuenjyohi.html
 - id: suginami_shugaku_enjo
-  name: 就学援助（suginami）
+  name: 就学援助（杉並区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: suginami
   subject: child
@@ -1059,7 +1145,8 @@
   - ref: Suginami区 就学援助
     url: https://www.city.suginami.tokyo.jp/s109/1443.html
 - id: toshima_shugaku_enjo
-  name: 就学援助（toshima）
+  name: 就学援助（豊島区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: toshima
   subject: child
@@ -1071,7 +1158,8 @@
   - ref: Toshima区 就学援助
     url: https://www.city.toshima.lg.jp/353/kosodate/gakko/teate/005900.html
 - id: kita_shugaku_enjo
-  name: 就学援助（kita）
+  name: 就学援助（北区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: kita
   subject: child
@@ -1083,7 +1171,8 @@
   - ref: Kita区 就学援助
     url: https://www.city.kita.lg.jp/children-edu/schools/1003980/1003981.html
 - id: arakawa_shugaku_enjo
-  name: 就学援助（arakawa）
+  name: 就学援助（荒川区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: arakawa
   subject: child
@@ -1095,7 +1184,8 @@
   - ref: Arakawa区 就学援助
     url: https://www.city.arakawa.tokyo.jp/kyouiku-seishounen/kyouikushien/index.html
 - id: itabashi_shugaku_enjo
-  name: 就学援助（itabashi）
+  name: 就学援助（板橋区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: itabashi
   subject: child
@@ -1107,7 +1197,8 @@
   - ref: Itabashi区 就学援助
     url: https://www.city.itabashi.tokyo.jp/kyoikuiinkai/shugakuenjo/1044885/1012230.html
 - id: nerima_shugaku_enjo
-  name: 就学援助（nerima）
+  name: 就学援助（練馬区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: nerima
   subject: child
@@ -1119,7 +1210,8 @@
   - ref: Nerima区 就学援助
     url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/kyoiku/enjo/enjo.html
 - id: adachi_shugaku_enjo
-  name: 就学援助（adachi）
+  name: 就学援助（足立区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: adachi
   subject: child
@@ -1131,7 +1223,8 @@
   - ref: Adachi区 就学援助
     url: https://www.city.adachi.tokyo.jp/gakumu/k-kyoiku/shochu/tetsuzuki-shugaku.html
 - id: katsushika_shugaku_enjo
-  name: 就学援助（katsushika）
+  name: 就学援助（葛飾区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: katsushika
   subject: child
@@ -1143,7 +1236,8 @@
   - ref: Katsushika区 就学援助
     url: https://www.city.katsushika.lg.jp/kosodate/1000057/1002479/1002748.html
 - id: edogawa_shugaku_enjo
-  name: 就学援助（edogawa）
+  name: 就学援助（江戸川区）
+  description: 経済的に困難な世帯の小中学生に学用品費等を援助する制度。
   layer: municipal
   municipality: edogawa
   subject: child
@@ -1156,6 +1250,7 @@
     url: https://www.city.edogawa.tokyo.jp/e069/kosodate/kyoiku/kyouiku/tetuduki/shugakuenjo.html
 - id: minato_shussan_hiyou_josei
   name: 港区出産費用助成
+  description: 出産育児一時金で賄いきれない出産費用を区が助成する制度。
   layer: municipal
   municipality: minato
   subject: claimant
@@ -1168,6 +1263,7 @@
     url: https://www.city.minato.tokyo.jp/kodomokyufu/kenko/ninshin/shussan/jose.html
 - id: shibuya_hajimete_kosodate_ouen
   name: 渋谷区はじめて子育て応援金
+  description: 渋谷区で第1子を出産した世帯に支給される応援金。
   layer: municipal
   municipality: shibuya
   subject: child
@@ -1180,6 +1276,7 @@
     url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/
 - id: chuo_shussan_shien
   name: 中央区出産支援祝品
+  description: 区内で出産した世帯に育児用品カタログギフトを贈呈する事業。
   layer: municipal
   municipality: chuo
   subject: child
@@ -1192,6 +1289,7 @@
     url: https://www.city.chuo.lg.jp/a0020/kosodate/shussan/shussanshien/kaimonokenn.html
 - id: toshima_shussan_oiwaikin
   name: 豊島区出産祝い金
+  description: 区内で出産した世帯に支給される祝金。
   layer: municipal
   municipality: toshima
   subject: child
@@ -1204,6 +1302,7 @@
     url: https://www.city.toshima.lg.jp/258/2406201637.html
 - id: edogawa_nyuyoji_teate
   name: 江戸川区乳児養育手当
+  description: 江戸川区の0歳児を養育する方に支給される手当。
   layer: municipal
   municipality: edogawa
   subject: child
@@ -1216,6 +1315,7 @@
     url: https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/youiku.html
 - id: setagaya_shussan_oiwaikin
   name: 世田谷区出生祝い金
+  description: 区内で出産した世帯に支給される祝金。
   layer: municipal
   municipality: setagaya
   subject: child
@@ -1228,6 +1328,7 @@
     url: https://www.city.setagaya.lg.jp/02413/1206.html
 - id: nerima_dai3shi_ouen
   name: 練馬区第3子誕生祝金
+  description: 練馬区の第3子以降の出生に対して支給される祝金。
   layer: municipal
   municipality: nerima
   subject: child
@@ -1240,6 +1341,7 @@
     url: https://www.city.nerima.tokyo.jp/kosodatekyoiku/shussan/iwaikin.html
 - id: taito_shussan_oiwaikin
   name: 台東区出産祝い金
+  description: 区内で出産した世帯に支給される祝金。
   layer: municipal
   municipality: taito
   subject: child
@@ -1252,6 +1354,7 @@
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/syussanhiyoujyosei.html
 - id: nakano_shussan_ouen
   name: 中野区出産応援金
+  description: 区内で出産した世帯に支給される応援金。
   layer: municipal
   municipality: nakano
   subject: child
@@ -1264,6 +1367,7 @@
     url: https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/nenreibetsu/syussan/index.html
 - id: suginami_shussan_ouen
   name: 杉並区出産応援金
+  description: 区内で出産した世帯に支給される応援金。
   layer: municipal
   municipality: suginami
   subject: child
@@ -1275,7 +1379,8 @@
   - ref: Suginami区 出産応援事業
     url: https://www.city.suginami.tokyo.jp/s054/19751.html
 - id: chiyoda_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（chiyoda）
+  name: 私立幼稚園等補助金（千代田区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: chiyoda
   subject: child
@@ -1287,7 +1392,8 @@
   - ref: 千代田区 私立幼稚園・国立大学附属幼稚園等
     url: https://www.city.chiyoda.lg.jp/koho/kosodate/yochien/shiritsu-kokuritsu.html
 - id: chuo_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（chuo）
+  name: 私立幼稚園等補助金（中央区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: chuo
   subject: child
@@ -1299,7 +1405,8 @@
   - ref: chuo区 私立幼稚園等補助金
     url: https://www.city.chuo.lg.jp/
 - id: minato_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（minato）
+  name: 私立幼稚園等補助金（港区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: minato
   subject: child
@@ -1311,7 +1418,8 @@
   - ref: 港区 私立幼稚園等園児保護者補助金
     url: https://www.city.minato.tokyo.jp/kyouikushomu/kodomo/gakko/yochien/shiritsu/s-youchien-title.html
 - id: shinjuku_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（shinjuku）
+  name: 私立幼稚園等補助金（新宿区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: shinjuku
   subject: child
@@ -1323,7 +1431,8 @@
   - ref: 新宿区 私立幼稚園等補助金
     url: https://www.city.shinjuku.lg.jp/kodomo/gakko02_002057.html
 - id: bunkyo_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（bunkyo）
+  name: 私立幼稚園等補助金（文京区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: bunkyo
   subject: child
@@ -1335,7 +1444,8 @@
   - ref: bunkyo区 私立幼稚園等補助金
     url: https://www.city.bunkyo.lg.jp/
 - id: taito_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（taito）
+  name: 私立幼稚園等補助金（台東区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: taito
   subject: child
@@ -1347,7 +1457,8 @@
   - ref: taito区 私立幼稚園等補助金
     url: https://www.city.taito.lg.jp/
 - id: sumida_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（sumida）
+  name: 私立幼稚園等補助金（墨田区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: sumida
   subject: child
@@ -1359,7 +1470,8 @@
   - ref: sumida区 私立幼稚園等補助金
     url: https://www.city.sumida.lg.jp/
 - id: koto_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（koto）
+  name: 私立幼稚園等補助金（江東区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: koto
   subject: child
@@ -1371,7 +1483,8 @@
   - ref: 江東区 私立幼稚園等園児保護者補助金
     url: https://www.city.koto.lg.jp/reiki-koho/reiki_honbun/g109RG00001277.html
 - id: shinagawa_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（shinagawa）
+  name: 私立幼稚園等補助金（品川区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: shinagawa
   subject: child
@@ -1383,7 +1496,8 @@
   - ref: 品川区 私立幼稚園等補助金
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-youchien/siritsuyouchien/20190708120433.html
 - id: meguro_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（meguro）
+  name: 私立幼稚園等補助金（目黒区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: meguro
   subject: child
@@ -1395,7 +1509,8 @@
   - ref: 目黒区 私立幼稚園児の補助金
     url: https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/hoikuennado/hojokin.html
 - id: ota_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（ota）
+  name: 私立幼稚園等補助金（大田区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: ota
   subject: child
@@ -1407,7 +1522,8 @@
   - ref: 大田区 私立幼稚園等保護者補助金
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/kyouiku/kuyochien/mushouka.html
 - id: setagaya_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（setagaya）
+  name: 私立幼稚園等補助金（世田谷区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: setagaya
   subject: child
@@ -1419,7 +1535,8 @@
   - ref: 世田谷区 私立幼稚園等保護者補助金
     url: https://www.city.setagaya.lg.jp/02236/1653.html
 - id: shibuya_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（shibuya）
+  name: 私立幼稚園等補助金（渋谷区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: shibuya
   subject: child
@@ -1431,7 +1548,8 @@
   - ref: 渋谷区 幼児教育の無償化（私立幼稚園など）
     url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/kodomo-teate/musyo_shiritsuyouchien.html
 - id: nakano_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（nakano）
+  name: 私立幼稚園等補助金（中野区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: nakano
   subject: child
@@ -1443,7 +1561,8 @@
   - ref: nakano区 私立幼稚園等補助金
     url: https://www.city.tokyo-nakano.lg.jp/
 - id: suginami_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（suginami）
+  name: 私立幼稚園等補助金（杉並区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: suginami
   subject: child
@@ -1455,7 +1574,8 @@
   - ref: 杉並区 私立幼稚園等保護者補助金
     url: https://www.city.suginami.tokyo.jp/s058/1070.html
 - id: toshima_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（toshima）
+  name: 私立幼稚園等補助金（豊島区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: toshima
   subject: child
@@ -1467,7 +1587,8 @@
   - ref: toshima区 私立幼稚園等補助金
     url: https://www.city.toshima.lg.jp/
 - id: kita_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（kita）
+  name: 私立幼稚園等補助金（北区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: kita
   subject: child
@@ -1479,7 +1600,8 @@
   - ref: kita区 私立幼稚園等補助金
     url: https://www.city.kita.tokyo.jp/
 - id: arakawa_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（arakawa）
+  name: 私立幼稚園等補助金（荒川区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: arakawa
   subject: child
@@ -1491,7 +1613,8 @@
   - ref: arakawa区 私立幼稚園等補助金
     url: https://www.city.arakawa.tokyo.jp/
 - id: itabashi_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（itabashi）
+  name: 私立幼稚園等補助金（板橋区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: itabashi
   subject: child
@@ -1503,7 +1626,8 @@
   - ref: 板橋区 私立幼稚園保護者補助金
     url: https://www.city.itabashi.tokyo.jp/kyoikuiinkai/youchien/shiritsu/1013100.html
 - id: nerima_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（nerima）
+  name: 私立幼稚園等補助金（練馬区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: nerima
   subject: child
@@ -1515,7 +1639,8 @@
   - ref: nerima区 私立幼稚園等補助金
     url: https://www.city.nerima.tokyo.jp/
 - id: adachi_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（adachi）
+  name: 私立幼稚園等補助金（足立区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: adachi
   subject: child
@@ -1527,7 +1652,8 @@
   - ref: 足立区 私立幼稚園保護者補助金
     url: https://www.city.adachi.tokyo.jp/kodomo-nyuuen/yochienhogoshahojokin2024.html
 - id: katsushika_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（katsushika）
+  name: 私立幼稚園等補助金（葛飾区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: katsushika
   subject: child
@@ -1539,7 +1665,8 @@
   - ref: katsushika区 私立幼稚園等補助金
     url: https://www.city.katsushika.lg.jp/
 - id: edogawa_shiritsu_youchien_hojo
-  name: 私立幼稚園等補助金（edogawa）
+  name: 私立幼稚園等補助金（江戸川区）
+  description: 私立幼稚園に通う園児の保護者に入園料・保育料等を補助する制度。
   layer: municipal
   municipality: edogawa
   subject: child
@@ -1551,7 +1678,8 @@
   - ref: 江戸川区 私立幼稚園
     url: https://www.city.edogawa.tokyo.jp/e047/kosodate/kosodate/hoiku/nitijou/shiritsu.html
 - id: chiyoda_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（chiyoda）
+  name: 認可外保育施設利用者補助（千代田区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: chiyoda
   subject: child
@@ -1563,7 +1691,8 @@
   - ref: chiyoda区 認可外保育施設利用者補助
     url: https://www.city.chiyoda.lg.jp/
 - id: chuo_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（chuo）
+  name: 認可外保育施設利用者補助（中央区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: chuo
   subject: child
@@ -1575,7 +1704,8 @@
   - ref: chuo区 認可外保育施設利用者補助
     url: https://www.city.chuo.lg.jp/
 - id: minato_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（minato）
+  name: 認可外保育施設利用者補助（港区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: minato
   subject: child
@@ -1587,7 +1717,8 @@
   - ref: 港区 認可外保育施設保育料助成
     url: https://www.city.minato.tokyo.jp/hoikusien/201910mushouka.html
 - id: shinjuku_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（shinjuku）
+  name: 認可外保育施設利用者補助（新宿区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: shinjuku
   subject: child
@@ -1599,7 +1730,8 @@
   - ref: 新宿区 認証保育所等保育料助成
     url: https://www.city.shinjuku.lg.jp/kodomo/file03_04_00011.html
 - id: bunkyo_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（bunkyo）
+  name: 認可外保育施設利用者補助（文京区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: bunkyo
   subject: child
@@ -1611,7 +1743,8 @@
   - ref: bunkyo区 認可外保育施設利用者補助
     url: https://www.city.bunkyo.lg.jp/
 - id: taito_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（taito）
+  name: 認可外保育施設利用者補助（台東区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: taito
   subject: child
@@ -1623,7 +1756,8 @@
   - ref: taito区 認可外保育施設利用者補助
     url: https://www.city.taito.lg.jp/
 - id: sumida_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（sumida）
+  name: 認可外保育施設利用者補助（墨田区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: sumida
   subject: child
@@ -1635,7 +1769,8 @@
   - ref: sumida区 認可外保育施設利用者補助
     url: https://www.city.sumida.lg.jp/
 - id: koto_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（koto）
+  name: 認可外保育施設利用者補助（江東区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: koto
   subject: child
@@ -1647,7 +1782,8 @@
   - ref: koto区 認可外保育施設利用者補助
     url: https://www.city.koto.lg.jp/
 - id: shinagawa_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（shinagawa）
+  name: 認可外保育施設利用者補助（品川区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: shinagawa
   subject: child
@@ -1659,7 +1795,8 @@
   - ref: 品川区 認可外保育施設保育料助成制度
     url: https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-hoikuen/hpg000033493.html
 - id: meguro_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（meguro）
+  name: 認可外保育施設利用者補助（目黒区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: meguro
   subject: child
@@ -1671,7 +1808,8 @@
   - ref: 目黒区 認可外保育施設保育料助成制度
     url: https://www.city.meguro.tokyo.jp/smph/kurashi/kosodate/josei/ninkagaihoikusisetujosei.html
 - id: ota_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（ota）
+  name: 認可外保育施設利用者補助（大田区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: ota
   subject: child
@@ -1683,7 +1821,8 @@
   - ref: 大田区 認可外保育施設等保護者負担軽減補助金
     url: https://www.city.ota.tokyo.jp/seikatsu/kodomo/hoiku/hoikushisetsu_nyukibo/ninkagaihoikusisetu/ninnkagaishisetsu_hojokin.html
 - id: setagaya_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（setagaya）
+  name: 認可外保育施設利用者補助（世田谷区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: setagaya
   subject: child
@@ -1695,7 +1834,8 @@
   - ref: 世田谷区 認可外保育施設保育料補助
     url: https://www.city.setagaya.lg.jp/01044/1511.html
 - id: shibuya_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（shibuya）
+  name: 認可外保育施設利用者補助（渋谷区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: shibuya
   subject: child
@@ -1707,7 +1847,8 @@
   - ref: 渋谷区 保育利用料の軽減制度
     url: https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hoiku-josei/hoikuryo_keigen.html
 - id: nakano_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（nakano）
+  name: 認可外保育施設利用者補助（中野区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: nakano
   subject: child
@@ -1719,7 +1860,8 @@
   - ref: nakano区 認可外保育施設利用者補助
     url: https://www.city.tokyo-nakano.lg.jp/
 - id: suginami_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（suginami）
+  name: 認可外保育施設利用者補助（杉並区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: suginami
   subject: child
@@ -1731,7 +1873,8 @@
   - ref: 杉並区 認証保育所等保育料補助金
     url: https://www.city.suginami.tokyo.jp/s058/shinseisho/19941.html
 - id: toshima_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（toshima）
+  name: 認可外保育施設利用者補助（豊島区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: toshima
   subject: child
@@ -1743,7 +1886,8 @@
   - ref: toshima区 認可外保育施設利用者補助
     url: https://www.city.toshima.lg.jp/
 - id: kita_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（kita）
+  name: 認可外保育施設利用者補助（北区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: kita
   subject: child
@@ -1755,7 +1899,8 @@
   - ref: kita区 認可外保育施設利用者補助
     url: https://www.city.kita.tokyo.jp/
 - id: arakawa_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（arakawa）
+  name: 認可外保育施設利用者補助（荒川区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: arakawa
   subject: child
@@ -1767,7 +1912,8 @@
   - ref: arakawa区 認可外保育施設利用者補助
     url: https://www.city.arakawa.tokyo.jp/
 - id: itabashi_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（itabashi）
+  name: 認可外保育施設利用者補助（板橋区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: itabashi
   subject: child
@@ -1779,7 +1925,8 @@
   - ref: itabashi区 認可外保育施設利用者補助
     url: https://www.city.itabashi.tokyo.jp/
 - id: nerima_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（nerima）
+  name: 認可外保育施設利用者補助（練馬区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: nerima
   subject: child
@@ -1791,7 +1938,8 @@
   - ref: nerima区 認可外保育施設利用者補助
     url: https://www.city.nerima.tokyo.jp/
 - id: adachi_ninkagai_hoiku_hojo
-  name: 認可外保育施設保育料補助（adachi）
+  name: 認可外保育施設保育料補助（足立区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: adachi
   subject: child
@@ -1803,7 +1951,8 @@
   - ref: 足立区 認可外保育施設の保育料補助
     url: https://www.city.adachi.tokyo.jp/kodomo-nyuuen/ninnkagai_teikiriyou.html
 - id: katsushika_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（katsushika）
+  name: 認可外保育施設利用者補助（葛飾区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: katsushika
   subject: child
@@ -1815,7 +1964,8 @@
   - ref: katsushika区 認可外保育施設利用者補助
     url: https://www.city.katsushika.lg.jp/
 - id: edogawa_ninkagai_hoiku_hojo
-  name: 認可外保育施設利用者補助（edogawa）
+  name: 認可外保育施設利用者補助（江戸川区）
+  description: 認可外保育施設を利用する世帯に保育料の差額を助成する制度。
   layer: municipal
   municipality: edogawa
   subject: child
@@ -1828,6 +1978,7 @@
     url: https://www.city.edogawa.tokyo.jp/
 - id: mijukuji_youiku_iryo
   name: 未熟児養育医療
+  description: 未熟児の入院養育医療費を公費負担する制度。
   layer: national
   municipality: null
   subject: child
@@ -1840,6 +1991,7 @@
     url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/
 - id: shounimansei_iryo_josei
   name: 小児慢性特定疾病医療費助成
+  description: 小児の慢性特定疾病の医療費を助成する制度。
   layer: national
   municipality: null
   subject: child
@@ -1852,6 +2004,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000078973.html
 - id: hikazei_setai_kyufukin
   name: 住民税非課税世帯向け給付金
+  description: 住民税非課税世帯に対し物価高騰対策等として支給される一時金。
   layer: national
   municipality: null
   subject: claimant
@@ -1864,6 +2017,7 @@
     url: https://www.chisou.go.jp/tiiki/rinjikoufukin/index.html
 - id: shitsugyo_kyufu
   name: 雇用保険基本手当（失業給付）
+  description: 雇用保険の失業時に支給される基本手当。
   layer: national
   municipality: null
   subject: claimant
@@ -1878,6 +2032,7 @@
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_basicbenefit.html
 - id: kyushokusha_shien_kunren
   name: 求職者支援制度（職業訓練受講給付金）
+  description: 雇用保険に加入していない求職者が職業訓練を受講する際に月10万円が支給される制度。
   layer: national
   municipality: null
   subject: claimant
@@ -1892,6 +2047,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyushokusha_shien/index.html
 - id: kokuho_keigen
   name: 国民健康保険料の軽減（7割・5割・2割）
+  description: 所得が一定以下の世帯の国民健康保険料を軽減する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -1906,6 +2062,7 @@
     url: https://www.mhlw.go.jp/stf/newpage_21517.html
 - id: kokumin_nenkin_menjo
   name: 国民年金保険料の免除・猶予
+  description: 所得が低い方等の国民年金保険料を免除・猶予する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -1920,6 +2077,7 @@
     url: https://www.nenkin.go.jp/service/kokunen/menjo/20150428.html
 - id: shoubyou_teatekin
   name: 傷病手当金
+  description: 病気やケガで4日以上仕事を休んだ健康保険加入者に給与の約2/3が支給される手当金。
   layer: national
   municipality: null
   subject: claimant
@@ -1933,7 +2091,8 @@
   - ref: 協会けんぽ 傷病手当金
     url: https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/index.html
 - id: kyouiku_kunren_kyufu
-  name: 教育訓練給付金（一般教育訓練 受講費40%）
+  name: 教育訓練給付金（一般教育訓練 受講費20%）
+  description: 厚労省指定の講座を受講した場合に受講費用の20%（上限10万円）が支給される制度。
   layer: national
   municipality: null
   subject: claimant
@@ -1948,6 +2107,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
 - id: sai_shushoku_teate
   name: 再就職手当
+  description: 失業給付を受給中に早期に就職した方に支給される手当。
   layer: national
   municipality: null
   subject: claimant
@@ -1962,6 +2122,7 @@
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
 - id: kougaku_ryouyouhi
   name: 高額療養費制度
+  description: 医療費の自己負担額が高額になった場合に払い戻される制度。
   layer: national
   municipality: null
   subject: claimant
@@ -1976,6 +2137,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html
 - id: nyuuin_shokuji_gengaku
   name: 入院時食事療養費の標準負担額減額
+  description: 入院時の食事療養費の標準負担額を減額する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -1988,6 +2150,7 @@
     url: https://hourei.net/law/211AC0000000070
 - id: nhk_menjo
   name: NHK受信料の免除
+  description: 生活保護受給世帯等のNHK受信料を免除する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2000,6 +2163,7 @@
     url: https://www.nhk-cs.jp/jushinryo/menjo/qa.html
 - id: boshi_jiritsu_kyouiku
   name: ひとり親家庭自立支援教育訓練給付金
+  description: ひとり親家庭の就業に役立つ教育訓練受講費用を助成する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2014,6 +2178,7 @@
     url: https://www.cfa.go.jp/policies/hitori-oya/syokugyou-kunren
 - id: boshi_koutou_kunren
   name: ひとり親家庭高等職業訓練促進給付金
+  description: ひとり親家庭が看護師・介護福祉士等の資格取得のため1年以上修業する際に月10万円が支給される制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2028,6 +2193,7 @@
     url: https://www.cfa.go.jp/policies/hitori-oya/syokugyou-kunren
 - id: shougai_kiso_nenkin
   name: 障害基礎年金
+  description: 障害により生活に支障がある方に支給される年金。
   layer: national
   municipality: null
   subject: claimant
@@ -2042,6 +2208,7 @@
     url: https://www.nenkin.go.jp/service/jukyu/shougainenkin/jukyu-yoken/20150401-01.html
 - id: toei_kotsu_muryou
   name: 都営交通無料乗車券
+  description: 東京都の障害者等が都営交通を無料で利用できる制度。
   layer: municipal
   municipality: tokyo
   subject: claimant
@@ -2054,6 +2221,7 @@
     url: https://www.fukushi.metro.tokyo.lg.jp/shougai/nichijo/jousyasyo
 - id: tokyo_suidou_genmen
   name: 水道料金の減免（東京都水道局）
+  description: 東京都の生活保護受給世帯等の水道料金を減免する制度。
   layer: municipal
   municipality: tokyo
   subject: claimant
@@ -2066,6 +2234,7 @@
     url: https://www.waterworks.metro.tokyo.lg.jp/tetsuduki/ryokin/genmen
 - id: shuugyou_sokushin_teate
   name: 就業促進定着手当
+  description: 再就職手当の受給者で再就職先の賃金が前職より低い場合に差額の一部が支給される手当。
   layer: national
   municipality: null
   subject: claimant
@@ -2080,6 +2249,7 @@
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_stepup.html
 - id: ninpu_kensin_josei
   name: 妊婦健康診査の公費助成（14回分）
+  description: 妊婦健康診査の費用を公費で助成する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2094,6 +2264,7 @@
     url: https://www.mhlw.go.jp/bunya/kodomo/boshi-hoken13/
 - id: sanzen_sango_nenkin_menjo
   name: 産前産後の国民年金保険料免除
+  description: 産前産後期間の国民年金保険料を免除する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2108,6 +2279,7 @@
     url: https://www.nenkin.go.jp/service/kokunen/menjo/20180810.html
 - id: shussan_teatekin
   name: 出産手当金
+  description: 出産のため仕事を休んだ健康保険加入者に支給される手当金。
   layer: national
   municipality: null
   subject: claimant
@@ -2122,6 +2294,7 @@
     url: https://www.kyoukaikenpo.or.jp/benefit/childbirth/001/index.html
 - id: ikuji_kyuugyou_kyufu
   name: 育児休業給付金
+  description: 育児休業を取得した雇用保険加入者に支給される給付金。
   layer: national
   municipality: null
   subject: claimant
@@ -2138,6 +2311,7 @@
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
 - id: kaigo_kyuugyou_kyufu
   name: 介護休業給付金
+  description: 家族の介護のため休業した雇用保険加入者に支給される給付金。
   layer: national
   municipality: null
   subject: claimant
@@ -2152,6 +2326,7 @@
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
 - id: koutou_kyouiku_shien
   name: 高等教育の修学支援新制度（大学等無償化）
+  description: 大学等の授業料減免と給付型奨学金の支援制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2166,6 +2341,7 @@
     url: https://www.mext.go.jp/a_menu/koutou/hutankeigen/index.htm
 - id: kyufu_shougakukin
   name: 給付型奨学金（JASSO）
+  description: 経済的理由で修学困難な学生に給付される奨学金。
   layer: national
   municipality: null
   subject: claimant
@@ -2180,6 +2356,7 @@
     url: https://www.jasso.go.jp/shogakukin/moshikomi/yoyaku/index.html
 - id: silver_pass
   name: 東京都シルバーパス
+  description: 東京都の70歳以上の方が都営交通等を利用できるパス。
   layer: municipal
   municipality: tokyo
   subject: claimant
@@ -2192,6 +2369,7 @@
     url: https://www.fukushi.metro.tokyo.lg.jp/kourei/shakai_shien/s_pass
 - id: kaigo_hokenryo_genmen
   name: 介護保険料の減免
+  description: 所得が低い方等の介護保険料を減免する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2206,6 +2384,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/gaiyo/index.html
 - id: kougaku_kaigo_service
   name: 高額介護サービス費
+  description: 介護サービス費の自己負担額が高額になった場合に払い戻される制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2218,6 +2397,7 @@
     url: https://hourei.net/law/409AC0000000123
 - id: iryouhi_koujo
   name: 医療費控除（確定申告）
+  description: 1年間の医療費が一定額を超えた場合に受けられる所得税の控除。
   layer: national
   municipality: null
   subject: claimant
@@ -2232,6 +2412,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm
 - id: self_medication
   name: セルフメディケーション税制
+  description: 特定の医薬品購入費が一定額を超えた場合に受けられる所得税の控除。
   layer: national
   municipality: null
   subject: claimant
@@ -2246,6 +2427,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1129.htm
 - id: furusato_nouzei
   name: ふるさと納税（寄附金控除）
+  description: 自治体への寄附金について住民税等の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2260,6 +2442,7 @@
     url: https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html
 - id: ideco_koujo
   name: iDeCo（個人型確定拠出年金）の所得控除
+  description: 個人型確定拠出年金の掛金について所得控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2274,6 +2457,7 @@
     url: https://www.ideco-koushiki.jp/
 - id: seimei_hoken_koujo
   name: 生命保険料控除
+  description: 生命保険料について所得税・住民税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2288,6 +2472,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm
 - id: jishin_hoken_koujo
   name: 地震保険料控除
+  description: 地震保険料について所得税・住民税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2302,6 +2487,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1145.htm
 - id: jutaku_loan_koujo
   name: 住宅ローン減税（住宅借入金等特別控除）
+  description: 住宅ローンの年末残高に応じて所得税等の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2316,6 +2502,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm
 - id: haiguusha_koujo
   name: 配偶者控除・配偶者特別控除
+  description: 配偶者がいる場合に所得税・住民税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2330,6 +2517,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1191.htm
 - id: shogaisha_koujo
   name: 障害者控除（所得税・住民税）
+  description: 本人または扶養親族が障害者の場合に所得税・住民税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2344,6 +2532,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1160.htm
 - id: hitorioya_koujo
   name: ひとり親控除（所得税・住民税）
+  description: ひとり親の場合に所得税・住民税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2358,6 +2547,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1171.htm
 - id: kounenrei_koyou_keizoku
   name: 高年齢雇用継続給付金
+  description: 60歳以降に賃金が75%未満に低下した雇用保険加入者に支給される給付金。
   layer: national
   municipality: null
   subject: claimant
@@ -2372,6 +2562,7 @@
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
 - id: jiritsu_shien_iryo_kousei
   name: 自立支援医療（更生医療）
+  description: 身体障害者の医療費自己負担を軽減する制度（更生医療）。
   layer: national
   municipality: null
   subject: claimant
@@ -2386,6 +2577,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/
 - id: hosougubi_shikyuu
   name: 補装具費支給制度
+  description: 身体障害者の補装具購入費用を公費負担する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2400,6 +2592,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000078973.html
 - id: nichijou_seikatsu_yougu
   name: 日常生活用具給付等事業
+  description: 障害者の日常生活用具購入費用を助成する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2412,13 +2605,14 @@
     url: https://laws.e-gov.go.jp/law/417AC0000000123
 - id: maisouryou
   name: 埋葬料・埋葬費（健康保険）
+  description: 健康保険加入者が死亡した際に支給される埋葬料・埋葬費。
   layer: national
   municipality: null
   subject: claimant
   unit: per_household
   amount_type: oneoff
   potential_amount: 50000
-  status: supported
+  status: unsupported  # 被保険者死亡が前提。本人入力型システムでは判定不可
   statute:
   - ref: 健康保険法100条
     url: https://laws.e-gov.go.jp/law/211AC0000000070
@@ -2426,6 +2620,7 @@
     url: https://www.kyoukaikenpo.or.jp/g6/cat620/r307/
 - id: sousaihi
   name: 葬祭費（国民健康保険）
+  description: 国民健康保険加入者が死亡した際に支給される葬祭費。
   layer: national
   municipality: null
   subject: claimant
@@ -2438,6 +2633,7 @@
     url: https://hourei.net/law/333AC0000000192
 - id: kinrou_gakusei_koujo
   name: 勤労学生控除
+  description: 働きながら学ぶ学生が受けられる所得税の控除。
   layer: national
   municipality: null
   subject: claimant
@@ -2452,6 +2648,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1175.htm
 - id: shoukibo_kigyou_kyousai
   name: 小規模企業共済等掛金控除
+  description: 小規模企業共済等の掛金について所得控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2466,6 +2663,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm
 - id: aoiro_shinkoku
   name: 青色申告特別控除
+  description: 青色申告をする個人事業主が受けられる特別控除。
   layer: national
   municipality: null
   subject: claimant
@@ -2480,6 +2678,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2072.htm
 - id: taisyoku_shotoku_koujo
   name: 退職所得控除
+  description: 退職金について所得税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2494,6 +2693,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1420.htm
 - id: zatsuzon_koujo
   name: 雑損控除（災害・盗難・横領）
+  description: 災害・盗難・横領による損失について所得税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2508,6 +2708,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1110.htm
 - id: juutaku_reform_zeisei
   name: 住宅リフォーム減税（バリアフリー・省エネ・耐震）
+  description: 住宅リフォーム費用について所得税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2522,6 +2723,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1219.htm
 - id: saigai_gensai
   name: 災害減免法による所得税の軽減免除
+  description: 災害により住宅や家財に損害を受けた場合の所得税の軽減免除制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2536,6 +2738,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1902.htm
 - id: nenkin_seikatsusha_shien
   name: 年金生活者支援給付金
+  description: 年金受給者で所得が低い方に支給される給付金。
   layer: national
   municipality: null
   subject: claimant
@@ -2550,6 +2753,7 @@
     url: https://www.nenkin.go.jp/service/jukyu/seido/sonota-kyufu/shienkyufukin/20190805.html
 - id: kourei_sai_shushoku
   name: 高年齢再就職給付金
+  description: 失業給付の受給中に60歳以降で再就職し賃金が低下した方に支給される給付金。
   layer: national
   municipality: null
   subject: claimant
@@ -2564,6 +2768,7 @@
     url: https://www.hellowork.mhlw.go.jp/insurance/insurance_continue.html
 - id: tokutei_kyouiku_kunren
   name: 特定一般教育訓練給付金（受講費40%）
+  description: 税理士・FP等の特定講座を受講した場合に受講費用の40%（上限20万円）が支給される制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2578,6 +2783,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
 - id: senmon_jissen_kyouiku
   name: 専門実践教育訓練給付金（受講費70%）
+  description: 看護師・保育士等の専門講座を受講した場合に受講費用の最大70%が支給される制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2592,6 +2798,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html
 - id: bukka_kodomo_teate
   name: 物価高対応子育て応援手当（子ども1人2万円）
+  description: 物価高騰対応として子ども1人につき支給される手当。
   layer: national
   municipality: null
   subject: child
@@ -2604,6 +2811,7 @@
     url: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
 - id: seikatsu_hogo_seido
   name: 生活保護制度（相談案内）
+  description: 生活に困窮する方に最低限度の生活を保障し自立を助ける制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2618,6 +2826,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/index.html
 - id: izoku_kiso_nenkin
   name: 遺族基礎年金
+  description: 国民年金加入者が死亡した際に遺族に支給される年金。
   layer: national
   municipality: null
   subject: claimant
@@ -2632,6 +2841,7 @@
     url: https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150401-04.html
 - id: izoku_kousei_nenkin
   name: 遺族厚生年金
+  description: 厚生年金加入者が死亡した際に遺族に支給される年金。
   layer: national
   municipality: null
   subject: claimant
@@ -2646,6 +2856,7 @@
     url: https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150424.html
 - id: mirai_eco_jutaku
   name: みらいエコ住宅2026事業（住宅省エネ補助金）
+  description: 省エネ性能の高い住宅の取得等に対する補助金。
   layer: national
   municipality: null
   subject: claimant
@@ -2658,6 +2869,7 @@
     url: https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk4_000243.html
 - id: tokutei_shishutsu_koujo
   name: 特定支出控除（給与所得者の経費控除）
+  description: 給与所得者の特定の支出について所得税の控除を受けられる制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2672,6 +2884,7 @@
     url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1415.htm
 - id: nisa_hikazei
   name: NISA（少額投資非課税制度）
+  description: 少額投資の運用益を非課税とする制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2686,6 +2899,7 @@
     url: https://www.fsa.go.jp/policy/nisa2/index.html
 - id: seikatsu_fukushi_shikin
   name: 生活福祉資金貸付制度（緊急小口資金等）
+  description: 低所得世帯等に対する緊急小口資金等の貸付制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2698,6 +2912,7 @@
     url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatsu-fukushi-shikin1/index.html
 - id: boshi_fukushi_shikin
   name: 母子父子寡婦福祉資金貸付金
+  description: ひとり親家庭等に対する修学資金等の貸付制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2712,6 +2927,7 @@
     url: https://www.cfa.go.jp/policies/hitori-oya
 - id: rousai_ryouyou
   name: 労災保険 療養補償給付（治療費全額）
+  description: 仕事中・通勤中の病気やケガの治療費を全額補償する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2724,6 +2940,7 @@
     url: https://laws.e-gov.go.jp/law/322AC0000000050/
 - id: rousai_kyuugyou
   name: 労災保険 休業補償給付（給与の80%）
+  description: 仕事中・通勤中の病気やケガで休業した場合に給与の約80%を補償する制度。
   layer: national
   municipality: null
   subject: claimant
@@ -2736,6 +2953,7 @@
     url: https://laws.e-gov.go.jp/law/322AC0000000050/
 - id: rousai_shougai
   name: 労災保険 障害補償給付
+  description: 仕事中・通勤中の病気やケガで障害が残った場合に支給される給付。
   layer: national
   municipality: null
   subject: claimant
@@ -2748,6 +2966,7 @@
     url: https://laws.e-gov.go.jp/law/322AC0000000050/
 - id: adachi_shussan_hiyou_josei
   name: 足立区出産費助成事業
+  description: 出産育児一時金で賄いきれない出産費用を区が助成する制度。
   layer: municipal
   municipality: adachi
   subject: claimant
@@ -2760,6 +2979,7 @@
     url: https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/syussanhi-josei.html
 - id: shibuya_happy_mother
   name: 渋谷区ハッピーマザー出産助成金
+  description: 出産育児一時金で賄いきれない出産費用を区が助成する制度。
   layer: municipal
   municipality: shibuya
   subject: claimant
@@ -2772,6 +2992,7 @@
     url: https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/happy_josei.html
 - id: setagaya_shussan_hiyou_josei
   name: 世田谷区出産費助成制度
+  description: 出産育児一時金で賄いきれない出産費用を区が助成する制度。
   layer: municipal
   municipality: setagaya
   subject: claimant
@@ -2784,6 +3005,7 @@
     url: https://www.city.setagaya.lg.jp/02413/1206.html
 - id: taito_shussan_hiyou_josei
   name: 台東区出産費用助成制度
+  description: 出産育児一時金で賄いきれない出産費用を区が助成する制度。
   layer: municipal
   municipality: taito
   subject: claimant
@@ -2796,6 +3018,7 @@
     url: https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/syussanhiyoujyosei.html
 - id: chiyoda_shussan_hiyou_josei
   name: 千代田区出産費用助成（区独自制度）
+  description: 出産育児一時金で賄いきれない出産費用を区が助成する制度。
   layer: municipal
   municipality: chiyoda
   subject: claimant
@@ -2808,6 +3031,7 @@
     url: https://www.city.chiyoda.lg.jp/koho/kosodate/teate/shussanhiyojosei.html
 - id: chiyoda_chuukousei_ouen
   name: 千代田区中高生世代応援手当（区独自制度）
+  description: 千代田区の中学生・高校生世代（12～17歳）に月1.5万円を支給する手当。
   layer: municipal
   municipality: chiyoda
   subject: child

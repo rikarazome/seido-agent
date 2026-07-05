@@ -140,6 +140,86 @@ def query_proof(facts_pl: str, program: str, rule_file: str, subject: str,
     return _query_driver(facts_pl, rule_file, body, timeout)
 
 
+def judge_batch(facts_pl: str,
+                queries: list[tuple[str, str, str]],
+                claimant: str = _DEFAULT_CLAIMANT,
+                timeout: int = 60) -> list[dict]:
+    """Judge multiple (program_id, rule_file, subject) in one swipl process.
+
+    Returns list of {"program": id, "subject": s, "status": term,
+                     "proof": proof_term_or_none} in the same order as queries.
+    """
+    if not queries:
+        return []
+    for pid, _rf, subj in queries:
+        _validate_atom(pid)
+        _validate_atom(subj)
+    _validate_atom(claimant)
+
+    rule_files_set = sorted({rf for _, rf, _ in queries})
+    loads = "".join(
+        f":- use_module('{(REPO / rf).as_posix()}', []).\n"
+        for rf in rule_files_set
+    )
+
+    judge_clauses = []
+    for pid, _rf, subj in queries:
+        judge_clauses.append(
+            f"    judge_one({pid}, {subj})"
+        )
+
+    body = (
+        "judge_one(Mod, Subj) :-\n"
+        f"    ( once(Mod:kettei_status({claimant}, Subj, S))\n"
+        "    -> true ; S = error(no_solution) ),\n"
+        "    write('<<SEP>>'), write(Mod), write('|'), write(Subj), nl,\n"
+        "    writeq(S), nl,\n"
+        "    ( S = decided(_)\n"
+        f"    -> ( once(prove(Mod, kettei_status({claimant}, Subj, S), Proof))\n"
+        "       -> writeq(Proof) ; write(no_proof) )\n"
+        "    ;  write(none) ), nl.\n"
+        "\n"
+        "main :-\n"
+        + ",\n".join(judge_clauses)
+        + ",\n    halt(0).\n"
+    )
+
+    with tempfile.TemporaryDirectory() as td:
+        facts_f = Path(td) / "facts.pl"
+        facts_f.write_text(facts_pl, encoding="ascii")
+        driver_text = (
+            f":- consult('{ENGINE}').\n"
+            f":- consult('{facts_f.as_posix()}').\n"
+            + loads
+            + body
+        )
+        driver = Path(td) / "driver.pl"
+        driver.write_text(_ON_ERROR + driver_text, encoding="ascii")
+        proc = subprocess.run(
+            ["swipl", "-q", "-g", "main", str(driver)],
+            capture_output=True, text=True, timeout=timeout,
+        )
+    if proc.returncode != 0:
+        raise PrologError(f"swipl batch failed (rc={proc.returncode}):\n{proc.stderr}")
+
+    results = []
+    blocks = proc.stdout.split("<<SEP>>")
+    for block in blocks[1:]:
+        lines = [l for l in block.strip().splitlines() if l.strip()]
+        if len(lines) < 3:
+            continue
+        header = lines[0].strip()
+        parts = header.split("|", 1)
+        pid, subj = parts[0].strip(), parts[1].strip()
+        status = lines[1].strip()
+        proof = lines[2].strip() if len(lines) > 2 else "none"
+        results.append({
+            "program": pid, "subject": subj,
+            "status": status, "proof": proof,
+        })
+    return results
+
+
 def load_all_modules(rule_files: list[str], timeout: int = 20) -> None:
     """CI invariant: every rule module loads together without clashes."""
     goals = "".join(
