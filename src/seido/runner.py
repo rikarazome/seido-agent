@@ -321,6 +321,9 @@ def judge_request(facts: dict, as_of: date,
         br_lookup = {}
         for br in batch_results:
             br_lookup.setdefault(br["program"], []).append(br)
+        expected_subjects = {}
+        for m2, s in batch_meta:
+            expected_subjects.setdefault(m2["id"], []).append(s)
 
         seen_programs = set()
         for meta, _s in batch_meta:
@@ -335,13 +338,17 @@ def judge_request(facts: dict, as_of: date,
                 parsed["raw"] = br["status"]
                 parsed["_proof"] = br.get("proof", "none")
                 subj_results.append(parsed)
-            if subj_results:
+            expected = expected_subjects[meta["id"]]
+            if len(subj_results) == len(expected):
                 results.append(_aggregate(meta, subj_results, facts,
                                           facts_pl, as_of))
             else:
-                # fail safe: a program must never vanish silently from the
-                # response -- surface a visible error card (UI: 要窓口確認)
-                log.error("no batch result for program=%s", meta["id"])
+                # fail safe: missing or partial batch results must never be
+                # aggregated as a complete judgment or vanish silently --
+                # surface a visible error card instead (UI: 要窓口確認)
+                log.error("batch results for program=%s: got %d of %d "
+                          "subjects", meta["id"], len(subj_results),
+                          len(expected))
                 results.append({"program": meta["id"], "name": meta["name"],
                                 "status": "error",
                                 "reason": "no_batch_result"})

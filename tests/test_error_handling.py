@@ -97,6 +97,28 @@ def test_api_chat_missing_config_is_fixed_503(monkeypatch):
 # fail safe: no program may silently vanish from the results
 # ---------------------------------------------------------------------------
 
+def test_partial_subject_results_become_error_not_fake_judgment(monkeypatch):
+    """If the batch returns results for only SOME subjects of a program
+    (one child's block lost), the program must surface as error -- partial
+    data must never be aggregated as a complete judgment (FN guard)."""
+    import seido.runner as runner_module
+    from datetime import date
+    monkeypatch.setattr(
+        runner_module, "judge_batch",
+        lambda facts_pl, queries, **k: [
+            {"program": "jidou_teate", "subject": "c1",
+             "status": "decided(amount(10000))", "proof": "none"}])
+    result = runner_module.judge_request(
+        {"children": [{"id": "c1", "birth_date": "2019-06-01"},
+                      {"id": "c2", "birth_date": "2021-06-01"}],
+         "askable": {}},
+        date(2026, 6, 11), "shibuya")
+    jt = next(r for r in result["results"] if r["program"] == "jidou_teate")
+    assert jt["status"] == "error", (
+        f"partial batch data (1 of 2 subjects) must not be aggregated "
+        f"as a normal judgment, got status={jt['status']}")
+
+
 def test_no_program_vanishes_when_batch_returns_nothing(monkeypatch):
     """If judge_batch yields no block for a program (malformed output,
     partial batch), the program must surface as a visible error card --
