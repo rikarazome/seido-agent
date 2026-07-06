@@ -10,7 +10,7 @@
 | docs/specs/architecture.md | API・集約規則・一問一答エンジン・コスト防御・デプロイ |
 | docs/dev-methodology.md | 二重ループ・eval-first・CI段階・golden書式 |
 | docs/roadmap.md | 週次計画 |
-| docs/target-programs.md | v1初期スコープ（参考。現在は248制度supported） |
+| docs/target-programs.md | v1初期スコープ（参考。現在は220制度supported / 224収録） |
 
 ## コマンド
 
