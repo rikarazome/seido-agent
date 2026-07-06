@@ -690,26 +690,48 @@ async function showProofTree(idx,program){
   }
 }
 function parseTerm(s){
+  // writeq emits comparisons infix (builtin(7=<18)) -- expr() folds binary
+  // operators; every dead end throws so showProofTree's catch falls back to
+  // the raw term text instead of looping forever (fail safe)
   let i=0;
+  const OP=/^(=\.\.|=:=|=\\=|\\==|@=<|@>=|@<|@>|=<|>=|==|\\=|=|<|>|\+|\*|\/|is\b)/;
   function ws(){while(i<s.length&&s[i]===" ")i++;}
-  function term(){
+  function prim(){
     ws();
-    if(s[i]==="'"){let buf="";i++;while(s[i]!=="'"){buf+=s[i++];}i++;return{f:buf,args:[]};}
+    const start=i;
+    if(s[i]==="'"){let buf="";i++;while(i<s.length&&s[i]!=="'"){buf+=s[i++];}i++;return{f:buf,args:[]};}
     if(s[i]==="["){i++;const items=[];ws();
       if(s[i]==="]"){i++;return{list:items};}
-      for(;;){items.push(term());ws();if(s[i]===","){i++;continue;}if(s[i]==="]"){i++;break;}}
+      for(;;){items.push(expr());ws();if(s[i]===","){i++;continue;}if(s[i]==="]"){i++;break;}throw new Error("bad list at "+i);}
       return{list:items};}
+    if(s[i]==="("){ // parenthesized conjunction (e.g. findall goal)
+      i++;let inner=expr();ws();
+      while(s[i]===","){i++;inner={f:",",args:[inner,expr()],op:true};ws();}
+      if(s[i]!==")")throw new Error("bad paren at "+i);
+      i++;return inner;}
     let j=i;while(i<s.length&&/[A-Za-z0-9_.\-]/.test(s[i]))i++;
     const name=s.slice(j,i);
     if(s[i]==="("){i++;const args=[];
-      for(;;){args.push(term());ws();if(s[i]===","){i++;continue;}if(s[i]===")"){i++;break;}}
+      for(;;){args.push(expr());ws();if(s[i]===","){i++;continue;}if(s[i]===")"){i++;break;}throw new Error("bad args at "+i);}
       return{f:name,args};}
+    if(i===start)throw new Error("stuck at "+i);
     return{f:name,args:[]};
   }
-  return term();
+  function expr(){
+    let left=prim();
+    for(;;){
+      ws();
+      const m=OP.exec(s.slice(i));
+      if(!m)return left;
+      i+=m[0].length;
+      left={f:m[0],args:[left,prim()],op:true};
+    }
+  }
+  return expr();
 }
 function fmtGoal(t){
   if(t.list)return"["+t.list.map(fmtGoal).join(", ")+"]";
+  if(t.op)return fmtGoal(t.args[0])+esc(t.f)+fmtGoal(t.args[1]);
   if(!t.args.length)return esc(t.f);
   return esc(t.f)+"("+t.args.map(fmtGoal).join(", ")+")";
 }
