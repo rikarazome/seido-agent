@@ -226,6 +226,9 @@ def judge_batch(facts_pl: str,
             continue
         header = lines[0].strip()
         parts = header.split("|", 1)
+        if len(parts) != 2:
+            log.error("malformed batch header: %s", header[:100])
+            continue   # runner surfaces the missing program as an error card
         pid, subj = parts[0].strip(), parts[1].strip()
         status = lines[1].strip()
         proof = lines[2].strip() if len(lines) > 2 else "none"

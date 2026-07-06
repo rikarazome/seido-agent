@@ -94,6 +94,29 @@ def test_api_chat_missing_config_is_fixed_503(monkeypatch):
 
 
 # ---------------------------------------------------------------------------
+# fail safe: no program may silently vanish from the results
+# ---------------------------------------------------------------------------
+
+def test_no_program_vanishes_when_batch_returns_nothing(monkeypatch):
+    """If judge_batch yields no block for a program (malformed output,
+    partial batch), the program must surface as a visible error card --
+    never disappear from the response (FN guard)."""
+    import seido.runner as runner_module
+    from datetime import date
+    monkeypatch.setattr(runner_module, "judge_batch", lambda *a, **k: [])
+    result = runner_module.judge_request(
+        {"children": [{"id": "c1", "birth_date": "2019-06-01"}],
+         "askable": {}},
+        date(2026, 6, 11), "shibuya")
+    expected = {p["id"] for p in runner_module.programs()
+                if runner_module._applicable(p, "shibuya")}
+    got = {r["program"] for r in result["results"]}
+    missing = sorted(expected - got)
+    assert not missing, f"programs vanished silently: {missing[:5]}"
+    assert any(r["status"] == "error" for r in result["results"])
+
+
+# ---------------------------------------------------------------------------
 # /healthz: verifies swipl
 # ---------------------------------------------------------------------------
 

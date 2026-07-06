@@ -338,6 +338,13 @@ def judge_request(facts: dict, as_of: date,
             if subj_results:
                 results.append(_aggregate(meta, subj_results, facts,
                                           facts_pl, as_of))
+            else:
+                # fail safe: a program must never vanish silently from the
+                # response -- surface a visible error card (UI: 要窓口確認)
+                log.error("no batch result for program=%s", meta["id"])
+                results.append({"program": meta["id"], "name": meta["name"],
+                                "status": "error",
+                                "reason": "no_batch_result"})
 
     return {"headline": _headline(results), "results": results,
             "next_question": _next_question(results, facts)}
