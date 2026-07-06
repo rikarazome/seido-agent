@@ -74,6 +74,14 @@ def test_api_chat_prolog_error_is_500_not_config_503(monkeypatch):
     assert r.json()["detail"] == "judgment failed"
 
 
+def test_api_chat_bad_as_of_is_422_not_500():
+    """HTTPException(422) from as_of validation must not be swallowed by
+    the generic Exception handler and re-raised as 500."""
+    r = client.post("/api/chat", json={
+        "message": "hi", "facts": FACTS, "as_of": "not-a-date"})
+    assert r.status_code == 422
+
+
 def test_api_chat_missing_config_is_fixed_503(monkeypatch):
     """RuntimeError (no API key) -> 503 with a fixed message that does not
     expose the internal exception text."""

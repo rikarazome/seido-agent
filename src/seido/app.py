@@ -172,6 +172,9 @@ def api_chat(request: Request, req: ChatRequest):
     if req.municipality not in municipalities():
         raise HTTPException(400, "unknown municipality")
     _guard_size(req)
+    # outside the try: its HTTPException(422) must not be turned into a
+    # 500 by the generic Exception handler below
+    as_of = _parse_as_of(req.as_of)
     t0 = time.monotonic()
     try:
         from .chat import chat_turn
@@ -180,7 +183,7 @@ def api_chat(request: Request, req: ChatRequest):
             facts=req.facts,
             history=req.history,
             municipality=req.municipality,
-            as_of=_parse_as_of(req.as_of),
+            as_of=as_of,
         )
     except PrologError:              # RuntimeError subclass -- must come first
         log.exception("judgment failed in chat")
