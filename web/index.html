@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>制度エージェント — 東京23区</title>
+<title>制度エージェント</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230017C1'/%3E%3Ctext x='16' y='23' font-size='18' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'%3E%C2%A5%3C/text%3E%3C/svg%3E">
 <style>
 :root{
@@ -33,6 +33,7 @@ button{cursor:pointer;border:none;font-family:inherit;font-weight:700}
 .logo{flex:none;width:36px;height:36px;border-radius:10px;background:var(--blue-700);
   color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.1rem}
 .appbar h1{font-size:1rem;line-height:1.3;font-weight:700}
+.appbar-sub{font-size:.68rem;color:var(--ink-sub);line-height:1.3}
 .appbar .muni-sel{margin-left:auto;font-size:.82rem;padding:4px 8px;border:1px solid var(--border);
   border-radius:var(--r-s);background:var(--surface);font-family:inherit}
 
@@ -129,7 +130,21 @@ button{cursor:pointer;border:none;font-family:inherit;font-weight:700}
 .input-inner button:disabled{opacity:.4}
 .input-note{max-width:680px;margin:4px auto 0;font-size:.7rem;color:var(--ink-faint);text-align:center}
 
+/* ---- loading indicator (fixed text is the primary signal; the dots
+   animate the content property, which Firefox does not animate) ---- */
+.loading-msg::after{content:"";animation:dots 1.2s steps(4) infinite}
+@keyframes dots{
+  0%{content:""}
+  25%{content:"."}
+  50%{content:".."}
+  75%{content:"..."}
+}
+
 .hidden{display:none}
+@media(max-width:768px){
+  .appbar-inner{padding:8px 12px}
+  .hero-inline .yen{font-size:1.4rem}
+}
 @media(max-width:480px){
   .chat{padding:8px 10px 80px}
   .hero-inline .yen{font-size:1.3rem}
@@ -141,32 +156,39 @@ button{cursor:pointer;border:none;font-family:inherit;font-weight:700}
 <header class="appbar">
   <div class="appbar-inner">
     <div class="logo">&#165;</div>
-    <h1>制度エージェント</h1>
-    <select class="muni-sel" id="municipality" onchange="onMuniChange()">
+    <div>
+      <h1>制度エージェント</h1>
+      <div class="appbar-sub">あなたの給付金を根拠付きで発見</div>
+    </div>
+    <select class="muni-sel" id="municipality" aria-label="お住まいの区" onchange="onMuniChange()">
       <option value="shibuya">東京都渋谷区</option>
     </select>
   </div>
 </header>
 
-<div class="chat-wrap" id="chat-wrap">
-  <div class="chat" id="chat"></div>
+<div class="chat-wrap" id="chat-wrap" role="main" aria-label="チャット">
+  <div class="chat" id="chat" aria-live="polite"></div>
 </div>
 
 <div class="disclaimer">
-  本サービスの判定は法的助言ではありません。最終的な判断は必ず自治体窓口でご確認ください。入力情報はサーバーに保存されません。
+  本サービスの判定は法的助言ではありません。最終的な判断は必ず自治体窓口でご確認ください。入力情報はサーバーに保存されません。<a href="/privacy.html" style="color:inherit">プライバシーポリシー</a>
 </div>
 
 <div class="input-bar">
   <div class="input-inner">
-    <input type="text" id="user-input" placeholder="自由に入力（Gemini連携で近日対応）" disabled>
-    <button id="send-btn" disabled>送信</button>
+    <input type="text" id="user-input" placeholder="上の選択肢からお選びください" disabled>
+    <button id="send-btn" aria-label="送信" disabled>送信</button>
   </div>
-  <div class="input-note">現在は選択肢チップからお選びください</div>
 </div>
 
 <script>
 "use strict";
-function esc(s){const d=document.createElement("div");d.textContent=s;return d.innerHTML;}
+// attribute-context safe: quotes escaped too (the textContent trick passes them)
+function esc(s){return String(s).replace(/[&<>"']/g,
+  c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+const AGENT_SVG='<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5l8-3z" fill="#fff"/><path d="M8.5 12l2.5 2.5 4.5-4.5" stroke="#0017C1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const USER_SVG='<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#fff"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6v1H4v-1z" fill="#fff"/></svg>';
 
 let facts={children:[],askable:{}};
 let lastResp=null;
@@ -234,7 +256,7 @@ async function loadMunicipalities(){
     const sel=document.getElementById("municipality");
     sel.innerHTML=munis.map(m=>
       `<option value="${esc(m.id)}"${m.id==="shibuya"?" selected":""}>${esc(m.name)}</option>`).join("");
-  }catch(e){}
+  }catch(e){console.warn("自治体一覧の取得失敗:",e);}
 }
 loadMunicipalities();
 function onMuniChange(){
@@ -251,14 +273,14 @@ function scrollBottom(){
 function addAgent(html){
   const d=document.createElement("div");
   d.className="msg agent";
-  d.innerHTML=`<div class="avatar">A</div><div class="bubble">${html}</div>`;
+  d.innerHTML=`<div class="avatar">${AGENT_SVG}</div><div class="bubble">${html}</div>`;
   document.getElementById("chat").appendChild(d);
   scrollBottom();
 }
 function addUser(text){
   const d=document.createElement("div");
   d.className="msg user";
-  d.innerHTML=`<div class="avatar">U</div><div class="bubble">${esc(text)}</div>`;
+  d.innerHTML=`<div class="avatar">${USER_SVG}</div><div class="bubble">${esc(text)}</div>`;
   document.getElementById("chat").appendChild(d);
   scrollBottom();
 }
@@ -266,6 +288,8 @@ function addCard(html){
   const d=document.createElement("div");
   d.className="result-card";
   d.id="result-card";
+  d.setAttribute("role","region");
+  d.setAttribute("aria-label","判定結果");
   document.getElementById("chat").appendChild(d);
   d.innerHTML=html;
   scrollBottom();
@@ -386,7 +410,7 @@ function answerIncome(v){
   removeOldChips();
   facts.askable.nenshu=v;
   phase="judging";
-  addAgent("ありがとうございます。判定しています...");
+  addAgent("ありがとうございます。");
   doJudge();
 }
 
@@ -401,18 +425,65 @@ function amountText(a){
 }
 
 let judging=false;
+let judgeFailCount=0;   // module scope: survives across doJudge calls
+
+function showLoading(){
+  if(document.getElementById("judge-loading"))return;
+  const d=document.createElement("div");
+  d.className="msg agent";
+  d.id="judge-loading";
+  d.innerHTML=`<div class="avatar">${AGENT_SVG}</div><div class="bubble"><span class="loading-msg">判定しています</span></div>`;
+  document.getElementById("chat").appendChild(d);
+  scrollBottom();
+}
+function hideLoading(){
+  const el=document.getElementById("judge-loading");
+  if(el)el.remove();
+}
+function showJudgeError(status){
+  judgeFailCount++;
+  const msg=status===429?"リクエストが多すぎます。少し待ってからお試しください。"
+    :status===413?"入力データが大きすぎます。"
+    :status===0?"通信に失敗しました。接続をご確認ください。"
+    :"判定中にエラーが発生しました。";
+  const wait=judgeFailCount>=3?"しばらく時間をおいてお試しください。<br>":"";
+  // retry button is always shown: facts live only in this page, so a
+  // reload loses every answer -- never leave the user without a way back
+  addAgent(msg+"<br>"+wait
+    +'<button class="chip" onclick="doJudge()">もう一度試す</button>');
+}
+
 async function doJudge(){
   if(judging)return;
   judging=true;
+  showLoading();
   try{
-    const r=await fetch("/api/judge",{method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({facts,municipality})});
-    if(!r.ok){addAgent("判定中にエラーが発生しました。");return;}
-    lastResp=await r.json();
-    renderResult();
-    renderNextQuestion();
-  }finally{judging=false;}
+    let data;
+    try{
+      const r=await fetch("/api/judge",{method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({facts,municipality})});
+      if(!r.ok){showJudgeError(r.status);return;}
+      data=await r.json();
+    }catch(e){
+      showJudgeError(0);   // 0 = network / parse failure
+      return;
+    }
+    lastResp=data;
+    judgeFailCount=0;
+    try{
+      renderResult();
+      renderNextQuestion();
+    }catch(e){
+      // a deterministic render bug: not a network error (different message,
+      // no retry -- retrying cannot fix it), and never silent
+      console.error("render failed:",e);
+      addAgent("結果の表示に問題が発生しました。");
+    }
+  }finally{
+    hideLoading();
+    judging=false;
+  }
 }
 
 function renderResult(){
@@ -426,7 +497,7 @@ function renderResult(){
   if(h.yearly_yen)parts.push(`<span><span class="unit">年</span> <span class="yen">${yen(h.yearly_yen)}</span></span>`);
   if(h.in_kind_count){
     const ikNames=lastResp.results.filter(r=>r.status==="decided"&&r.amount&&r.amount.type==="in_kind").map(r=>r.name);
-    parts.push(`<span><span class="unit">現物給付</span> <span class="yen">${h.in_kind_count}件</span><span style="font-size:.72rem;opacity:.85;display:block">${ikNames.join("、")}</span></span>`);
+    parts.push(`<span><span class="unit">現物給付</span> <span class="yen">${h.in_kind_count}件</span><span style="font-size:.72rem;opacity:.85;display:block">${ikNames.map(n=>esc(n)).join("、")}</span></span>`);
   }
   const total=lastResp.results.length;
   const settled=lastResp.results.filter(r=>["decided","ineligible","error","unsupported"].includes(r.status)).length;
@@ -483,12 +554,15 @@ function renderNextQuestion(){
   const q=lastResp.next_question;
   if(!q){
     phase="done";
+    const decidedCount=lastResp.results.filter(r=>r.status==="decided").length;
     const blockedLeft=lastResp.results.filter(r=>r.status==="blocked").length;
-    if(blockedLeft){
-      addAgent(`すべての質問が完了しました。${blockedLeft}件の制度は回答がなかったため確定できませんでした。詳しくはお住まいの自治体窓口でご確認ください。`);
-    }else{
-      addAgent("すべての制度の判定が完了しました。上の結果カードをご確認ください。");
-    }
+    const summary=decidedCount>0
+      ?`判定が完了しました。<b>${decidedCount}件</b>の制度に該当する見込みです。詳細は上のカードでご確認ください。`
+      :"判定が完了しました。今回のご回答では、該当が確定した制度は見つかりませんでした。";
+    const blockedNote=blockedLeft
+      ?`<br>${blockedLeft}件の制度は回答がなかったため確定できませんでした。`:"";
+    addAgent(summary+blockedNote
+      +`<br><br><span style="font-size:.8rem;color:var(--ink-sub)">※判定はProlog推論エンジンによる機械的な結果です。最終的な判断は必ず自治体窓口でご確認ください。</span>`);
     return;
   }
   const whyText=q.why.length?`<br><span style="font-size:.82rem;color:var(--ink-sub)">この質問で <b>${q.why.length}制度</b> の判定が進みます</span>`:"";
@@ -505,7 +579,7 @@ function renderNextQuestion(){
   let numHtml="";
   if(q.input==="number"){
     const ak=JSON.stringify(q.askable_key).replace(/'/g,"&#39;");
-    numHtml=`<div class="chip-row-num"><input type="number" id="num-in" placeholder="金額（円）"><button class="chip" onclick='numAnswer(${ak})'>送信</button></div>`;
+    numHtml=`<div class="chip-row-num"><input type="number" id="num-in" placeholder="金額（円）" min="0" max="99999999" step="1"><button class="chip" onclick='numAnswer(${ak})'>送信</button></div>`;
   }
   addChips(`<div class="chips live-chips">${chipsHtml}</div>${numHtml}`);
 }
@@ -528,7 +602,7 @@ function chipAnswer(key,value,childId){
 }
 function numAnswer(key){
   const v=parseInt(document.getElementById("num-in").value,10);
-  if(isNaN(v))return;
+  if(isNaN(v)||v<0||v>99999999)return;
   addUser(yen(v));
   removeOldChips();
   facts.askable[key]=v;
@@ -597,16 +671,23 @@ async function showProofTree(idx,program){
   const box=document.getElementById("proof-"+idx);
   if(!box)return;
   box.classList.toggle("hidden");
-  if(box.innerHTML)return;
+  // loaded flag is set only on success: an error message must not become
+  // a permanent "cached" state that blocks retrying on the next click
+  if(box.dataset.loaded)return;
   const r=lastResp.results.find(x=>x.program===program);
   const subj=(r.children||[]).find(s=>s.kind==="decided");
-  const res=await fetch("/api/proof",{method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({facts,program,subject:subj?subj.subject:"self",municipality})});
-  if(!res.ok){box.textContent="取得できませんでした";return;}
-  const body=await res.json();
-  try{box.innerHTML=`<div class="proof-title">Prolog推論ツリー</div><ul>`+renderProof(parseTerm(body.proof))+"</ul>";}
-  catch(e){box.textContent=body.proof;}
+  try{
+    const res=await fetch("/api/proof",{method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({facts,program,subject:subj?subj.subject:"self",municipality})});
+    if(!res.ok){box.textContent="取得できませんでした";return;}
+    const body=await res.json();
+    try{box.innerHTML=`<div class="proof-title">Prolog推論ツリー</div><ul>`+renderProof(parseTerm(body.proof))+"</ul>";}
+    catch(e){box.textContent=body.proof;}
+    box.dataset.loaded="1";
+  }catch(e){
+    box.textContent="取得できませんでした。通信環境をご確認ください";
+  }
 }
 function parseTerm(s){
   let i=0;
