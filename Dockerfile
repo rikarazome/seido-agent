@@ -8,6 +8,11 @@ COPY rules/ rules/
 COPY data/ data/
 COPY web/ web/
 COPY src/ src/
+RUN useradd -m appuser
 ENV PYTHONPATH=/app/src
+ENV PORT=8080
+USER appuser
 EXPOSE 8080
-CMD ["uvicorn", "seido.app:app", "--host", "0.0.0.0", "--port", "8080"]
+# shell-form CMD so $PORT (set by Cloud Run) expands; exec replaces the
+# shell so SIGTERM reaches uvicorn directly (clean shutdown, no 10s wait)
+CMD exec uvicorn seido.app:app --host 0.0.0.0 --port $PORT
