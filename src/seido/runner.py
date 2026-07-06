@@ -7,7 +7,9 @@ docs/specs/architecture.md.
 from __future__ import annotations
 
 import copy
+import logging
 import re
+import time
 from datetime import date
 from functools import lru_cache
 from pathlib import Path
@@ -18,6 +20,8 @@ from .factgen import CHILD_ASKABLE_PREDS, CLAIMANT, facts_to_prolog, salary_to_s
 from .prolog import PrologError, judge, judge_batch, query_proof, query_value
 
 REPO = Path(__file__).resolve().parents[2]
+
+log = logging.getLogger(__name__)
 
 _STATUS_RE = re.compile(r"^(decided|blocked|ineligible|error)\((.*)\)$")
 _DETAIL_RE = re.compile(r"^(\w+)\((\w+)\)$")
@@ -310,7 +314,10 @@ def judge_request(facts: dict, as_of: date,
 
     # Single swipl process for all judgments + proof trees
     if batch_queries:
+        t0 = time.monotonic()
         batch_results = judge_batch(facts_pl, batch_queries)
+        log.info("prolog batch: size=%d duration_ms=%d",
+                 len(batch_queries), int((time.monotonic() - t0) * 1000))
         br_lookup = {}
         for br in batch_results:
             br_lookup.setdefault(br["program"], []).append(br)

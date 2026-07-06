@@ -1,6 +1,7 @@
 """swipl subprocess runner for judgments (deterministic test harness core)."""
 from __future__ import annotations
 
+import logging
 import subprocess
 import tempfile
 from pathlib import Path
@@ -9,6 +10,13 @@ from .factgen import CLAIMANT as _DEFAULT_CLAIMANT, _validate_atom
 
 REPO = Path(__file__).resolve().parents[2]
 ENGINE = (REPO / "rules" / "engine.pl").as_posix()
+
+log = logging.getLogger(__name__)
+
+# stderr may echo consulted file content (generated facts: birth dates,
+# income) on pathological failures. Log a 300-char head only -- enough for
+# file:line + error kind -- and never put stderr in exception messages.
+_STDERR_CAP = 300
 
 # Halt on load-time errors: without this, a syntax error in generated facts
 # only prints to stderr and swipl continues with a PARTIAL fact set, so a
@@ -30,12 +38,15 @@ def _run_driver(driver_text: str, timeout: int, expect_output: bool) -> str:
             capture_output=True, text=True, timeout=timeout,
         )
     if proc.returncode != 0:
-        raise PrologError(f"swipl failed (rc={proc.returncode}):\n{proc.stderr}")
+        log.error("swipl failed rc=%d: %s",
+                  proc.returncode, proc.stderr[:_STDERR_CAP])
+        raise PrologError("prolog execution failed")
     if not expect_output:
         return ""
     out = [l for l in proc.stdout.strip().splitlines() if l.strip()]
     if not out:
-        raise PrologError(f"no output from swipl:\n{proc.stderr}")
+        log.error("no output from swipl: %s", proc.stderr[:_STDERR_CAP])
+        raise PrologError("prolog produced no output")
     return out[-1].strip()
 
 
@@ -60,10 +71,13 @@ def _query_driver(facts_pl: str, rule_file: str, body: str, timeout: int) -> str
             capture_output=True, text=True, timeout=timeout,
         )
     if proc.returncode != 0:
-        raise PrologError(f"swipl failed (rc={proc.returncode}):\n{proc.stderr}")
+        log.error("swipl failed rc=%d: %s",
+                  proc.returncode, proc.stderr[:_STDERR_CAP])
+        raise PrologError("prolog execution failed")
     out = [l for l in proc.stdout.strip().splitlines() if l.strip()]
     if not out:
-        raise PrologError(f"no output from swipl:\n{proc.stderr}")
+        log.error("no output from swipl: %s", proc.stderr[:_STDERR_CAP])
+        raise PrologError("prolog produced no output")
     return out[-1].strip()
 
 
@@ -200,7 +214,9 @@ def judge_batch(facts_pl: str,
             capture_output=True, text=True, timeout=timeout,
         )
     if proc.returncode != 0:
-        raise PrologError(f"swipl batch failed (rc={proc.returncode}):\n{proc.stderr}")
+        log.error("swipl batch failed rc=%d: %s",
+                  proc.returncode, proc.stderr[:_STDERR_CAP])
+        raise PrologError("prolog execution failed")
 
     results = []
     blocks = proc.stdout.split("<<SEP>>")
