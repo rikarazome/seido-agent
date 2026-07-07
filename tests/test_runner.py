@@ -122,6 +122,24 @@ def test_childless_claimant_with_birth_date():
     assert resp["next_question"] is not None
 
 
+def test_no_claimant_birth_date_blocks_age_programs_not_error():
+    """The birth-date step is skippable (form skip button; chat users may
+    never state it), so claimant-age rules returning error(structural_no_age)
+    must surface as blocked on claimant_birth_date -- "give us the birth date
+    and we can judge" -- not as an error card (fail safe: ask, don't alarm)."""
+    resp = judge_request(base_household(), AS_OF, municipality="shibuya")
+    r = by_id(resp)
+    errors = [p for p, c in r.items() if c["status"] == "error"]
+    assert errors == [], f"unexpected error cards: {errors}"
+    assert r["silver_pass"]["status"] == "blocked"
+    assert r["silver_pass"]["missing"] == ["claimant_birth_date"]
+    # with the birth date provided, the same program decides normally
+    facts = base_household()
+    facts["claimant"] = {"birth_date": "1950-01-01"}   # age 76
+    r2 = by_id(judge_request(facts, AS_OF, municipality="shibuya"))
+    assert r2["silver_pass"]["status"] == "decided"
+
+
 def test_chat_flow_childless_progressive_answers():
     """Simulates the chat UI chip-tap flow for a childless user,
     progressively answering questions until all programs settle."""

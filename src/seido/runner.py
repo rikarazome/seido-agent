@@ -334,6 +334,17 @@ def judge_request(facts: dict, as_of: date,
             subj_results = []
             for br in raw_list:
                 parsed = _parse_status(br["status"])
+                if (br["subject"] == "self" and parsed["kind"] == "error"
+                        and parsed.get("reason") in (
+                            "structural_no_age", "structural_facts_missing")):
+                    # Claimant age facts are absent only when the (skippable)
+                    # birth-date step was skipped -- that is blocked ("give
+                    # us the birth date and we can judge"), not a failure.
+                    # Child-subject structural errors stay errors: children
+                    # always carry a birth date, so those guard clauses are
+                    # tripwires for mapping bugs and must remain visible.
+                    parsed = {"kind": "blocked",
+                              "missing": ["claimant_birth_date"]}
                 parsed["subject"] = br["subject"]
                 parsed["raw"] = br["status"]
                 parsed["_proof"] = br.get("proof", "none")

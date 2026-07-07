@@ -385,6 +385,7 @@ ASKABLE_MAP = {
 | 対象者ゼロ | subject: child の制度で子が0人 → 照会せず**ランナーが** `ineligible(no_eligible_subject)` を生成（「対象となるお子さんがいません」カード）。空集合の集約を未定義にしない |
 | headline | 制度レベル `amount` を amount_type ごとに合算（monthly/oneoff/yearly別、in_kindは件数）。**金額がレンジの制度は下限で合算**し、レンジを1件でも含む種別は「月◯円以上」と表示（上限合算は誇大表示になり信頼設計と矛盾） |
 | 解なし | `once()` が失敗した対象は `error` 扱い（catch-all節と二重の防御） |
+| 本人の年齢事実欠落 | subject=self の判定が `error(structural_no_age)` / `error(structural_facts_missing)` を返した場合、ランナーが `blocked(missing=[claimant_birth_date])` に変換（生年月日ステップはスキップ可能なため「生年月日があれば判定できる」= blocked が正しい意味論）。**subject=child の structural エラーは変換しない**（子は生年月日必須のため、発火＝マッピングバグのトリップワイヤとして error のまま可視化） |
 
 - 見出しは「月25,000円 ＋ 一時金10万円」のように**種別を分けて表示**。月額・一時金・年額・現物を雑に足さない
 - 制度名・条文リンク・amount_type・subject・unit は `data/programs.yaml` から付与（ルールは判定と区分のみ返す）
