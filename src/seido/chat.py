@@ -48,7 +48,7 @@ def _get_client():
     return _client
 
 
-MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash")
 
 # ---------------------------------------------------------------------------
 # Build askable schema from questions.yaml (done once at import)
@@ -296,6 +296,9 @@ def chat_turn(
             "system_instruction": EXTRACTION_SYSTEM_PROMPT,
             "temperature": 0.1,
             "response_mime_type": "application/json",
+            # thinking off: extraction is mechanical, and thought tokens
+            # count toward output limits on 2.5+/3.x flash models
+            "thinking_config": {"thinking_budget": 0},
         },
     )
 
@@ -334,6 +337,9 @@ def chat_turn(
             "system_instruction": RESPONSE_SYSTEM_PROMPT,
             "temperature": 0.7,
             "max_output_tokens": 600,
+            # thinking off: without this, thought tokens eat the 600-token
+            # budget and the visible reply gets truncated mid-sentence
+            "thinking_config": {"thinking_budget": 0},
         },
     )
 
