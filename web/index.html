@@ -176,8 +176,8 @@ button{cursor:pointer;border:none;font-family:inherit;font-weight:700}
 
 <div class="input-bar">
   <div class="input-inner">
-    <input type="text" id="user-input" placeholder="上の選択肢からお選びください" disabled>
-    <button id="send-btn" aria-label="送信" disabled>送信</button>
+    <input type="text" id="user-input" placeholder="上の選択肢からお選びください" maxlength="500" aria-label="メッセージ入力" disabled>
+    <button id="send-btn" aria-label="送信" onclick="sendChat()" disabled>送信</button>
   </div>
 </div>
 
@@ -412,7 +412,8 @@ function answerIncome(v){
   removeOldChips();
   facts.askable.nenshu=v;
   phase="judging";
-  addAgent("ありがとうございます。");
+  addAgent("ありがとうございます。ここからは下の入力欄で自由に補足いただけます。");
+  enableChatInput();
   doJudge();
 }
 
@@ -429,12 +430,12 @@ function amountText(a){
 let judging=false;
 let judgeFailCount=0;   // module scope: survives across doJudge calls
 
-function showLoading(){
+function showLoading(msg){
   if(document.getElementById("judge-loading"))return;
   const d=document.createElement("div");
   d.className="msg agent";
   d.id="judge-loading";
-  d.innerHTML=`<div class="avatar">${AGENT_SVG}</div><div class="bubble"><span class="loading-msg">判定しています</span></div>`;
+  d.innerHTML=`<div class="avatar">${AGENT_SVG}</div><div class="bubble"><span class="loading-msg">${esc(msg||"判定しています")}</span></div>`;
   document.getElementById("chat").appendChild(d);
   scrollBottom();
 }
@@ -551,11 +552,15 @@ function renderResult(){
   </div>${rows}`);
 }
 
-function renderNextQuestion(){
+function renderNextQuestion(silent){
+  // silent=true (chat turn): Gemini's reply already contains the question
+  // text, so emit only the answer chips -- no duplicate question bubble,
+  // no completion summary (the reply covers it)
   removeOldChips();
   const q=lastResp.next_question;
   if(!q){
     phase="done";
+    if(silent)return;
     const decidedCount=lastResp.results.filter(r=>r.status==="decided").length;
     const blockedLeft=lastResp.results.filter(r=>r.status==="blocked").length;
     const summary=decidedCount>0
@@ -567,8 +572,9 @@ function renderNextQuestion(){
       +`<br><br><span style="font-size:.8rem;color:var(--ink-sub)">※判定はProlog推論エンジンによる機械的な結果です。最終的な判断は必ず自治体窓口でご確認ください。</span>`);
     return;
   }
+  if(phase==="done")phase="judging";  // chat can reopen questions
   const whyText=q.why.length?`<br><span style="font-size:.82rem;color:var(--ink-sub)">この質問で <b>${q.why.length}制度</b> の判定が進みます</span>`:"";
-  addAgent(`<b>${esc(q.text)}</b>${whyText}`);
+  if(!silent)addAgent(`<b>${esc(q.text)}</b>${whyText}`);
 
   let chipsHtml=q.choices.map(c=>{
     const v=JSON.stringify(c.value).replace(/'/g,"&#39;");
@@ -610,6 +616,104 @@ function numAnswer(key){
   facts.askable[key]=v;
   doJudge();
 }
+
+// ---- free-text chat (/api/chat: Gemini extraction + Prolog judgment) ----
+let chatting=false;
+let chatAvailable=true;   // flipped off permanently on 503 (chat unconfigured)
+let chatHistory=[];       // {role:"user"|"model", content}
+// 8 entries x 400 chars stays well under the server's 10KB whole-request
+// guard (_guard_size covers message+facts+history together)
+const CHAT_HISTORY_MAX=8;
+
+function enableChatInput(){
+  if(!chatAvailable)return;
+  const inp=document.getElementById("user-input");
+  document.getElementById("send-btn").disabled=false;
+  inp.disabled=false;
+  inp.placeholder="自由に入力できます（例: 離職中です、妻が妊娠しています）";
+}
+function disableChatInput(permanent){
+  const inp=document.getElementById("user-input");
+  document.getElementById("send-btn").disabled=true;
+  inp.disabled=true;
+  if(permanent){chatAvailable=false;inp.placeholder="チャットは現在利用できません";}
+}
+function pushHistory(role,content){
+  chatHistory.push({role,content:String(content).slice(0,400)});
+  if(chatHistory.length>CHAT_HISTORY_MAX)chatHistory=chatHistory.slice(-CHAT_HISTORY_MAX);
+}
+function fmtChatText(s){
+  // escape FIRST, then light markdown (Gemini emits ** and * bullets)
+  return esc(s).split("\n").map(l=>l.replace(/^\s*[\*\-]\s+/,"・"))
+    .join("<br>").replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>");
+}
+function chatErrorMsg(status){
+  if(status===503)return"チャット機能は現在利用できません。選択肢からの回答は引き続きご利用いただけます。";
+  if(status===429)return"チャットの利用が集中しています。1分ほど待ってから送信するか、選択肢からお答えください。";
+  if(status===413)return"メッセージが長すぎます。短くしてお試しください。";
+  if(status===0)return"通信に失敗しました。接続をご確認のうえ、もう一度お試しください。";
+  return"チャットの応答に失敗しました。もう一度お試しいただくか、選択肢からお答えください。";
+}
+async function sendChat(){
+  if(chatting||judging||!chatAvailable)return;
+  const inp=document.getElementById("user-input");
+  const text=inp.value.trim();
+  if(!text)return;
+  chatting=true;
+  inp.value="";
+  disableChatInput();
+  addUser(text);
+  showLoading("考えています");
+  try{
+    let data,status;
+    try{
+      const r=await fetch("/api/chat",{method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({message:text,facts,history:chatHistory,municipality})});
+      status=r.status;
+      if(r.ok)data=await r.json();
+    }catch(e){status=0;}
+    if(!data){
+      addAgent(esc(chatErrorMsg(status)));
+      if(status===503){disableChatInput(true);}
+      else{inp.value=text;}   // let the user retry without retyping
+      return;
+    }
+    pushHistory("user",text);
+    pushHistory("model",data.response||"");
+    if(data.facts)facts=data.facts;   // server-merged superset of ours
+    addAgent(fmtChatText(data.response||""));
+    try{
+      lastResp={headline:data.judgment.headline,results:data.judgment.results,
+                next_question:data.next_question||null};
+      renderResult();
+      renderNextQuestion(true);
+    }catch(e){
+      console.error("chat render failed:",e);
+      addAgent("結果の表示に問題が発生しました。");
+    }
+    // ward stated in chat: the server judged with the *request* ward, so
+    // switch the selector and re-judge (0 yen) instead of silently ignoring
+    const exWard=data.extracted&&data.extracted.municipality;
+    if(exWard&&exWard!==municipality){
+      const sel=document.getElementById("municipality");
+      if([...sel.options].some(o=>o.value===exWard)){
+        sel.value=exWard;municipality=exWard;
+        const wname=sel.options[sel.selectedIndex].textContent;
+        addAgent(`お住まいを「${esc(wname)}」に変更して判定し直します。`);
+        doJudge();
+      }
+    }
+  }finally{
+    hideLoading();
+    chatting=false;
+    if(chatAvailable)enableChatInput();
+  }
+}
+document.getElementById("user-input").addEventListener("keydown",e=>{
+  // isComposing: Enter that commits Japanese IME conversion must not send
+  if(e.key==="Enter"&&!e.isComposing)sendChat();
+});
 
 // ---- reason / proof ----
 const ASKABLE_JA={
