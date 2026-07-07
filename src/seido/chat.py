@@ -155,6 +155,54 @@ Prolog推論エンジンの判定結果をもとに、ユーザーにわかり�
 
 
 # ---------------------------------------------------------------------------
+# Extraction JSON parsing (with truncation repair)
+# ---------------------------------------------------------------------------
+def _close_brackets(text: str) -> str:
+    """Append the closing quotes/brackets a truncated JSON text is missing."""
+    stack = []
+    in_str = False
+    esc = False
+    for ch in text:
+        if esc:
+            esc = False
+            continue
+        if in_str:
+            if ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        if ch == '"':
+            in_str = True
+        elif ch in "{[":
+            stack.append(ch)
+        elif ch in "}]" and stack:
+            stack.pop()
+    suffix = '"' if in_str else ""
+    suffix += "".join("}" if c == "{" else "]" for c in reversed(stack))
+    return text + suffix
+
+
+def _parse_extraction_json(text: str) -> dict:
+    """Parse Step-1 output, repairing truncated JSON before giving up.
+
+    gemini-3.5-flash occasionally emits the extraction JSON with the
+    trailing close-braces missing (finish_reason=STOP even with
+    response_mime_type json; observed live 2026-07-08). The content is
+    complete, so bracket-balancing recovers the whole extraction instead
+    of dropping the turn to the empty fallback.
+    """
+    for candidate in (text, _close_brackets(text or "")):
+        try:
+            parsed = json.loads(candidate)
+        except (json.JSONDecodeError, TypeError):
+            continue
+        if isinstance(parsed, dict):
+            return parsed
+    return {"askable": {}, "confidence": "low"}
+
+
+# ---------------------------------------------------------------------------
 # Merge logic
 # ---------------------------------------------------------------------------
 def _merge_facts(existing: dict, extracted: dict) -> dict:
@@ -302,10 +350,8 @@ def chat_turn(
         },
     )
 
-    try:
-        extracted = json.loads(extraction_response.text)
-    except (json.JSONDecodeError, AttributeError):
-        extracted = {"askable": {}, "confidence": "low"}
+    extracted = _parse_extraction_json(
+        getattr(extraction_response, "text", None) or "")
 
     # --- Step 2: Merge ---
     merged_facts = _merge_facts(facts, extracted)

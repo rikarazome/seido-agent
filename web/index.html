@@ -643,8 +643,9 @@ function pushHistory(role,content){
   if(chatHistory.length>CHAT_HISTORY_MAX)chatHistory=chatHistory.slice(-CHAT_HISTORY_MAX);
 }
 function fmtChatText(s){
-  // escape FIRST, then light markdown (Gemini emits ** and * bullets)
-  return esc(s).split("\n").map(l=>l.replace(/^\s*[\*\-]\s+/,"・"))
+  // escape FIRST, then light markdown (Gemini emits **, * bullets, ### heads)
+  return esc(s).split("\n").map(l=>
+      l.replace(/^\s*#+\s*(.+)$/,"<b>$1</b>").replace(/^\s*[\*\-]\s+/,"・"))
     .join("<br>").replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>");
 }
 function chatErrorMsg(status){

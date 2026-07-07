@@ -183,6 +183,43 @@ def test_rate_limit_returns_json_429():
         limiter.enabled = False
 
 
+def test_extraction_json_repair_recovers_truncated_output():
+    """gemini-3.5-flash occasionally emits extraction JSON with the
+    trailing close-braces missing (finish_reason=STOP, observed live
+    2026-07-08 with the hitorioya scenario). The content is complete, so
+    bracket-balancing must recover it instead of dropping the whole turn
+    to the empty fallback (which silently discards correct extractions)."""
+    # exact captured live output (closing "\n}" missing)
+    truncated = (
+        '{\n  "claimant_birth_date": "1990-03-10",\n  "children": [\n'
+        '    {\n      "birth_date": "2021-01-01"\n    },\n'
+        '    {\n      "birth_date": "2024-01-01"\n    }\n  ],\n'
+        '  "municipality": null,\n  "askable": {\n'
+        '    "hitorioya": true,\n    "hitorioya_jiyuu": "rikon",\n'
+        '    "nenshu": [\n      2000000,\n      4000000\n    ]\n  },\n'
+        '  "confidence": "high",\n  "clarification_needed": null')
+    got = chat_module._parse_extraction_json(truncated)
+    assert got["askable"]["hitorioya"] is True
+    assert got["askable"]["hitorioya_jiyuu"] == "rikon"
+    assert got["claimant_birth_date"] == "1990-03-10"
+
+    # valid JSON passes through untouched
+    ok = chat_module._parse_extraction_json('{"askable": {"ninshin": true}}')
+    assert ok == {"askable": {"ninshin": True}}
+
+    # truncation inside a string value: close the string too
+    got = chat_module._parse_extraction_json('{"askable": {"rishoku_jiyuu": "kai')
+    assert got["askable"]["rishoku_jiyuu"] == "kai"
+
+    # irreparable garbage / empty / non-dict fall back safely
+    assert chat_module._parse_extraction_json("not json at all") == \
+        {"askable": {}, "confidence": "low"}
+    assert chat_module._parse_extraction_json("") == \
+        {"askable": {}, "confidence": "low"}
+    assert chat_module._parse_extraction_json("[1, 2") == \
+        {"askable": {}, "confidence": "low"}
+
+
 def test_rate_limit_bucket_keyed_by_xff_last_entry():
     """Cloud Run's front end APPENDS the real client IP to X-Forwarded-For,
     so the bucket key must be the LAST entry. The first entry is client-
