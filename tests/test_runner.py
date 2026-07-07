@@ -140,6 +140,32 @@ def test_no_claimant_birth_date_blocks_age_programs_not_error():
     assert r2["silver_pass"]["status"] == "decided"
 
 
+def test_household_amount_absent_rule_is_quiet(caplog):
+    """boshi_jiritsu_kyouiku etc. decide qualitatively (no fixed yen) and
+    define no teate_amount/2. The amount must come back None WITHOUT a
+    swipl process error: the old path raised Unknown procedure inside
+    swipl (rc=1) and logged 3 ERRORs per request, burying real failures
+    (found during container verification 2026-07-08)."""
+    facts = {"claimant": {"birth_date": "1990-03-10"},
+             "children": [{"id": "c1", "birth_date": "2021-01-01"},
+                          {"id": "c2", "birth_date": "2024-01-01"}],
+             "askable": {"nenshu": [2_000_000, 4_000_000], "hitorioya": True,
+                         "hitorioya_jiyuu": "rikon"}}
+    with caplog.at_level("ERROR", logger="seido.prolog"):
+        resp = judge_request(facts, date(2026, 7, 8), municipality="shibuya")
+    r = by_id(resp)
+    # behavior unchanged: decided, amount honestly absent
+    assert r["boshi_jiritsu_kyouiku"]["status"] == "decided"
+    assert r["boshi_jiritsu_kyouiku"].get("amount") is None
+    # fixed-amount programs unaffected
+    assert r["jidou_teate"]["amount"] == {"type": "monthly", "yen": 25000}
+    # and the log is clean -- no swipl failures, no warning spam
+    prolog_errors = [rec for rec in caplog.records
+                     if rec.name == "seido.prolog"]
+    assert prolog_errors == [], \
+        f"swipl errors leaked: {[rec.getMessage()[:80] for rec in prolog_errors]}"
+
+
 def test_chat_flow_childless_progressive_answers():
     """Simulates the chat UI chip-tap flow for a childless user,
     progressively answering questions until all programs settle."""

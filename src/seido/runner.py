@@ -115,7 +115,12 @@ def _household_amount(meta, facts, facts_pl, as_of):
     """per_household amount via teate_amount/2; two-point taper evaluation
     when income is only known as a range (architecture.md)."""
     rf = rule_file(meta)
-    goal = f"teate_amount({CLAIMANT}, A)"
+    # most per_household rules decide qualitatively and define no
+    # teate_amount/2 -- treat that as no_solution instead of letting the
+    # existence error kill the swipl process (rc=1 + ERROR log per call).
+    # Any OTHER exception still propagates: real rule bugs stay visible.
+    goal = (f"catch(teate_amount({CLAIMANT}, A), "
+            f"error(existence_error(procedure, _), _), A = no_solution)")
     try:
         got = query_value(facts_pl, meta["id"], rf, goal)
     except PrologError:

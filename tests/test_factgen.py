@@ -80,6 +80,25 @@ def test_empty_child_id_gets_auto_generated():
 
 # -- claimant age generation (v2) --
 
+def test_structural_facts_declared_discontiguous():
+    """Claimant + children interleave age/2 etc. clauses; without a
+    discontiguous declaration swipl prints ~30 warning lines per request
+    (log noise that buried a real error during container verification
+    2026-07-08, and a hard failure if a future swipl escalates warnings)."""
+    facts = {
+        "claimant": {"birth_date": "1990-03-10"},
+        "children": [{"id": "c1", "birth_date": "2021-01-01"},
+                     {"id": "c2", "birth_date": "2024-01-01"}],
+        "askable": {},
+    }
+    out = facts_to_prolog(facts, date(2026, 7, 8))
+    assert ":- discontiguous" in out
+    for pred in ("claimant/1", "child/1", "kango_by/2", "seikei_futan/2",
+                 "age/2", "age_nendo_matsu/2", "birth_nendo/2"):
+        assert pred in out.split(":- discontiguous", 1)[1].split(".", 1)[0], \
+            f"{pred} missing from discontiguous declaration"
+
+
 def test_claimant_birth_date_generates_age():
     facts = {
         "claimant": {"birth_date": "1988-04-01"},
