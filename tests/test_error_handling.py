@@ -181,3 +181,36 @@ def test_rate_limit_returns_json_429():
         assert "error" in last.json()
     finally:
         limiter.enabled = False
+
+
+def test_rate_limit_bucket_keyed_by_xff_last_entry():
+    """Cloud Run's front end APPENDS the real client IP to X-Forwarded-For,
+    so the bucket key must be the LAST entry. The first entry is client-
+    supplied and spoofable -- keying on it would let an attacker rotate
+    fake IPs to bypass the cost defense entirely."""
+    limiter.enabled = True
+    limiter.reset()
+    payload = {"facts": FACTS, "as_of": "2026-06-11",
+               "municipality": "nosuchward"}
+    try:
+        for _ in range(40):
+            r = client.post("/api/judge", json=payload,
+                            headers={"X-Forwarded-For": "9.9.9.9"})
+            assert r.status_code == 400
+        r = client.post("/api/judge", json=payload,
+                        headers={"X-Forwarded-For": "9.9.9.9"})
+        assert r.status_code == 429, "same client must be limited"
+        # spoofed first entry, same real (last) IP -> still the same bucket
+        r = client.post("/api/judge", json=payload,
+                        headers={"X-Forwarded-For": "1.2.3.4, 9.9.9.9"})
+        assert r.status_code == 429, "spoofed first XFF entry must not escape the bucket"
+        # different real client -> separate bucket, not limited
+        r = client.post("/api/judge", json=payload,
+                        headers={"X-Forwarded-For": "8.8.8.8"})
+        assert r.status_code == 400, "distinct clients must get distinct buckets"
+        # no header at all (local dev) -> falls back to remote address, works
+        r = client.post("/api/judge", json=payload)
+        assert r.status_code == 400
+    finally:
+        limiter.enabled = False
+        limiter.reset()

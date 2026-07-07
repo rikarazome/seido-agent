@@ -4,3 +4,4 @@ docs
 tests
 **/__pycache__
 *.pyc
+.env

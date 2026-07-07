@@ -782,7 +782,7 @@ CMD ["uvicorn", "seido.app:app", "--host", "0.0.0.0", "--port", "8080"]
 | 課金 | Billing予算アラート（日次500円目安）+ 超過通知での手動停止（Pub/Sub自動停止はストレッチ） |
 | スケール | `max-instances=2` で物理上限 |
 | クォータ | Vertex AI側のプロジェクトクォータを絞る（RPM/日次） |
-| レート制限 | slowapi（IPベース・moving window）【実装済み】: /api/chat 毎分5回、/api/judge 毎分**40回**（チップ1回答=judge1回のため。20回では正規操作・デモ中に429が出る）、/api/proof 毎分20回。RateLimitExceededハンドラ登録済み（429はJSONで返る）。key_funcは現状 `get_remote_address`（**Cloud Runデプロイ時に `X-Forwarded-For` 先頭のクライアント値へ差し替え** — app.pyにコメントで明記済み）。テストでは conftest.py で `limiter.enabled = False`。**インメモリ実装のためインスタンスごとに独立**（max=2なので実効上限は2倍。デモ規模では許容と明記） |
+| レート制限 | slowapi（IPベース・moving window）【実装済み】: /api/chat 毎分5回、/api/judge 毎分**40回**（チップ1回答=judge1回のため。20回では正規操作・デモ中に429が出る）、/api/proof 毎分20回。RateLimitExceededハンドラ登録済み（429はJSONで返る）。key_funcは `X-Forwarded-For` **末尾**エントリ、ヘッダ無し時は `get_remote_address` にフォールバック（app.py `_client_ip`）。Cloud RunのフロントエンドはクライアントIPを末尾に**追記**するため、先頭を使うと偽ヘッダでバケットを回転させレート制限を回避できる（先頭案は却下）。ローカル/本番で単一コードパス、デプロイ時の差し替え不要。テストでは conftest.py で `limiter.enabled = False`。**インメモリ実装のためインスタンスごとに独立**（max=2なので実効上限は2倍。デモ規模では許容と明記） |
 | 入力サイズ | `message` ≤ 500字 / facts JSON ≤ 10KB（リクエスト全体のJSON化サイズで検証、`MAX_FACTS_BYTES`）/ `history` ≤ 8往復・5KB をサーバー側で検証（413）。超過分の履歴は古い側から切り捨て。**注**: 生成されるPrologソースはJSON比で数倍に膨張しうるが、10KB制限下の実用データ量ではProlog側の肥大は問題にならない |
 | 対話上限 | /api/chat はフロントで15ターン上限（UX用）。選択肢タップは /api/judge のみでLLM不使用のため制限不要。**ステートレス故にサーバーはターン数を強制できない**ため、コスト防御の実効線は上記レート制限+クォータであることを明記 |
 

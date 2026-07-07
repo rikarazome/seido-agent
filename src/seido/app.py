@@ -37,9 +37,21 @@ MAX_FACTS_BYTES = 10_000
 app = FastAPI(title="seido-agent", docs_url=None, redoc_url=None)
 
 # IP-based rate limiting (in-memory; per-instance on Cloud Run, acceptable).
-# NOTE for Cloud Run deploy: behind the proxy get_remote_address returns the
-# proxy IP -- switch key_func to the first X-Forwarded-For entry then.
-limiter = Limiter(key_func=get_remote_address)
+def _client_ip(request: Request) -> str:
+    """Bucket key: last X-Forwarded-For entry, else the socket address.
+
+    Cloud Run's front end APPENDS the real client IP to X-Forwarded-For;
+    earlier entries are client-supplied and spoofable, so keying on the
+    first entry would let callers rotate fake IPs past the rate limit.
+    Locally there is no XFF header and this falls back to the peer address.
+    """
+    xff = request.headers.get("x-forwarded-for", "")
+    if xff:
+        return xff.rsplit(",", 1)[-1].strip()
+    return get_remote_address(request)
+
+
+limiter = Limiter(key_func=_client_ip)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
