@@ -593,6 +593,9 @@ function renderNextQuestion(silent){
 }
 
 function chipAnswer(key,value,childId){
+  // in-flight chat: the reply will overwrite `facts` with the server merge
+  // computed BEFORE this answer -- accepting it here would silently lose it
+  if(chatting||judging)return;
   const label=document.querySelector(".live-chips .chip:not(.dim)")?.textContent||String(value);
   // find label from clicked button
   const btns=document.querySelectorAll(".live-chips .chip");
@@ -609,6 +612,7 @@ function chipAnswer(key,value,childId){
   doJudge();
 }
 function numAnswer(key){
+  if(chatting||judging)return;   // same race as chipAnswer
   const v=parseInt(document.getElementById("num-in").value,10);
   if(isNaN(v)||v<0||v>99999999)return;
   addUser(yen(v));
