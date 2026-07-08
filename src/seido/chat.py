@@ -128,30 +128,32 @@ askableには抽出できたキーのみ含める。抽出できなかったキ�
 # ---------------------------------------------------------------------------
 RESPONSE_SYSTEM_PROMPT = """\
 あなたは日本の社会保障制度の相談エージェントです。
-Prolog推論エンジンの判定結果をもとに、ユーザーにわかりやすく回答します。
+制度の該当判定は別のProlog推論エンジンが行い、その結果は画面上の「判定カード」に
+常に表示されています。判定内容（制度名・金額）の表示はカードだけが行います。
 
-## あなたの役割
-- Prolog判定エンジンの結果を**そのまま**自然言語で伝える。
-- あなた自身は制度の該当/非該当を判断しない。Prologの結果のみ伝える。
-- 判定結果に含まれない制度について言及しない。
+## あなたの返信の役割（この3つだけ）
+1. ユーザーの発話から何を理解したかを短く確認する。
+   [TURN DATA]の「反映された情報」に基づくこと。反映されなかった内容を
+   反映されたかのように言ってはいけない。
+2. 判定カードの更新を件数の変化で案内する
+   （例: 「受給見込みの制度がN件からM件に増えました。詳細は下のカードをご覧ください」）。
+3. [TURN DATA]に次の質問があれば、自然な流れで尋ねる。
 
-## 判定ステータスの意味（Prologが返す3状態）
-- **decided**: 提供された情報で判定完了。受給見込みあり。金額も確定。
-- **blocked**: 追加情報があれば判定できる。「まだわからない」状態。
-- **ineligible**: 条件を満たさない。受給見込みなし。
+## 禁止事項（最重要）
+- 制度名を書かない。制度を列挙しない。個別の金額を書かない。
+- 該当/非該当をあなたが判断・示唆しない。
+- [TURN DATA]にない数値を書かない。
+- 断定表現の禁止:
+  ❌「受給できます」「該当します」「もらえます」「対象です」
+  ✅「受給できる可能性があります」「見込みです」
 
-## 回答ルール
-1. **断定表現の禁止**（最重要ルール）:
-   ❌「受給できます」「該当します」「もらえます」「対象です」
-   ✅「受給できる可能性があります」「該当する見込みです」「対象となりそうです」
-2. 初回応答では「法的助言ではなく、正確な判断は自治体窓口でご確認ください」と伝える。
-3. decided制度がある場合: 制度名・金額・簡単な説明を伝える。
-4. blocked制度がある場合: 「あと○件の制度は追加の情報で判定できます」と伝える。
-5. next_questionがある場合: 自然な流れで次の質問をする。
-6. 回答は簡潔に（3〜5文）。箇条書きで制度を列挙してよい。
-7. センシティブな話題（ひとり親、障害、生活保護等）には配慮する。
-8. 制度の説明は[JUDGMENT DATA]のdescriptionフィールドをそのまま使う。自分で説明を作らない。
-9. 金額は[JUDGMENT DATA]のamountフィールドの値を使う。自分で計算しない。
+## その他のルール
+- 初回応答（会話履歴が空のとき）は「法的助言ではなく、正確な判断は自治体窓口で
+  ご確認ください」と一言添える。
+- 反映された情報が「なし」の場合: 判定に使える情報を読み取れなかったことを正直に
+  伝え、選択肢からの回答か別の言い方を促す。
+- センシティブな話題（ひとり親、障害、生活保護など）には配慮ある言葉遣いをする。
+- 全体で2〜4文、簡潔に。
 """
 
 
@@ -252,70 +254,69 @@ def _merge_facts(existing: dict, extracted: dict) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Build judgment summary for Gemini (Step 4 input)
+# Build turn summary for Gemini (Step 4 input)
 # ---------------------------------------------------------------------------
-def _build_judgment_summary(judgment: dict) -> str:
-    """Format Prolog judgment results for Gemini to interpret."""
-    lines = []
-    decided = [r for r in judgment["results"] if r.get("status") == "decided"]
-    blocked = [r for r in judgment["results"] if r.get("status") == "blocked"]
-    ineligible = [r for r in judgment["results"]
-                  if r.get("status") == "ineligible"]
+def _applied_diff(existing: dict, merged: dict) -> list[str]:
+    """Facts this turn actually added (i.e. survived the merge guards).
 
-    headline = judgment.get("headline", {})
-    parts = []
-    if headline.get("monthly_yen"):
-        parts.append(f"月額{headline['monthly_yen']:,}円")
-    if headline.get("oneoff_yen"):
-        parts.append(f"一時金{headline['oneoff_yen']:,}円")
-    if headline.get("yearly_yen"):
-        parts.append(f"年額{headline['yearly_yen']:,}円")
-    if headline.get("in_kind_count"):
-        parts.append(f"現物給付{headline['in_kind_count']}件")
-    if parts:
-        lines.append(f"## 受給見込み総額（下限）: {' + '.join(parts)}")
+    The response confirms ONLY these back to the user: confirming a fact
+    the merge dropped would tell the user it was applied when the
+    judgment never saw it.
+    """
+    diff = []
+    old_bd = (existing.get("claimant") or {}).get("birth_date")
+    new_bd = (merged.get("claimant") or {}).get("birth_date")
+    if new_bd and not old_bd:
+        diff.append(f"あなたの生年月日 = {new_bd}")
+    if merged.get("children") and not existing.get("children"):
+        diff.append(f"お子さんの人数と生年月日（{len(merged['children'])}人）")
+    old_ask = existing.get("askable") or {}
+    for key, val in (merged.get("askable") or {}).items():
+        if val is not None and old_ask.get(key) is None:
+            diff.append(f"{key} = {val}")
+    return diff
+
+
+def _build_turn_summary(existing_facts: dict, merged_facts: dict,
+                        prev_judgment: dict, judgment: dict) -> str:
+    """Mechanical turn data for the response prompt.
+
+    Deliberately contains NO program names and no per-program amounts:
+    the judgment card is the only channel that displays judgments, so the
+    reply cannot paraphrase (and thereby distort) them. The reply's job is
+    understanding-confirmation + count delta + next question.
+    """
+
+    def counts(j):
+        rs = j["results"]
+        return (sum(1 for r in rs if r.get("status") == "decided"),
+                sum(1 for r in rs if r.get("status") == "blocked"))
+
+    lines = ["## 今回の発話から判定に反映された情報"]
+    applied = _applied_diff(existing_facts, merged_facts)
+    if applied:
+        lines += [f"- {a}" for a in applied]
+    else:
+        lines.append("- なし（判定に反映できる新情報はありませんでした）")
+
+    prev_d, _ = counts(prev_judgment)
+    new_d, new_b = counts(judgment)
+    prev_m = (prev_judgment.get("headline") or {}).get("monthly_yen") or 0
+    new_m = (judgment.get("headline") or {}).get("monthly_yen") or 0
     lines.append("")
-
-    if decided:
-        lines.append(f"## 受給見込み（{len(decided)}件）")
-        for r in decided:
-            amt = _amount_text(r.get("amount"))
-            desc = r.get("description", "")
-            uf = r.get("used_facts", [])
-            reason_parts = []
-            for f in uf:
-                if f["fact"] in ("age", "age_nendo_matsu"):
-                    reason_parts.append(f"{f['subject']}の年齢{f['value']}歳")
-                else:
-                    reason_parts.append(f"{f['fact']}={f['value']}")
-            reason = "、".join(reason_parts) if reason_parts else "基本条件を満たしている"
-            lines.append(f"- {r['name']}（{amt}）: {desc} [根拠: {reason}]")
-        lines.append("")
-
-    if blocked:
-        lines.append(f"## 追加情報で判定可能（{len(blocked)}件）")
-        for r in blocked[:5]:
-            missing = r.get("missing", [])
-            lines.append(f"- {r['name']}: 不足情報={','.join(missing[:3])}")
-        if len(blocked) > 5:
-            lines.append(f"  ...他{len(blocked)-5}件")
-        lines.append("")
-
-    if ineligible:
-        lines.append(f"## 非該当（{len(ineligible)}件） ※ユーザーには詳細不要、聞かれた場合のみ")
-        for r in ineligible[:3]:
-            lines.append(f"- {r['name']}: {r.get('reason', '')}")
-        lines.append("")
+    lines.append("## 判定の変化（機械計算値。これ以外の数値を書かないこと）")
+    lines.append(f"- 受給見込みの制度: {prev_d}件 → {new_d}件")
+    lines.append(f"- 月額合計の下限: {prev_m:,}円 → {new_m:,}円")
+    lines.append(f"- 追加情報があれば判定が進む制度: {new_b}件")
 
     nq = judgment.get("next_question")
+    lines.append("")
+    lines.append("## 次にユーザーに聞くべき質問")
     if nq:
-        lines.append("## 次に聞くべき質問")
-        lines.append(f"質問文: {nq['text']}")
-        lines.append(f"理由: この質問で{len(nq.get('why', []))}件の制度の判定が進む")
-        if nq.get("choices"):
-            choice_labels = [c["label"] for c in nq["choices"][:5]]
-            lines.append(f"選択肢: {' / '.join(choice_labels)}")
-
+        lines.append(f"- {nq['text']}"
+                     f"（答えると{len(nq.get('why', []))}件の制度の判定が進みます）")
+    else:
+        lines.append("- なし（これ以上の質問はありません）")
     return "\n".join(lines)
 
 
@@ -379,9 +380,16 @@ def chat_turn(
 
     # --- Step 3: Prolog judgment ---
     judgment = judge_request(merged_facts, as_of, municipality)
+    # delta baseline = judgment for the facts the client sent, i.e. what the
+    # card showed before this turn; skipped when the merge applied nothing
+    if merged_facts != facts:
+        prev_judgment = judge_request(facts, as_of, municipality)
+    else:
+        prev_judgment = judgment
 
     # --- Step 4: Generate response ---
-    judgment_summary = _build_judgment_summary(judgment)
+    judgment_summary = _build_turn_summary(facts, merged_facts,
+                                           prev_judgment, judgment)
 
     history_for_response = [
         {"role": h["role"], "parts": [{"text": h["content"]}]}
@@ -392,7 +400,7 @@ def chat_turn(
     )
     history_for_response.append(
         {"role": "user", "parts": [{"text":
-            f"[JUDGMENT DATA — Prologエンジンの判定結果。この情報をもとに回答してください]\n\n"
+            f"[TURN DATA — 機械計算の判定変化データ。この情報のみに基づいて回答してください]\n\n"
             f"{judgment_summary}"
         }]}
     )
@@ -427,17 +435,3 @@ def chat_turn(
     }
 
 
-def _amount_text(amount: Optional[dict]) -> str:
-    if not amount:
-        return "金額未定"
-    if amount.get("type") == "in_kind":
-        return "現物給付"
-    yen = amount.get("yen")
-    if yen is not None:
-        unit = {"monthly": "月額", "yearly": "年額", "oneoff": "一時金"}
-        return f"{unit.get(amount['type'], '')}{yen:,}円"
-    lo, hi = amount.get("yen_min"), amount.get("yen_max")
-    if lo is not None:
-        unit = {"monthly": "月額", "yearly": "年額", "oneoff": "一時金"}
-        return f"{unit.get(amount['type'], '')}{lo:,}〜{hi:,}円"
-    return "金額未定"
