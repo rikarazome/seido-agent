@@ -53,3 +53,15 @@ def test_no_limit_reaches_sentinel():
         text = (REPO / f).read_text(encoding="ascii")
         for num in re.findall(r"\b\d{7,}\b", text):
             assert int(num) < SENTINEL_CAP, f"{f}: literal {num} >= sentinel"
+
+
+def test_statute_urls_use_http_scheme():
+    """statute.url lands in an href attribute in the UI; a non-http(s)
+    scheme (javascript:, data:) would execute on click. The catalog is
+    trusted data, but this pins the invariant against accidental or
+    scripted edits (2 programs legitimately use plain http)."""
+    from seido.runner import programs
+    bad = [(p["id"], str(s.get("url", ""))[:60])
+           for p in programs() for s in (p.get("statute") or [])
+           if not str(s.get("url", "")).startswith(("https://", "http://"))]
+    assert bad == [], f"non-http statute urls: {bad[:5]}"

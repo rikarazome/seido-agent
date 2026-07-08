@@ -19,6 +19,7 @@ import os
 from datetime import date, datetime, timedelta, timezone
 from typing import Optional
 
+from .factgen import ASKABLE_MAP
 from .runner import judge_request, questions, municipalities
 
 # ---------------------------------------------------------------------------
@@ -205,26 +206,46 @@ def _parse_extraction_json(text: str) -> dict:
 # ---------------------------------------------------------------------------
 # Merge logic
 # ---------------------------------------------------------------------------
-def _merge_facts(existing: dict, extracted: dict) -> dict:
-    """Merge extracted facts into existing, null-only overwrite policy."""
-    merged = json.loads(json.dumps(existing))
+def _valid_iso_date(s) -> bool:
+    try:
+        date.fromisoformat(s)
+        return True
+    except (TypeError, ValueError):
+        return False
 
-    if extracted.get("claimant_birth_date"):
+
+def _merge_facts(existing: dict, extracted: dict) -> dict:
+    """Merge extracted facts into existing, null-only overwrite policy.
+
+    The extraction is LLM output and treated as untrusted:
+    - confidence "low" is not auto-applied (architecture.md; an uncertain
+      guess must not silently drive a money judgment)
+    - askable keys outside ASKABLE_MAP are dropped (they would raise
+      ValueError inside factgen and kill the whole turn as a 500)
+    - malformed birth dates are dropped for the same reason
+    """
+    merged = json.loads(json.dumps(existing))
+    if extracted.get("confidence") == "low":
+        return merged
+
+    if _valid_iso_date(extracted.get("claimant_birth_date")):
         merged.setdefault("claimant", {})
         if not merged["claimant"].get("birth_date"):
             merged["claimant"]["birth_date"] = extracted["claimant_birth_date"]
 
     if extracted.get("children") and not merged.get("children"):
+        valid = [c for c in extracted["children"]
+                 if _valid_iso_date(c.get("birth_date"))]
         merged["children"] = [
             {"id": f"c{i+1}", "birth_date": c["birth_date"], "askable": {}}
-            for i, c in enumerate(extracted["children"])
-            if c.get("birth_date")
+            for i, c in enumerate(valid)
         ]
 
     ext_askable = extracted.get("askable") or {}
     merged.setdefault("askable", {})
     for key, val in ext_askable.items():
-        if val is not None and merged["askable"].get(key) is None:
+        if (key in ASKABLE_MAP and val is not None
+                and merged["askable"].get(key) is None):
             merged["askable"][key] = val
 
     return merged

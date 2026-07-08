@@ -158,8 +158,18 @@ def facts_to_prolog(facts: dict, as_of: date) -> str:
     for i, ch in enumerate(children, start=1):
         raw_id = ch.get("id")
         cid = _validate_atom(raw_id) if raw_id else f"c{i}"
+        if cid in child_ids:
+            # duplicate subjects would be judged twice and their amounts
+            # summed twice by the aggregator (observed live: 2 children
+            # sharing an id -> jidou_teate 60,000 yen)
+            raise ValueError("duplicate child id")
         child_ids.append(cid)
-        birth = date.fromisoformat(ch["birth_date"])
+        bd = ch.get("birth_date")
+        if not isinstance(bd, str):
+            # date.fromisoformat(None) is a TypeError, which would escape
+            # the API layer's `except ValueError` as a raw 500
+            raise ValueError("child birth_date missing")
+        birth = date.fromisoformat(bd)
         lines += [
             f"child({cid}).",
             f"kango_by({cid}, {CLAIMANT}).",

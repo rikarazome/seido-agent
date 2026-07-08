@@ -80,6 +80,34 @@ def test_empty_child_id_gets_auto_generated():
 
 # -- claimant age generation (v2) --
 
+def test_child_missing_birth_date_raises_value_error():
+    """birth_date absent used to raise TypeError (date.fromisoformat(None))
+    which escaped api_judge's `except ValueError` as a raw non-JSON 500."""
+    with pytest.raises(ValueError):
+        facts_to_prolog({"children": [{"id": "c1", "askable": {}}],
+                         "askable": {}}, date(2026, 7, 8))
+    with pytest.raises(ValueError):
+        facts_to_prolog({"children": [{"id": "c1", "birth_date": None}],
+                         "askable": {}}, date(2026, 7, 8))
+
+
+def test_duplicate_child_ids_raise_value_error():
+    """Duplicate ids make judge_batch query the same subject twice and
+    _aggregate sum both -> inflated amounts (observed live: jidou_teate
+    60,000 yen for a 2-child household)."""
+    with pytest.raises(ValueError):
+        facts_to_prolog({"children": [
+            {"id": "c1", "birth_date": "2020-01-01", "askable": {}},
+            {"id": "c1", "birth_date": "2022-01-01", "askable": {}}],
+            "askable": {}}, date(2026, 7, 8))
+    # auto-generated id colliding with an explicit one must also be caught
+    with pytest.raises(ValueError):
+        facts_to_prolog({"children": [
+            {"id": "c2", "birth_date": "2020-01-01", "askable": {}},
+            {"birth_date": "2022-01-01", "askable": {}}],  # auto -> c2
+            "askable": {}}, date(2026, 7, 8))
+
+
 def test_structural_facts_declared_discontiguous():
     """Claimant + children interleave age/2 etc. clauses; without a
     discontiguous declaration swipl prints ~30 warning lines per request

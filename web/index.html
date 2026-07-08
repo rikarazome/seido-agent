@@ -536,7 +536,10 @@ function renderResult(){
     rows+=`<details class="prog-section" open><summary>あと少し（${blocked.length}件）</summary>`;
     rows+=blocked.map(r=>{
       const m=(r.missing||[]).map(f=>esc(FACT_JA[f]||f)).join("・");
-      return`<div class="prow"><span class="pname">${esc(r.name)}</span><span style="font-size:.78rem;color:var(--amber-800)">要確認: ${m}</span><span class="badge blocked">あと少し</span></div>`;
+      // partial_amount: some children already decided -- show the floor
+      // (architecture.md: 「現時点で月◯円+あとN問」)
+      const part=r.partial_amount?`<span class="pamount">現時点で${amountText(r.partial_amount)}</span>`:"";
+      return`<div class="prow"><span class="pname">${esc(r.name)}</span>${part}<span style="font-size:.78rem;color:var(--amber-800)">要確認: ${m}</span><span class="badge blocked">あと少し</span></div>`;
     }).join("");
     rows+="</details>";
   }
@@ -759,12 +762,17 @@ function buildReasonJa(r){
       const who=f.subject==="p1"?"あなた":`お子さん(${f.subject})`;
       items.push(`${who}の年齢: ${f.value}歳`);
     }else{
-      const label=ASKABLE_JA[f.fact]||f.fact;
-      const rawVal=ak[f.fact];
+      // used_facts carries the Prolog predicate name; income maps back to
+      // the nenshu / shotoku_exact answer for the label and value display
+      const akKey=f.fact==="income"
+        ?(ak.shotoku_exact!=null&&ak.shotoku_exact!=="declined"?"shotoku_exact":"nenshu")
+        :f.fact;
+      const label=ASKABLE_JA[akKey]||ASKABLE_JA[f.fact]||f.fact;
+      const rawVal=ak[akKey];
       if(rawVal===undefined||rawVal===null||rawVal==="declined"){
         items.push(label);
       }else{
-        const valStr=fmtVal(f.fact,rawVal);
+        const valStr=fmtVal(akKey,rawVal);
         if(rawVal===true) items.push(label);
         else if(valStr) items.push(`${label}: ${valStr}`);
         else items.push(label);

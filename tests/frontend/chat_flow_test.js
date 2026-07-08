@@ -132,6 +132,17 @@ const input = named["user-input"];
         chatKids().some(c => c.id === "result-card" && c.innerHTML.includes("児童手当")));
   check("chat input enabled after first judgment",
         input.disabled === false && input.placeholder.includes("自由に入力"));
+  // blocked card with partial_amount must show the decided floor
+  const cardHtml = chatKids().find(c => c.id === "result-card").innerHTML;
+  check("blocked card shows partial_amount floor",
+        cardHtml.includes("現時点で月5,000円"));
+  // buildReasonJa: 'income' predicate (from used_facts) maps back to the
+  // nenshu answer -- no raw English predicate name in the reason list
+  const reasonHtml = buildReasonJa({ used_facts: [
+    { fact: "income", subject: "p1", value: "range(2760000,4360000)" }] });
+  check("reason list: income shown as 年収 with the answered range",
+        reasonHtml.includes("年収") && !reasonHtml.includes("income")
+        && reasonHtml.includes("400万〜600万円"));
 
   // ---- 1. success turn ----
   chatResponder = () => Promise.resolve({ ok: true, status: 200, json: async () => FX.chat_ok });

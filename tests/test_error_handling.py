@@ -183,6 +183,46 @@ def test_rate_limit_returns_json_429():
         limiter.enabled = False
 
 
+def test_child_without_birth_date_is_422_not_500():
+    """A child entry missing birth_date used to raise TypeError inside
+    factgen (date.fromisoformat(None)), which escaped api_judge's
+    `except ValueError` as a raw, non-JSON 500."""
+    r = client.post("/api/judge", json={
+        "facts": {"children": [{"id": "c1", "askable": {}}], "askable": {}},
+        "municipality": "shibuya"})
+    assert r.status_code == 422
+    assert r.json()["detail"] == "invalid facts schema"
+
+
+def test_duplicate_child_ids_rejected_not_double_counted():
+    """Duplicate ids made judge_batch query the same subject twice and the
+    aggregator sum both -> inflated amounts (observed live: jidou_teate
+    60,000 yen for a 2-child household)."""
+    r = client.post("/api/judge", json={
+        "facts": {"children": [
+            {"id": "c1", "birth_date": "2020-01-01", "askable": {}},
+            {"id": "c1", "birth_date": "2022-01-01", "askable": {}}],
+            "askable": {}},
+        "municipality": "shibuya"})
+    assert r.status_code == 422
+
+
+def test_chat_rejects_invalid_facts_before_llm(monkeypatch):
+    """/api/chat must 422 on invalid request facts BEFORE reaching the
+    chat engine: correct status for the caller AND no Gemini spend on
+    garbage (cost defense). chat_turn is patched to prove it is never
+    reached."""
+    def _must_not_run(**kw):
+        raise AssertionError("chat_turn must not run for invalid facts")
+    monkeypatch.setattr(chat_module, "chat_turn", _must_not_run)
+    r = client.post("/api/chat", json={
+        "message": "こんにちは",
+        "facts": {"children": [{"id": "c1", "askable": {}}], "askable": {}},
+        "history": [], "municipality": "shibuya"})
+    assert r.status_code == 422
+    assert r.json()["detail"] == "invalid facts schema"
+
+
 def test_extraction_json_repair_recovers_truncated_output():
     """gemini-3.5-flash occasionally emits extraction JSON with the
     trailing close-braces missing (finish_reason=STOP, observed live

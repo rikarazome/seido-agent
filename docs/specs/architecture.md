@@ -128,11 +128,12 @@ Gemini Structured Outputで以下のスキーマに従うJSONを生成:
 }
 ```
 
-**マージポリシー**:
+**マージポリシー**（実装済み: chat.py `_merge_facts`）:
 - `null`（未知）のキーへの書き込みのみ自動適用
-- 既知の値と矛盾する抽出は `proposed_corrections` として返し、ユーザー確認後に反映
-- Pydanticスキーマで型・列挙値・レンジの妥当性を検証してからマージ
-- **confidence: low の抽出は自動適用しない**（確認質問を生成）
+- **confidence: low の抽出は自動適用しない**（マージ全体をスキップし、応答側が聞き直す）
+- ASKABLE_MAP にないキー（LLMの幻覚キー）は破棄（factgenのValueError→500を防ぐ）
+- 生年月日は ISO 形式検証を通ったもののみ適用
+- **既知の制限**: 既知の値の言い直し（「実は年収600万でした」）と子どもの後からの追加は反映されない（null-onlyの帰結）。修正はチップ再回答も不可のため次版課題。`proposed_corrections` によるユーザー確認フローは**未実装**
 
 ### Step 4: 応答生成のシステムプロンプト要点
 
@@ -205,7 +206,7 @@ Gemini Structured Outputで以下のスキーマに従うJSONを生成:
       "fuyou_ninzu": 2,
       "kenkou_hoken": null,
 
-      // === v2追加キー（実装予定）===
+      // === v2追加キー（実装済み: factgen.ASKABLE_MAP）===
       "shogai_techo": null,              // 障害者手帳の種類・等級
                                          // null | "shintai_1" | "shintai_2" | ... | "ryoiku" | "seishin_1" | ...
       "shogai_teido": null,              // 障害の程度（重度/中度/軽度）
@@ -234,7 +235,7 @@ Gemini Structured Outputで以下のスキーマに従うJSONを生成:
 
 マッピング層（Python、決定的・LLM不使用）の責務:
 - `birth_date` → `age/2`・`age_nendo_matsu/2`（**JST基準**、基準日は `as_of`）
-- `claimant.birth_date` → `age(p1, Age)` を生成【v2追加・実装予定】（高齢者・障害者制度の年齢条件に必要）
+- `claimant.birth_date` → `age(p1, Age)` を生成【実装済み】（高齢者・障害者制度の年齢条件に必要。欠落時は subject=self の structural エラーを blocked(claimant_birth_date) に変換 — 集約規則表参照）
 - `children` → `child/1` + `kango_by/2`・`seikei_futan/2` を既定値として注入（対話で訂正可）
 - `nenshu` → **ハイブリッド方式（2026-06-11決定）**: 一次判定はフォームの年収レンジを給与所得控除のみで
   **概算変換**（養育費・諸控除は無視 → レンジが広がる方向の安全側誤差として扱い、限度額を跨げば自然に
@@ -304,11 +305,11 @@ ASKABLE_MAP = {
   "municipality": "shibuya"
 }
 
-// Response
+// Response（実装準拠）
 {
-  "facts": { /* 更新後の事実JSON全量 */ },
-  "proposed_corrections": [],
-  "reply": "ありがとうございます。現在の情報をもとに判定しました。...",
+  "response": "ありがとうございます。現在の情報をもとに判定しました。...",
+  "facts": { /* マージ後の事実JSON全量 */ },
+  "extracted": { /* Step 1 の抽出結果（municipality含む。クライアントが区切替に使用） */ },
   "judgment": {
     "headline": {
       "monthly_yen": 57500,
@@ -318,9 +319,10 @@ ASKABLE_MAP = {
     },
     "results": [ /* /api/judge と同形式 */ ]
   },
-  "blocked_count": 3,
-  "suggested_question": "税法上の扶養親族は何人ですか？"
+  "next_question": { /* /api/judge と同形式（なければ null） */ }
 }
+// 注: 旧設計の reply / suggested_question / blocked_count / proposed_corrections は
+// 実装で response / next_question に統合・廃止（blocked件数はresultsから導出可能）
 ```
 
 **処理フロー**:
@@ -476,7 +478,7 @@ factgen（マッピング層）は欠落キーをnullと同一に扱う（この
 
 ### 対話履歴の制約
 
-- クライアントが `history`（直近8往復・5KB上限）を保持して毎回送る
+- クライアントが `history` を保持して毎回送る（クライアント側 8件×400字キャップ、サーバー側 16件切詰め + リクエスト全体10KBガードに包含）
 - サーバーはプロンプトに前置してから処理
 - 上限超過分は古い側から切り捨て
 - サーバーは毎回新規セッションのため、**直前に自分が何を質問したかを知らない**。履歴なしでは「いえ、ありません」等の省略応答が解釈不能になる
@@ -542,7 +544,10 @@ rules/
 │   ... (23区分、子ども医療費助成は実装済み)
 ```
 
-### engine.plの拡張（v2、実装予定）
+### engine.plの拡張（不採用 — 記録として残置）
+
+> **実装判断**: 専用述語は追加せず、各ルールが `age(P, A)` を直接参照する方式を採用した
+> （claimant/child で同じ述語を使え、ルールの対称性が保てるため）。以下は当初案。
 
 v2で追加する述語（申請者自身の年齢チェック用）:
 

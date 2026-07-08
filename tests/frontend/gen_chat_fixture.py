@@ -24,6 +24,14 @@ AS_OF = date(2026, 7, 8)
 
 judge = judge_request(FACTS, AS_OF, "shibuya")
 
+# contract-shaped synthetic: give one blocked card a partial_amount so the
+# harness can pin the 「現時点で月◯円」 rendering (real ones need a
+# mixed decided/blocked household, rare in this fixture's facts)
+for _r in judge["results"]:
+    if _r["status"] == "blocked":
+        _r["partial_amount"] = {"type": "monthly", "yen": 5000}
+        break
+
 REPLY = ("お子さん2人の情報を確認しました。\n"
          "**受給見込みのある制度**\n"
          "* 児童手当（月額25,000円）\n"

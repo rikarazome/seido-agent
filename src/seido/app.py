@@ -187,6 +187,13 @@ def api_chat(request: Request, req: ChatRequest):
     # outside the try: its HTTPException(422) must not be turned into a
     # 500 by the generic Exception handler below
     as_of = _parse_as_of(req.as_of)
+    # reject invalid request facts BEFORE the chat engine runs: the caller
+    # gets a correct 422 instead of a 500, and no Gemini tokens are spent
+    # on a request whose judgment step is guaranteed to fail
+    try:
+        facts_to_prolog(req.facts, as_of)
+    except (ValueError, KeyError):
+        raise HTTPException(422, "invalid facts schema")
     t0 = time.monotonic()
     try:
         from .chat import chat_turn
