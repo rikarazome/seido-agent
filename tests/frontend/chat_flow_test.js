@@ -228,6 +228,8 @@ const input = named["user-input"];
   input.value = "ちょっと補足です";
   const pending = sendChat();          // do not await -- keep it in flight
   await sleep(10);
+  check("in-flight chat: ward selector is disabled (no concurrent doJudge)",
+        muniSel.disabled === true);
   chipAnswer("hitorioya", true, null); // user clicks a stale chip mid-chat
   numAnswer("shotoku_exact");
   check("in-flight chat: chip/num answers are no-ops (no judge fired)",
@@ -239,6 +241,8 @@ const input = named["user-input"];
   await sleep(10);
   check("in-flight chat: turn completes normally after release",
         input.disabled === false);
+  check("in-flight chat: ward selector re-enabled after the turn",
+        muniSel.disabled === false);
 
   // ---- 6. 503 permanently disables chat (chips untouched) ----
   chatResponder = () => Promise.resolve({ ok: false, status: 503, json: async () => ({}) });

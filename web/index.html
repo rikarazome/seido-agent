@@ -59,6 +59,7 @@ button{cursor:pointer;border:none;font-family:inherit;font-weight:700}
   padding:9px 16px;border-radius:var(--r-pill);font-size:.88rem;transition:background .12s}
 .chip:hover{background:var(--blue-50)}
 .chip:active{background:var(--blue-100)}
+.chip:disabled{opacity:.45;pointer-events:none}
 .chip.dim{color:var(--ink-sub);border-color:var(--border);font-weight:600}
 .chip.dim:hover{background:var(--bg)}
 .chip-row-num{display:flex;gap:8px;margin-top:10px;align-items:center}
@@ -430,6 +431,18 @@ function amountText(a){
 let judging=false;
 let judgeFailCount=0;   // module scope: survives across doJudge calls
 
+function syncBusyUI(){
+  // While a judge or chat turn is in flight every other input path must be
+  // inert. A ward change mid-chat fires a concurrent doJudge whose render
+  // interleaves with the pending reply (duplicate question bubble, loading
+  // bubble removed early) and whose result is then overwritten by the
+  // reply's judgment computed for the OLD ward -- header and card disagree.
+  const busy=chatting||judging;
+  const sel=document.getElementById("municipality");
+  if(sel)sel.disabled=busy;
+  document.querySelectorAll("#chat button.chip").forEach(b=>{b.disabled=busy;});
+}
+
 function showLoading(msg){
   if(document.getElementById("judge-loading"))return;
   const d=document.createElement("div");
@@ -459,6 +472,7 @@ function showJudgeError(status){
 async function doJudge(){
   if(judging)return;
   judging=true;
+  syncBusyUI();
   showLoading();
   try{
     let data;
@@ -486,6 +500,7 @@ async function doJudge(){
   }finally{
     hideLoading();
     judging=false;
+    syncBusyUI();
   }
 }
 
@@ -668,6 +683,7 @@ async function sendChat(){
   const text=inp.value.trim();
   if(!text)return;
   chatting=true;
+  syncBusyUI();
   inp.value="";
   disableChatInput();
   addUser(text);
@@ -713,8 +729,11 @@ async function sendChat(){
       }
     }
   }finally{
-    hideLoading();
+    // a ward-switch re-judge may still be in flight: its loading bubble is
+    // the one on screen, and doJudge's own finally will remove it
+    if(!judging)hideLoading();
     chatting=false;
+    syncBusyUI();
     if(chatAvailable)enableChatInput();
   }
 }
