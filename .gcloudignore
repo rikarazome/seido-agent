@@ -1,0 +1,21 @@
+# Source upload for `gcloud builds submit` / `gcloud run deploy --source`.
+# Secrets must never reach the build context.
+.env
+*.log
+
+.git/
+.github/
+.gitignore
+.pytest_cache/
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.playwright-mcp/
+.DS_Store
+
+# not referenced by the Dockerfile -- upload bloat only
+docs/
+tests/
+scripts/
+CLAUDE.md
