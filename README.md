@@ -27,7 +27,7 @@
 | FastAPI | ステートレスAPI（DBなし・入力情報は保存しない） |
 | Cloud Run | 単一コンテナ（swipl同梱）でのサーバーレス実行 |
 
-スクリーンショット: `docs/images/`（判定結果カード・Prolog推論ツリー — 追加予定）
+![システム構成](docs/images/architecture.png)
 
 ## 課題
 
