@@ -158,6 +158,9 @@ button{cursor:pointer;border:none;font-family:inherit;font-weight:700}
   .result-summary{gap:8px;padding:8px 12px}
   .result-summary .yen{font-size:1rem}
   .result-summary .sum-counts{display:none}
+  /* long 要確認 lists must wrap below the name, not crush it to 0 width */
+  .prow{flex-wrap:wrap}
+  .prow .pname{flex:1 1 55%}
   .bubble{max-width:92%}
 }
 </style>
@@ -655,7 +658,6 @@ function chipAnswer(key,value,childId){
   // in-flight chat: the reply will overwrite `facts` with the server merge
   // computed BEFORE this answer -- accepting it here would silently lose it
   if(chatting||judging)return;
-  const label=document.querySelector(".live-chips .chip:not(.dim)")?.textContent||String(value);
   // find label from clicked button
   const btns=document.querySelectorAll(".live-chips .chip");
   let clickedLabel=String(value);
