@@ -163,6 +163,11 @@ const input = named["user-input"];
         chatCall && chatCall.body.municipality === "shibuya"
         && Array.isArray(chatCall.body.history)
         && chatCall.body.facts.children.length === 2);
+  // the machine-selected question shown on screen must be in the history,
+  // else Gemini reads a follow-up against the PREVIOUS question
+  check("history carries the on-screen machine question",
+        chatCall.body.history.some(h => h.role === "model"
+          && h.content.includes("税法上の扶養親族は何人ですか")));
   check("user bubble added",
         chatKids().some(c => String(c.className) === "msg user"
                              && c.innerHTML.includes("渋谷区在住")));
@@ -187,6 +192,17 @@ const input = named["user-input"];
         && String(tail[tail.length - 2].className) === "msg agent");
   check("input cleared and re-enabled",
         input.value === "" && input.disabled === false);
+
+  // ---- 1b. chip answer must flow into the chat history ----
+  chipAnswer("hitorioya", true, null);
+  await sleep(60);   // mocked judge completes
+  chatResponder = () => Promise.resolve({ ok: true, status: 200, json: async () => FX.chat_ok });
+  input.value = "続きです";
+  await sendChat();
+  await sleep(20);
+  const lastChat = calls.filter(c => c.url === "/api/chat").pop();
+  check("chip answer present in subsequent chat history",
+        lastChat.body.history.some(h => h.role === "user" && h.content === "true"));
 
   // ---- 2. XSS in reply ----
   chatResponder = () => Promise.resolve({ ok: true, status: 200, json: async () => FX.chat_xss });

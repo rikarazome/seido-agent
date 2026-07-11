@@ -625,7 +625,12 @@ function renderNextQuestion(silent){
   }
   if(phase==="done")phase="judging";  // chat can reopen questions
   const whyText=q.why.length?`<br><span style="font-size:.82rem;color:var(--ink-sub)">この質問で <b>${q.why.length}制度</b> の判定が進みます</span>`:"";
-  if(!silent)addAgent(`<b>${esc(q.text)}</b>${whyText}`);
+  if(!silent){
+    addAgent(`<b>${esc(q.text)}</b>${whyText}`);
+    // mirror the on-screen question into the Gemini history: without it a
+    // follow-up like わからない is read against the PREVIOUS question
+    pushHistory("model",q.text);
+  }
 
   let chipsHtml=q.choices.map(c=>{
     const v=JSON.stringify(c.value).replace(/'/g,"&#39;");
@@ -653,6 +658,9 @@ function chipAnswer(key,value,childId){
   let clickedLabel=String(value);
   btns.forEach(b=>{try{if(JSON.parse(b.getAttribute("onclick").match(/,([^,]+),/)?.[1]||"null")===value)clickedLabel=b.textContent;}catch(e){}});
   addUser(clickedLabel||String(value));
+  // chip answers are part of the conversation Gemini must see (a later
+  // free-text follow-up refers to the question this chip just answered)
+  pushHistory("user",clickedLabel||String(value));
   removeOldChips();
   if(childId){
     const ch=facts.children.find(c=>c.id===childId);
@@ -667,6 +675,7 @@ function numAnswer(key){
   const v=parseInt(document.getElementById("num-in").value,10);
   if(isNaN(v)||v<0||v>99999999)return;
   addUser(yen(v));
+  pushHistory("user",yen(v));
   removeOldChips();
   facts.askable[key]=v;
   doJudge();
