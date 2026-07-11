@@ -28,7 +28,7 @@
 
   <!-- title -->
   <text x="800" y="52" text-anchor="middle" class="title">制度エージェント システム構成</text>
-  <text x="800" y="86" text-anchor="middle" class="subtitle">Gemini は理解だけ。Prolog は判定だけ。判定結果は 100% Prolog 由来。</text>
+  <text x="800" y="86" text-anchor="middle" class="subtitle">Gemini は聞き取りだけ。条文との照合・該当判定・金額計算は、すべて Prolog の論理推論。</text>
 
   <!-- ============ user / UI ============ -->
   <rect x="40" y="330" width="230" height="240" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
@@ -47,7 +47,7 @@
 
   <!-- Gemini zone -->
   <rect x="360" y="220" width="840" height="220" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-  <text x="384" y="256" class="zone-label" style="fill:#1d4ed8">Gemini Flash（理解・対話 — 判定はしない）</text>
+  <text x="384" y="256" class="zone-label" style="fill:#1d4ed8">Gemini Flash（聞き取り・対話のみ — 条文との照合・判定は行わない）</text>
 
   <rect x="390" y="280" width="370" height="130" rx="10" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
   <rect x="390" y="280" width="52" height="30" rx="8" fill="#2563eb"/>
@@ -83,8 +83,8 @@
   <rect x="800" y="550" width="52" height="30" rx="8" fill="#059669"/>
   <text x="826" y="571" text-anchor="middle" class="step">③</text>
   <text x="868" y="573" class="box-title" style="font-size:18px">SWI-Prolog 判定エンジン</text>
-  <text x="816" y="606" class="box-sub">220制度を一括判定（約50ms）</text>
-  <text x="816" y="630" class="box-sub">全解探索・証明木・不足事実の特定</text>
+  <text x="816" y="606" class="box-sub">条文由来ルール × facts を論理照合（220制度・約50ms）</text>
+  <text x="816" y="630" class="box-sub">該当判定・金額計算・証明木・不足事実の特定</text>
   <text x="816" y="658" class="small">decided / blocked / ineligible の3値判定</text>
   <text x="816" y="680" class="small">「次に聞くべき質問」も機械的に導出</text>
 
@@ -136,6 +136,6 @@
   <path d="M1290,385 L1235,385" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
 
   <!-- ============ bottom banner ============ -->
-  <rect x="330" y="800" width="900" height="60" rx="12" fill="#0f172a"/>
-  <text x="780" y="838" text-anchor="middle" class="banner">判定結果・金額が LLM を通る経路は存在しない ＝ ハルシネーションが構造的に起こらない</text>
+  <rect x="120" y="800" width="1360" height="60" rx="12" fill="#0f172a"/>
+  <text x="800" y="838" text-anchor="middle" class="banner">条文とあなたの状況を照合・判定するのは Prolog のみ — 判定プロセスに LLM がいないから、ハルシネーションの出る幕がない</text>
 </svg>
