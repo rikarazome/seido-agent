@@ -26,7 +26,8 @@ function stubEl(tag) {
 }
 // persistent named elements the page expects
 const named = {};
-for (const id of ["user-input", "send-btn", "chat", "chat-wrap"]) {
+for (const id of ["user-input", "send-btn", "chat", "chat-wrap",
+                  "result-dock", "result-summary", "result-card"]) {
   named[id] = stubEl();
   named[id].id = id;
 }
@@ -128,12 +129,19 @@ const input = named["user-input"];
   await sleep(60);
   check("onboarding: judge called once",
         calls.filter(c => c.url === "/api/judge").length === 1);
-  check("onboarding: result card rendered",
-        chatKids().some(c => c.id === "result-card" && c.innerHTML.includes("児童手当")));
+  // the judgment renders into the pinned dock, NOT into the chat flow --
+  // a card inside the chat buries the reply above a screenful of rows
+  check("onboarding: result rendered into the dock panel",
+        named["result-card"].innerHTML.includes("児童手当"));
+  check("onboarding: summary bar carries counts",
+        named["result-summary"].innerHTML.includes("受給見込み")
+        && named["result-summary"].innerHTML.includes("判定済み"));
+  check("result card is NOT inserted into the chat flow",
+        !chatKids().some(c => c.id === "result-card"));
   check("chat input enabled after first judgment",
         input.disabled === false && input.placeholder.includes("自由に入力"));
   // blocked card with partial_amount must show the decided floor
-  const cardHtml = chatKids().find(c => c.id === "result-card").innerHTML;
+  const cardHtml = named["result-card"].innerHTML;
   check("blocked card shows partial_amount floor",
         cardHtml.includes("現時点で月5,000円"));
   // buildReasonJa: 'income' predicate (from used_facts) maps back to the
@@ -162,14 +170,21 @@ const input = named["user-input"];
   check("reply bubble: ### heading converted to <b>", okHtml.includes("<b>受給見込みのある制度</b>") && !okHtml.includes("###"));
   check("reply bubble: bullets converted", okHtml.includes("・児童手当"));
   check("reply bubble: newlines to <br>", okHtml.includes("<br>"));
-  check("result card re-rendered after chat",
-        chatKids().filter(c => c.id === "result-card" && !c._removed).length >= 1
-        && chatKids().some(c => c.id === "result-card" && c.innerHTML.includes("児童手当")));
+  check("dock re-rendered after chat, still outside the chat flow",
+        named["result-card"].innerHTML.includes("児童手当")
+        && !chatKids().some(c => c.id === "result-card"));
   const newBubbles = agentBubbles().slice(bubblesBefore);
   check("next-question chips shown WITHOUT duplicate question bubble",
         chatKids().some(c => String(c.className).includes("live-chips"))
         && newBubbles.length === 1            // reply only -- no question bubble
         && !newBubbles[0].innerHTML.includes("扶養"));
+  // visibility contract: the reply bubble and its chips are the LAST chat
+  // elements, so scrolling to the bottom shows the answer (the old in-chat
+  // card pushed the reply a screenful up)
+  const tail = chatKids();
+  check("chat tail is reply bubble then chips (answer never buried)",
+        String(tail[tail.length - 1].className).includes("live-chips")
+        && String(tail[tail.length - 2].className) === "msg agent");
   check("input cleared and re-enabled",
         input.value === "" && input.disabled === false);
 
