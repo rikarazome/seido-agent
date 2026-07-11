@@ -77,3 +77,12 @@ def test_response_prompt_forbids_program_names_and_assertions():
     assert "制度名を書かない" in RESPONSE_SYSTEM_PROMPT
     assert "断定表現の禁止" in RESPONSE_SYSTEM_PROMPT
     assert "受給できます" in RESPONSE_SYSTEM_PROMPT   # listed as forbidden example
+
+
+def test_response_prompt_allows_terminology_but_not_program_details():
+    # role 4: generic terminology questions get answered...
+    assert "言葉の意味や質問の意図を尋ねている場合" in RESPONSE_SYSTEM_PROMPT
+    assert "一般的な説明であり、正確な定義はお住まいの自治体窓口" \
+        in RESPONSE_SYSTEM_PROMPT
+    # ...but program-specific explanations stay firewalled to the card/statute
+    assert "あなたの知識から説明しない" in RESPONSE_SYSTEM_PROMPT
