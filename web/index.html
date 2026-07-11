@@ -603,12 +603,15 @@ function renderResult(){
   setDock(summary,rows,changeKey);
 }
 
+let pendingQuestion=null;  // the machine question whose chips are on screen
+
 function renderNextQuestion(silent){
   // silent=true (chat turn): Gemini's reply already contains the question
   // text, so emit only the answer chips -- no duplicate question bubble,
   // no completion summary (the reply covers it)
   removeOldChips();
   const q=lastResp.next_question;
+  pendingQuestion=q||null;
   if(!q){
     phase="done";
     if(silent)return;
@@ -660,7 +663,7 @@ function chipAnswer(key,value,childId){
   addUser(clickedLabel||String(value));
   // chip answers are part of the conversation Gemini must see (a later
   // free-text follow-up refers to the question this chip just answered)
-  pushHistory("user",clickedLabel||String(value));
+  pushChipHistory(clickedLabel||String(value));
   removeOldChips();
   if(childId){
     const ch=facts.children.find(c=>c.id===childId);
@@ -675,10 +678,21 @@ function numAnswer(key){
   const v=parseInt(document.getElementById("num-in").value,10);
   if(isNaN(v)||v<0||v>99999999)return;
   addUser(yen(v));
-  pushHistory("user",yen(v));
+  pushChipHistory(yen(v));
   removeOldChips();
   facts.askable[key]=v;
   doJudge();
+}
+// A chip Q&A occupies ONE compact history entry, not two: if the shown
+// question is still the newest entry it is merged into the answer line, so
+// chip runs don't evict real free-text exchanges from the 8-slot history
+// (and the tokens sent to Gemini stay small). Anything in between --
+// a free-text exchange -- is never touched.
+function pushChipHistory(label){
+  const qt=pendingQuestion?pendingQuestion.text:"";
+  const last=chatHistory[chatHistory.length-1];
+  if(qt&&last&&last.role==="model"&&last.content===qt)chatHistory.pop();
+  pushHistory("user",qt?`（「${qt.slice(0,60)}」に選択肢で回答: ${label}）`:label);
 }
 
 // ---- free-text chat (/api/chat: Gemini extraction + Prolog judgment) ----

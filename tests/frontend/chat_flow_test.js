@@ -152,6 +152,27 @@ const input = named["user-input"];
         reasonHtml.includes("年収") && !reasonHtml.includes("income")
         && reasonHtml.includes("400万〜600万円"));
 
+  // ---- 0b. chip Q&A compresses to ONE compact history entry ----
+  // display pushed the machine question into the history; answering merges
+  // question+answer into a single user entry (so chip runs don't evict real
+  // free-text exchanges from the 8-slot history); the re-judge then pushes
+  // the (fixture-identical) next question again. Verified via /api/chat body.
+  chipAnswer("hitorioya", true, null);
+  await sleep(60);   // mocked judge completes, next question re-rendered
+  chatResponder = () => Promise.resolve({ ok: true, status: 200, json: async () => FX.chat_ok });
+  input.value = "続きです";
+  await sendChat();
+  await sleep(20);
+  const QTEXT = "税法上の扶養親族は何人ですか";
+  const h0 = calls.find(c => c.url === "/api/chat").body.history;
+  check("chip Q&A merged into one compact entry",
+        h0.some(x => x.role === "user" && x.content.includes("選択肢で回答")
+                 && x.content.includes(QTEXT) && x.content.includes("true")));
+  check("merged: bare question entry not duplicated",
+        h0.filter(x => x.content === QTEXT).length === 1);   // only the re-pushed one
+  check("history carries the on-screen machine question",
+        h0.some(x => x.role === "model" && x.content === QTEXT));
+
   // ---- 1. success turn ----
   chatResponder = () => Promise.resolve({ ok: true, status: 200, json: async () => FX.chat_ok });
   const bubblesBefore = agentBubbles().length;
@@ -163,11 +184,6 @@ const input = named["user-input"];
         chatCall && chatCall.body.municipality === "shibuya"
         && Array.isArray(chatCall.body.history)
         && chatCall.body.facts.children.length === 2);
-  // the machine-selected question shown on screen must be in the history,
-  // else Gemini reads a follow-up against the PREVIOUS question
-  check("history carries the on-screen machine question",
-        chatCall.body.history.some(h => h.role === "model"
-          && h.content.includes("税法上の扶養親族は何人ですか")));
   check("user bubble added",
         chatKids().some(c => String(c.className) === "msg user"
                              && c.innerHTML.includes("渋谷区在住")));
@@ -192,17 +208,6 @@ const input = named["user-input"];
         && String(tail[tail.length - 2].className) === "msg agent");
   check("input cleared and re-enabled",
         input.value === "" && input.disabled === false);
-
-  // ---- 1b. chip answer must flow into the chat history ----
-  chipAnswer("hitorioya", true, null);
-  await sleep(60);   // mocked judge completes
-  chatResponder = () => Promise.resolve({ ok: true, status: 200, json: async () => FX.chat_ok });
-  input.value = "続きです";
-  await sendChat();
-  await sleep(20);
-  const lastChat = calls.filter(c => c.url === "/api/chat").pop();
-  check("chip answer present in subsequent chat history",
-        lastChat.body.history.some(h => h.role === "user" && h.content === "true"));
 
   // ---- 2. XSS in reply ----
   chatResponder = () => Promise.resolve({ ok: true, status: 200, json: async () => FX.chat_xss });
