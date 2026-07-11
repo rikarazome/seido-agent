@@ -837,7 +837,10 @@ function buildReasonJa(r){
   for(const f of uf){
     if(f.fact==="age"||f.fact==="age_nendo_matsu"){
       const who=f.subject==="p1"?"あなた":`お子さん(${f.subject})`;
-      items.push(`${who}の年齢: ${f.value}歳`);
+      // age (current) and age_nendo_matsu (fiscal-year-end) can both appear
+      // for the same person -- an undistinguished pair reads as a bug
+      const kind=f.fact==="age_nendo_matsu"?"年度末時点の年齢":"年齢";
+      items.push(`${who}の${kind}: ${f.value}歳`);
     }else{
       // used_facts carries the Prolog predicate name; income maps back to
       // the nenshu / shotoku_exact answer for the label and value display

@@ -151,6 +151,13 @@ const input = named["user-input"];
   check("reason list: income shown as 年収 with the answered range",
         reasonHtml.includes("年収") && !reasonHtml.includes("income")
         && reasonHtml.includes("400万〜600万円"));
+  // age vs fiscal-year-end age for the same child must be distinguishable
+  const ageHtml = buildReasonJa({ used_facts: [
+    { fact: "age_nendo_matsu", subject: "c1", value: 6 },
+    { fact: "age", subject: "c1", value: 5 }] });
+  check("reason list: current vs FY-end age labeled distinctly",
+        ageHtml.includes("お子さん(c1)の年度末時点の年齢: 6歳")
+        && ageHtml.includes("お子さん(c1)の年齢: 5歳"));
 
   // ---- 0b. chip Q&A compresses to ONE compact history entry ----
   // display pushed the machine question into the history; answering merges
