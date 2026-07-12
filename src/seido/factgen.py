@@ -52,6 +52,8 @@ ASKABLE_MAP = {
     "jishin_hoken": ("jishin_hoken", "claimant"),
     "seimei_hoken": ("seimei_hoken", "claimant"),
     "iryouhi_10man": ("iryouhi_10man", "claimant"),
+    "otc_12000": ("otc_12000", "claimant"),
+    "kenshin_torikumi": ("kenshin_torikumi", "claimant"),
     "jutaku_loan": ("jutaku_loan", "claimant"),
     "haiguusha": ("haiguusha", "claimant"),
     "kaigo_family": ("kaigo_family", "claimant"),

@@ -4,6 +4,8 @@
   facts:
     askable:
       iryouhi_10man: false
+      otc_12000: true
+      kenshin_torikumi: true
   expect:
     subject: self
     status: decided
@@ -18,3 +20,47 @@
     subject: self
     status: ineligible
     detail: iryouhi_koujo_available
+- name: otc_under_12000_ineligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      iryouhi_10man: false
+      otc_12000: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: otc_not_over_12000
+- name: no_kenshin_torikumi_ineligible
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      iryouhi_10man: false
+      otc_12000: true
+      kenshin_torikumi: false
+  expect:
+    subject: self
+    status: ineligible
+    detail: no_kenshin_torikumi
+- name: blocked_until_otc_known
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      iryouhi_10man: false
+  expect:
+    subject: self
+    status: blocked
+    detail: "[otc_12000]"
+- name: blocked_until_kenshin_known
+  as_of: '2026-06-15'
+  municipality: shibuya
+  facts:
+    askable:
+      iryouhi_10man: false
+      otc_12000: true
+  expect:
+    subject: self
+    status: blocked
+    detail: "[kenshin_torikumi]"

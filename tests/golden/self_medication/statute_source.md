@@ -17,3 +17,11 @@
 
 source_url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1129.htm
 source_quote: "セルフメディケーション 12,000円超 最高88,000円"
+
+**ルール改訂履歴**: 2026-07-12 — 初版ルールは iryouhi_10man=false のみで
+decided にしていたが、本表の要件（スイッチOTC 12,000円超の購入・健診等の
+取組）を判定条件に実装していなかった（ユーザー報告の過剰判定）。両要件を
+askable（otc_12000, kenshin_torikumi）として追加し、確認できるまで blocked、
+いずれかが false なら ineligible に修正。期待値の変更は本ファイルに記録済み
+の要件（購入費12,000円超・取組要件、いずれも2026-06-21スナップショット由来）
+に基づく。

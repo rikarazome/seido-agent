@@ -134,6 +134,12 @@
 - fact: iryouhi_10man
   text: 昨年の医療費の自己負担合計が10万円を超えていますか（家族合算）
   type: boolean
+- fact: otc_12000
+  text: セルフメディケーション対象の市販薬（スイッチOTC医薬品）を年間12,000円を超えて購入していますか
+  type: boolean
+- fact: kenshin_torikumi
+  text: 健康診断・予防接種など、健康維持の取組を行っていますか
+  type: boolean
 - fact: seimei_hoken
   text: 生命保険・医療保険に加入していますか
   type: boolean
