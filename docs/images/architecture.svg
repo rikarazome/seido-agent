@@ -94,7 +94,7 @@
   <text x="1425" y="560" text-anchor="middle" class="box-sub">国 / 東京都 / 23区 の2層構造</text>
   <text x="1425" y="584" text-anchor="middle" class="box-sub">1制度 = 1モジュール</text>
   <line x1="1315" y1="604" x2="1535" y2="604" stroke="#fcd34d" stroke-width="1.5"/>
-  <text x="1425" y="632" text-anchor="middle" class="box-sub" style="font-weight:700; fill:#92400e">golden テスト 814件</text>
+  <text x="1425" y="632" text-anchor="middle" class="box-sub" style="font-weight:700; fill:#92400e">golden テスト 818件</text>
   <text x="1425" y="658" text-anchor="middle" class="small">条文から導出した期待値と</text>
   <text x="1425" y="678" text-anchor="middle" class="small">全ケース照合（CI で常時検証）</text>
   <text x="1425" y="706" text-anchor="middle" class="small">条文の形式化は Gemini ＋ 人間レビュー</text>
